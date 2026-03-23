@@ -10,7 +10,6 @@ status: reading
 rating: 5
 date_added: "2026-03-23"
 ---
-
 # π0.5: a Vision-Language-Action Model with Open-World Generalization
 
 ## Summary
