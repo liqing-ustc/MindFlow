@@ -1,6 +1,6 @@
-# 🔬 Research Workspace
+# 🔬 MindFlow
 
-An Obsidian-based knowledge management workspace for AI research — building a **human-AI collaborative research pipeline** from paper reading to idea generation to experiment validation.
+An Obsidian-based research workspace for building a **human-AI collaborative research pipeline** from paper reading to idea generation to experiment validation.
 
 基于 Obsidian 的 AI 研究知识管理工作区，构建从论文阅读到 idea 生成再到实验验证的 **human-AI 协作研究流水线**。
 
@@ -107,7 +107,7 @@ Use Obsidian's **Graph View** to visualize your research knowledge network.
 
 ## 🌟 Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=liqing-ustc/Research&type=Date)](https://star-history.com/#liqing-ustc/Research&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=liqing-ustc/MindFlow&type=Date)](https://star-history.com/#liqing-ustc/MindFlow&Date)
 
 If you find this useful, please give it a star 🌟! It helps others discover this project.
 
