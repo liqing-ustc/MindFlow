@@ -1,5 +1,5 @@
 ---
-{"dg-publish":true,"permalink":"/ideas/hierarchical-vla-scene-graph/","title":"Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation","tags":["VLN","VLA","SLAM","scene-graph","flow-matching","hierarchical-planning","mobile-manipulation"],"dg-note-properties":{"title":"Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation","tags":["VLN","VLA","SLAM","scene-graph","flow-matching","hierarchical-planning","mobile-manipulation"],"status":"raw","date_created":"2026-03-24"}}
+{"dg-publish":true,"permalink":"/ideas/hierarchical-vla-scene-graph/","title":"Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation","tags":["VLN","VLA","SLAM","scene-graph","flow-matching","hierarchical-planning","mobile-manipulation","gardenEntry"],"dg-note-properties":{"title":"Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation","tags":["VLN","VLA","SLAM","scene-graph","flow-matching","hierarchical-planning","mobile-manipulation","gardenEntry"],"status":"raw","date_created":"2026-03-24"}}
 ---
 
 
