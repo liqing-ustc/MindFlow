@@ -117,6 +117,7 @@ mindmap
 ## Connections
 - Related papers: [[Black2025-Pi05|π0.5]]（π₀ 的后续，加入 open-world generalization）, [[Li2026-RoboClaw]]（使用 π0.5 作为底层 VLA policy）
 - Related ideas: Diffusion Policy, ACT (Action Chunking Transformer), OpenVLA, RT-2-X, Octo
+- Related topics: [[VLN-VLA-Unification]]
 - Related projects:
 
 ## Notes

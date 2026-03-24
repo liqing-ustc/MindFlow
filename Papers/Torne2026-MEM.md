@@ -118,6 +118,7 @@ mindmap
 ## Connections
 - Related papers: π_0 (Physical Intelligence), Gemma3, RT-2, Octo
 - Related ideas: 层级记忆系统, 视频理解, 具身智能中的记忆
+- Related topics: [[VLN-VLA-Unification]]
 - Related projects:
 
 ## Notes

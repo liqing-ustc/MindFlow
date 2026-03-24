@@ -140,6 +140,7 @@ mindmap
 ## Connections
 - Related papers: [[Papers/Black2024-Pi0]] (前作 π0), π0-FAST
 - Related ideas:
+- Related topics: [[VLN-VLA-Unification]]
 - Related projects:
 
 ## Notes
