@@ -10,49 +10,49 @@
     <link>https://liqing.io/mindflow/</link>
     <guid>https://liqing.io/mindflow/</guid>
     <description>A mind space for both human and AI. Author: Qing Li Source: github.com/liqing-ustc/mindflow.</description>
-    <pubDate>Wed, 25 Mar 2026 14:42:05 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
   </item><item>
     <title>llms.txt: 让网站对 LLM 可读的新标准</title>
     <link>https://liqing.io/mindflow/Topics/llms-txt</link>
     <guid>https://liqing.io/mindflow/Topics/llms-txt</guid>
     <description>是什么 llms.txt 是由 Jeremy Howard（fast.ai 创始人）提出的 Web 标准提案，在网站根目录放置一个 Markdown 格式的文件，为 LLM 和 AI agent 提供网站的结构化概览。 核心理念：LLM 的 context window 无法处理整个网站，而将复杂 HTML 转换为 LLM-friendly 纯文本既困难又有损 ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:42:05 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
   </item><item>
     <title>WebMCP: 让网站成为 AI Agent 的结构化工具</title>
     <link>https://liqing.io/mindflow/Topics/WebMCP</link>
     <guid>https://liqing.io/mindflow/Topics/WebMCP</guid>
     <description>是什么 Google 提出的 Web 标准提案，让网站主动声明自己能执行哪些操作，AI agent 可以直接调用结构化的 tool，而不需要解析 UI 或模拟人类交互。 核心理念：网站不再是 agent 需要”看”的页面，而是可以直接”调用”的服务。 官方博客：Chrome Developers Blog GitHub：webmachinelearning/webmcp ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:42:05 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
   </item><item>
     <title>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</title>
     <link>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</link>
     <guid>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</guid>
     <description>Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 20 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:42:05 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
   </item><item>
     <title>Tag-Taxonomy</title>
     <link>https://liqing.io/mindflow/Resources/Tag-Taxonomy</link>
     <guid>https://liqing.io/mindflow/Resources/Tag-Taxonomy</guid>
     <description>Tag 体系 本文件定义 vault 中所有笔记使用的 tag 规范。添加新笔记时，从下表中选取 2-4 个 tag。 如需新增 tag，请先更新本文件。 设计原则 粒度适中：每个 tag 覆盖一个可辨识的研究子方向 正交性：tag 之间尽量不重叠 稳定性：以方法和任务为核心，不随具体模型/公司/数据集变化 Tag 列表 任务 Tag说明manipulation机器人操作（含 ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:42:05 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
   </item><item>
     <title>AI-Prompts</title>
     <link>https://liqing.io/mindflow/Resources/AI-Prompts</link>
     <guid>https://liqing.io/mindflow/Resources/AI-Prompts</guid>
     <description>AI Prompts for Research 论文总结 Prompt 请按照以下格式总结这篇论文，用中英混用的风格（专有名词用英文）： Summary 一句话概括。 Problem &amp; Motivation 作者要解决什么问题？为什么重要？ Method 核心方法/架构描述。 Key Results 主要实验结果和 takeaway。 ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:42:05 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
   </item><item>
     <title>Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation</title>
     <link>https://liqing.io/mindflow/Ideas/Hierarchical-VLA-SceneGraph</link>
     <guid>https://liqing.io/mindflow/Ideas/Hierarchical-VLA-SceneGraph</guid>
     <description>Core Idea 构建一个三层 hierarchical VLA 架构，以 semantic scene graph 作为 navigation 和 manipulation 的 shared spatial representation，实现 building-scale 导航与 dexterous manipulation 的统一。 Motivation ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:42:05 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
   </item><item>
     <title>Agent-Friendly Internet: 从文档格式到语义网络</title>
     <link>https://liqing.io/mindflow/Ideas/Agent-Friendly-Internet</link>
     <guid>https://liqing.io/mindflow/Ideas/Agent-Friendly-Internet</guid>
     <description>Core Idea 现有 Internet 是为人类设计的，AI agent 在上面工作本质上是 “agent browsing human’s Internet”，造成大量 token 浪费、能力错配和可靠性问题。行业已开始构建 agent-friendly 的基础设施（llms.txt 解决信息获取，WebMCP 解决操作执行），但更深层的语义理解层仍是空白——这是本 ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:42:05 GMT</pubDate>
+    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
   </item><item>
     <title>MEM: Multi-Scale Embodied Memory for Vision Language Action Models</title>
     <link>https://liqing.io/mindflow/Papers/2603-MEM</link>
