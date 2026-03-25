@@ -3,6 +3,7 @@ import { QuartzComponent, QuartzComponentConstructor, QuartzComponentProps } fro
 
 const TopNav: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
   const root = pathToRoot(fileData.slug!)
+  const base = root.endsWith("/") ? root : root + "/"
   const sections = [
     { label: "Papers", path: "Papers/" },
     { label: "Ideas", path: "Ideas/" },
@@ -13,7 +14,7 @@ const TopNav: QuartzComponent = ({ fileData }: QuartzComponentProps) => {
   return (
     <nav class="top-nav">
       {sections.map(({ label, path }) => (
-        <a href={`${root}${path}`}>{label}</a>
+        <a href={`${base}${path}`}>{label}</a>
       ))}
     </nav>
   )
