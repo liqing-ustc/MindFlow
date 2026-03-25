@@ -16,7 +16,7 @@ const config: QuartzConfig = {
       provider: "plausible",
     },
     locale: "en-US",
-    baseUrl: "liqing-ustc.github.io/MindFlow",
+    baseUrl: "liqing.io/mindflow",
     ignorePatterns: ["Templates/**", ".obsidian/**", "docs/**", "website/**", "private", "*.canvas", "CLAUDE.md", "README.md"],
     defaultDateType: "created",
     theme: {
