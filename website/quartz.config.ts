@@ -17,7 +17,7 @@ const config: QuartzConfig = {
     },
     locale: "en-US",
     baseUrl: "liqing-ustc.github.io/MindFlow",
-    ignorePatterns: ["Templates/**", ".obsidian/**", "docs/**", "website/**", "private", "*.canvas"],
+    ignorePatterns: ["Templates/**", ".obsidian/**", "docs/**", "website/**", "private", "*.canvas", "CLAUDE.md", "README.md"],
     defaultDateType: "created",
     theme: {
       fontOrigin: "googleFonts",
