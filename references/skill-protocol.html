@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>skill-protocol</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="skill-protocol"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="skill-protocol"/><meta name="twitter:description" content="Skill Protocol This document defines the SKILL.md format used by MindFlow AI skills. Every skill — whether atomic or orchestrating — must include a SKILL.md at its root."/><meta property="og:description" content="Skill Protocol This document defines the SKILL.md format used by MindFlow AI skills. Every skill — whether atomic or orchestrating — must include a SKILL.md at its root."/><meta property="og:image:alt" content="Skill Protocol This document defines the SKILL.md format used by MindFlow AI skills. Every skill — whether atomic or orchestrating — must include a SKILL.md at its root."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/references/skill-protocol"/><meta property="twitter:url" content="https://liqing.io/mindflow/references/skill-protocol"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Skill Protocol This document defines the SKILL.md format used by MindFlow AI skills. Every skill — whether atomic or orchestrating — must include a SKILL.md at its root."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="references/skill-protocol"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="z8gn2j"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/SLAM" class="sidebar-tag-pill">#SLAM</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a><a href="/mindflow/tags/mobile-manipulation" class="sidebar-tag-pill">#mobile-manipulation</a><a href="/mindflow/tags/spatial-memory" class="sidebar-tag-pill">#spatial-memory</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../references/">references</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>skill-protocol</a></div></nav><h1 class="article-title">skill-protocol</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-26T08:58:28.847Z">Mar 26, 2026</time><span>6 min read</span></p></div></div><article class="popover-hint"><h1 id="skill-protocol">Skill Protocol<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#skill-protocol" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h1>
+<p>This document defines the SKILL.md format used by MindFlow AI skills. Every skill — whether atomic or orchestrating — must include a SKILL.md at its root. This file serves as the single source of truth for what a skill does, how it behaves, what it requires, and what it produces.</p>
+<hr/>
+<h2 id="frontmatter-specification">Frontmatter Specification<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#frontmatter-specification" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Each SKILL.md begins with YAML frontmatter enclosed by <code>---</code> delimiters. Fields are divided into required and optional.</p>
+<h3 id="required-fields">Required Fields<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#required-fields" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>name</code></td><td>string (kebab-case)</td><td>Unique identifier for the skill, e.g. <code>paper-ingest</code></td></tr><tr><td><code>description</code></td><td>string</td><td>One-line summary of the skill’s purpose</td></tr><tr><td><code>version</code></td><td>string (semver)</td><td>Semantic version, e.g. <code>1.0.0</code></td></tr><tr><td><code>intent</code></td><td>enum</td><td>Primary research activity this skill supports (see values below)</td></tr><tr><td><code>capabilities</code></td><td>string[]</td><td>Functional capabilities this skill uses (see values below)</td></tr><tr><td><code>domain</code></td><td>enum</td><td>Knowledge domain this skill targets (see values below)</td></tr><tr><td><code>roles</code></td><td>enum[]</td><td>Supported interaction modes (see values below)</td></tr><tr><td><code>autonomy</code></td><td>enum</td><td>Default level of autonomous action (<code>high</code> / <code>medium</code> / <code>low</code>)</td></tr><tr><td><code>allowed-tools</code></td><td>string[]</td><td>Claude Code tools this skill may invoke</td></tr></tbody></table></div>
+<p><strong><code>intent</code> values:</strong></p>
+<ul>
+<li><code>literature</code> — reading, summarizing, and connecting research papers</li>
+<li><code>ideation</code> — generating and refining research hypotheses</li>
+<li><code>experiment</code> — designing and running computational experiments</li>
+<li><code>analysis</code> — interpreting results and extracting insights</li>
+<li><code>writing</code> — drafting papers, notes, or structured documents</li>
+<li><code>evolution</code> — self-improvement, protocol updates, and meta-level tasks</li>
+<li><code>orchestration</code> — coordinating other skills into multi-step workflows</li>
+<li><code>utility</code> — file management, formatting, and general-purpose helpers</li>
+</ul>
+<p><strong><code>capabilities</code> values:</strong></p>
+<ul>
+<li><code>search-retrieval</code> — querying external sources or the local vault</li>
+<li><code>research-planning</code> — constructing and updating research agendas</li>
+<li><code>cross-validation</code> — comparing results across papers or experiments</li>
+<li><code>data-processing</code> — transforming, filtering, or aggregating structured data</li>
+<li><code>training-tuning</code> — running or configuring ML training jobs</li>
+<li><code>evaluation-benchmarking</code> — measuring model or method performance</li>
+<li><code>prompt-structured-output</code> — producing structured output via LLM prompts</li>
+<li><code>visualization-reporting</code> — generating charts, tables, or summary reports</li>
+<li><code>agent-workflow</code> — spawning sub-agents or calling other skills</li>
+</ul>
+<p><strong><code>domain</code> values:</strong> <code>general</code> / <code>cs-ai</code> / <code>bioinformatics</code> / <code>medical</code> / <code>vision</code> / <code>nlp</code> / <code>data-engineering</code></p>
+<p><strong><code>roles</code> values:</strong></p>
+<ul>
+<li><code>autopilot</code> — skill runs end-to-end without human input</li>
+<li><code>copilot</code> — skill drafts or proposes; human reviews before finalizing</li>
+<li><code>sparring</code> — skill engages in back-and-forth dialogue with the human</li>
+</ul>
+<p><strong><code>autonomy</code> values:</strong></p>
+<ul>
+<li><code>high</code> — may create files, update memory, and modify agenda without confirmation</li>
+<li><code>medium</code> — may read and draft; must confirm before writing to shared state</li>
+<li><code>low</code> — proposes only; all writes require explicit human approval</li>
+</ul>
+<p><strong><code>allowed-tools</code> values</strong> (Claude Code tool names):</p>
+<p><code>Read</code>, <code>Write</code>, <code>Edit</code>, <code>Glob</code>, <code>Grep</code>, <code>Bash</code>, <code>WebSearch</code>, <code>WebFetch</code></p>
+<h3 id="optional-fields">Optional Fields<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#optional-fields" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead><tbody><tr><td><code>input</code></td><td>object[]</td><td>Declared inputs; each object has <code>name</code> and <code>description</code></td></tr><tr><td><code>output</code></td><td>object[]</td><td>Declared outputs; each object has <code>file</code> (glob pattern) and <code>memory</code> (memory file to update)</td></tr><tr><td><code>related-skills</code></td><td>string[]</td><td>Other skill names that compose well with this one</td></tr></tbody></table></div>
+<h3 id="example-frontmatter">Example Frontmatter<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#example-frontmatter" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="yaml" data-theme="github-light github-dark"><code data-language="yaml" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">---</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">paper-ingest</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">description</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Fetch, parse, and create a structured note for a research paper</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">version</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">1.2.0</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">intent</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">literature</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">capabilities</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">search-retrieval</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">prompt-structured-output</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">domain</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">cs-ai</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">roles</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">autopilot</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">copilot</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">autonomy</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">medium</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">allowed-tools</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Read</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Write</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">WebFetch</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Glob</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">input</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">paper_url</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    description</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">URL to the paper (arXiv, PDF, or journal page)</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">name</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">paper_title</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    description</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">Fallback title if URL is not available</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">output</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">file</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&quot;Papers/*.md&quot;</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">    memory</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">insights.md</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">related-skills</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">:</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">literature-review</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">  - </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">insight-extraction</span></span>
+<span data-line><span style="--shiki-light:#6F42C1;--shiki-dark:#B392F0;">---</span></span></code></pre></figure>
+<hr/>
+<h2 id="body-sections">Body Sections<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#body-sections" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Every SKILL.md body must include the following sections. Sections are written as Markdown headings (<code>##</code> or <code>###</code>).</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Section</th><th>Required</th><th>Purpose</th></tr></thead><tbody><tr><td><code>## Purpose</code></td><td>Yes</td><td>What problem this skill solves and why it exists</td></tr><tr><td><code>## Steps</code></td><td>Yes</td><td>Numbered, step-by-step execution instructions for the AI</td></tr><tr><td><code>## Guard</code></td><td>Yes</td><td>Preconditions, invariants, and prohibited actions</td></tr><tr><td><code>## Examples</code></td><td>Recommended</td><td>Concrete input/output examples or usage scenarios</td></tr></tbody></table></div>
+<h3 id="purpose">Purpose<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#purpose" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Explain the skill’s goal in 2-5 sentences. Include:</p>
+<ul>
+<li>The research workflow it fits into</li>
+<li>What inputs it consumes</li>
+<li>What outputs or effects it produces</li>
+</ul>
+<h3 id="steps">Steps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#steps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A numbered list of executable instructions. Each step should be unambiguous enough for an AI to follow without clarification. Use sub-steps where needed. Reference other skills using their kebab-case names.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## Steps</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">1.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Receive </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`paper_url`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> or </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`paper_title`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> from the user.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">2.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> If </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`paper_url`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> is provided, fetch the page with WebFetch.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">3.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Extract title, authors, abstract, and publication date.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">4.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Look up any existing note in </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`Papers/`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> using Glob to avoid duplicates.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">5.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Populate the </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`Templates/Paper.md`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> template with extracted metadata.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">6.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Save the completed note to </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`Papers/YYMM-ShortTitle.md`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">7.</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Append a provisional insight entry to </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`Workbench/memory/insights.md`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> if a novel claim is found.</span></span></code></pre></figure>
+<h3 id="guard">Guard<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#guard" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A bulleted list of rules the skill must never violate. These act as hard constraints during execution.</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## Guard</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Never overwrite an existing paper note without explicit user confirmation.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Never modify </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`agenda.md`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Mission section.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Do not mark an insight as </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`validated`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> without ≥2 independent evidence sources.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> If </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`autonomy: low`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">, produce a draft only — do not write any files.</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> Always check </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">`references/tag-taxonomy.md`</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> before assigning tags.</span></span></code></pre></figure>
+<h3 id="examples">Examples<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#examples" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Optional but strongly recommended. Show representative invocations and expected outputs. Use fenced code blocks or Markdown tables.</p>
+<hr/>
+<h2 id="complex-skills-the-references-subdirectory-pattern">Complex Skills: The <code>references/</code> Subdirectory Pattern<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#complex-skills-the-references-subdirectory-pattern" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>When a skill’s SKILL.md exceeds approximately 200 lines, or when it requires supporting reference material (schemas, lookup tables, extended examples), split the content using a <code>references/</code> subdirectory inside the skill directory.</p>
+<p><strong>Structure:</strong></p>
+<pre><code>skills/
+  paper-ingest/
+    SKILL.md              # Frontmatter + concise Steps + Guard
+    references/
+      field-mapping.md    # Detailed mapping of paper fields to frontmatter keys
+      venue-list.md       # Canonical venue abbreviations
+      example-note.md     # Full worked example of an output note
+</code></pre>
+<p><strong>Rules for the <code>references/</code> pattern:</strong></p>
+<ul>
+<li>SKILL.md remains the authoritative entry point. It must be self-contained enough to execute; <code>references/</code> files are supplementary detail.</li>
+<li>Reference files are linked from SKILL.md using relative Markdown links, e.g. <code>[field mapping](references/field-mapping.md)</code>.</li>
+<li>Reference files do not have their own frontmatter — they are plain Markdown.</li>
+<li>The <code>references/</code> directory may not contain nested skill directories (no sub-skills here; use orchestration instead).</li>
+</ul>
+<hr/>
+<h2 id="skill-levels">Skill Levels<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#skill-levels" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Skills are organized into three levels based on scope and composition.</p>
+<h3 id="level-0--atomic">Level 0 — Atomic<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#level-0--atomic" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A single-purpose skill that calls Claude Code tools directly. It does not invoke other skills.</p>
+<ul>
+<li>Typically &lt; 150 lines</li>
+<li><code>capabilities</code> list has 1-2 entries</li>
+<li><code>intent</code> is a leaf activity (not <code>orchestration</code>)</li>
+<li>Example: <code>paper-ingest</code>, <code>tag-assign</code>, <code>insight-extract</code></li>
+</ul>
+<h3 id="level-1--orchestration">Level 1 — Orchestration<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#level-1--orchestration" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A skill that sequences or conditions other skills to accomplish a compound goal. It calls Level 0 skills by name.</p>
+<ul>
+<li><code>intent: orchestration</code></li>
+<li><code>capabilities</code> includes <code>agent-workflow</code></li>
+<li>Steps reference other skills explicitly: “Run <code>paper-ingest</code> for each URL.”</li>
+<li>Example: <code>literature-sweep</code>, <code>weekly-digest</code>, <code>experiment-pipeline</code></li>
+</ul>
+<h3 id="level-2--global">Level 2 — Global<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#level-2--global" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>A skill that operates across the entire vault or research state. It may invoke multiple Level 1 skills, modify <code>agenda.md</code>, update memory files, or trigger cross-cutting evolution.</p>
+<ul>
+<li>Typically run on a schedule or by explicit human command</li>
+<li>High privilege: <code>autonomy: high</code> and broad <code>allowed-tools</code></li>
+<li>Must have an especially strict <code>## Guard</code> section</li>
+<li>Example: <code>memory-distill</code>, <code>agenda-sync</code>, <code>vault-health-check</code></li>
+</ul>
+<hr/>
+<h2 id="naming-conventions">Naming Conventions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#naming-conventions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Element</th><th>Convention</th><th>Example</th></tr></thead><tbody><tr><td>Skill directory name</td><td>kebab-case</td><td><code>paper-ingest/</code></td></tr><tr><td>Category directory name</td><td>numbered prefix + kebab-case</td><td><code>01-literature/</code></td></tr><tr><td>Skill entrypoint filename</td><td>Always uppercase</td><td><code>SKILL.md</code></td></tr><tr><td><code>name</code> field in frontmatter</td><td>Must match directory name exactly</td><td><code>paper-ingest</code></td></tr><tr><td><code>related-skills</code> entries</td><td>kebab-case, no path prefix</td><td><code>[&quot;insight-extract&quot;, &quot;tag-assign&quot;]</code></td></tr></tbody></table></div>
+<p><strong>Rationale for numbered category prefixes:</strong> Obsidian and most file explorers sort directories alphabetically. Numbered prefixes (<code>01-</code>, <code>02-</code>, …) enforce a logical reading order that mirrors the research workflow (literature → ideation → experiment → analysis → writing → evolution).</p>
+<p><strong>Example directory layout:</strong></p>
+<pre><code>skills/
+  01-literature/
+    paper-ingest/
+      SKILL.md
+    literature-review/
+      SKILL.md
+      references/
+        review-template.md
+  02-ideation/
+    hypothesis-gen/
+      SKILL.md
+  06-evolution/
+    memory-distill/
+      SKILL.md
+    agenda-sync/
+      SKILL.md
+</code></pre></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="esmyvr" class="overflow"><li class="depth-0"><a href="#skill-protocol" data-for="skill-protocol">Skill Protocol</a></li><li class="depth-1"><a href="#frontmatter-specification" data-for="frontmatter-specification">Frontmatter Specification</a></li><li class="depth-2"><a href="#required-fields" data-for="required-fields">Required Fields</a></li><li class="depth-2"><a href="#optional-fields" data-for="optional-fields">Optional Fields</a></li><li class="depth-2"><a href="#example-frontmatter" data-for="example-frontmatter">Example Frontmatter</a></li><li class="depth-1"><a href="#body-sections" data-for="body-sections">Body Sections</a></li><li class="depth-2"><a href="#purpose" data-for="purpose">Purpose</a></li><li class="depth-2"><a href="#steps" data-for="steps">Steps</a></li><li class="depth-2"><a href="#guard" data-for="guard">Guard</a></li><li class="depth-2"><a href="#examples" data-for="examples">Examples</a></li><li class="depth-1"><a href="#complex-skills-the-references-subdirectory-pattern" data-for="complex-skills-the-references-subdirectory-pattern">Complex Skills: The references/ Subdirectory Pattern</a></li><li class="depth-1"><a href="#skill-levels" data-for="skill-levels">Skill Levels</a></li><li class="depth-2"><a href="#level-0--atomic" data-for="level-0--atomic">Level 0 — Atomic</a></li><li class="depth-2"><a href="#level-1--orchestration" data-for="level-1--orchestration">Level 1 — Orchestration</a></li><li class="depth-2"><a href="#level-2--global" data-for="level-2--global">Level 2 — Global</a></li><li class="depth-1"><a href="#naming-conventions" data-for="naming-conventions">Naming Conventions</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

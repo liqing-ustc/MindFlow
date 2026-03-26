@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>SKILL</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="SKILL"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="SKILL"/><meta name="twitter:description" content="从工作日志中蒸馏 pattern 和 insight 到记忆库"/><meta property="og:description" content="从工作日志中蒸馏 pattern 和 insight 到记忆库"/><meta property="og:image:alt" content="从工作日志中蒸馏 pattern 和 insight 到记忆库"/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/skills/5-evolution/memory-distill/SKILL"/><meta property="twitter:url" content="https://liqing.io/mindflow/skills/5-evolution/memory-distill/SKILL"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="从工作日志中蒸馏 pattern 和 insight 到记忆库"/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="skills/5-evolution/memory-distill/SKILL"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="z8gn2j"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/SLAM" class="sidebar-tag-pill">#SLAM</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a><a href="/mindflow/tags/mobile-manipulation" class="sidebar-tag-pill">#mobile-manipulation</a><a href="/mindflow/tags/spatial-memory" class="sidebar-tag-pill">#spatial-memory</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/">skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/5-evolution/">5 evolution</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/5-evolution/memory-distill/">memory distill</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>SKILL</a></div></nav><h1 class="article-title">SKILL</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-26T08:58:28.922Z">Mar 26, 2026</time><span>10 min read</span></p></div></div><article class="popover-hint"><h2 id="purpose">Purpose<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#purpose" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>memory-distill 是 MindFlow 记忆演化体系的基础技能。它定期扫描 <code>Workbench/logs/</code> 中的原始工作日志，从中提取跨日期重复出现的 pattern 和意外发现，并将有价值的 observation 提升为结构化的记忆条目，写入 <code>Workbench/memory/patterns.md</code> 和 <code>Workbench/memory/insights.md</code>。</p>
+<p>该技能实现了 <code>references/memory-protocol.md</code> 中定义的 Insight Promotion Hierarchy 的底层两级跃迁：从 Level 0（Raw Log）提升至 Level 1（Pattern），再进一步触发 Level 1 → Level 2（Provisional Insight）和 Level 2 → Level 3（Validated Insight）的升级。它将”散落的日常观察”转化为”可复用的研究经验”，是 MindFlow 自我进化机制的核心入口。</p>
+<p>输入为时间范围内的日志文件（<code>Workbench/logs/YYYY-MM-DD.md</code>），输出为更新后的记忆文件和 changelog 条目。</p>
+<h2 id="steps">Steps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#steps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="step-1收集日志">Step 1：收集日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1收集日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>解析 <code>period</code> 参数，确定起止日期。若未提供，默认为今天往前 7 天（含今天）。</li>
+<li>用 Glob 列出 <code>Workbench/logs/YYYY-MM-DD.md</code> 格式的所有日志文件。</li>
+<li>根据文件名中的日期过滤，保留落在 <code>period</code> 范围内的文件。</li>
+<li>用 Read 逐一读取全部匹配的日志文件，记录每个文件的日期和内容。</li>
+<li>若范围内无任何日志文件，输出提示”指定时间段内无日志，跳过蒸馏”，终止执行。</li>
+</ol>
+<h3 id="step-2提取候选-pattern">Step 2：提取候选 Pattern<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2提取候选-pattern" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>通读所有收集到的日志内容，重点扫描每条 log entry 的 <code>observation</code> 字段及其他叙述性文字，寻找以下三类候选 pattern：</p>
+<ol>
+<li><strong>跨日期重复观察</strong>：同一现象、规律或结论在两个或更多不同日期的日志中均有提及。即使措辞不同，只要语义相似，均视为同一 pattern 的多次出现。</li>
+<li><strong>意外发现（anomaly）</strong>：某个结果或行为与 <code>Topics/Domain-Map.md</code> 中记录的已有知识相悖，或日志中明确标注为”出乎意料”、“与预期不符”的观察。</li>
+<li><strong>关联线索（correlation clue）</strong>：日志中提示两篇论文、两个实验或两个概念之间存在潜在联系，且该联系尚未在任何记忆文件中被明确记录。</li>
+</ol>
+<p>对每个候选 pattern，记录：</p>
+<ul>
+<li>核心 observation 的一句话概括</li>
+<li>来源日志文件列表（<code>Workbench/logs/YYYY-MM-DD.md</code>）</li>
+</ul>
+<h3 id="step-3检查已有记忆">Step 3：检查已有记忆<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3检查已有记忆" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li>
+<p>用 Read 读取 <code>Workbench/memory/patterns.md</code>，逐条对比 Step 2 提取的候选 pattern 与已记录条目的语义相似度。判断每个候选是：</p>
+<ul>
+<li><strong>全新 pattern</strong>：记忆库中无对应条目</li>
+<li><strong>已有 pattern 的新证据</strong>：与某条已有 pattern 高度相似，新日志提供了额外的 occurrence</li>
+</ul>
+</li>
+<li>
+<p>用 Read 读取 <code>Workbench/memory/insights.md</code>，检查是否存在与候选 pattern 相关的 <code>provisional</code> insight。若有，候选的新证据将用于支持该 insight 的升级。</p>
+</li>
+</ol>
+<h3 id="step-4更新记忆">Step 4：更新记忆<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4更新记忆" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>根据 Step 3 的分类结果，分三种情况处理：</p>
+<p><strong>情况 A：全新 pattern</strong></p>
+<p>用 Edit 将以下格式的条目 append 到 <code>Workbench/memory/patterns.md</code> 末尾：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">YYYY-MM-DD</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] &lt;Pattern 描述></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **observation**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;一句话描述跨源观察到的规律或现象></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **occurrences**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Workbench/logs/YYYY-MM-DD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Workbench/logs/YYYY-MM-DD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], ...</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **confidence**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: low</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **needs_verification**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: yes</span></span></code></pre></figure>
+<p>日期填写今天（执行蒸馏的日期）。</p>
+<p><strong>情况 B：已有 pattern 获得新证据</strong></p>
+<ol>
+<li>
+<p>用 Read 再次确认目标 pattern 条目的当前 <code>occurrences</code> 列表。</p>
+</li>
+<li>
+<p>用 Edit 在该条目的 <code>occurrences</code> 行末 append 新的日志来源链接。</p>
+</li>
+<li>
+<p>统计更新后的 <code>occurrences</code> 总数：</p>
+<ul>
+<li>若 occurrences 数量 <strong>&lt; 3</strong>：仅更新 occurrences，不晋升。</li>
+<li>若 occurrences 数量 <strong>≥ 3 且来自独立来源</strong>（不同日期或不同论文/实验）：触发 L1 → L2 晋升。</li>
+</ul>
+<p>晋升时：</p>
+<ul>
+<li>
+<p>用 Edit 在该 pattern 条目的 <code>needs_verification</code> 行后追加一行：<code>- **status**: → promoted to insight ([YYYY-MM-DD])</code></p>
+</li>
+<li>
+<p>用 Edit 将以下格式的条目 append 到 <code>Workbench/memory/insights.md</code> 末尾：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">YYYY-MM-DD</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] &lt;Insight 标题（与 pattern 描述一致）></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **claim**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;从 pattern observation 提炼的可证伪的一句话断言></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **evidence**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Workbench/logs/YYYY-MM-DD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Workbench/logs/YYYY-MM-DD</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], ...</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **confidence**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: low</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **source**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: cross-validation</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **impact**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;该 insight 可能影响的研究方向，若暂不明确可填&quot;待评估&quot;></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **status**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: provisional</span></span></code></pre></figure>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>情况 C：已有 provisional insight 获得新证据</strong></p>
+<ol>
+<li>
+<p>用 Read 确认目标 insight 条目当前的 <code>evidence</code> 列表和 <code>confidence</code>。</p>
+</li>
+<li>
+<p>用 Edit 在该 insight 条目的 <code>evidence</code> 行末 append 新的来源链接。</p>
+</li>
+<li>
+<p>统计更新后独立证据来源数量：</p>
+<ul>
+<li>若独立来源 <strong>&lt; 2</strong>：仅更新 evidence，保持 <code>status: provisional</code>。</li>
+<li>若独立来源 <strong>≥ 2</strong>：触发 L2 → L3 晋升，用 Edit 将 <code>status: provisional</code> 所在行改为 <code>status: validated</code>，并将 <code>confidence</code> 提升为 <code>medium</code> 或 <code>high</code>（根据证据强度判断）。</li>
+</ul>
+<p>若晋升后 <code>status: validated</code> 且 <code>confidence > 0.8</code>（即 <code>high</code>）：</p>
+<ul>
+<li>
+<p>用 Edit 将以下条目 append 到 <code>Workbench/queue/review.md</code>，建议晋升至 Domain-Map：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">YYYY-MM-DD</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] 建议晋升至 Domain-Map</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **insight**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Workbench/memory/insights.md#heading|&lt;heading></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **claim**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;insight 的 claim 原文></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **confidence**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: high</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **reason**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: validated insight，≥2 独立来源，confidence > 0.8，符合 L3 → L4 晋升条件</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **suggested_map**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;建议写入的 Topics/Domain-Map.md 文件名></span></span></code></pre></figure>
+</li>
+</ul>
+</li>
+</ol>
+<h3 id="step-5记录变更">Step 5：记录变更<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-5记录变更" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Edit 将以下格式的条目 append 到 <code>Workbench/evolution/changelog.md</code> 末尾（若文件不存在，先用 Write 创建并加一级标题 <code># Evolution Changelog</code>）：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">YYYY-MM-DD</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] memory-distill</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **period**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;YYYY-MM-DD ~ YYYY-MM-DD></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **logs_processed**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;数量></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **new_patterns**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;数量></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **promoted_to_insight**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;数量>（L1 → L2）</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **validated_insights**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;数量>（L2 → L3）</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **queued_for_review**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;数量>（L3 → L4 候选）</span></span></code></pre></figure>
+<h2 id="guard">Guard<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#guard" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>仅追加，不修改</strong>：永远不修改或删除记忆文件中的已有条目。若需更新，只能在对应条目的现有字段行末追加内容，或在条目末尾追加新字段行，不得改动原始文字。</li>
+<li><strong>不直接修改 Domain-Map</strong>：memory-distill 无权写入任何 <code>Topics/Domain-Map.md</code> 文件，只能通过 <code>Workbench/queue/review.md</code> 提出建议，由 Human 或上层技能决策。</li>
+<li><strong>来源引用必须明确</strong>：patterns.md 中每条 pattern 的 <code>occurrences</code>，以及 insights.md 中每条 insight 的 <code>evidence</code>，都必须包含指向具体日志文件的 Obsidian wikilink，不得仅凭印象记录”多次观察到”。</li>
+<li><strong>不捏造 pattern</strong>：只有在日志中确实出现的 observation 才能被提取为候选 pattern，不得基于推断或联想凭空生成。若某规律听起来合理但日志中找不到明确依据，不记录。</li>
+<li><strong>晋升需引用具体证据</strong>：将 pattern 晋升为 provisional insight，或将 provisional insight 标记为 validated 时，必须在 insight 的 <code>evidence</code> 字段中列出支撑该结论的所有具体日志来源。</li>
+<li><strong>独立来源的判断</strong>：同一天的多条日志条目不算作独立来源；独立来源需来自不同日期，或来自不同论文/实验的观察。</li>
+</ul>
+<h2 id="examples">Examples<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#examples" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>示例：指定时间段蒸馏</strong></p>
+<pre><code>/memory-distill --period &quot;2026-03-20 ~ 2026-03-26&quot;
+</code></pre>
+<p>执行过程：</p>
+<ol>
+<li>解析 period，确定范围为 2026-03-20 至 2026-03-26</li>
+<li>Glob <code>Workbench/logs/</code> 找到 <code>2026-03-20.md</code>、<code>2026-03-22.md</code>、<code>2026-03-24.md</code>、<code>2026-03-26.md</code> 共 4 个文件，逐一读取</li>
+<li>扫描 observation 字段，发现：
+<ul>
+<li>“reward shaping 在 sparse-reward 环境中显著提升收敛速度” 在 03-22 和 03-24 均有记录 → 候选 pattern（2次出现，全新）</li>
+<li>“基于 diffusion 的策略对 action chunk size 高度敏感” 在 03-20、03-22、03-26 均有记录 → 候选 pattern（3次出现，全新但已达晋升阈值）</li>
+<li>“cross-attention 替代 concatenation 在多模态融合中更有效” 在 03-24 出现，且 patterns.md 已有一条相似 pattern（来自 03-15、03-18），本次为第3次出现 → 已有 pattern 获得新证据</li>
+</ul>
+</li>
+<li>读取 patterns.md：reward shaping pattern 为全新；diffusion 敏感性 pattern 为全新但需立即晋升；cross-attention pattern 已存在，本次更新后 occurrences = 3，触发晋升</li>
+<li>读取 insights.md：无与新候选直接相关的 provisional insight</li>
+<li>写入：
+<ul>
+<li>patterns.md 新增 2 条 pattern（reward shaping、diffusion chunk size）</li>
+<li>patterns.md 中 cross-attention pattern 更新 occurrences，追加晋升标记</li>
+<li>insights.md 新增 1 条 provisional insight（cross-attention 融合有效性）</li>
+<li>diffusion chunk size pattern 因同次蒸馏即达 3 次，直接同步写入 insights.md 为 provisional insight</li>
+</ul>
+</li>
+<li>追加 changelog 条目</li>
+</ol>
+<p>最终输出摘要：</p>
+<pre><code>memory-distill 完成（2026-03-20 ~ 2026-03-26）
+- 处理日志：4 个文件
+- patterns.md 新增 2 条 pattern
+- insights.md 中 1 条 provisional insight 获得新证据升级为 validated（cross-attention 融合，第3次出现触发晋升后立即在 insights.md 确认）
+- changelog 已更新
+</code></pre></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="esmyvr" class="overflow"><li class="depth-0"><a href="#purpose" data-for="purpose">Purpose</a></li><li class="depth-0"><a href="#steps" data-for="steps">Steps</a></li><li class="depth-1"><a href="#step-1收集日志" data-for="step-1收集日志">Step 1：收集日志</a></li><li class="depth-1"><a href="#step-2提取候选-pattern" data-for="step-2提取候选-pattern">Step 2：提取候选 Pattern</a></li><li class="depth-1"><a href="#step-3检查已有记忆" data-for="step-3检查已有记忆">Step 3：检查已有记忆</a></li><li class="depth-1"><a href="#step-4更新记忆" data-for="step-4更新记忆">Step 4：更新记忆</a></li><li class="depth-1"><a href="#step-5记录变更" data-for="step-5记录变更">Step 5：记录变更</a></li><li class="depth-0"><a href="#guard" data-for="guard">Guard</a></li><li class="depth-0"><a href="#examples" data-for="examples">Examples</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../../../postscript.js" type="module"></script></html>

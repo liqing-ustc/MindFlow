@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>AutoResearch 项目全景调研</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="AutoResearch 项目全景调研"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="AutoResearch 项目全景调研"/><meta name="twitter:description" content="Overview 2026 年 3 月前后，以 Karpathy 的 autoresearch 发布为标志，“AI 自主做科研”从概念走向可落地的开源工具链。本文梳理 8 款代表性项目，从核心定位、技术架构、全流程能力、落地成本、适用场景做深度横向对比。 一、核心参数全景对比 项目核心定位技术架构全流程覆盖开源部署门槛Karpathy ..."/><meta property="og:description" content="Overview 2026 年 3 月前后，以 Karpathy 的 autoresearch 发布为标志，“AI 自主做科研”从概念走向可落地的开源工具链。本文梳理 8 款代表性项目，从核心定位、技术架构、全流程能力、落地成本、适用场景做深度横向对比。 一、核心参数全景对比 项目核心定位技术架构全流程覆盖开源部署门槛Karpathy ..."/><meta property="og:image:alt" content="Overview 2026 年 3 月前后，以 Karpathy 的 autoresearch 发布为标志，“AI 自主做科研”从概念走向可落地的开源工具链。本文梳理 8 款代表性项目，从核心定位、技术架构、全流程能力、落地成本、适用场景做深度横向对比。 一、核心参数全景对比 项目核心定位技术架构全流程覆盖开源部署门槛Karpathy ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/AutoResearch"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/AutoResearch"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview 2026 年 3 月前后，以 Karpathy 的 autoresearch 发布为标志，“AI 自主做科研”从概念走向可落地的开源工具链。本文梳理 8 款代表性项目，从核心定位、技术架构、全流程能力、落地成本、适用场景做深度横向对比。 一、核心参数全景对比 项目核心定位技术架构全流程覆盖开源部署门槛Karpathy ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/AutoResearch"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="z8gn2j"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/SLAM" class="sidebar-tag-pill">#SLAM</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a><a href="/mindflow/tags/mobile-manipulation" class="sidebar-tag-pill">#mobile-manipulation</a><a href="/mindflow/tags/spatial-memory" class="sidebar-tag-pill">#spatial-memory</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>AutoResearch</a></div></nav><h1 class="article-title">AutoResearch 项目全景调研</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-26T08:58:28.525Z">Mar 26, 2026</time><span>21 min read</span></p><ul class="tags"><li><a href="../tags/auto-research" class="internal tag-link">auto-research</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>2026 年 3 月前后，以 Karpathy 的 <strong>autoresearch</strong> 发布为标志，“AI 自主做科研”从概念走向可落地的开源工具链。本文梳理 <strong>8 款代表性项目</strong>，从核心定位、技术架构、全流程能力、落地成本、适用场景做深度横向对比。</p>
+<hr/>
+<h2 id="一核心参数全景对比">一、核心参数全景对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#一核心参数全景对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>核心定位</th><th>技术架构</th><th>全流程覆盖</th><th>开源</th><th>部署门槛</th></tr></thead><tbody><tr><td><strong>Karpathy autoresearch</strong></td><td>LLM 训练专属极简实验迭代</td><td>三文件架构（固定评估 + 可编辑沙盒 + 指令层），单指标棘轮</td><td>仅实验迭代与评估</td><td>MIT</td><td>极低</td></tr><tr><td><strong>AutoResearchClaw</strong></td><td>端到端「一句话出论文」</td><td>8 相位 23 阶段流水线，多 Agent 辩论，Docker 沙箱，4 层引用校验</td><td>文献→假设→实验→论文→评审</td><td>✓</td><td>中</td></tr><tr><td><strong>EvoScientist</strong></td><td>带长期记忆的自进化 AI 科研团队</td><td>三 Agent（RA/EA/EMA）+ 双持久化记忆库</td><td>全流程，核心强化跨项目经验沉淀</td><td>部分</td><td>较高</td></tr><tr><td><strong>ARIS</strong></td><td>轻量夜间科研自动化</td><td>双模型对抗（executor + reviewer），Markdown 技能集</td><td>文献综述、论文修改、审稿回复、轻量实验脚本</td><td>✓</td><td>极低</td></tr><tr><td><strong>OpenLAIR Dr. Claw</strong></td><td>GUI 科研平台，科研版 NotebookLM</td><td>Web UI + 模块化技能插件 + 多项目管理</td><td>文献管理、笔记、实验、论文，主打人机协同</td><td>AGPL-3.0</td><td>低</td></tr><tr><td><strong>Orchestra SKILLs + Research-Claw</strong></td><td>科研技能库 + 日常管理</td><td>70+ 预封装 skill + 自托管助手 + Overleaf 同步</td><td>实验工程化 + 文献/deadline/写作协同</td><td>✓</td><td>低-中</td></tr><tr><td><strong>The AI Scientist</strong></td><td>端到端科学发现标杆</td><td>多 Agent 闭环 + 贝叶斯优化实验 + 学术规范校验</td><td>全流程，从开放式发现到完整论文</td><td>✓</td><td>极高</td></tr><tr><td><strong>uditgoenka autoresearch</strong></td><td>Karpathy Loop 的泛化版 Claude Code 技能</td><td>8 条铁律协议 + 9 命令集 + Git-as-memory + Guard 机制</td><td>任意可量化任务的自主迭代优化</td><td>MIT</td><td>极低</td></tr></tbody></table></div>
+<hr/>
+<h2 id="二技术路线与设计哲学">二、技术路线与设计哲学<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二技术路线与设计哲学" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>五大技术流派，分化源于对「AI 在科研中的角色」的不同定位：</p>
+<h3 id="1-极简单任务派karpathy-autoresearch">1. 极简单任务派：Karpathy autoresearch<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-极简单任务派karpathy-autoresearch" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>哲学</strong>：AI 收敛到科研中最机械的实验迭代环节，人类把控方向与评估标准</li>
+<li><strong>技术核心</strong>：冻结评估标准（<code>prepare.py</code> 不可改），Agent 仅改 <code>train.py</code>，每次 5 分钟固定时长，同一标尺公平对比，杜绝 AI 作弊</li>
+<li><strong>范式转变</strong>：从「人写代码→跑实验→改代码」到「人定规则→AI 做循环」</li>
+</ul>
+<h3 id="2-泛化迭代派uditgoenka-autoresearch">2. 泛化迭代派：uditgoenka autoresearch<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-泛化迭代派uditgoenka-autoresearch" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>哲学</strong>：Karpathy Loop 的核心不在 ML，而是「改→验→留/弃」循环本身——泛化到任何可量化任务</li>
+<li><strong>技术核心</strong>：8 条铁律（原子修改、机械验证、自动回滚、Git-as-memory）+ Guard 回归防护 + 9 个专用命令覆盖代码/安全/文档/营销</li>
+<li><strong>范式转变</strong>：从「ML 专属实验循环」到「通用自主优化引擎」</li>
+</ul>
+<h3 id="3-全流程端到端派autoresearchclaw--the-ai-scientist">3. 全流程端到端派：AutoResearchClaw &amp; The AI Scientist<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-全流程端到端派autoresearchclaw--the-ai-scientist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>哲学</strong>：AI 是完整的「虚拟研究员」，人仅提供 idea，全程零干预</li>
+<li><strong>技术核心</strong>：科研工作流标准化拆解 → 多 Agent 分工 → 多层校验解决幻觉/虚假引用/不可复现三大痛点</li>
+<li><strong>范式转变</strong>：数周科研压缩到数小时</li>
+</ul>
+<h3 id="4-进化记忆派evoscientist">4. 进化记忆派：EvoScientist<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-进化记忆派evoscientist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>哲学</strong>：核心瓶颈不是单次任务完成度，而是「无法像人类一样积累经验」</li>
+<li><strong>技术核心</strong>：双记忆库持久化 + EMA 持续复盘 → 主动规避死胡同、复用有效路径</li>
+<li><strong>范式转变</strong>：从「单次执行」到「持续进化」</li>
+</ul>
+<h3 id="5-工具链赋能派aris--dr-claw--orchestra">5. 工具链赋能派：ARIS / Dr. Claw / Orchestra<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-工具链赋能派aris--dr-claw--orchestra" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li><strong>哲学</strong>：AI 不替代人，做「科研副驾驶」，解决特定痛点</li>
+<li><strong>技术核心</strong>：可插拔模块，按需组合，不强制全流程自动化</li>
+<li><strong>范式转变</strong>：平衡自动化与可控性</li>
+</ul>
+<hr/>
+<h2 id="三项目深度拆解">三、项目深度拆解<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三项目深度拆解" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="31-karpathy--autoresearch">3.1 Karpathy — autoresearch<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#31-karpathy--autoresearch" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>AI 夜间自主改代码、跑实验、看指标，极简轻量，适合自主迭代实验。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/karpathy/autoresearch" class="external">karpathy/autoresearch<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></td></tr><tr><td><strong>规模</strong></td><td>~630 行 Python，MIT 协议</td></tr><tr><td><strong>核心三文件</strong></td><td><code>prepare.py</code>（不可变；数据准备 + metric）、<code>train.py</code>（Agent 沙盒）、<code>program.md</code>（自然语言指令）</td></tr><tr><td><strong>指标</strong></td><td><code>val_bpb</code>（validation bits per byte），词表无关，公平比较不同架构</td></tr><tr><td><strong>循环</strong></td><td>读源码 → 提假设 → 改 <code>train.py</code> → 训练 5 min → 评估 → <code>results.tsv</code> → 保留/回滚 → 下一轮。~12 exp/h，一夜 ~100 exp</td></tr><tr><td><strong>实绩</strong></td><td>2 天 700 实验，发现 20 个可叠加优化，Time-to-GPT-2 从 2.02h → 1.80h（↓11%）；Shopify CEO 37 exp 一夜 ↓19%</td></tr><tr><td><strong>核心优势</strong></td><td>极简零冗余；评估与实验代码完全隔离杜绝作弊；单卡 GPU 即可</td></tr><tr><td><strong>短板</strong></td><td>场景极度单一（仅 LLM 训练）；无文献/论文能力；无多 Agent 协作</td></tr></tbody></table></div>
+<pre><code>Human ──→ program.md (自然语言指令)
+              │
+              ▼
+         AI Agent (Claude / Codex)
+              │
+         读 + 改 train.py
+              │
+              ▼
+         GPU 训练 5 min → eval val_bpb
+              │
+         ┌────┴────┐
+       improve?   no → revert
+         │
+       commit → results.tsv → 下一轮
+</code></pre>
+<hr/>
+<h3 id="32-autoresearchclaw">3.2 AutoResearchClaw<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#32-autoresearchclaw" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>文献→假设→实验→论文全流程自动化，多 Agent 辩论，「Chat an Idea, Get a Paper」。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/aiming-lab/AutoResearchClaw" class="external">aiming-lab/AutoResearchClaw<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></td></tr><tr><td><strong>流水线</strong></td><td>8 相位 23 阶段：研究定义 → 文献检索 → 知识综合 → 假设生成（辩论）→ 实验设计执行 → 分析决策 → 论文撰写 → 引用验证</td></tr><tr><td><strong>多视角辩论</strong></td><td>假设生成、结果分析、同行评审三环节均用 structured multi-perspective debate</td></tr><tr><td><strong>知识库</strong></td><td>6 类 KB（decisions / experiments / findings / literature / questions / reviews）+ 30 天时间衰减</td></tr><tr><td><strong>质量守卫</strong></td><td>NaN/Inf 检测、论文-证据一致性、引用相关性打分、anti-fabrication guard</td></tr><tr><td><strong>输出</strong></td><td>NeurIPS / ICML 模板 LaTeX 论文</td></tr><tr><td><strong>文献源</strong></td><td>arXiv、Semantic Scholar</td></tr><tr><td><strong>核心优势</strong></td><td>全流程零干预覆盖 8 大学科；解决引用幻觉；自动硬件检测与代码自修复</td></tr><tr><td><strong>短板</strong></td><td>算力要求较高（8G+ 显存）；创新深度依赖基座模型；学术诚信需人工审核</td></tr></tbody></table></div>
+<hr/>
+<h3 id="33-evoscientist">3.3 EvoScientist<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#33-evoscientist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>具备记忆 + 进化能力，失败策略存入记忆库，跨项目积累经验。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>论文</strong></td><td><a href="https://arxiv.org/abs/2603.08127" class="external">arXiv 2603.08127<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>（2026-03-09）</td></tr><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/EvoScientist/EvoScientist" class="external">EvoScientist/EvoScientist<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></td></tr><tr><td><strong>Agent 组成</strong></td><td><strong>RA</strong>（Researcher，idea 生成）+ <strong>EA</strong>（Engineer，实验执行）+ <strong>EMA</strong>（Evolution Manager，经验蒸馏）</td></tr><tr><td><strong>双记忆模块</strong></td><td>① <strong>Ideation Memory</strong>：高质量方向 + 失败方向 ② <strong>Experimentation Memory</strong>：有效策略 + 最佳代码</td></tr><tr><td><strong>记忆检索</strong></td><td><code>mxbai-embed-large</code> embedding via Ollama 语义检索</td></tr><tr><td><strong>评估</strong></td><td>6 篇论文投 ICAIS 2025，AI + 人类双重评审；novelty / feasibility / relevance / clarity 四维超 7 个 SOTA</td></tr><tr><td><strong>核心优势</strong></td><td>唯一具备长期进化能力；多 Agent 贴合真实科研协作；6 投 6 中</td></tr><tr><td><strong>短板</strong></td><td>架构复杂学习曲线陡；算力存储要求高；轻量任务启动成本高</td></tr></tbody></table></div>
+<pre><code>        ┌───────────────────────────────────┐
+        │        Evolution Manager (EMA)     │
+        │  ideation memory + exp memory      │
+        └──────┬────────────────┬────────────┘
+               │ 读取历史经验    │ 写入新经验
+               ▼                │
+         Researcher (RA)        │
+           idea 生成             │
+               │                │
+               ▼                │
+         Engineer (EA) ─────────┘
+           实验 + 代码
+</code></pre>
+<hr/>
+<h3 id="34-arisauto-research-in-sleep">3.4 ARIS（Auto-Research-In-Sleep）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#34-arisauto-research-in-sleep" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>极简 Markdown 技能集，即插即用，专注文献综述 + 论文修改 + 轻量实验。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep" class="external">wanshuiyin/Auto-claude-code-research-in-sleep<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></td></tr><tr><td><strong>核心理念</strong></td><td>每个 skill 就是一个 <code>SKILL.md</code>，任何 LLM agent 可读取执行</td></tr><tr><td><strong>兼容</strong></td><td>Claude Code / Codex CLI / OpenClaw / Cursor / Trae / Windsurf</td></tr><tr><td><strong>Cross-model Review</strong></td><td>executor + reviewer 对抗式协作，克服单模型盲区</td></tr><tr><td><strong>文献综述</strong></td><td><code>/research-lit</code>：IEEE/ACM/ScienceDirect 优先级、venue 分级、自动用本地 PDF + web 搜索</td></tr><tr><td><strong>Obsidian 集成</strong></td><td>可搜索 vault 中的 paper summary、tag reference、user insights</td></tr><tr><td><strong>核心优势</strong></td><td>即插即用零配置；双模型对抗降幻觉；普通笔电可运行</td></tr><tr><td><strong>短板</strong></td><td>无自主实验执行能力；强依赖 Claude API；全流程自动化弱</td></tr></tbody></table></div>
+<hr/>
+<h3 id="35-openlair--dr-claw">3.5 OpenLAIR — Dr. Claw<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#35-openlair--dr-claw" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>GUI 科研平台，类科研版 NotebookLM/Cursor，多项目管理，代码新手友好。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/OpenLAIR/dr-claw" class="external">OpenLAIR/dr-claw<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></td></tr><tr><td><strong>定位</strong></td><td>”A Super AI Lab with massive AI Doctors as Assistants”</td></tr><tr><td><strong>可视化</strong></td><td>文献图谱、笔记、任务看板、进度追踪、生成物管理</td></tr><tr><td><strong>功能</strong></td><td>① 文献管理（paper review / literature graph）② Skills Explorer + 全局技能库 ③ 计算资源管理 ④ Research Lab</td></tr><tr><td><strong>多后端</strong></td><td>Codex / Gemini workflows</td></tr><tr><td><strong>v1.0.0</strong></td><td>桌面 + 移动端，skill discovery redesign、taxonomy browsing</td></tr><tr><td><strong>License</strong></td><td>AGPL-3.0（核心开源，商业版闭源）</td></tr><tr><td><strong>核心优势</strong></td><td>图形化零代码上手；适配国内工具链；本地模型 + 商用 API 均可</td></tr><tr><td><strong>短板</strong></td><td>完全自主能力弱需人工引导；高阶功能付费；复杂实验工程化不足</td></tr></tbody></table></div>
+<hr/>
+<h3 id="36-orchestra-skills--research-claw">3.6 Orchestra SKILLs &amp; Research-Claw<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#36-orchestra-skills--research-claw" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>科研技能库 + 日常管理工具链，解决环境配置痛点。</p>
+</blockquote>
+<h4 id="6a-ai-research-skills">6a AI-Research-SKILLs<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6a-ai-research-skills" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/Orchestra-Research/AI-Research-SKILLs" class="external">Orchestra-Research/AI-Research-SKILLs<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></td></tr><tr><td><strong>定位</strong></td><td>70+ 预封装科研 skill，给任意 coding agent 赋能</td></tr><tr><td><strong>安装</strong></td><td><code>npx @orchestra-research/ai-research-skills</code></td></tr><tr><td><strong>兼容</strong></td><td>Claude Code / OpenCode / Cursor / Codex / Gemini CLI / Qwen Code</td></tr><tr><td><strong>v0.15.0</strong></td><td>Prompt Guard（Meta 86M，99%+ TPR, &lt;1% FPR）+ 8 语种</td></tr><tr><td><strong>覆盖</strong></td><td>experiment tracking / hyperparameter sweep / model registry / profiling / paper writing 等</td></tr></tbody></table></div>
+<h4 id="6b-research-clawnanoagentteam">6b Research-Claw（nanoAgentTeam）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6b-research-clawnanoagentteam" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/nanoAgentTeam/research-claw" class="external">nanoAgentTeam/research-claw<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></td></tr><tr><td><strong>定位</strong></td><td>自托管科研助手：论文 + 文献 + deadline + 多渠道通知</td></tr><tr><td><strong>Overleaf</strong></td><td>双向 sync（AI → Overleaf ↔ 协作者）</td></tr><tr><td><strong>Sub-Agent</strong></td><td>自动拆分 researcher + writer，隔离目录，合并后写入主项目</td></tr><tr><td><strong>项目记忆</strong></td><td>跨 session 记住主题、偏好、历史</td></tr><tr><td><strong>定时任务</strong></td><td>daily scan + weekly digest + drift detection</td></tr><tr><td><strong>多渠道</strong></td><td>Telegram / 飞书 / 钉钉 / Email / Apprise</td></tr><tr><td><strong>API</strong></td><td>任何 OpenAI-compatible（GPT / DeepSeek / Qwen / Claude）</td></tr></tbody></table></div>
+<hr/>
+<h3 id="37-the-ai-scientistsakana-ai">3.7 The AI Scientist（Sakana AI）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#37-the-ai-scientistsakana-ai" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>端到端科学发现标杆，首个通过顶会同行评审的 AI 科研系统。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/SakanaAI/AI-Scientist" class="external">SakanaAI/AI-Scientist<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>（v1）/ <a href="https://github.com/SakanaAI/AI-Scientist-v2" class="external">SakanaAI/AI-Scientist-v2<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>（v2）</td></tr><tr><td><strong>论文</strong></td><td>发表于 <strong>Nature</strong>：<a href="https://sakana.ai/ai-scientist-nature/" class="external">The AI Scientist: Towards Fully Automated Open-Ended Scientific Discovery<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></td></tr><tr><td><strong>里程碑</strong></td><td>v2 生成的论文通过 ICLR 2025 workshop 同行评审，平均分 6.33，超过 55% 人类论文（团队出于学术伦理主动撤稿）</td></tr><tr><td><strong>v2 改进</strong></td><td>移除对人类模板的依赖；泛化至多 ML 领域；引入 <strong>progressive agentic tree search</strong> + experiment manager agent</td></tr><tr><td><strong>技术</strong></td><td>多 Agent 闭环 + 贝叶斯优化实验设计 + 完整学术规范校验</td></tr><tr><td><strong>核心优势</strong></td><td>学术认可度最高（Nature 发表）；具备开放式科学发现能力；全流程可审计</td></tr><tr><td><strong>短板</strong></td><td>部署极高（高性能 GPU 集群 + 64G 内存）；算力成本极高；迭代速度慢</td></tr></tbody></table></div>
+<hr/>
+<h3 id="38-uditgoenkaautoresearch--karpathy-loop-泛化版">3.8 uditgoenka/autoresearch — Karpathy Loop 泛化版<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#38-uditgoenkaautoresearch--karpathy-loop-泛化版" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<blockquote>
+<p>把 Karpathy 的实验循环从 ML 训练泛化为 Claude Code 通用自主迭代技能，覆盖代码/安全/文档/营销等一切可量化任务。</p>
+</blockquote>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>内容</th></tr></thead><tbody><tr><td><strong>GitHub</strong></td><td><a href="https://github.com/uditgoenka/autoresearch" class="external">uditgoenka/autoresearch<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>（⭐ 2.3k, MIT）</td></tr><tr><td><strong>定位</strong></td><td>”Turn Claude Code into a relentless improvement engine”</td></tr><tr><td><strong>版本</strong></td><td>v1.8.2，125 commits，活跃维护</td></tr><tr><td><strong>载体</strong></td><td>Claude Code 插件（SKILL.md + commands），非独立脚本</td></tr><tr><td><strong>安装</strong></td><td><code>/plugin marketplace add uditgoenka/autoresearch</code> 一行命令</td></tr></tbody></table></div>
+<p><strong>8 条铁律协议</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>#</th><th>规则</th><th>说明</th></tr></thead><tbody><tr><td>1</td><td>Loop until done</td><td>无界循环或 N 轮</td></tr><tr><td>2</td><td>Read before write</td><td>先理解上下文再改</td></tr><tr><td>3</td><td>One change per iteration</td><td>原子修改</td></tr><tr><td>4</td><td>Mechanical verification only</td><td>只看指标，禁止主观判断</td></tr><tr><td>5</td><td>Auto rollback</td><td>失败即回滚</td></tr><tr><td>6</td><td>Simplicity preferred</td><td>更少代码 + 同等效果 = 保留</td></tr><tr><td>7</td><td>Git as memory</td><td><code>experiment:</code> 前缀 commit，每轮读 git history</td></tr><tr><td>8</td><td>Think harder when stuck</td><td>卡住时重分析 + 尝试激进方案</td></tr></tbody></table></div>
+<p><strong>9 命令集</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>命令</th><th>功能</th></tr></thead><tbody><tr><td><code>/autoresearch</code></td><td>主循环，无界自主迭代</td></tr><tr><td><code>/autoresearch:plan</code></td><td>交互式 setup（目标/范围/指标）</td></tr><tr><td><code>/autoresearch:security</code></td><td>STRIDE/OWASP 安全审计 + 自动修复</td></tr><tr><td><code>/autoresearch:ship</code></td><td>多阶段发布（代码/内容/营销/研究）</td></tr><tr><td><code>/autoresearch:debug</code></td><td>假设驱动自主 bug 猎手</td></tr><tr><td><code>/autoresearch:fix</code></td><td>迭代修复（tests/types/lint/build）</td></tr><tr><td><code>/autoresearch:scenario</code></td><td>12 维度 edge case 探索</td></tr><tr><td><code>/autoresearch:predict</code></td><td>5 角色 multi-persona 辩论分析</td></tr><tr><td><code>/autoresearch:learn</code></td><td>文档引擎（init/update/check/summarize）</td></tr></tbody></table></div>
+<p><strong>Crash Recovery</strong>：语法错误即修不算轮次 → 运行时最多 3 次修复 → 资源耗尽回滚降级 → 无限循环超时自杀</p>
+<p><strong>与 Karpathy 原版的核心区别</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>维度</th><th>Karpathy 原版</th><th>uditgoenka 泛化版</th></tr></thead><tbody><tr><td>载体</td><td>独立 Python 脚本</td><td>Claude Code 插件</td></tr><tr><td>场景</td><td>仅 LLM 训练</td><td>任意可量化任务</td></tr><tr><td>指标</td><td>固定 <code>val_bpb</code></td><td>用户自定义</td></tr><tr><td>记忆</td><td><code>results.tsv</code></td><td>Git history + TSV</td></tr><tr><td>安全</td><td>无</td><td>Guard 回归防护 + auto rollback</td></tr><tr><td>命令</td><td>单一循环</td><td>9 个专用命令</td></tr></tbody></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th><strong>核心优势</strong></th><th>Karpathy Loop 最忠实的工程化泛化；安装极简；Guard + rollback 更健壮；multi-persona 辩论独创</th></tr></thead><tbody><tr><td><strong>短板</strong></td><td>强绑定 Claude Code 不跨 agent；无持久化记忆（仅 git history）；无科研专属能力（文献/论文）</td></tr></tbody></table></div>
+<pre><code>Karpathy autoresearch (原始灵感，ML only)
+    │
+    ├─→ uditgoenka/autoresearch (泛化为通用 Claude Code skill)
+    │
+    ├─→ AutoResearchClaw (泛化为端到端论文生成)
+    │
+    └─→ ARIS (泛化为 Markdown 科研技能集)
+</code></pre>
+<hr/>
+<h2 id="四全流程能力量化测评">四、全流程能力量化测评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四全流程能力量化测评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>按科研 6 大环节 10 分制评分：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>文献调研</th><th>假设生成</th><th>实验执行</th><th>结果分析</th><th>论文撰写</th><th>同行评审</th></tr></thead><tbody><tr><td>autoresearch</td><td>0</td><td>3</td><td><strong>10</strong></td><td>8</td><td>0</td><td>0</td></tr><tr><td>AutoResearchClaw</td><td>9</td><td>8</td><td>8</td><td>8</td><td>9</td><td>8</td></tr><tr><td>EvoScientist</td><td>9</td><td><strong>10</strong></td><td>9</td><td>9</td><td>8</td><td>9</td></tr><tr><td>ARIS</td><td>7</td><td>5</td><td>4</td><td>6</td><td>8</td><td>9</td></tr><tr><td>Dr. Claw</td><td>8</td><td>6</td><td>5</td><td>6</td><td>7</td><td>5</td></tr><tr><td>Orchestra + Research-Claw</td><td>0</td><td>4</td><td>9</td><td>8</td><td>0</td><td>0</td></tr><tr><td><strong>The AI Scientist</strong></td><td><strong>10</strong></td><td><strong>10</strong></td><td>9</td><td><strong>10</strong></td><td><strong>10</strong></td><td><strong>10</strong></td></tr><tr><td>uditgoenka autoresearch</td><td>0</td><td>5</td><td>8</td><td>7</td><td>0</td><td>0</td></tr></tbody></table></div>
+<hr/>
+<h2 id="五部署门槛与落地成本">五、部署门槛与落地成本<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#五部署门槛与落地成本" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>最低硬件</th><th>依赖</th><th>商用 API</th><th>学习成本</th><th>综合成本</th></tr></thead><tbody><tr><td>autoresearch</td><td>单卡 GPU（4G+）</td><td>Python + PyTorch</td><td>可选</td><td>极低（10 min）</td><td>极低</td></tr><tr><td>AutoResearchClaw</td><td>8G+ 显存，16G 内存</td><td>Python + Docker + 学术 API</td><td>强依赖</td><td>中（30 min）</td><td>中</td></tr><tr><td>EvoScientist</td><td>多卡 GPU，32G+ 内存</td><td>Python + 向量 DB + Docker</td><td>强依赖多 API</td><td>极高（需工程团队）</td><td>极高</td></tr><tr><td>ARIS</td><td>普通笔电（8G+ 内存）</td><td>Claude Code 环境</td><td>强依赖 Claude</td><td>极低（即插即用）</td><td>低</td></tr><tr><td>Dr. Claw</td><td>普通笔电（8G+ 内存）</td><td>一键安装</td><td>可选</td><td>极低（GUI）</td><td>低</td></tr><tr><td>Orchestra + Research-Claw</td><td>单卡 GPU（6G+）</td><td>Python + 对应框架</td><td>可选</td><td>中</td><td>低</td></tr><tr><td>The AI Scientist</td><td>GPU 集群，64G+ 内存</td><td>复杂分布式环境</td><td>强依赖顶级模型</td><td>极高</td><td>极高</td></tr><tr><td>uditgoenka autoresearch</td><td>普通笔电</td><td>Claude Code + Git</td><td>强依赖 Claude</td><td>极低（一行安装）</td><td>极低</td></tr></tbody></table></div>
+<hr/>
+<h2 id="六综合对比一览">六、综合对比一览<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#六综合对比一览" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>类型</th><th>Agent 数</th><th>记忆/进化</th><th>UI</th><th>最佳场景</th></tr></thead><tbody><tr><td><strong>autoresearch</strong></td><td>实验循环</td><td>1</td><td>✗</td><td>CLI</td><td>有 GPU 的 ML 调参迭代</td></tr><tr><td><strong>AutoResearchClaw</strong></td><td>端到端论文</td><td>多（辩论）</td><td>KB + 30 天衰减</td><td>CLI</td><td>快速产出论文初稿</td></tr><tr><td><strong>EvoScientist</strong></td><td>自进化科学家</td><td>3（RA/EA/EMA）</td><td>✓ 双记忆</td><td>CLI</td><td>长期深耕单领域的团队</td></tr><tr><td><strong>ARIS</strong></td><td>技能集</td><td>2（executor + reviewer）</td><td>✗</td><td>Markdown</td><td>给现有 agent 快速加技能</td></tr><tr><td><strong>Dr. Claw</strong></td><td>GUI 平台</td><td>多</td><td>✓</td><td>Desktop + Mobile</td><td>无代码基础 / 多项目管理</td></tr><tr><td><strong>Orchestra + R-Claw</strong></td><td>技能库 + 管理</td><td>多（sub-agent）</td><td>✓ 项目记忆</td><td>CLI + Web + IM</td><td>ML 团队工程化 + 日常管理</td></tr><tr><td><strong>The AI Scientist</strong></td><td>端到端发现</td><td>多（闭环）</td><td>✓</td><td>CLI</td><td>顶级机构高严谨性研究</td></tr><tr><td><strong>uditgoenka autoresearch</strong></td><td>泛化迭代 skill</td><td>1</td><td>Git history</td><td>CLI（Claude Code）</td><td>任意可量化任务的自主优化</td></tr></tbody></table></div>
+<hr/>
+<h2 id="七选型决策指南">七、选型决策指南<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#七选型决策指南" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="个人研究者--学生">个人研究者 / 学生<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#个人研究者--学生" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>画像</th><th>推荐</th><th>理由</th></tr></thead><tbody><tr><td>DL/LLM 方向，高频做模型实验</td><td><strong>autoresearch</strong></td><td>极简零成本，通宵跑实验效率最高</td></tr><tr><td>硕博投稿期，需改论文/回审稿意见</td><td><strong>ARIS</strong></td><td>轻量无门槛，双模型对抗提升质量</td></tr><tr><td>无代码基础 / 文科社科</td><td><strong>Dr. Claw</strong></td><td>GUI 操作，覆盖文献到论文全流程</td></tr><tr><td>需快速验证跨学科想法出论文</td><td><strong>AutoResearchClaw</strong></td><td>全流程自动化，一句话搞定</td></tr><tr><td>用 Claude Code 做日常代码/内容优化</td><td><strong>uditgoenka autoresearch</strong></td><td>泛化迭代，9 命令覆盖代码/安全/文档</td></tr></tbody></table></div>
+<h3 id="科研团队--实验室">科研团队 / 实验室<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#科研团队--实验室" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>画像</th><th>推荐</th><th>理由</th></tr></thead><tbody><tr><td>ML 工程化团队，解决环境/部署痛点</td><td><strong>Orchestra SKILLs</strong></td><td>海量预封装技能，提升团队工程效率</td></tr><tr><td>长期深耕单领域，需沉淀经验</td><td><strong>EvoScientist</strong></td><td>长期进化，避免重复踩坑</td></tr><tr><td>顶级机构，需高创新高严谨</td><td><strong>The AI Scientist</strong></td><td>学术认可度最高，可支撑顶刊研究</td></tr><tr><td>多人协作，需日常管理</td><td><strong>Research-Claw</strong></td><td>Overleaf 同步 + deadline 追踪 + 多渠道</td></tr></tbody></table></div>
+<h3 id="组合使用建议">组合使用建议<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#组合使用建议" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>这些项目<strong>不互斥</strong>，可按需组合：</p>
+<ul>
+<li><strong>autoresearch</strong>（跑实验）+ <strong>ARIS</strong>（文献综述）+ <strong>Research-Claw</strong>（日常管理）</li>
+<li><strong>Orchestra SKILLs</strong> 作为底层技能层，被 Dr. Claw 或 ARIS 调用</li>
+<li><strong>EvoScientist</strong>（核心研发）+ <strong>AutoResearchClaw</strong>（快速出初稿）覆盖不同阶段</li>
+<li><strong>uditgoenka autoresearch</strong>（代码迭代优化）+ <strong>ARIS</strong>（科研特定能力）互补短板</li>
+</ul>
+<hr/>
+<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>三条路线分化</strong>：指标驱动（autoresearch）→ ML 训练调优；泛化迭代（uditgoenka autoresearch）→ 任意可量化任务；流程驱动（AutoResearchClaw / The AI Scientist）→ 论文产出</p>
+</li>
+<li>
+<p><strong>记忆与进化是关键差异</strong>：EvoScientist 双记忆 + AutoResearchClaw KB 衰减 → agent 不再每次从零开始，是从「工具」到「科研伙伴」的跳跃</p>
+</li>
+<li>
+<p><strong>Markdown-as-Protocol 成为共识</strong>：ARIS 和 Orchestra SKILLs 用纯 Markdown 定义 skill → 跨 agent 可移植，不绑定框架</p>
+</li>
+<li>
+<p><strong>GUI vs CLI</strong>：Dr. Claw 走 GUI 降门槛；autoresearch / ARIS 极简 CLI——看用户画像</p>
+</li>
+<li>
+<p><strong>The AI Scientist 树立标杆</strong>：Nature 发表 + ICLR 评审通过证明 AI 端到端科研的上限，但门槛极高，短期内普通团队难以复制</p>
+</li>
+</ol>
+<h2 id="open-problems">Open Problems<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#open-problems" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li><strong>实验可复现性</strong>：autoresearch 5-min 固定窗口是聪明设计，但多 GPU / 长训练场景如何公平比较？</li>
+<li><strong>学术诚信边界</strong>：The AI Scientist 主动撤稿展示了负责任态度，但 AI 生成论文的伦理规范仍需社区共识</li>
+<li><strong>记忆污染</strong>：EvoScientist 如果积累错误经验如何清洗？遗忘机制需更好设计</li>
+<li><strong>互操作标准</strong>：Markdown-as-Protocol 方向正确，但各家 skill 格式仍不统一</li>
+<li><strong>评估基准</strong>：如何客观评估 AI 科研助手？需要系统化 benchmark</li>
+<li><strong>Agent 锁定风险</strong>：uditgoenka autoresearch 强绑定 Claude Code，ARIS 依赖 Claude API——跨 agent 可移植性仍是未解难题</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sources" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><a href="https://github.com/karpathy/autoresearch" class="external">karpathy/autoresearch (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://fortune.com/2026/03/17/andrej-karpathy-loop-autonomous-ai-agents-future/" class="external">‘The Karpathy Loop’: 700 experiments, 2 days (Fortune)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://venturebeat.com/technology/andrej-karpathys-new-open-source-autoresearch-lets-you-run-hundreds-of-ai" class="external">Karpathy’s autoresearch (VentureBeat)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://thenewstack.io/karpathy-autonomous-experiment-loop/" class="external">Karpathy’s 630-line script (The New Stack)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://github.com/aiming-lab/AutoResearchClaw" class="external">aiming-lab/AutoResearchClaw (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://juliangoldie.com/auto-research-claw/" class="external">Auto Research Claw: 23-Stage Pipeline<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://arxiv.org/abs/2603.08127" class="external">EvoScientist: arXiv 2603.08127<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://github.com/EvoScientist/EvoScientist" class="external">EvoScientist (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://github.com/wanshuiyin/Auto-claude-code-research-in-sleep" class="external">ARIS (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://deepwiki.com/wanshuiyin/Auto-claude-code-research-in-sleep" class="external">ARIS (DeepWiki)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://github.com/OpenLAIR/dr-claw" class="external">OpenLAIR/dr-claw (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://github.com/Orchestra-Research/AI-Research-SKILLs" class="external">Orchestra-Research/AI-Research-SKILLs (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://github.com/nanoAgentTeam/research-claw" class="external">nanoAgentTeam/research-claw (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://sakana.ai/ai-scientist-nature/" class="external">The AI Scientist — Nature publication (Sakana AI)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://github.com/SakanaAI/AI-Scientist-v2" class="external">SakanaAI/AI-Scientist-v2 (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://sakana.ai/ai-scientist-first-publication/" class="external">AI Scientist first peer-reviewed publication (Sakana AI)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://www.nature.com/articles/d41586-026-00899-w" class="external">How to build an AI Scientist (Nature News)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://datasciencedojo.com/blog/karpathy-autoresearch-explained/" class="external">Autoresearch Explained (DataScienceDojo)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://www.datacamp.com/tutorial/guide-to-autoresearch" class="external">Guide to AutoResearch (DataCamp)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://github.com/uditgoenka/autoresearch" class="external">uditgoenka/autoresearch (GitHub)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://udit.co/projects/autoresearch" class="external">Autoresearch — Autonomous Goal-Directed Iteration (udit.co)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+<li><a href="https://www.simplenews.ai/news/karpathys-autoresearch-pattern-spawns-generalized-claude-code-skill-for-autonomous-iteration-srsk" class="external">Karpathy’s Pattern Spawns Generalized Claude Code Skill (SimpleNews.ai)<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="esmyvr" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#一核心参数全景对比" data-for="一核心参数全景对比">一、核心参数全景对比</a></li><li class="depth-0"><a href="#二技术路线与设计哲学" data-for="二技术路线与设计哲学">二、技术路线与设计哲学</a></li><li class="depth-1"><a href="#1-极简单任务派karpathy-autoresearch" data-for="1-极简单任务派karpathy-autoresearch">1. 极简单任务派：Karpathy autoresearch</a></li><li class="depth-1"><a href="#2-泛化迭代派uditgoenka-autoresearch" data-for="2-泛化迭代派uditgoenka-autoresearch">2. 泛化迭代派：uditgoenka autoresearch</a></li><li class="depth-1"><a href="#3-全流程端到端派autoresearchclaw--the-ai-scientist" data-for="3-全流程端到端派autoresearchclaw--the-ai-scientist">3. 全流程端到端派：AutoResearchClaw &amp; The AI Scientist</a></li><li class="depth-1"><a href="#4-进化记忆派evoscientist" data-for="4-进化记忆派evoscientist">4. 进化记忆派：EvoScientist</a></li><li class="depth-1"><a href="#5-工具链赋能派aris--dr-claw--orchestra" data-for="5-工具链赋能派aris--dr-claw--orchestra">5. 工具链赋能派：ARIS / Dr. Claw / Orchestra</a></li><li class="depth-0"><a href="#三项目深度拆解" data-for="三项目深度拆解">三、项目深度拆解</a></li><li class="depth-1"><a href="#31-karpathy--autoresearch" data-for="31-karpathy--autoresearch">3.1 Karpathy — autoresearch</a></li><li class="depth-1"><a href="#32-autoresearchclaw" data-for="32-autoresearchclaw">3.2 AutoResearchClaw</a></li><li class="depth-1"><a href="#33-evoscientist" data-for="33-evoscientist">3.3 EvoScientist</a></li><li class="depth-1"><a href="#34-arisauto-research-in-sleep" data-for="34-arisauto-research-in-sleep">3.4 ARIS（Auto-Research-In-Sleep）</a></li><li class="depth-1"><a href="#35-openlair--dr-claw" data-for="35-openlair--dr-claw">3.5 OpenLAIR — Dr. Claw</a></li><li class="depth-1"><a href="#36-orchestra-skills--research-claw" data-for="36-orchestra-skills--research-claw">3.6 Orchestra SKILLs &amp; Research-Claw</a></li><li class="depth-1"><a href="#37-the-ai-scientistsakana-ai" data-for="37-the-ai-scientistsakana-ai">3.7 The AI Scientist（Sakana AI）</a></li><li class="depth-1"><a href="#38-uditgoenkaautoresearch--karpathy-loop-泛化版" data-for="38-uditgoenkaautoresearch--karpathy-loop-泛化版">3.8 uditgoenka/autoresearch — Karpathy Loop 泛化版</a></li><li class="depth-0"><a href="#四全流程能力量化测评" data-for="四全流程能力量化测评">四、全流程能力量化测评</a></li><li class="depth-0"><a href="#五部署门槛与落地成本" data-for="五部署门槛与落地成本">五、部署门槛与落地成本</a></li><li class="depth-0"><a href="#六综合对比一览" data-for="六综合对比一览">六、综合对比一览</a></li><li class="depth-0"><a href="#七选型决策指南" data-for="七选型决策指南">七、选型决策指南</a></li><li class="depth-1"><a href="#个人研究者--学生" data-for="个人研究者--学生">个人研究者 / 学生</a></li><li class="depth-1"><a href="#科研团队--实验室" data-for="科研团队--实验室">科研团队 / 实验室</a></li><li class="depth-1"><a href="#组合使用建议" data-for="组合使用建议">组合使用建议</a></li><li class="depth-0"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-0"><a href="#open-problems" data-for="open-problems">Open Problems</a></li><li class="depth-0"><a href="#sources" data-for="sources">Sources</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

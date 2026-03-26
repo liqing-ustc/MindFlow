@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>SKILL</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="SKILL"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="SKILL"/><meta name="twitter:description" content="跨论文对比分析，识别共识、矛盾和知识空白"/><meta property="og:description" content="跨论文对比分析，识别共识、矛盾和知识空白"/><meta property="og:image:alt" content="跨论文对比分析，识别共识、矛盾和知识空白"/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/skills/1-literature/cross-paper-analysis/SKILL"/><meta property="twitter:url" content="https://liqing.io/mindflow/skills/1-literature/cross-paper-analysis/SKILL"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="跨论文对比分析，识别共识、矛盾和知识空白"/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="skills/1-literature/cross-paper-analysis/SKILL"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="z8gn2j"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/SLAM" class="sidebar-tag-pill">#SLAM</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a><a href="/mindflow/tags/mobile-manipulation" class="sidebar-tag-pill">#mobile-manipulation</a><a href="/mindflow/tags/spatial-memory" class="sidebar-tag-pill">#spatial-memory</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/">skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/1-literature/">1 literature</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/1-literature/cross-paper-analysis/">cross paper analysis</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>SKILL</a></div></nav><h1 class="article-title">SKILL</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-26T08:58:28.880Z">Mar 26, 2026</time><span>11 min read</span></p></div></div><article class="popover-hint"><h2 id="purpose">Purpose<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#purpose" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>cross-paper-analysis 是 MindFlow 的核心洞察发现机制，承担”去伪存真”的职能。它读取由 paper-digest 产出的 <code>Papers/</code> 笔记，对比多篇论文的问题定义、方法设计、实验设置与核心结论，从中识别三类高价值信息：<strong>共识</strong>（high-confidence knowledge）、<strong>矛盾</strong>（open questions and active debates）、<strong>知识空白</strong>（potential research opportunities）。</p>
+<p>该技能的分析结果写入 <code>Topics/{topic}-Analysis.md</code>，并将发现的 pattern 追加到 <code>Workbench/memory/patterns.md</code>，为 memory-distill 提供素材。它是 literature-sweep 等高阶工作流的核心子技能，也可单独调用用于专题文献综述。</p>
+<h2 id="steps">Steps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#steps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="step-1收集输入论文">Step 1：收集输入论文<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1收集输入论文" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>根据 <code>papers</code> 参数的类型选择收集方式：</p>
+<p><strong>若 <code>papers</code> 为 wikilinks 列表</strong>（如 <code>[[2603-EvoScientist]], [[2501-DiffusionPolicy]]</code>）：</p>
+<ol>
+<li>用 Glob 扫描 <code>Papers/</code> 目录，匹配对应文件名。</li>
+<li>用 Read 逐一读取每篇笔记的完整内容，重点关注以下节：
+<ul>
+<li><code>## Summary</code>（一句话概括）</li>
+<li><code>## Problem &amp; Motivation</code>（问题定义）</li>
+<li><code>## Method</code>（核心方法）</li>
+<li><code>## Key Results</code>（关键结果）</li>
+<li><code>## Strengths &amp; Weaknesses</code>（优劣势）</li>
+</ul>
+</li>
+</ol>
+<p><strong>若 <code>papers</code> 为 tag 筛选条件</strong>（如 <code>tags: VLA</code>）：</p>
+<ol>
+<li>用 Grep 在 <code>Papers/</code> 目录的 frontmatter 中搜索匹配的 tag（pattern：<code>tags:.*VLA</code>，文件类型 <code>*.md</code>）。</li>
+<li>收集所有匹配文件路径，再用 Read 逐一读取（同上）。</li>
+<li>若匹配超过 15 篇，优先选取 <code>rating</code> 较高或 <code>status: finished</code> 的笔记，并告知 Human 已做筛选。</li>
+</ol>
+<p><strong>读取背景认知</strong>：</p>
+<ul>
+<li>读取 <code>Topics/Domain-Map.md</code>，了解当前 Established Knowledge 和 Active Debates，避免重复标注已知共识。</li>
+<li>读取 <code>Workbench/memory/patterns.md</code>，了解已记录的 pattern，避免重复追加。</li>
+</ul>
+<h3 id="step-2构建对比表">Step 2：构建对比表<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2构建对比表" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>以 Markdown 表格形式组织读取到的信息，列定义如下：</p>
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Paper</th><th style="text-align:left;">问题定义</th><th style="text-align:left;">核心方法</th><th style="text-align:left;">实验设置</th><th style="text-align:left;">关键结果</th><th style="text-align:left;">局限性</th></tr></thead></table></div>
+<p>填写规则：</p>
+<ul>
+<li><strong>Paper</strong> 列：使用 <code>[[wikilink]]</code> 格式，方便 Obsidian 跳转，如 <code>[[2603-EvoScientist]]</code>。</li>
+<li>每个单元格提炼 1-3 句话，保留关键数字和术语，不做过度概括。</li>
+<li>对比后在关键单元格末尾添加标注：
+<ul>
+<li><code>[共识]</code>：与其他论文结论一致</li>
+<li><code>[矛盾]</code>：与其他论文存在明显冲突</li>
+<li><code>[独特]</code>：该论文独有的设计或发现，其他论文未涉及</li>
+</ul>
+</li>
+</ul>
+<p>若 <code>focus</code> 参数被指定（如 <code>method comparison</code>），在该对比维度上加深分析，其余维度可适当精简。</p>
+<h3 id="step-3分析发现">Step 3：分析发现<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3分析发现" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>在对比表基础上，逐一归纳三类发现：</p>
+<h4 id="1共识--高置信度知识">（1）共识 → 高置信度知识<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1共识--高置信度知识" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>收集所有标注 <code>[共识]</code> 的条目，整理为列表：</p>
+<ul>
+<li>每条共识注明支持它的论文数量和 wikilinks（<code>≥2</code> 篇方可列为共识）。</li>
+<li>评估是否已在 <code>Topics/Domain-Map.md</code> 的 Established Knowledge 中记录；若未记录，标注”建议加入 Domain-Map”。</li>
+</ul>
+<h4 id="2矛盾--待解决的开放问题">（2）矛盾 → 待解决的开放问题<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2矛盾--待解决的开放问题" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>收集所有标注 <code>[矛盾]</code> 的条目，逐条分析：</p>
+<ul>
+<li>明确矛盾的具体内容（两篇论文各自的说法）。</li>
+<li>尝试分析矛盾来源：实验设置差异？评测 benchmark 不同？问题定义范围不同？还是真正的理论分歧？</li>
+<li>所有矛盾标记为”待验证”，不得在此时下确定性结论。</li>
+<li>检查 <code>Topics/Domain-Map.md</code> 的 Active Debates 是否已记录；若未记录，标注”建议加入 Domain-Map”。</li>
+</ul>
+<p>将矛盾列表追加到 <code>Workbench/queue/questions.md</code>（若文件不存在，先用 Write 创建，包含一级标题 <code># Open Questions</code>）：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">YYYY-MM-DD</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] &lt;矛盾简要描述></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **papers**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">PaperA</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">PaperB</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **conflict**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: PaperA 认为…；PaperB 认为…</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **possible_reason**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;分析可能原因></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **status**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 待验证</span></span></code></pre></figure>
+<h4 id="3知识空白--潜在研究机会">（3）知识空白 → 潜在研究机会<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3知识空白--潜在研究机会" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>识别以下类型的空白：</p>
+<ul>
+<li>多篇论文均未解决但明确指出的局限性（Weaknesses 节中重复出现的条目）。</li>
+<li>对比维度中出现的”无论文覆盖”区域（如某实验设置组合从未被研究）。</li>
+<li>矛盾背后暗示需要更多实验才能厘清的问题。</li>
+</ul>
+<p>对每个空白评估其研究价值，说明”为什么这是空白”和”填补它的潜在价值”。如有明确可行的研究方向，标注”建议生成 Idea”。</p>
+<h3 id="step-4产出">Step 4：产出<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4产出" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="4a-生成-topics-分析文件">4a. 生成 Topics 分析文件<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4a-生成-topics-分析文件" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>用 Write 创建 <code>Topics/{topic}-Analysis.md</code>，topic 名称根据分析主题生成（CamelCase，如 <code>VLA-MethodComparison</code>）。</p>
+<p>文件结构如下：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">---</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">date</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">YYYY-MM-DD</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">papers</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">PaperA</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], [[</span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">PaperB</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], </span><span style="--shiki-light:#005CC5;--shiki-dark:#79B8FF;">...</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]</span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">focus</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: </span><span style="--shiki-light:#032F62;--shiki-dark:#9ECBFF;">&lt;focus 参数，若无则填 &quot;general&quot;></span></span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">tags</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: []</span></span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">---</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;"># {Topic} Analysis</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#22863A;--shiki-dark:#85E89D;">> 分析日期：YYYY-MM-DD | 论文数：N | 焦点：{focus}</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 论文概览</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;对比表，来自 Step 2></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 共识</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;共识列表，每条附 wikilinks 和&quot;建议加入 Domain-Map&quot;标注（如适用）></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 矛盾与争议</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;矛盾列表，每条标注&quot;待验证&quot;，附可能原因分析></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 知识空白</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">&lt;空白列表，每条附研究价值评估和&quot;建议生成 Idea&quot;标注（如适用）></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## 建议</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **Domain-Map 更新建议**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">：&lt;列出建议加入 Established Knowledge / Active Debates 的具体条目></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **下一步阅读**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">：&lt;基于空白和矛盾，建议进一步阅读的方向或论文类型></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **潜在 Idea**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">：&lt;若识别到明确研究机会，简述 idea 方向></span></span></code></pre></figure>
+<p>所有论文引用必须使用 <code>[[wikilink]]</code> 格式，确保可追溯到具体笔记。</p>
+<h4 id="4b-追加-patterns-到-memory">4b. 追加 patterns 到 memory<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4b-追加-patterns-到-memory" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>若在分析中发现跨论文的规律性现象（如”所有 VLA 论文都在 simulation-to-real 上遇到困难”），且该 pattern 尚未在 <code>Workbench/memory/patterns.md</code> 中记录，则用 Edit 追加（若文件不存在，先用 Write 创建，包含一级标题 <code># Patterns</code>）：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">YYYY-MM-DD</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] &lt;Pattern 简要描述></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **observation**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;跨论文观察到的规律></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **occurrences**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">PaperA</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">PaperB</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]], ...</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **confidence**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: low / medium</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **needs_verification**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: yes / no</span></span></code></pre></figure>
+<p>仅追加新 pattern，不修改已有条目。</p>
+<h4 id="4c-追加日志">4c. 追加日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4c-追加日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>用 Edit（若文件不存在则用 Write）将以下格式的 log entry 追加到 <code>Workbench/logs/YYYY-MM-DD.md</code>（日期为今天）：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">HH:MM</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] cross-paper-analysis</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **input**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;papers 参数内容> | focus: &lt;focus 参数></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **output**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Topics/{topic}-Analysis</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **findings**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 共识 N 条，矛盾 N 条，知识空白 N 条</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **patterns**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;追加了 N 条 pattern / 无新 pattern></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **status**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: success</span></span></code></pre></figure>
+<p>若日志文件不存在，先创建文件（包含一级标题 <code># YYYY-MM-DD</code>），再追加 entry。</p>
+<h2 id="guard">Guard<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#guard" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Papers/ 只读</strong>：不得修改任何 <code>Papers/</code> 目录下的笔记文件，所有 Paper 笔记均为只读输入。</li>
+<li><strong>不直接修改 Domain-Map</strong>：只在分析报告中提出”建议加入 Domain-Map”，不得直接写入或编辑 <code>Topics/Domain-Map.md</code>；Domain-Map 的更新由 Human 或 memory-distill 技能执行。</li>
+<li><strong>矛盾标记”待验证”</strong>：对于识别出的矛盾，不得给出确定性结论，必须标注”待验证”，并尝试分析可能的原因而非直接判定哪篇论文正确。</li>
+<li><strong>所有引用可追溯</strong>：分析报告中的每条结论（共识、矛盾、空白）必须附有 <code>[[wikilink]]</code>，指向具体的 Paper 笔记，不得出现无来源的泛化陈述。</li>
+<li><strong>不捏造内容</strong>：所有分析必须来自实际读取到的笔记内容。若某笔记缺少某一节（如无 Strengths &amp; Weaknesses），在对比表对应单元格注明”未记录”，不得推测或补全。</li>
+<li><strong>Topics 文件不覆盖</strong>：若 <code>Topics/{topic}-Analysis.md</code> 已存在，停止执行并告知 Human；不得覆盖已有分析文件（可建议在文件名加版本后缀，如 <code>-v2</code>）。</li>
+<li><strong>language 规范</strong>：描述与分析用中文撰写；方法名、模型名、benchmark 名、论文标题等技术术语保持英文，不做翻译。</li>
+<li><strong>autonomy: copilot 模式</strong>：若以 copilot 模式调用，生成分析草稿后先输出给 Human 预览，确认后再执行 Write/Edit；<code>Workbench/</code> 的写入同样在确认后执行。</li>
+</ul>
+<h2 id="examples">Examples<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#examples" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>示例 1：按 tag 筛选，指定对比维度</strong></p>
+<pre><code>/cross-paper-analysis --papers &quot;tags: VLA&quot; --focus &quot;method comparison&quot;
+</code></pre>
+<p>执行过程：</p>
+<ol>
+<li>Grep <code>Papers/</code> frontmatter，搜索 <code>tags:.*VLA</code>，收集匹配笔记列表</li>
+<li>Read 每篇笔记的 Summary / Method / Key Results / Strengths &amp; Weaknesses</li>
+<li>Read <code>Topics/Domain-Map.md</code> 和 <code>Workbench/memory/patterns.md</code></li>
+<li>以 method comparison 为主轴构建对比表，标注 <code>[共识]</code>/<code>[矛盾]</code>/<code>[独特]</code></li>
+<li>归纳共识（如”VLA 普遍依赖 large-scale pretraining”）</li>
+<li>标出矛盾（如”论文 A 和论文 B 对 in-context learning 效果的结论相悖”），追加到 <code>Workbench/queue/questions.md</code></li>
+<li>识别空白（如”few-shot adaptation 在真实机器人上的系统性研究缺失”）</li>
+<li>Write <code>Topics/VLA-MethodComparison-Analysis.md</code></li>
+<li>追加新 pattern 到 <code>Workbench/memory/patterns.md</code></li>
+<li>追加日志到 <code>Workbench/logs/2026-03-26.md</code></li>
+</ol>
+<p>输出文件：<code>Topics/VLA-MethodComparison-Analysis.md</code></p>
+<hr/>
+<p><strong>示例 2：指定 wikilinks 列表，通用分析</strong></p>
+<pre><code>/cross-paper-analysis --papers &quot;[[2603-EvoScientist]], [[2501-DiffusionPolicy]], [[2410-Pi0]]&quot;
+</code></pre>
+<p>执行过程：</p>
+<ol>
+<li>Glob <code>Papers/</code> 定位三篇笔记，Read 内容</li>
+<li>构建通用对比表（覆盖问题定义、方法、实验、结果、局限性五列）</li>
+<li>归纳共识、矛盾和空白</li>
+<li>Write <code>Topics/EvoScientist-DiffusionPolicy-Pi0-Analysis.md</code>（topic 名取三篇论文 ShortTitle 组合，或由 Human 指定）</li>
+<li>追加日志</li>
+</ol>
+<p>输出文件：<code>Topics/EvoScientist-DiffusionPolicy-Pi0-Analysis.md</code></p></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="esmyvr" class="overflow"><li class="depth-0"><a href="#purpose" data-for="purpose">Purpose</a></li><li class="depth-0"><a href="#steps" data-for="steps">Steps</a></li><li class="depth-1"><a href="#step-1收集输入论文" data-for="step-1收集输入论文">Step 1：收集输入论文</a></li><li class="depth-1"><a href="#step-2构建对比表" data-for="step-2构建对比表">Step 2：构建对比表</a></li><li class="depth-1"><a href="#step-3分析发现" data-for="step-3分析发现">Step 3：分析发现</a></li><li class="depth-1"><a href="#step-4产出" data-for="step-4产出">Step 4：产出</a></li><li class="depth-0"><a href="#guard" data-for="guard">Guard</a></li><li class="depth-0"><a href="#examples" data-for="examples">Examples</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../../../postscript.js" type="module"></script></html>

@@ -1,0 +1,27 @@
+{
+  "_comment": "MindFlow Stage × Task → Skill routing. Phase 1 subset — empty arrays are placeholders for future skills.",
+  "literature": {
+    "discovery": [],
+    "analysis": ["paper-digest", "cross-paper-analysis"],
+    "synthesis": []
+  },
+  "ideation": {
+    "generation": [],
+    "evaluation": []
+  },
+  "experiment": {
+    "design": [],
+    "execution": [],
+    "analysis": []
+  },
+  "writing": {
+    "planning": [],
+    "drafting": [],
+    "review": []
+  },
+  "evolution": {
+    "distill": ["memory-distill"],
+    "retrieve": [],
+    "agenda": []
+  }
+}

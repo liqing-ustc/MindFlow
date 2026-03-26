@@ -6,65 +6,65 @@
       <description>Last 10 notes on MindFlow</description>
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
+    <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/5-evolution/memory-distill/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/5-evolution/memory-distill/SKILL</guid>
+    <description>从工作日志中蒸馏 pattern 和 insight 到记忆库.</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
+  </item><item>
+    <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/1-literature/paper-digest/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/1-literature/paper-digest/SKILL</guid>
+    <description>消化一篇论文，生成结构化笔记到 Papers/.</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
+  </item><item>
+    <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/1-literature/cross-paper-analysis/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/1-literature/cross-paper-analysis/SKILL</guid>
+    <description>跨论文对比分析，识别共识、矛盾和知识空白.</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
+  </item><item>
+    <title>tag-taxonomy</title>
+    <link>https://liqing.io/mindflow/references/tag-taxonomy</link>
+    <guid>https://liqing.io/mindflow/references/tag-taxonomy</guid>
+    <description>Tag 体系 本文件定义 vault 中所有笔记使用的 tag 规范。添加新笔记时，从下表中选取 2-4 个 tag。 如需新增 tag，请先更新本文件。 设计原则 粒度适中：每个 tag 覆盖一个可辨识的研究子方向 正交性：tag 之间尽量不重叠 稳定性：以方法和任务为核心，不随具体模型/公司/数据集变化 Tag 列表 任务 Tag说明manipulation机器人操作（含 ...</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
+  </item><item>
+    <title>skill-protocol</title>
+    <link>https://liqing.io/mindflow/references/skill-protocol</link>
+    <guid>https://liqing.io/mindflow/references/skill-protocol</guid>
+    <description>Skill Protocol This document defines the SKILL.md format used by MindFlow AI skills. Every skill — whether atomic or orchestrating — must include a SKILL.md at its root.</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
+  </item><item>
+    <title>memory-protocol</title>
+    <link>https://liqing.io/mindflow/references/memory-protocol</link>
+    <guid>https://liqing.io/mindflow/references/memory-protocol</guid>
+    <description>Memory Protocol This document defines how MindFlow stores, organizes, and promotes research knowledge. The memory system transforms raw observations — logs, paper readings, experiment results — into structured, reusable insights that inform future research decisions.</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
+  </item><item>
+    <title>agenda-protocol</title>
+    <link>https://liqing.io/mindflow/references/agenda-protocol</link>
+    <guid>https://liqing.io/mindflow/references/agenda-protocol</guid>
+    <description>Agenda Protocol This document defines the format and governance rules for agenda.md — the living research agenda that tracks active, paused, and abandoned directions ...</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
+  </item><item>
     <title>MindFlow</title>
     <link>https://liqing.io/mindflow/</link>
     <guid>https://liqing.io/mindflow/</guid>
     <description>A mind space for both human and AI. Author: Qing Li Source: github.com/liqing-ustc/mindflow.</description>
-    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
   </item><item>
-    <title>llms.txt: 让网站对 LLM 可读的新标准</title>
-    <link>https://liqing.io/mindflow/Topics/llms-txt</link>
-    <guid>https://liqing.io/mindflow/Topics/llms-txt</guid>
-    <description>是什么 llms.txt 是由 Jeremy Howard（fast.ai 创始人）提出的 Web 标准提案，在网站根目录放置一个 Markdown 格式的文件，为 LLM 和 AI agent 提供网站的结构化概览。 核心理念：LLM 的 context window 无法处理整个网站，而将复杂 HTML 转换为 LLM-friendly 纯文本既困难又有损 ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
+    <title>demo-walkthrough</title>
+    <link>https://liqing.io/mindflow/examples/demo-walkthrough</link>
+    <guid>https://liqing.io/mindflow/examples/demo-walkthrough</guid>
+    <description>MindFlow Demo Walkthrough 这个文档演示如何使用 MindFlow Phase 1 的 3 个核心 skill 完成一个完整的研究循环。 前提条件 一个 coding agent（Claude Code / Codex / Cursor 等） MindFlow skills 已复制到 agent 的 skills 目录（如 ~/.claude/skills/） ...</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
   </item><item>
-    <title>WebMCP: 让网站成为 AI Agent 的结构化工具</title>
-    <link>https://liqing.io/mindflow/Topics/WebMCP</link>
-    <guid>https://liqing.io/mindflow/Topics/WebMCP</guid>
-    <description>是什么 Google 提出的 Web 标准提案，让网站主动声明自己能执行哪些操作，AI agent 可以直接调用结构化的 tool，而不需要解析 UI 或模拟人类交互。 核心理念：网站不再是 agent 需要”看”的页面，而是可以直接”调用”的服务。 官方博客：Chrome Developers Blog GitHub：webmachinelearning/webmcp ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
-  </item><item>
-    <title>VLN-VLA Unification: Foundation Models for Indoor Robot Navigation and Manipulation</title>
-    <link>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</link>
-    <guid>https://liqing.io/mindflow/Topics/VLN-VLA-Unification</guid>
-    <description>Overview 本 survey 从 foundation model 视角，系统梳理了 VLN（Vision-and-Language Navigation）和 VLA（Vision-Language-Action）两个领域的技术演进与架构趋同。通过分析 20 篇核心论文，我们发现：VLN 和 VLA 在四个维度上正在趋同——VLM ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
-  </item><item>
-    <title>Tag-Taxonomy</title>
-    <link>https://liqing.io/mindflow/Resources/Tag-Taxonomy</link>
-    <guid>https://liqing.io/mindflow/Resources/Tag-Taxonomy</guid>
-    <description>Tag 体系 本文件定义 vault 中所有笔记使用的 tag 规范。添加新笔记时，从下表中选取 2-4 个 tag。 如需新增 tag，请先更新本文件。 设计原则 粒度适中：每个 tag 覆盖一个可辨识的研究子方向 正交性：tag 之间尽量不重叠 稳定性：以方法和任务为核心，不随具体模型/公司/数据集变化 Tag 列表 任务 Tag说明manipulation机器人操作（含 ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
-  </item><item>
-    <title>AI-Prompts</title>
-    <link>https://liqing.io/mindflow/Resources/AI-Prompts</link>
-    <guid>https://liqing.io/mindflow/Resources/AI-Prompts</guid>
-    <description>AI Prompts for Research 论文总结 Prompt 请按照以下格式总结这篇论文，用中英混用的风格（专有名词用英文）： Summary 一句话概括。 Problem &amp; Motivation 作者要解决什么问题？为什么重要？ Method 核心方法/架构描述。 Key Results 主要实验结果和 takeaway。 ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
-  </item><item>
-    <title>Hierarchical VLA with Shared Semantic Scene Graph for Unified Navigation-Manipulation</title>
-    <link>https://liqing.io/mindflow/Ideas/Hierarchical-VLA-SceneGraph</link>
-    <guid>https://liqing.io/mindflow/Ideas/Hierarchical-VLA-SceneGraph</guid>
-    <description>Core Idea 构建一个三层 hierarchical VLA 架构，以 semantic scene graph 作为 navigation 和 manipulation 的 shared spatial representation，实现 building-scale 导航与 dexterous manipulation 的统一。 Motivation ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
-  </item><item>
-    <title>Agent-Friendly Internet: 从文档格式到语义网络</title>
-    <link>https://liqing.io/mindflow/Ideas/Agent-Friendly-Internet</link>
-    <guid>https://liqing.io/mindflow/Ideas/Agent-Friendly-Internet</guid>
-    <description>Core Idea 现有 Internet 是为人类设计的，AI agent 在上面工作本质上是 “agent browsing human’s Internet”，造成大量 token 浪费、能力错配和可靠性问题。行业已开始构建 agent-friendly 的基础设施（llms.txt 解决信息获取，WebMCP 解决操作执行），但更深层的语义理解层仍是空白——这是本 ...</description>
-    <pubDate>Wed, 25 Mar 2026 14:46:19 GMT</pubDate>
-  </item><item>
-    <title>MEM: Multi-Scale Embodied Memory for Vision Language Action Models</title>
-    <link>https://liqing.io/mindflow/Papers/2603-MEM</link>
-    <guid>https://liqing.io/mindflow/Papers/2603-MEM</guid>
-    <description>Summary MEM 提出了一种多尺度记忆架构，将视频短期记忆（通过高效视频编码器压缩）和语言长期记忆（自然语言事件摘要）结合，使 VLA 模型能够完成长达 15 分钟的复杂多阶段机器人任务（如厨房清理、三明治制作），同时满足实时推理延迟约束。 Problem &amp; Motivation 标准 VLA 仅基于当前观测生成动作，无法处理需要长时间记忆的多阶段任务 ...</description>
-    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
-  </item><item>
-    <title>RoboClaw: An Agentic Framework for Scalable Long-Horizon Robotic Tasks</title>
-    <link>https://liqing.io/mindflow/Papers/2603-RoboClaw</link>
-    <guid>https://liqing.io/mindflow/Papers/2603-RoboClaw</guid>
-    <description>Summary RoboClaw 提出了一个统一的 agentic robotics 框架，通过 Entangled Action Pairs (EAP) 实现自主数据收集，并用 VLM 作为 meta-controller 统一数据收集、policy learning 和 task execution，在 long-horizon manipulation ...</description>
-    <pubDate>Sun, 01 Mar 2026 00:00:00 GMT</pubDate>
+    <title>review</title>
+    <link>https://liqing.io/mindflow/Workbench/queue/review</link>
+    <guid>https://liqing.io/mindflow/Workbench/queue/review</guid>
+    <description>Review Queue 待 Human review 的 AI 产出。 队列为空。.</description>
+    <pubDate>Thu, 26 Mar 2026 08:58:28 GMT</pubDate>
   </item>
     </channel>
   </rss>
