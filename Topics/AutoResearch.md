@@ -13,16 +13,16 @@ date_updated: 2026-03-26
 
 ## 一、核心参数全景对比
 
-| 项目 | 核心定位 | 技术架构 | 全流程覆盖 | 开源 | 部署门槛 |
-|------|---------|---------|-----------|------|---------|
-| **Karpathy autoresearch** | LLM 训练专属极简实验迭代 | 三文件架构（固定评估 + 可编辑沙盒 + 指令层），单指标棘轮 | 仅实验迭代与评估 | MIT | 极低 |
-| **AutoResearchClaw** | 端到端「一句话出论文」 | 8 相位 23 阶段流水线，多 Agent 辩论，Docker 沙箱，4 层引用校验 | 文献→假设→实验→论文→评审 | ✓ | 中 |
-| **EvoScientist** | 带长期记忆的自进化 AI 科研团队 | 三 Agent（RA/EA/EMA）+ 双持久化记忆库 | 全流程，核心强化跨项目经验沉淀 | 部分 | 较高 |
-| **ARIS** | 轻量夜间科研自动化 | 双模型对抗（executor + reviewer），Markdown 技能集 | 文献综述、论文修改、审稿回复、轻量实验脚本 | ✓ | 极低 |
-| **OpenLAIR Dr. Claw** | GUI 科研平台，科研版 NotebookLM | Web UI + 模块化技能插件 + 多项目管理 | 文献管理、笔记、实验、论文，主打人机协同 | AGPL-3.0 | 低 |
-| **Orchestra SKILLs + Research-Claw** | 科研技能库 + 日常管理 | 70+ 预封装 skill + 自托管助手 + Overleaf 同步 | 实验工程化 + 文献/deadline/写作协同 | ✓ | 低-中 |
-| **The AI Scientist** | 端到端科学发现标杆 | 多 Agent 闭环 + 贝叶斯优化实验 + 学术规范校验 | 全流程，从开放式发现到完整论文 | ✓ | 极高 |
-| **uditgoenka autoresearch** | Karpathy Loop 的泛化版 Claude Code 技能 | 8 条铁律协议 + 9 命令集 + Git-as-memory + Guard 机制 | 任意可量化任务的自主迭代优化 | MIT | 极低 |
+| 项目                                   | 核心定位                              | 技术架构                                       | 全流程覆盖                    | 开源       | 部署门槛 |
+| ------------------------------------ | --------------------------------- | ------------------------------------------ | ------------------------ | -------- | ---- |
+| **Karpathy autoresearch**            | LLM 训练专属极简实验迭代                    | 三文件架构（固定评估 + 可编辑沙盒 + 指令层），单指标棘轮            | 仅实验迭代与评估                 | MIT      | 极低   |
+| **AutoResearchClaw**                 | 端到端「一句话出论文」                       | 8 相位 23 阶段流水线，多 Agent 辩论，Docker 沙箱，4 层引用校验 | 文献→假设→实验→论文→评审           | ✓        | 中    |
+| **EvoScientist**                     | 带长期记忆的自进化 AI 科研团队                 | 三 Agent（RA/EA/EMA）+ 双持久化记忆库                | 全流程，核心强化跨项目经验沉淀          | 部分       | 较高   |
+| **ARIS**                             | 轻量夜间科研自动化                         | 双模型对抗（executor + reviewer），Markdown 技能集    | 文献综述、论文修改、审稿回复、轻量实验脚本    | ✓        | 极低   |
+| **OpenLAIR Dr. Claw**                | GUI 科研平台，科研版 NotebookLM           | Web UI + 模块化技能插件 + 多项目管理                   | 文献管理、笔记、实验、论文，主打人机协同     | AGPL-3.0 | 低    |
+| **Orchestra SKILLs + Research-Claw** | 科研技能库 + 日常管理                      | 70+ 预封装 skill + 自托管助手 + Overleaf 同步        | 实验工程化 + 文献/deadline/写作协同 | ✓        | 低-中  |
+| **The AI Scientist**                 | 端到端科学发现标杆                         | 多 Agent 闭环 + 贝叶斯优化实验 + 学术规范校验              | 全流程，从开放式发现到完整论文          | ✓        | 极高   |
+| **uditgoenka autoresearch**          | Karpathy Loop 的泛化版 Claude Code 技能 | 8 条铁律协议 + 9 命令集 + Git-as-memory + Guard 机制 | 任意可量化任务的自主迭代优化           | MIT      | 极低   |
 
 ---
 

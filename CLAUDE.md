@@ -45,6 +45,7 @@ MindFlow 使用标准化的 Markdown skill 来自动化科研工作流。Skills 
 |--------|-----------|------|
 | "阅读论文 xxx" / "读一下这篇 xxx" / "digest this paper" | paper-digest | 读取 `.claude/skills/1-literature/paper-digest/SKILL.md` 并严格按其 Steps 执行 |
 | "对比这几篇论文" / "分析一下 VLA 相关论文" | cross-paper-analysis | 读取 `.claude/skills/1-literature/cross-paper-analysis/SKILL.md` 并执行 |
+| "调研一下 xxx" / "survey xxx" / "了解 xxx 研究现状" | literature-survey | 读取 `.claude/skills/1-literature/literature-survey/SKILL.md` 并执行 |
 | "整理一下最近的记忆" / "蒸馏记忆" | memory-distill | 读取 `.claude/skills/5-evolution/memory-distill/SKILL.md` 并执行 |
 
 **重要**：触发 skill 时，必须先 Read 对应的 SKILL.md 文件，然后严格按照其中定义的 Steps 和 Guard 执行。不要凭记忆执行——每次都重新读取 SKILL.md。
@@ -52,6 +53,7 @@ MindFlow 使用标准化的 Markdown skill 来自动化科研工作流。Skills 
 ### 已有 Skills
 - `paper-digest`: 消化论文生成笔记（替代上述 AI Workflow 中 Claude Code 方式）
 - `cross-paper-analysis`: 跨论文对比分析
+- `literature-survey`: 主题级文献调研（搜索 + 批量 digest + 综合分析）
 - `memory-distill`: 从日志蒸馏记忆
 
 ### 协议文档
