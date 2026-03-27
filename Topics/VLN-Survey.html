@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Vision-Language Navigation 文献调研</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Vision-Language Navigation 文献调研"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Vision-Language Navigation 文献调研"/><meta name="twitter:description" content="Overview Vision-and-Language Navigation (VLN) 是 embodied AI 的核心任务之一，要求 agent 根据自然语言指令在视觉环境中导航到目标位置。自 2018 年 R2R benchmark 提出以来，VLN 经历了从 discrete navigation graph 到 continuous ..."/><meta property="og:description" content="Overview Vision-and-Language Navigation (VLN) 是 embodied AI 的核心任务之一，要求 agent 根据自然语言指令在视觉环境中导航到目标位置。自 2018 年 R2R benchmark 提出以来，VLN 经历了从 discrete navigation graph 到 continuous ..."/><meta property="og:image:alt" content="Overview Vision-and-Language Navigation (VLN) 是 embodied AI 的核心任务之一，要求 agent 根据自然语言指令在视觉环境中导航到目标位置。自 2018 年 R2R benchmark 提出以来，VLN 经历了从 discrete navigation graph 到 continuous ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/VLN-Survey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/VLN-Survey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview Vision-and-Language Navigation (VLN) 是 embodied AI 的核心任务之一，要求 agent 根据自然语言指令在视觉环境中导航到目标位置。自 2018 年 R2R benchmark 提出以来，VLN 经历了从 discrete navigation graph 到 continuous ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/VLN-Survey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="xvkxex"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/spatial-memory" class="sidebar-tag-pill">#spatial-memory</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>VLN-Survey</a></div></nav><h1 class="article-title">Vision-Language Navigation 文献调研</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-27T09:11:42.963Z">Mar 27, 2026</time><span>11 min read</span></p><ul class="tags"><li><a href="../tags/VLN" class="internal tag-link">VLN</a></li><li><a href="../tags/navigation" class="internal tag-link">navigation</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/spatial-memory" class="internal tag-link">spatial-memory</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Vision-and-Language Navigation (VLN) 是 embodied AI 的核心任务之一，要求 agent 根据自然语言指令在视觉环境中导航到目标位置。自 2018 年 R2R benchmark 提出以来，VLN 经历了从 discrete navigation graph 到 continuous environment、从 task-specific 架构到 foundation model backbone 的深刻演变。</p>
+<p>近三年（2022-2026）是 VLN 研究的一个范式转折期。核心趋势可以概括为三个方向的汇聚：</p>
+<ol>
+<li>
+<p><strong>From discrete to continuous</strong>：从 nav-graph 上的 waypoint selection 走向连续环境中的真实导航。DUET → ETPNav → NaVid/NaVILA/Efficient-VLN 的演进清晰展示了这一轨迹。到 2025 年，VLN-CE（continuous environment）已成为研究主战场。</p>
+</li>
+<li>
+<p><strong>From task-specific to foundation model</strong>：从 task-specific transformer（DUET、ETPNav）到 LLM/VLM backbone（NavGPT、NaVid、NaVILA、Efficient-VLN）。Foundation model 的引入不仅提升了性能，更带来了 zero-shot generalization 和 sim-to-real transfer 能力。</p>
+</li>
+<li>
+<p><strong>From navigation to embodied agent</strong>：VLN 正与 VLA（Vision-Language-Action）架构趋同，NaVILA 直接将 VLN 重构为 navigation-focused VLA。同时，LH-VLN 将任务从单阶段导航扩展到多阶段长程任务，MTU3D 将 navigation 与 3D scene understanding 统一，都在推动 VLN 走向更通用的 embodied intelligence。</p>
+</li>
+</ol>
+<p>研究活跃度方面，VLN 领域近年发表密度持续增长，RSS、CVPR、ICLR、NeurIPS 等顶会均有高影响力论文。2024 年已有综合性 survey [<a href="https://arxiv.org/abs/2407.07035" class="external">Vision-and-Language Navigation Today and Tomorrow: A Survey in the Era of Foundation Models<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a>]（TMLR 2024）对 foundation model 时代的 VLN 做了全面梳理。</p>
+<h2 id="技术路线">技术路线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#技术路线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="路线-1topological-map--task-specific-planning">路线 1：Topological Map + Task-Specific Planning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-1topological-map--task-specific-planning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>代表论文：<a href="../Papers/2202-DUET" class="internal" data-slug="Papers/2202-DUET">2202-DUET</a>、<a href="../Papers/2304-ETPNav" class="internal" data-slug="Papers/2304-ETPNav">2304-ETPNav</a></p>
+<p>这是 VLN 的”经典范式”。核心思想是在导航过程中在线构建 topological map 作为结构化空间记忆，再用 cross-modal transformer 进行路径规划。</p>
+<ul>
+<li><strong>DUET</strong>（CVPR 2022）提出 dual-scale graph transformer，在 topological map 上进行 global coarse-grained reasoning + local fine-grained grounding，在 R2R、REVERIE、SOON 上取得 SOTA。但仅限于 discrete nav-graph。</li>
+<li><strong>ETPNav</strong>（TPAMI 2024）将 topological planning 扩展到 continuous environment，通过 waypoint prediction + hierarchical architecture（high-level planner + low-level obstacle-avoiding controller），在 R2R-CE 和 RxR-CE 上大幅超越 prior SOTA。</li>
+</ul>
+<p><strong>优势</strong>：结构化空间表示对长程规划至关重要；hierarchical 设计解耦了语义理解和运动控制。
+<strong>局限</strong>：task-specific 架构缺乏泛化能力；topological map 是 hand-designed 而非 learned representation；low-level controller 基于 heuristic。</p>
+<h3 id="路线-2vlmllm-based-end-to-end-navigation">路线 2：VLM/LLM-Based End-to-End Navigation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-2vlmllm-based-end-to-end-navigation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>代表论文：<a href="../Papers/2305-NavGPT" class="internal" data-slug="Papers/2305-NavGPT">2305-NavGPT</a>、<a href="../Papers/2402-NaVid" class="internal" data-slug="Papers/2402-NaVid">2402-NaVid</a>、<a href="../Papers/2512-EfficientVLN" class="internal" data-slug="Papers/2512-EfficientVLN">2512-EfficientVLN</a></p>
+<p>这是 foundation model 时代的新范式。核心思想是将预训练 VLM/LLM 作为 navigation backbone，通过 fine-tuning 或 prompting 实现视觉导航。</p>
+<ul>
+<li><strong>NavGPT</strong>（AAAI 2024）首次将 GPT-4 用于 VLN 的 zero-shot reasoning，证明了 LLM 的 instruction decomposition 和 commonsense 能力，但纯文本输入导致视觉信息严重损失（R2R SR ~30%），为后续 visual alignment 指明了方向。</li>
+<li><strong>NaVid</strong>（RSS 2024）提出 video-based VLM 方案，将导航历史编码为 spatio-temporal visual tokens（仅 4 tokens/frame），基于 LLaMA-VID 实现 map-free、sensor-free 导航。在 R2R-CE 上 SPL 35.9%（SOTA），RxR 零样本 SPL 提升 236%，真实环境 66% SR。</li>
+<li><strong>Efficient-VLN</strong>（NAACL 2025）针对 MLLM-based VLN 训练开销问题，提出 progressive memory（遗忘曲线式压缩）、recursive memory（KV cache 传递）、dynamic DAgger policy，在仅 282 GPU hours 下达到 R2R-CE 64.2% SR 和 RxR-CE 67.0% SR 的新 SOTA，训练效率提升 78%。</li>
+</ul>
+<p><strong>优势</strong>：强大的 zero-shot generalization 和 cross-dataset transfer；end-to-end 训练简化了系统设计；natural language interface 便于人机交互。
+<strong>局限</strong>：推理延迟较高（1-2s/action）；long-horizon 能力仍不足；训练开销虽已降低但仍需数百 GPU hours。</p>
+<h3 id="路线-3navigation-as-vlavln-vla-统一">路线 3：Navigation as VLA（VLN-VLA 统一）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-3navigation-as-vlavln-vla-统一" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>代表论文：<a href="../Papers/2412-NaVILA" class="internal" data-slug="Papers/2412-NaVILA">2412-NaVILA</a></p>
+<p>将 VLN 重构为 navigation-focused VLA，是当前最前沿的方向。</p>
+<ul>
+<li><strong>NaVILA</strong>（RSS 2025）将 VLM（VILA）微调为 navigation VLA，通过生成 mid-level 语言化动作指令（如 “move forward 75cm”）而非 low-level joint action，再由 RL locomotion policy 执行。R2R-CE 54% SR，真实 legged robot 88% SR。利用 YouTube 视频生成 20k 训练轨迹，证明了 web-scale 数据在 navigation 中的潜力。</li>
+</ul>
+<p><strong>优势</strong>：语言化 mid-level action 优雅地解耦了语义理解与运动控制；robot-agnostic；sim-to-real transfer 最佳。
+<strong>局限</strong>：mid-level action 粒度需要 task-specific 调优；语言化 action 能否扩展到 manipulation 尚未验证。</p>
+<h3 id="路线-4unified-scene-understanding--navigation">路线 4：Unified Scene Understanding + Navigation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-4unified-scene-understanding--navigation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>代表论文：<a href="../Papers/2507-MTU3D" class="internal" data-slug="Papers/2507-MTU3D">2507-MTU3D</a></p>
+<p>将 3D 场景理解与 active exploration 统一到一个框架。</p>
+<ul>
+<li><strong>MTU3D</strong>（ICCV 2025）提出 online query representation + dynamic spatial memory bank，将 object grounding 和 frontier exploration 统一到同一决策空间。无需显式 3D 重建，在 HM3D-OVON、GOAT-Bench、SG3D-Nav、A-EQA 四个 benchmark 上取得 SOTA，并 zero-shot 部署到真实机器人。</li>
+</ul>
+<p><strong>优势</strong>：首次实现 grounding-exploration joint optimization；online query 避免了离线 3D 重建；spatial memory 支持 lifelong navigation。
+<strong>局限</strong>：266M 参数为 task-specific 架构，未与 VLM-based 方法结合；low-level 仍依赖 shortest path planner。</p>
+<h3 id="路线-5long-horizon-extension">路线 5：Long-Horizon Extension<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-5long-horizon-extension" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>代表论文：<a href="../Papers/2412-LHVLN" class="internal" data-slug="Papers/2412-LHVLN">2412-LHVLN</a></p>
+<p>将 VLN 从单阶段短程导航扩展到多阶段长程任务。</p>
+<ul>
+<li><strong>LH-VLN</strong>（CVPR 2025）提出 long-horizon VLN benchmark（LHPR-VLN，3,260 个多阶段任务，平均 150 步），以及 MGDM 模型（entropy-based memory forgetting + long-term memory retrieval）。所有现有方法 SR = 0%，揭示了 long-horizon 导航的根本性挑战。</li>
+</ul>
+<p><strong>优势</strong>：填补了 long-horizon VLN 的 benchmark 空白；memory 机制设计对 long-horizon 任务有启发。
+<strong>局限</strong>：当前方法完全无法解决；仅在 simulation 中验证。</p>
+<h2 id="发展时间线">发展时间线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#发展时间线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">时间</th><th style="text-align:left;">里程碑</th><th style="text-align:left;">意义</th></tr></thead><tbody><tr><td style="text-align:left;">2022-02</td><td style="text-align:left;"><a href="../Papers/2202-DUET" class="internal" data-slug="Papers/2202-DUET">2202-DUET</a> 提出 dual-scale graph transformer</td><td style="text-align:left;">确立 topological map 作为 VLN 核心空间表示</td></tr><tr><td style="text-align:left;">2023-04</td><td style="text-align:left;"><a href="../Papers/2304-ETPNav" class="internal" data-slug="Papers/2304-ETPNav">2304-ETPNav</a> 将 topological planning 扩展到 continuous env</td><td style="text-align:left;">VLN-CE 性能大幅突破（+10-20% SR）</td></tr><tr><td style="text-align:left;">2023-05</td><td style="text-align:left;"><a href="../Papers/2305-NavGPT" class="internal" data-slug="Papers/2305-NavGPT">2305-NavGPT</a> 首次将 LLM 用于 VLN</td><td style="text-align:left;">开创 LLM-for-navigation 范式，暴露纯文本输入瓶颈</td></tr><tr><td style="text-align:left;">2024-02</td><td style="text-align:left;"><a href="../Papers/2402-NaVid" class="internal" data-slug="Papers/2402-NaVid">2402-NaVid</a> 提出 video-based VLM for VLN</td><td style="text-align:left;">Map-free sensor-free 导航，video tokens 替代 explicit map</td></tr><tr><td style="text-align:left;">2024-12</td><td style="text-align:left;"><a href="../Papers/2412-NaVILA" class="internal" data-slug="Papers/2412-NaVILA">2412-NaVILA</a> 将 VLN 重构为 navigation VLA</td><td style="text-align:left;">VLN-VLA 架构统一的直接证据，legged robot 88% SR</td></tr><tr><td style="text-align:left;">2024-12</td><td style="text-align:left;"><a href="../Papers/2412-LHVLN" class="internal" data-slug="Papers/2412-LHVLN">2412-LHVLN</a> 提出 long-horizon VLN benchmark</td><td style="text-align:left;">揭示多阶段长程导航的根本性挑战（所有方法 SR=0%）</td></tr><tr><td style="text-align:left;">2025-07</td><td style="text-align:left;"><a href="../Papers/2507-MTU3D" class="internal" data-slug="Papers/2507-MTU3D">2507-MTU3D</a> 统一 grounding 与 exploration</td><td style="text-align:left;">无需 3D 重建的 online spatial reasoning</td></tr><tr><td style="text-align:left;">2025-12</td><td style="text-align:left;"><a href="../Papers/2512-EfficientVLN" class="internal" data-slug="Papers/2512-EfficientVLN">2512-EfficientVLN</a> 达到 VLN-CE 新 SOTA</td><td style="text-align:left;">R2R-CE 64.2% SR，训练效率提升 78%</td></tr></tbody></table></div>
+<h2 id="paper-comparison">Paper Comparison<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#paper-comparison" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Paper</th><th style="text-align:left;">Year</th><th style="text-align:left;">技术路线</th><th style="text-align:left;">核心方法</th><th style="text-align:left;">关键结果</th><th style="text-align:left;">局限性</th></tr></thead><tbody><tr><td style="text-align:left;"><a href="../Papers/2202-DUET" class="internal" data-slug="Papers/2202-DUET">2202-DUET</a></td><td style="text-align:left;">2022</td><td style="text-align:left;">Topological + Planning</td><td style="text-align:left;">Dual-scale graph transformer</td><td style="text-align:left;">R2R/REVERIE/SOON SOTA</td><td style="text-align:left;">仅 discrete nav-graph</td></tr><tr><td style="text-align:left;"><a href="../Papers/2304-ETPNav" class="internal" data-slug="Papers/2304-ETPNav">2304-ETPNav</a></td><td style="text-align:left;">2024</td><td style="text-align:left;">Topological + Planning</td><td style="text-align:left;">Online topological map + hierarchical planning</td><td style="text-align:left;">R2R-CE/RxR-CE +10-20%</td><td style="text-align:left;">Task-specific，heuristic controller</td></tr><tr><td style="text-align:left;"><a href="../Papers/2305-NavGPT" class="internal" data-slug="Papers/2305-NavGPT">2305-NavGPT</a></td><td style="text-align:left;">2024</td><td style="text-align:left;">LLM-Based</td><td style="text-align:left;">GPT-4 zero-shot reasoning</td><td style="text-align:left;">R2R SR ~30%，显式推理链</td><td style="text-align:left;">无视觉 grounding，性能差距大</td></tr><tr><td style="text-align:left;"><a href="../Papers/2402-NaVid" class="internal" data-slug="Papers/2402-NaVid">2402-NaVid</a></td><td style="text-align:left;">2024</td><td style="text-align:left;">VLM End-to-End</td><td style="text-align:left;">Video-based VLM (LLaMA-VID)，4 tokens/frame</td><td style="text-align:left;">R2R-CE SPL 35.9%，real 66% SR</td><td style="text-align:left;">推理延迟 1.2-1.5s/action</td></tr><tr><td style="text-align:left;"><a href="../Papers/2412-NaVILA" class="internal" data-slug="Papers/2412-NaVILA">2412-NaVILA</a></td><td style="text-align:left;">2025</td><td style="text-align:left;">Navigation as VLA</td><td style="text-align:left;">VLM → mid-level language action → RL policy</td><td style="text-align:left;">R2R-CE 54% SR，real legged 88% SR</td><td style="text-align:left;">Mid-level 粒度需调优</td></tr><tr><td style="text-align:left;"><a href="../Papers/2412-LHVLN" class="internal" data-slug="Papers/2412-LHVLN">2412-LHVLN</a></td><td style="text-align:left;">2025</td><td style="text-align:left;">Long-Horizon</td><td style="text-align:left;">NavGen 数据平台 + MGDM memory 模块</td><td style="text-align:left;">所有方法 SR=0%，NE 降至 1.23</td><td style="text-align:left;">当前方法无法解决</td></tr><tr><td style="text-align:left;"><a href="../Papers/2507-MTU3D" class="internal" data-slug="Papers/2507-MTU3D">2507-MTU3D</a></td><td style="text-align:left;">2025</td><td style="text-align:left;">Unified Understanding</td><td style="text-align:left;">Online query repr + grounding-exploration 统一</td><td style="text-align:left;">4 benchmarks SOTA，real 零样本</td><td style="text-align:left;">无 VLM backbone，无 manipulation</td></tr><tr><td style="text-align:left;"><a href="../Papers/2512-EfficientVLN" class="internal" data-slug="Papers/2512-EfficientVLN">2512-EfficientVLN</a></td><td style="text-align:left;">2025</td><td style="text-align:left;">VLM End-to-End</td><td style="text-align:left;">Progressive memory + dynamic DAgger</td><td style="text-align:left;">R2R-CE 64.2% SR，282 GPU hrs</td><td style="text-align:left;">仅 simulation 验证</td></tr></tbody></table></div>
+<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>VLN-CE 已成为主战场</strong>：从 DUET 的 discrete nav-graph 到 Efficient-VLN 的 64.2% R2R-CE SR，continuous environment 下的导航性能在三年间实现了质的飞跃。R2R-CE 从”困难挑战”变为”基本可解”。</p>
+</li>
+<li>
+<p><strong>VLM backbone 正在取代 task-specific 架构</strong>：NavGPT → NaVid → NaVILA → Efficient-VLN 的演进表明，预训练 VLM 作为 navigation backbone 是不可逆的趋势。VLM 带来了 zero-shot generalization、cross-dataset transfer、sim-to-real 能力。</p>
+</li>
+<li>
+<p><strong>Hierarchical architecture 是跨范式的共识</strong>：无论是 ETPNav 的 topological planner + heuristic controller，NaVILA 的 VLM planner + RL locomotion policy，还是 LH-VLN 的 short-term + long-term memory，都采用了 hierarchical 设计。High-level semantic planning + low-level motor execution 的分层是 embodied navigation 的通用架构。</p>
+</li>
+<li>
+<p><strong>VLN-VLA 架构趋同是最值得关注的趋势</strong>：NaVILA 直接证明了 VLN 可以重构为 VLA。语言化 mid-level action 桥接了高层指令理解和低层运动控制，这一思路可能成为统一 navigation 和 manipulation 的关键。（<strong>建议加入 Domain-Map</strong>）</p>
+</li>
+<li>
+<p><strong>Long-horizon 是 VLN 的下一个根本性挑战</strong>：LH-VLN 的所有方法 SR=0% 表明，多阶段长程导航远未被解决。Memory management（如何在有限计算预算内保留关键的长程记忆）是核心技术瓶颈。</p>
+</li>
+</ol>
+<h2 id="open-problems">Open Problems<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#open-problems" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1-long-horizon-navigation">1. Long-Horizon Navigation<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-long-horizon-navigation" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>LH-VLN benchmark 上所有方法 SR=0%，暴露了当前 VLN 模型在多阶段、150+ 步任务上的根本性不足。核心问题是 memory management——如何在有限 context window 下保留跨子任务的关键空间和语义信息？Efficient-VLN 的 progressive memory 和 LH-VLN 的 entropy-based forgetting 是初步探索，但远不够。</p>
+<h3 id="2-sim-to-real-gap">2. Sim-to-Real Gap<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-sim-to-real-gap" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>尽管 NaVILA 在 legged robot 上实现了 88% SR，NaVid 在真实环境达到 66% SR，但大多数 VLN 工作（包括 Efficient-VLN、LH-VLN）仍仅在 Habitat simulator 中验证。真实世界的动态障碍物、光照变化、传感器噪声仍是开放挑战。</p>
+<h3 id="3-vln-vla-统一">3. VLN-VLA 统一<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-vln-vla-统一" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>NaVILA 证明了 navigation 可以重构为 VLA，但语言化 mid-level action 能否扩展到 manipulation 仍未验证。Navigation 过程中构建的空间表示（topological map、spatial memory）能否直接服务于到达目的地后的 manipulation？这是 embodied AI 最关键的 open question 之一。</p>
+<h3 id="4-spatial-representation-的最优形式">4. Spatial Representation 的最优形式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-spatial-representation-的最优形式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>VLN 领域存在多种空间表示方案：topological map（DUET、ETPNav）、video tokens（NaVid）、online query（MTU3D）、language memory（NaVILA）。哪种表示最适合同时服务 navigation 和 manipulation？3D scene graph 可能是有潜力的统一方案，但尚无端到端验证。</p>
+<h3 id="5-训练效率与-scaling">5. 训练效率与 Scaling<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-训练效率与-scaling" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>Efficient-VLN 将训练开销降至 282 GPU hours，但 VLN 模型的 scaling law（更大模型 + 更多数据是否持续提升性能？）尚不清楚。YouTube 等 web-scale 数据的利用（NaVILA）值得深入探索。</p>
+<h2 id="调研日志">调研日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#调研日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>调研日期</strong>: 2026-03-27</li>
+<li><strong>搜索策略</strong>:
+<ol>
+<li><code>&quot;vision-and-language navigation&quot; arxiv 2024 2025 2026</code></li>
+<li><code>LLM VLM vision language navigation embodied agent arxiv 2024 2025</code></li>
+<li><code>vision language navigation survey 2024 2025</code></li>
+<li><code>R2R RxR REVERIE VLN-CE benchmark new method 2024 2025 arxiv state-of-the-art</code></li>
+<li><code>zero-shot VLN foundation model VLM navigation 2024 2025 arxiv</code></li>
+<li><code>NaVid video VLM vision language navigation arxiv 2024</code></li>
+</ol>
+</li>
+<li><strong>论文统计</strong>: vault 已有 5 篇 + 新 digest 3 篇 + 跳过 0 篇</li>
+<li><strong>未能获取</strong>: 无</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="vzdqo4" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#技术路线" data-for="技术路线">技术路线</a></li><li class="depth-1"><a href="#路线-1topological-map--task-specific-planning" data-for="路线-1topological-map--task-specific-planning">路线 1：Topological Map + Task-Specific Planning</a></li><li class="depth-1"><a href="#路线-2vlmllm-based-end-to-end-navigation" data-for="路线-2vlmllm-based-end-to-end-navigation">路线 2：VLM/LLM-Based End-to-End Navigation</a></li><li class="depth-1"><a href="#路线-3navigation-as-vlavln-vla-统一" data-for="路线-3navigation-as-vlavln-vla-统一">路线 3：Navigation as VLA（VLN-VLA 统一）</a></li><li class="depth-1"><a href="#路线-4unified-scene-understanding--navigation" data-for="路线-4unified-scene-understanding--navigation">路线 4：Unified Scene Understanding + Navigation</a></li><li class="depth-1"><a href="#路线-5long-horizon-extension" data-for="路线-5long-horizon-extension">路线 5：Long-Horizon Extension</a></li><li class="depth-0"><a href="#发展时间线" data-for="发展时间线">发展时间线</a></li><li class="depth-0"><a href="#paper-comparison" data-for="paper-comparison">Paper Comparison</a></li><li class="depth-0"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-0"><a href="#open-problems" data-for="open-problems">Open Problems</a></li><li class="depth-1"><a href="#1-long-horizon-navigation" data-for="1-long-horizon-navigation">1. Long-Horizon Navigation</a></li><li class="depth-1"><a href="#2-sim-to-real-gap" data-for="2-sim-to-real-gap">2. Sim-to-Real Gap</a></li><li class="depth-1"><a href="#3-vln-vla-统一" data-for="3-vln-vla-统一">3. VLN-VLA 统一</a></li><li class="depth-1"><a href="#4-spatial-representation-的最优形式" data-for="4-spatial-representation-的最优形式">4. Spatial Representation 的最优形式</a></li><li class="depth-1"><a href="#5-训练效率与-scaling" data-for="5-训练效率与-scaling">5. 训练效率与 Scaling</a></li><li class="depth-0"><a href="#调研日志" data-for="调研日志">调研日志</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
