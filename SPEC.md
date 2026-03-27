@@ -75,14 +75,12 @@ MindFlow/
 │
 ├── Domain-Map/          # 核心认知地图（按 domain 拆分）
 │   ├── _index.md        #   索引页：domain 列表 + cross-domain insights
-│   ├── {Name}.md #   各 domain 的四象限认知地图
+│   ├── {CamelCase}.md   #   各 domain 的认知地图
 │
 ├── Templates/           # Obsidian 模板（Paper.md, Idea.md, ...）
 ├── Attachments/         # 文件附件
 │
 ├── skills/              # Skill 定义
-│   ├── 1-literature/    #   文献类（paper-digest, cross-paper-analysis, literature-survey）
-│   └── 5-evolution/     #   进化类（memory-distill）
 │
 ├── references/          # 协议文档
 │   ├── skill-protocol.md
@@ -94,9 +92,11 @@ MindFlow/
 │   ├── agenda.md        #   研究议程
 │   ├── identity.md      #   Researcher 身份与配置
 │   ├── memory/          #   蒸馏后的记忆（patterns, insights, ...）
-│   ├── queue/           #   待办队列（reading, review, questions）
+│   ├── queue.md         #   待办队列（Reading, Review, Questions, Experiments）
 │   ├── logs/            #   每日操作日志（YYYY-MM-DD.md）
 │   └── evolution/       #   演化记录（changelog.md）
+│
+├── examples/            # 示例文件
 │
 ├── SPEC.md              # ★ 本文件
 ├── CLAUDE.md            # Researcher 操作指令
@@ -120,6 +120,7 @@ MindFlow/
 | 文献调研 | `Topics/` | `{Topic}-Survey.md` | `Templates/Topic.md` |
 | 实验 | `Experiments/` | 描述性名称 | `Templates/Experiment.md` |
 | 会议 | `Meetings/` | `YYYY-MM-DD-Description.md` | `Templates/Meeting.md` |
+| 报告 | `Reports/` | 描述性名称 | `Templates/Report.md` |
 | 每日日志 | `Daily/` | `YYYY-MM-DD.md` | `Templates/Daily.md` |
 
 ### 4.2 Domain Map
@@ -141,7 +142,9 @@ Researcher 自由维护 Domain Map。
 
 Skill 是 MindFlow 的自动化核心——定义在 `skills/<category>/<name>/SKILL.md` 中的可执行能力单元。
 
-**格式**：YAML frontmatter（元数据）+ Purpose + Steps + Guard + Examples。详见 → `references/skill-protocol.md`
+**格式**：YAML frontmatter（元数据）+ Purpose + Steps + Guard + Examples。
+
+创建新 skill 或了解格式详情 → `references/skill-protocol.md`
 
 **当前 skills**：
 
@@ -179,7 +182,7 @@ L4: Domain Map      Domain-Map/{Name}.md             持久领域知识
 | `agenda.md` | 研究议程（active/paused/abandoned directions） |
 | `identity.md` | Researcher 身份与配置 |
 | `memory/` | 蒸馏后的记忆文件 |
-| `queue/` | 待办队列（reading、review、questions） |
+| `queue.md` | 待办队列（Reading、Review、Questions、Experiments） |
 | `logs/` | 每日操作日志 |
 | `evolution/` | 系统演化记录 |
 
@@ -221,7 +224,7 @@ L4: Domain Map      Domain-Map/{Name}.md             持久领域知识
 | Phase           | 内容                                                                                 | 状态     |
 | :-------------- | :--------------------------------------------------------------------------------- | :----- |
 | 1. Skeleton     | 仓库结构、协议文档、paper-digest / cross-paper-analysis / memory-distill / literature-survey | ✅ Done |
-| 2. Core Loop    | insight-loop、agenda-evolve、memory-retrieve、idea-generation、IDE/IVE/ESE             | 🔮     |
+| 2. Core Loop    | insight-loop、agenda-evolve、memory-retrieve、idea-generation                            | 🔮     |
 | 3. Experiment   | experiment-design、experiment-iterate、result-analysis                               | 🔮     |
 | 4. Orchestrator | daemon、scheduler、向量检索、notifier、agent-bridge                                        | 🔮     |
 | 5. Polish       | writing skills、完整文档、社区贡献指南、v0.1.0                                                  | 🔮     |
@@ -230,6 +233,7 @@ L4: Domain Map      Domain-Map/{Name}.md             持久领域知识
 
 | 日期 | 变更 |
 |:-----|:-----|
+| 2026-03-27 | Spec 精简至 ~250 行；补全目录结构（dist/docs/examples/website）、笔记类型表（Report）；明确 skill 编号约定；移除未定义缩写 |
 | 2026-03-27 | Spec 精简：从 ~600 行删减至 ~250 行。移除过度形式化的交互模式、Evolution 机制命名、insight-loop 详细实现、未实现的技术选型/仓库结构/Design Provenance。核心内容保留在协议文档和 design spec archive 中。 |
 | 2026-03-27 | 角色模型重定位：Human→Supervisor, AI→Researcher, PhD 导师制。移除所有 NEED APPROVAL 限制。 |
 | 2026-03-27 | 合并 design spec 内容、Domain Map 迁移至 `Domain-Map/`、新增 SPEC.md |

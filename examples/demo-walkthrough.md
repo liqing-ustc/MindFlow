@@ -68,7 +68,7 @@ AI 会：
 随时可以在 Obsidian 中查看：
 - `Workbench/agenda.md` — AI 的研究议程
 - `Workbench/memory/` — AI 积累的经验
-- `Workbench/queue/` — 待办事项
+- `Workbench/queue.md` — 待办队列
 - `Workbench/logs/` — 每日工作日志
 - `Domain-Map/` — 你和 AI 的共同认知地图（按 domain 拆分）
 

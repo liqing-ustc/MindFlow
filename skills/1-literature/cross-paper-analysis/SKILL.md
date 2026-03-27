@@ -96,7 +96,7 @@ cross-paper-analysis 是 MindFlow 的核心洞察发现机制，承担"去伪存
 - 所有矛盾标记为"待验证"，不得在此时下确定性结论。
 - 检查对应 `Domain-Map/{Name}.md` 的 Active Debates 是否已记录；若未记录，标注"建议加入 Domain-Map"。
 
-将矛盾列表追加到 `Workbench/queue/questions.md`（若文件不存在，先用 Write 创建，包含一级标题 `# Open Questions`）：
+将矛盾列表追加到 `Workbench/queue.md` 的 Questions 部分：
 
 ```markdown
 ### [YYYY-MM-DD] <矛盾简要描述>
@@ -218,7 +218,7 @@ tags: []
 3. Read `Domain-Map/_index.md`（索引）→ 相关 `Domain-Map/{Name}.md` + `Workbench/memory/patterns.md`
 4. 以 method comparison 为主轴构建对比表，标注 `[共识]`/`[矛盾]`/`[独特]`
 5. 归纳共识（如"VLA 普遍依赖 large-scale pretraining"）
-6. 标出矛盾（如"论文 A 和论文 B 对 in-context learning 效果的结论相悖"），追加到 `Workbench/queue/questions.md`
+6. 标出矛盾（如"论文 A 和论文 B 对 in-context learning 效果的结论相悖"），追加到 `Workbench/queue.md` 的 Questions 部分
 7. 识别空白（如"few-shot adaptation 在真实机器人上的系统性研究缺失"）
 8. Write `Topics/VLA-MethodComparison-Analysis.md`
 9. 追加新 pattern 到 `Workbench/memory/patterns.md`

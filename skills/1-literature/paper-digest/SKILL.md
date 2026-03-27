@@ -100,7 +100,7 @@ paper-digest 是 MindFlow 最基础的文献技能。给定一篇论文的来源
 
    若日志文件不存在，先创建文件（包含一级标题 `# YYYY-MM-DD`），再追加 entry。
 
-3. **阅读队列**：若 source 来自阅读队列（`Workbench/queue/reading.md`），用 Edit 将对应条目标记为已完成（如在行首添加 `✓` 或删除该条目）。
+3. **阅读队列**：若 source 来自阅读队列（`Workbench/queue.md` 的 Reading 部分），用 Edit 将对应条目标记为已完成（如在行首添加 `✓` 或删除该条目）。
 
 ## Guard
 
