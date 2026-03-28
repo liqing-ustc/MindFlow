@@ -1,6 +1,7 @@
 ---
 name: cross-paper-analysis
-description: 跨论文对比分析，识别共识、矛盾和知识空白
+description: >
+  当需要对比多篇论文的方法/结论/实验设置，或 Supervisor 说"对比""分析这几篇"时，执行跨论文对比并识别共识、矛盾和知识空白
 version: 1.0.0
 intent: literature
 capabilities: [research-planning, cross-validation]
@@ -202,6 +203,13 @@ tags: []
 - **Topics 文件不覆盖**：若 `Topics/{topic}-Analysis.md` 已存在，停止执行并告知 Human；不得覆盖已有分析文件（可建议在文件名加版本后缀，如 `-v2`）。
 - **language 规范**：描述与分析用中文撰写；方法名、模型名、benchmark 名、论文标题等技术术语保持英文，不做翻译。
 - **autonomy: copilot 模式**：若以 copilot 模式调用，生成分析草稿后先输出给 Human 预览，确认后再执行 Write/Edit；`Workbench/` 的写入同样在确认后执行。
+
+## Verify
+
+- [ ] `Topics/*-Analysis.md` 已创建
+- [ ] 对比表包含所有输入论文
+- [ ] 共识、矛盾、知识空白三节均非空
+- [ ] 所有论文引用使用 `[[wikilink]]` 格式
 
 ## Examples
 
