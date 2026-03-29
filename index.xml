@@ -7,64 +7,64 @@
       <generator>Quartz -- quartz.jzhao.xyz</generator>
       <item>
     <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/6-orchestration/autoresearch/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/6-orchestration/autoresearch/SKILL</guid>
+    <description>MindFlow 的核心研究循环。当 Supervisor 说"自己干活吧""开始研究"， 或系统需要自主推进研究时启动。 持续运行：读取当前状态 → 判断最高价值行动 → 调用卫星 skill → 记录 → 循环 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
+  </item><item>
+    <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/5-evolution/memory-retrieve/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/5-evolution/memory-retrieve/SKILL</guid>
+    <description>被其他 skill 内部调用，从 Workbench/memory/ 中检索与当前任务相关的历史经验。 当 idea-generate 需要查失败方向、experiment-design 需要查有效方法、 或任何 skill 需要历史上下文时调用 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
+  </item><item>
+    <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/5-evolution/memory-distill/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/5-evolution/memory-distill/SKILL</guid>
-    <description>从工作日志中蒸馏 pattern 和 insight 到记忆库.</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
+    <description>当积累了多天工作日志、或 Supervisor 说"整理记忆""蒸馏"时，从日志中提取 pattern 和 insight 到记忆库。也可被 autoresearch 在合适时机自动调用 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
-    <link>https://liqing.io/mindflow/skills/1-literature/paper-digest/SKILL</link>
-    <guid>https://liqing.io/mindflow/skills/1-literature/paper-digest/SKILL</guid>
-    <description>消化一篇论文，生成结构化笔记到 Papers/.</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
+    <link>https://liqing.io/mindflow/skills/5-evolution/agenda-evolve/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/5-evolution/agenda-evolve/SKILL</guid>
+    <description>当积累了新的 validated insight、实验结果改变了方向判断、 或 Supervisor 说"更新研究方向""复盘 agenda"时， 根据记忆和发现演化研究议程 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
-    <link>https://liqing.io/mindflow/skills/1-literature/literature-survey/SKILL</link>
-    <guid>https://liqing.io/mindflow/skills/1-literature/literature-survey/SKILL</guid>
-    <description>给定研究主题，搜索、消化并综合该领域文献全貌.</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
+    <link>https://liqing.io/mindflow/skills/4-writing/writing-refine/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/4-writing/writing-refine/SKILL</guid>
+    <description>当 Supervisor 说"打磨一下""改改这段""逻辑不通顺"， 或 autoresearch 在写作阶段自检时， 从结构/清晰度/论据三个维度打磨已有文稿 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
-    <link>https://liqing.io/mindflow/skills/1-literature/cross-paper-analysis/SKILL</link>
-    <guid>https://liqing.io/mindflow/skills/1-literature/cross-paper-analysis/SKILL</guid>
-    <description>跨论文对比分析，识别共识、矛盾和知识空白.</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
+    <link>https://liqing.io/mindflow/skills/4-writing/draft-section/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/4-writing/draft-section/SKILL</guid>
+    <description>当 Supervisor 说"写一下 introduction""起草 related work"， 或 autoresearch 判断某 direction 已积累足够素材需要成文时， 起草论文或报告的指定章节 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
   </item><item>
-    <title>tag-taxonomy</title>
-    <link>https://liqing.io/mindflow/references/tag-taxonomy</link>
-    <guid>https://liqing.io/mindflow/references/tag-taxonomy</guid>
-    <description>Tag 体系 本文件定义 vault 中所有笔记使用的 tag 规范。 选择原则 添加新笔记时，从下表中选取 1-3 个 tag。 如需新增 tag，要遵循设计原则，并更新tag列表。 设计原则 粒度适中：每个 tag 覆盖一个可辨识的研究子方向 正交性：tag 之间尽量不重叠 稳定性：以方法和任务为核心，不随具体模型/公司/数据集变化 Tag ...</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
+    <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/3-experiment/result-analysis/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/3-experiment/result-analysis/SKILL</guid>
+    <description>当 Supervisor 说"分析一下实验结果"， 或实验 status 变为 completed 后 autoresearch 自动调用， 分析实验数据并判断假设是否成立 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
   </item><item>
-    <title>skill-protocol</title>
-    <link>https://liqing.io/mindflow/references/skill-protocol</link>
-    <guid>https://liqing.io/mindflow/references/skill-protocol</guid>
-    <description>Skill Protocol This document defines the SKILL.md format used by MindFlow skills. Every skill — whether atomic or orchestrating — must include a SKILL.md at its root.</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
+    <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/3-experiment/experiment-track/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/3-experiment/experiment-track/SKILL</guid>
+    <description>当 Supervisor 说"记录一下实验结果""实验跑完了"， 或 Researcher 完成一轮实验需要记录时， 在 Experiment 笔记中追加 Run Entry 并更新状态 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
   </item><item>
-    <title>memory-protocol</title>
-    <link>https://liqing.io/mindflow/references/memory-protocol</link>
-    <guid>https://liqing.io/mindflow/references/memory-protocol</guid>
-    <description>Memory Protocol This document defines how MindFlow stores, organizes, and promotes research knowledge. The memory system transforms the Researcher’s raw observations — logs, paper readings, experiment results — into structured, reusable insights that inform future research decisions.</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
+    <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/3-experiment/experiment-design/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/3-experiment/experiment-design/SKILL</guid>
+    <description>当 Supervisor 说"设计个实验""怎么验证这个 idea"， 或 autoresearch 判断某个 developing/validated idea 需要实验验证时， 为 idea 设计完整实验方案 .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
   </item><item>
-    <title>agenda-protocol</title>
-    <link>https://liqing.io/mindflow/references/agenda-protocol</link>
-    <guid>https://liqing.io/mindflow/references/agenda-protocol</guid>
-    <description>Agenda Protocol This document defines the format and governance rules for agenda.md — the living research agenda that tracks active, paused, and abandoned directions ...</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
-  </item><item>
-    <title>MindFlow</title>
-    <link>https://liqing.io/mindflow/</link>
-    <guid>https://liqing.io/mindflow/</guid>
-    <description>A mind space for both human and AI. Author: Qing Li Source: github.com/liqing-ustc/mindflow.</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
-  </item><item>
-    <title>demo-walkthrough</title>
-    <link>https://liqing.io/mindflow/examples/demo-walkthrough</link>
-    <guid>https://liqing.io/mindflow/examples/demo-walkthrough</guid>
-    <description>MindFlow Demo Walkthrough 这个文档演示如何使用 MindFlow Phase 1 的 3 个核心 skill 完成一个完整的研究循环。 前提条件 一个 coding agent（Claude Code / Codex / Cursor 等） MindFlow skills 已复制到 agent 的 skills 目录（如 ~/.claude/skills/） ...</description>
-    <pubDate>Fri, 27 Mar 2026 13:10:08 GMT</pubDate>
+    <title>SKILL</title>
+    <link>https://liqing.io/mindflow/skills/2-ideation/idea-generate/SKILL</link>
+    <guid>https://liqing.io/mindflow/skills/2-ideation/idea-generate/SKILL</guid>
+    <description>当 cross-paper-analysis 发现知识空白、memory 中有 validated insight 待探索、 或 Supervisor 说"想个 idea""有什么研究机会"时， 从知识空白和已有洞察中生成可证伪的研究 idea .</description>
+    <pubDate>Sun, 29 Mar 2026 15:50:07 GMT</pubDate>
   </item>
     </channel>
   </rss>

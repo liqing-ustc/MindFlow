@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>SKILL</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="SKILL"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="SKILL"/><meta name="twitter:description" content="当积累了新的 validated insight、实验结果改变了方向判断、 或 Supervisor 说&quot;更新研究方向&quot;&quot;复盘 agenda&quot;时， 根据记忆和发现演化研究议程
+"/><meta property="og:description" content="当积累了新的 validated insight、实验结果改变了方向判断、 或 Supervisor 说&quot;更新研究方向&quot;&quot;复盘 agenda&quot;时， 根据记忆和发现演化研究议程
+"/><meta property="og:image:alt" content="当积累了新的 validated insight、实验结果改变了方向判断、 或 Supervisor 说&quot;更新研究方向&quot;&quot;复盘 agenda&quot;时， 根据记忆和发现演化研究议程
+"/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/skills/5-evolution/agenda-evolve/SKILL"/><meta property="twitter:url" content="https://liqing.io/mindflow/skills/5-evolution/agenda-evolve/SKILL"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="当积累了新的 validated insight、实验结果改变了方向判断、 或 Supervisor 说&quot;更新研究方向&quot;&quot;复盘 agenda&quot;时， 根据记忆和发现演化研究议程
+"/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="skills/5-evolution/agenda-evolve/SKILL"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="6sls59"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/spatial-memory" class="sidebar-tag-pill">#spatial-memory</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/">skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/5-evolution/">5 evolution</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/5-evolution/agenda-evolve/">agenda evolve</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>SKILL</a></div></nav><h1 class="article-title">SKILL</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-29T15:50:07.406Z">Mar 29, 2026</time><span>15 min read</span></p></div></div><article class="popover-hint"><h2 id="purpose">Purpose<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#purpose" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>agenda-evolve 是 MindFlow 研究议程的演化引擎。它定期审视 <code>Workbench/</code> 中积累的 validated insight、实验结果和 idea 评估，判断现有研究方向是否需要调整——新增方向、更新方向状态、暂停低优先级方向、或废弃已被证伪的方向——并相应地更新 <code>Workbench/agenda.md</code>。</p>
+<p>该技能实现了 <code>references/agenda-protocol.md</code> 中定义的 Researcher 完全自主的议程演化权限。它将”分散在记忆和队列中的证据积累”转化为”研究方向层面的有据决策”，是 MindFlow 自我进化机制中连接 insight 与 strategy 的关键环节。</p>
+<p>触发时机：每次 memory-distill 产出新的 validated insight 之后；收到 Supervisor 的方向性反馈之后；实验结果与当前 hypothesis 出现显著偏差时；或定期复盘（建议每两周一次）。</p>
+<h2 id="steps">Steps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#steps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="step-1读取当前-agenda">Step 1：读取当前 Agenda<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1读取当前-agenda" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Read 读取 <code>Workbench/agenda.md</code> 的完整内容，记录：</p>
+<ul>
+<li>所有 Active Directions 的名称、priority、status、hypothesis、evidence、next_action、confidence</li>
+<li>所有 Paused Directions 的名称及 resume_condition</li>
+<li>所有 Abandoned Directions 的名称（用于避免重复引入已被废弃的方向）</li>
+<li>Mission 节的完整文本（后续步骤中不得修改 Mission）</li>
+</ul>
+<p>若文件不存在，用 Edit 按照 <code>references/agenda-protocol.md</code> 的模板创建初始 agenda.md，填写 Mission 留空占位符，Active/Paused/Abandoned Directions 留空，frontmatter 中 <code>last_updated</code> 填今天日期，<code>updated_by: agenda-evolve</code>。然后继续执行后续步骤。</p>
+<h3 id="step-2读取近期-validated-insights">Step 2：读取近期 Validated Insights<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2读取近期-validated-insights" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Read 读取 <code>Workbench/memory/insights.md</code>，筛选出满足以下任一条件的 insight 条目：</p>
+<ol>
+<li><code>status: validated</code>，且条目日期在今天往前 30 天以内</li>
+<li><code>status: validated</code>，且 <code>confidence: high</code>（即使超过 30 天，高置信度 insight 仍有价值）</li>
+</ol>
+<p>对每条符合条件的 insight，记录：</p>
+<ul>
+<li>标题和 <code>claim</code> 字段内容</li>
+<li><code>impact</code> 字段（该 insight 涉及哪个研究方向）</li>
+<li><code>confidence</code> 和 <code>evidence</code> 来源</li>
+</ul>
+<p>若 <code>insights.md</code> 不存在或内容为空，记录”无可用 validated insight”，继续执行后续步骤（agenda 仍可基于其他输入演化）。</p>
+<h3 id="step-3读取-failed-directions">Step 3：读取 Failed Directions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3读取-failed-directions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Read 读取 <code>Workbench/memory/failed-directions.md</code>（若存在）。记录其中每条已废弃方向的核心 reason 和 lesson，用于：</p>
+<ul>
+<li>防止在后续步骤中重新引入已被证明无效的方向</li>
+<li>为新增方向提供”前车之鉴”参照</li>
+</ul>
+<p>若文件不存在，跳过本步骤。</p>
+<h3 id="step-4读取-queue-中的-questions-和-review-条目">Step 4：读取 Queue 中的 Questions 和 Review 条目<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4读取-queue-中的-questions-和-review-条目" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Read 读取 <code>Workbench/queue.md</code>，提取两类条目：</p>
+<ol>
+<li><strong>Questions 部分</strong>：Researcher 自问的悬而未决的研究问题。若某个问题已经积累了足够多的答案线索（在 insights 或论文中出现相关回答），该 question 可能触发一个新方向的诞生。</li>
+<li><strong>Review 部分</strong>：已完成某类积累、等待 Researcher 决策的条目。特别关注”建议晋升至 Domain-Map”类条目，这类条目说明某个 validated insight 已足够成熟，可能值得围绕其开辟或强化一个研究方向。</li>
+</ol>
+<p>对每条相关条目，记录其内容摘要，供后续判断变更时参考。</p>
+<h3 id="step-5扫描高置信度-ideas">Step 5：扫描高置信度 Ideas<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-5扫描高置信度-ideas" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Grep 在 <code>Ideas/</code> 目录中搜索包含 <code>status: developing</code> 或 <code>status: validated</code> 的 Idea 文件，获取匹配文件路径列表。</p>
+<p>对每个匹配文件，用 Read 读取其内容，提取：</p>
+<ul>
+<li><code>hypothesis</code> 字段（该 Idea 的核心假设）</li>
+<li>评估结论（支持或否定 hypothesis 的证据摘要）</li>
+<li><code>confidence</code> 字段（若有）</li>
+</ul>
+<p>若 <code>Ideas/</code> 不存在或无匹配文件，跳过本步骤。</p>
+<h3 id="step-6判断并执行-agenda-变更">Step 6：判断并执行 Agenda 变更<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-6判断并执行-agenda-变更" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>综合 Step 1-5 收集的全部信息，逐条评估 agenda 中每个 Active Direction 和 Paused Direction 的当前状态，同时评估是否需要新增方向。</p>
+<p>每种变更类型的判断标准和执行方式如下：</p>
+<hr/>
+<p><strong>A. 新增 Direction</strong></p>
+<p>触发条件（满足其一即可）：</p>
+<ul>
+<li>Step 2 中发现一条 validated insight，其 <code>impact</code> 指向一个 agenda 中尚不存在的研究方向</li>
+<li>Step 4 中有一个 question 已在 insights 或论文中找到足够的答案线索，形成可证伪的 hypothesis</li>
+<li>Step 5 中有一个 <code>status: validated</code> 的 Idea，其 hypothesis 尚未被现有 direction 覆盖</li>
+</ul>
+<p>执行：用 Edit 在 <code>Workbench/agenda.md</code> 的 <code>## Active Directions</code> 节末尾追加新方向，格式严格遵循 <code>references/agenda-protocol.md</code>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [Direction Name]</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **priority**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: high / medium / low</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **status**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: exploring</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **origin**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: researcher-discovered</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **hypothesis**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;来自 insight claim 或 idea hypothesis 的一句话可证伪断言></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **evidence**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Workbench/memory/insights.md#heading|&lt;heading></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **next_action**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;基于现有证据，最合理的下一步具体行动></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **confidence**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;根据 insight confidence 对应赋值，通常 0.3-0.5></span></span></code></pre></figure>
+<p>priority 依据：高度相关 Mission 且有强证据支持 → high；与 Mission 相关但证据初步 → medium；探索性方向 → low。</p>
+<hr/>
+<p><strong>B. 更新现有 Direction</strong></p>
+<p>触发条件：某个 Active Direction 的 evidence、confidence、status 或 next_action 因新的 insight 或实验结果而需要更新。</p>
+<p>常见更新场景：</p>
+<ul>
+<li>新 insight 为现有 direction 提供了额外证据支撑 → 更新 <code>evidence</code> 和 <code>confidence</code></li>
+<li>该 direction 的 hypothesis 已被部分验证 → 将 <code>status</code> 从 <code>exploring</code> 升为 <code>validating</code></li>
+<li>多项独立证据指向同一结论 → 将 <code>status</code> 升为 <code>consolidating</code>，confidence 可升至 0.7-0.9</li>
+<li>原有 <code>next_action</code> 已完成或已过时 → 更新为更具体的下一步</li>
+</ul>
+<p>执行：用 Edit 修改 <code>Workbench/agenda.md</code> 中对应 direction 条目的相关字段行。每次只修改有变更的字段，保留其余字段原文不变。</p>
+<hr/>
+<p><strong>C. 暂停 Direction</strong></p>
+<p>触发条件（满足其一即可）：</p>
+<ul>
+<li>该 direction 的 <code>next_action</code> 已连续两次无法推进（因缺乏资源、前置依赖未完成等）</li>
+<li>有更高优先级的新方向需要占用同等精力，当前方向需要让位</li>
+<li>该 direction 的 hypothesis 在短期内无法被验证（如需等待实验数据、等待 Supervisor 反馈）</li>
+</ul>
+<p>执行：</p>
+<ol>
+<li>用 Edit 将该 direction 从 <code>## Active Directions</code> 节剪切，移入 <code>## Paused Directions</code> 节</li>
+<li>在条目中添加 <code>pause_reason</code> 和 <code>resume_condition</code> 字段，格式：
+<pre><code>- **pause_reason**: &lt;一句话说明暂停原因>
+- **resume_condition**: &lt;明确的可判断的恢复条件>
+</code></pre>
+</li>
+<li>将 <code>status</code> 字段值改为 <code>paused</code></li>
+<li>保留原有的 <code>hypothesis</code>、<code>evidence</code>、<code>confidence</code> 字段</li>
+</ol>
+<p>注意：不得删除 Supervisor 手动添加的 direction，只能暂停并在 <code>pause_reason</code> 中注明来源；如确需删除，须先在 <code>## Discussion Topics</code> 节提出讨论。</p>
+<hr/>
+<p><strong>D. 废弃 Direction</strong></p>
+<p>触发条件（需同时满足）：</p>
+<ul>
+<li>该 direction 的 hypothesis 已被明确证伪（有具体证据，非猜测）</li>
+<li>且 <code>resume_condition</code> 不存在或在可预期时间内无法满足</li>
+</ul>
+<p>执行：</p>
+<ol>
+<li>用 Edit 将该 direction 从 <code>## Active Directions</code> 或 <code>## Paused Directions</code> 节移入 <code>## Abandoned Directions</code> 节，格式：
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [Direction Name]</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **abandoned_on**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;今天日期></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **original_hypothesis**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;原 hypothesis 字段内容></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **reason**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;一句话说明废弃原因，必须引用具体证据></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **lesson**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;一句话可复用的教训></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **memory_ref**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Workbench/memory/failed-directions.md#heading|&lt;heading></span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span></code></pre></figure>
+</li>
+<li>同步写入 <code>Workbench/memory/failed-directions.md</code>，追加以下格式条目（若文件不存在，先用 Edit 创建并加一级标题 <code># Failed Directions</code>）：
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">YYYY-MM-DD</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] &lt;Direction Name></span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **hypothesis**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;原 hypothesis></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **reason**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;废弃原因></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **lesson**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;可复用教训></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **evidence_against**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;指向证伪证据的具体来源></span></span></code></pre></figure>
+</li>
+</ol>
+<hr/>
+<p><strong>E. 新增 Discussion Topic</strong></p>
+<p>触发条件：演化过程中发现需要 Supervisor 判断的议题，如：</p>
+<ul>
+<li>两个方向的 hypothesis 存在逻辑冲突，需要 Supervisor 决定优先级</li>
+<li>某个方向按现有证据应废弃，但它是 supervisor-assigned 来源，需确认</li>
+</ul>
+<p>执行：用 Edit 在 <code>Workbench/agenda.md</code> 的 <code>## Discussion Topics</code> 节末尾追加：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [Topic title] — [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">今天日期</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">]</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **raised_by**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: agenda-evolve</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **context**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;触发该话题的具体情境></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **question**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;需要 Supervisor 回答的具体问题></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **related_direction**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;相关的 direction 名称></span></span></code></pre></figure>
+<hr/>
+<p>若评估后无任何变更需要执行，在日志中记录”本次 agenda-evolve 扫描未发现需变更项”，仍需更新 frontmatter 并完成后续步骤。</p>
+<h3 id="step-7更新-agenda-frontmatter">Step 7：更新 Agenda Frontmatter<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-7更新-agenda-frontmatter" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Edit 修改 <code>Workbench/agenda.md</code> 开头的 frontmatter，将：</p>
+<ul>
+<li><code>last_updated</code> 更新为今天日期（格式 <code>YYYY-MM-DD</code>）</li>
+<li><code>updated_by</code> 更新为 <code>agenda-evolve</code></li>
+</ul>
+<h3 id="step-8追加-changelog-条目">Step 8：追加 Changelog 条目<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-8追加-changelog-条目" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Edit 将以下格式的条目 append 到 <code>Workbench/evolution/changelog.md</code> 末尾（若文件不存在，先用 Edit 创建并加一级标题 <code># Evolution Changelog</code>）：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">YYYY-MM-DD</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] agenda-evolve</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **trigger**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;触发原因，来自 input.trigger 或自动描述></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **insights_reviewed**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;本次审视的 validated insight 数量></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **directions_added**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;新增 direction 数量></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **directions_updated**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;更新 direction 数量></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **directions_paused**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;暂停 direction 数量></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **directions_abandoned**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;废弃 direction 数量></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **reasoning**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;2-3 句话说明本次变更的核心逻辑，便于日后回溯></span></span></code></pre></figure>
+<h3 id="step-9追加工作日志">Step 9：追加工作日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-9追加工作日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Edit（或 Write 若文件不存在）将以下格式的 log entry 追加到 <code>Workbench/logs/YYYY-MM-DD.md</code>（日期为今天）：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">HH:MM</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] agenda-evolve</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **trigger**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;触发原因></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **changes**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: 新增 &lt;N> 个方向，更新 &lt;N> 个，暂停 &lt;N> 个，废弃 &lt;N> 个</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **observation**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;一句话描述本次演化的核心判断></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **status**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: success</span></span></code></pre></figure>
+<p>若日志文件不存在，先创建文件（包含一级标题 <code># YYYY-MM-DD</code>），再追加 entry。</p>
+<h2 id="verify">Verify<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#verify" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <code>Workbench/agenda.md</code> 的 <code>last_updated</code> 已更新为今天日期</li>
+<li class="task-list-item"><input type="checkbox" disabled/> <code>Workbench/agenda.md</code> 的 <code>updated_by</code> 已更新为 <code>agenda-evolve</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> 每个 Active Direction 都有非空的 <code>next_action</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> 新增或变更（含新增、更新、暂停、废弃）在 <code>Workbench/evolution/changelog.md</code> 中均有记录</li>
+<li class="task-list-item"><input type="checkbox" disabled/> 废弃的 direction 已同步写入 <code>Workbench/memory/failed-directions.md</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> 工作日志已追加到 <code>Workbench/logs/YYYY-MM-DD.md</code></li>
+</ul>
+<h2 id="guard">Guard<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#guard" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>严格遵循格式</strong>：所有 agenda 条目的字段和格式必须符合 <code>references/agenda-protocol.md</code> 的规范，不得自定义字段名或省略必填字段。</li>
+<li><strong>不删除 Supervisor 方向</strong>：<code>origin: supervisor-assigned</code> 的 direction 不得被废弃，只可暂停，并在 <code>pause_reason</code> 中注明”supervisor-assigned，需 Supervisor 确认后方可废弃”，同时在 Discussion Topics 中提出讨论。</li>
+<li><strong>变更必须有推理记录</strong>：每次变更在 <code>evolution/changelog.md</code> 的 <code>reasoning</code> 字段中必须说明决策依据，不得只记录”变更了 X 方向”而不说明为何。</li>
+<li><strong>不修改 Mission 节</strong>：<code>## Mission</code> 节的内容只有 Supervisor 可以直接修改，Researcher 可在 Discussion Topics 中提出 Mission 演化建议，但不得直接改写 Mission 正文。</li>
+<li><strong>废弃需有明确证据</strong>：废弃 direction 时，<code>reason</code> 字段必须引用具体证据来源（insight 链接、实验结果等），不得基于”感觉方向不对”等主观判断执行废弃。</li>
+<li><strong>confidence 需有依据</strong>：所有 confidence 值必须遵循 <code>references/agenda-protocol.md</code> 的定量规范：exploring 无证据 0.1-0.2，多篇论文支持 0.7-0.8，实验确认才可达 0.9+。</li>
+<li><strong>语言规范</strong>：中文正文，英文技术术语（方向名、模型名、方法名、benchmark 名）保持英文，不做翻译。</li>
+</ul>
+<h2 id="examples">Examples<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#examples" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>示例：新 validated insight 触发方向演化</strong></p>
+<p>背景：memory-distill 刚产出一条新的 validated insight，Researcher 触发 agenda-evolve 进行复盘。</p>
+<pre><code>/agenda-evolve --trigger &quot;new validated insight from memory-distill&quot;
+</code></pre>
+<p>执行过程：</p>
+<ol>
+<li>
+<p>Read <code>Workbench/agenda.md</code>，记录当前 3 个 Active Directions：</p>
+<ul>
+<li>“VLN Generalization”（validating，confidence: 0.6）</li>
+<li>“Reward Shaping for Sparse Environments”（exploring，confidence: 0.3）</li>
+<li>“Cross-Modal Attention Fusion”（exploring，confidence: 0.2）</li>
+</ul>
+</li>
+<li>
+<p>Read <code>Workbench/memory/insights.md</code>，发现 2 条近期 validated insight：</p>
+<ul>
+<li>Insight A（validated，high confidence）：claim 为”waypoint prediction 辅助监督显著提升 VLN agent 在 unseen environment 中的泛化能力”，impact 指向 “VLN Generalization”</li>
+<li>Insight B（validated，medium confidence）：claim 为”基于 diffusion 的策略对 action chunk size 高度敏感，chunk size=8 在连续控制任务中最优”，impact 指向”尚无对应方向”</li>
+</ul>
+</li>
+<li>
+<p>Read <code>Workbench/memory/failed-directions.md</code>，发现历史上”End-to-End Waypoint Regression”曾被废弃（原因：训练不稳定，与 Insight A 无直接冲突）。</p>
+</li>
+<li>
+<p>Read <code>Workbench/queue.md</code> Review 部分，发现一条”建议晋升至 Domain-Map”的条目，指向 Insight A，suggested_map 为 <code>Domain-Map/VLN.md</code>。</p>
+</li>
+<li>
+<p>Glob + Read <code>Ideas/</code>，发现一个 <code>status: developing</code> 的 Idea “DiffusionPolicyTuning”，hypothesis 为”调整 action chunk size 可在操控任务上提升 10% 性能”，与 Insight B 高度吻合。</p>
+</li>
+<li>
+<p>判断变更：</p>
+<ul>
+<li><strong>更新</strong> “VLN Generalization”：Insight A 为其提供强证据，status 从 <code>validating</code> 升为 <code>consolidating</code>，confidence 从 0.6 升为 0.8，evidence 追加 Insight A 的链接，next_action 更新为”整理 waypoint prediction 方法对比，准备写综述段落”</li>
+<li><strong>新增</strong> “Diffusion Policy Chunk Size Optimization”：基于 Insight B + Idea “DiffusionPolicyTuning”，origin: researcher-discovered，status: exploring，confidence: 0.45，next_action: “复现 chunk size ablation 实验，验证 size=8 结论在 RoboMimic 数据集上是否成立”</li>
+<li>“Reward Shaping for Sparse Environments” 和 “Cross-Modal Attention Fusion” 无新证据，保持不变</li>
+</ul>
+</li>
+<li>
+<p>Edit <code>Workbench/agenda.md</code>：更新 “VLN Generalization” 的 status/confidence/evidence/next_action，追加新方向 “Diffusion Policy Chunk Size Optimization”，更新 frontmatter。</p>
+</li>
+<li>
+<p>Edit <code>Workbench/evolution/changelog.md</code> 追加变更记录，reasoning 说明：Insight A 将 VLN Generalization 推进至 consolidating 阶段；Insight B 结合 developing idea 开辟新方向。</p>
+</li>
+<li>
+<p>Edit <code>Workbench/logs/2026-03-28.md</code> 追加日志条目。</p>
+</li>
+</ol>
+<p>最终输出摘要：</p>
+<pre><code>agenda-evolve 完成（trigger: new validated insight from memory-distill）
+- 审视 validated insights：2 条
+- 更新 direction：1 个（VLN Generalization → consolidating，confidence 0.6 → 0.8）
+- 新增 direction：1 个（Diffusion Policy Chunk Size Optimization）
+- changelog 和日志已更新
+</code></pre></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="qmmkjm" class="overflow"><li class="depth-0"><a href="#purpose" data-for="purpose">Purpose</a></li><li class="depth-0"><a href="#steps" data-for="steps">Steps</a></li><li class="depth-1"><a href="#step-1读取当前-agenda" data-for="step-1读取当前-agenda">Step 1：读取当前 Agenda</a></li><li class="depth-1"><a href="#step-2读取近期-validated-insights" data-for="step-2读取近期-validated-insights">Step 2：读取近期 Validated Insights</a></li><li class="depth-1"><a href="#step-3读取-failed-directions" data-for="step-3读取-failed-directions">Step 3：读取 Failed Directions</a></li><li class="depth-1"><a href="#step-4读取-queue-中的-questions-和-review-条目" data-for="step-4读取-queue-中的-questions-和-review-条目">Step 4：读取 Queue 中的 Questions 和 Review 条目</a></li><li class="depth-1"><a href="#step-5扫描高置信度-ideas" data-for="step-5扫描高置信度-ideas">Step 5：扫描高置信度 Ideas</a></li><li class="depth-1"><a href="#step-6判断并执行-agenda-变更" data-for="step-6判断并执行-agenda-变更">Step 6：判断并执行 Agenda 变更</a></li><li class="depth-1"><a href="#step-7更新-agenda-frontmatter" data-for="step-7更新-agenda-frontmatter">Step 7：更新 Agenda Frontmatter</a></li><li class="depth-1"><a href="#step-8追加-changelog-条目" data-for="step-8追加-changelog-条目">Step 8：追加 Changelog 条目</a></li><li class="depth-1"><a href="#step-9追加工作日志" data-for="step-9追加工作日志">Step 9：追加工作日志</a></li><li class="depth-0"><a href="#verify" data-for="verify">Verify</a></li><li class="depth-0"><a href="#guard" data-for="guard">Guard</a></li><li class="depth-0"><a href="#examples" data-for="examples">Examples</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../../../postscript.js" type="module"></script></html>

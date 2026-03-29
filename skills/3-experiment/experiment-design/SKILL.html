@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>SKILL</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="SKILL"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="SKILL"/><meta name="twitter:description" content="当 Supervisor 说&quot;设计个实验&quot;&quot;怎么验证这个 idea&quot;， 或 autoresearch 判断某个 developing/validated idea 需要实验验证时， 为 idea 设计完整实验方案
+"/><meta property="og:description" content="当 Supervisor 说&quot;设计个实验&quot;&quot;怎么验证这个 idea&quot;， 或 autoresearch 判断某个 developing/validated idea 需要实验验证时， 为 idea 设计完整实验方案
+"/><meta property="og:image:alt" content="当 Supervisor 说&quot;设计个实验&quot;&quot;怎么验证这个 idea&quot;， 或 autoresearch 判断某个 developing/validated idea 需要实验验证时， 为 idea 设计完整实验方案
+"/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/skills/3-experiment/experiment-design/SKILL"/><meta property="twitter:url" content="https://liqing.io/mindflow/skills/3-experiment/experiment-design/SKILL"/><link rel="icon" href="../../../static/icon.png"/><meta name="description" content="当 Supervisor 说&quot;设计个实验&quot;&quot;怎么验证这个 idea&quot;， 或 autoresearch 判断某个 developing/validated idea 需要实验验证时， 为 idea 设计完整实验方案
+"/><meta name="generator" content="Quartz"/><link href="../../../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../../../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../../../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="skills/3-experiment/experiment-design/SKILL"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="../../..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="6sls59"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/spatial-memory" class="sidebar-tag-pill">#spatial-memory</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../../../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/">skills</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/3-experiment/">3 experiment</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../../../skills/3-experiment/experiment-design/">experiment design</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>SKILL</a></div></nav><h1 class="article-title">SKILL</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-29T15:50:07.301Z">Mar 29, 2026</time><span>12 min read</span></p></div></div><article class="popover-hint"><h2 id="purpose">Purpose<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#purpose" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>experiment-design 是 MindFlow 从 idea 到实验的桥接技能。给定一个 status 为 <code>developing</code> 或 <code>validated</code> 的研究 idea，它综合 idea 的 hypothesis、历史记忆中的有效方法与失败方向，为其设计完整的实验方案，并按 <code>Templates/Experiment.md</code> 格式写入 <code>Experiments/</code> 目录。</p>
+<p>实验方案覆盖六个核心模块：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">模块</th><th style="text-align:left;">内容</th></tr></thead><tbody><tr><td style="text-align:left;"><strong>Variables</strong></td><td style="text-align:left;">自变量 / 因变量 / 控制变量</td></tr><tr><td style="text-align:left;"><strong>Baseline</strong></td><td style="text-align:left;">对比方法与来源</td></tr><tr><td style="text-align:left;"><strong>Metrics</strong></td><td style="text-align:left;">可量化的评估指标</td></tr><tr><td style="text-align:left;"><strong>Steps</strong></td><td style="text-align:left;">具体执行步骤</td></tr><tr><td style="text-align:left;"><strong>Expected Outcome</strong></td><td style="text-align:left;">假设成立与不成立两种情况</td></tr><tr><td style="text-align:left;"><strong>Risk &amp; Mitigation</strong></td><td style="text-align:left;">主要风险点与应对方案</td></tr></tbody></table></div>
+<p>该技能适用于两种模式：autopilot（全自动设计写入）、copilot（草稿预览后 Supervisor 确认写入）。</p>
+<h2 id="steps">Steps<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#steps" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="step-1读取目标-idea-笔记验证-status">Step 1：读取目标 Idea 笔记，验证 status<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-1读取目标-idea-笔记验证-status" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Read 打开 <code>idea</code> 参数指向的 <code>Ideas/xxx.md</code> 文件。重点提取以下字段：</p>
+<ul>
+<li><code>title</code>：idea 标题</li>
+<li><code>hypothesis</code>：核心假设（实验围绕此展开）</li>
+<li><code>status</code>：当前状态——<strong>必须为 <code>developing</code> 或 <code>validated</code>，否则立即停止执行并告知 Supervisor</strong></li>
+<li><code>tags</code>：所属 domain / 领域关键词</li>
+<li><code>related_papers</code>：引用的 Paper 笔记列表</li>
+<li>idea 正文中的 Motivation、approach sketch（有助于确定 Variables 和 Steps）</li>
+</ul>
+<p>若文件不存在，停止并告知 Supervisor，不继续执行。</p>
+<h3 id="step-2检索历史记忆">Step 2：检索历史记忆<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-2检索历史记忆" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>读取 <code>skills/5-evolution/memory-retrieve/SKILL.md</code>，按其 Steps 执行，scope 设为 <code>effective-methods</code> + <code>failed-directions</code>，query 使用 idea 的 hypothesis 和 tags 关键词。</p>
+<p>从检索结果中识别：</p>
+<ul>
+<li><strong>可复用的有效方法</strong>：可直接借鉴到本实验的 baseline 选取、metric 设计、实验步骤</li>
+<li><strong>需要规避的失败方向</strong>：历史上已被证明无效或高风险的路径，列入 Risk &amp; Mitigation</li>
+</ul>
+<p>若记忆文件不存在或无相关条目，跳过此步，在实验方案中注明”无历史记忆参考”。</p>
+<h3 id="step-3设计实验方案六部分">Step 3：设计实验方案六部分<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-3设计实验方案六部分" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>综合 Step 1 的 idea 内容、Step 2 的历史记忆、以及可选的 <code>constraints</code> 参数，逐一设计以下六个模块：</p>
+<h4 id="variables变量设计">Variables（变量设计）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#variables变量设计" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>自变量（Independent Variable）</strong>：实验中主动改变的因素，直接对应 hypothesis 中的核心机制</li>
+<li><strong>因变量（Dependent Variable）</strong>：被测量的结果变量，必须对应具体 Metric</li>
+<li><strong>控制变量（Controlled Variable）</strong>：需要保持不变的条件（数据集、随机种子、训练轮数等），避免混淆变量</li>
+</ul>
+<h4 id="baseline对比方法">Baseline（对比方法）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#baseline对比方法" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>列举 2-4 个 baseline，每个 baseline 注明：</p>
+<ul>
+<li>方法名称和来源论文（引用 <code>[[Papers/xxx]]</code>）</li>
+<li>选取理由（为何是公平的对比）</li>
+</ul>
+<p>若 <code>constraints</code> 中含”纯理论推导”，可省略实验 baseline，改为理论分析对比。</p>
+<h4 id="metrics评估指标">Metrics（评估指标）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#metrics评估指标" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>列举 2-4 个指标，每个指标必须满足：</p>
+<ul>
+<li><strong>可量化</strong>：有明确的数值定义，可从实验结果直接计算</li>
+<li><strong>与 hypothesis 直接相关</strong>：能判断假设是否成立</li>
+<li>注明主指标（primary metric）和辅助指标（secondary metrics）</li>
+</ul>
+<p><strong>禁止</strong>使用无法量化的描述性指标（如”效果更好”、“更鲁棒”）——必须转化为具体数值（如”success rate ↑ X%”、“BLEU-4 score”）。</p>
+<h4 id="steps执行步骤">Steps（执行步骤）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#steps执行步骤" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>按时间顺序列出 4-8 个可执行步骤，每步包含：</p>
+<ul>
+<li>具体操作（做什么、用什么工具/数据集/框架）</li>
+<li>预期产出（checkpoint、日志、中间结果）</li>
+</ul>
+<p>若有 <code>constraints</code>（如”单卡 A100”），在 Steps 中体现对应的资源配置。</p>
+<h4 id="expected-outcome预期结果">Expected Outcome（预期结果）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#expected-outcome预期结果" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>必须包含<strong>两种情况</strong>：</p>
+<ul>
+<li><strong>假设成立（Hypothesis Confirmed）</strong>：若 hypothesis 正确，主指标应呈现什么数值趋势？给出定量预期（如”success rate 比 baseline 提升 ≥5%”）</li>
+<li><strong>假设不成立（Hypothesis Refuted）</strong>：若 hypothesis 错误，结果会呈现什么模式？此时应如何解读——是放弃 idea、修正 hypothesis、还是设计后续实验？</li>
+</ul>
+<h4 id="risk--mitigation风险与应对">Risk &amp; Mitigation（风险与应对）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#risk--mitigation风险与应对" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<p>列举 2-3 个主要风险，每条注明：</p>
+<ul>
+<li>风险描述（什么可能出错）</li>
+<li>发生概率（high / medium / low）</li>
+<li>应对方案（如何规避或补救）</li>
+</ul>
+<p>优先纳入 Step 2 中识别的历史失败方向作为风险条目。</p>
+<h3 id="step-4按模板创建实验文件">Step 4：按模板创建实验文件<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-4按模板创建实验文件" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>读取 <code>Templates/Experiment.md</code>，以其格式为基础，在 <code>Experiments/</code> 目录下创建新文件。</p>
+<p>文件命名规则：<code>Experiments/YYYY-MM-DD-&lt;IdeaTitle>.md</code>（日期为今天，IdeaTitle 取 idea 的 <code>title</code> 字段，去除空格和特殊字符）。</p>
+<p>Frontmatter 字段填写：</p>
+<ul>
+<li><code>title</code>：实验标题（可与 idea title 相同或更具体）</li>
+<li><code>idea</code>：<code>&quot;[[Ideas/xxx]]&quot;</code>（关联源 idea）</li>
+<li><code>tags</code>：从 idea 继承</li>
+<li><code>status</code>：设为 <code>planned</code></li>
+<li><code>date_created</code>：今天日期</li>
+</ul>
+<p>正文按 Step 3 的六模块内容填充各 section，具体对应：</p>
+<ul>
+<li><code>## Objective</code>：填写来自 hypothesis 的实验目标（1-3 句话）</li>
+<li><code>## Setup</code>：从 Variables（控制变量）和 Steps（环境要求）提取</li>
+<li><code>## Method</code>：填写 Steps（执行步骤）和 Baseline</li>
+<li><code>## Results</code>：留空（实验完成后由 experiment-track 填写）</li>
+<li><code>## Analysis</code>：留空</li>
+<li><code>## Insights</code>：留空</li>
+<li><code>## Next Steps</code>：填写 Expected Outcome 中”假设不成立”情况下的后续路径</li>
+</ul>
+<p>在文件末尾额外追加一个 <code>## Design Notes</code> 节，包含 Variables 完整设计、Metrics、Expected Outcome（两种情况）、Risk &amp; Mitigation，以保留完整实验设计细节。</p>
+<h3 id="step-5在-idea-笔记中追加实验链接">Step 5：在 Idea 笔记中追加实验链接<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-5在-idea-笔记中追加实验链接" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Edit 在源 Idea 文件（<code>Ideas/xxx.md</code>）末尾追加以下格式的链接节：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## Experiments</span></span>
+<span data-line> </span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Experiments/YYYY-MM-DD-IdeaTitle</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]] — &lt;一句话说明这个实验验证什么></span></span></code></pre></figure>
+<p>若 Idea 文件中已有 <code>## Experiments</code> 节，在该节末尾追加新条目，不重建整个节。不修改 idea 的 <code>hypothesis</code> 字段或任何其他已有内容。</p>
+<h3 id="step-6追加日志">Step 6：追加日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#step-6追加日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>用 Edit（若文件不存在则先 Write）将以下 log entry 追加到 <code>Workbench/logs/YYYY-MM-DD.md</code>：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">### [</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">HH:MM</span><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">] experiment-design</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **input**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Ideas/xxx</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **output**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Experiments/YYYY-MM-DD-IdeaTitle</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]]</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **hypothesis**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;一句话复述 idea 的 hypothesis></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **primary-metric**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;主指标名称></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **key-risk**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: &lt;最高优先级风险一句话></span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-light-font-weight:bold;--shiki-dark:#E1E4E8;--shiki-dark-font-weight:bold;"> **status**</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">: success</span></span></code></pre></figure>
+<p>若日志文件不存在，先创建文件（一级标题 <code># YYYY-MM-DD</code>），再追加 entry。</p>
+<h2 id="verify">Verify<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#verify" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul class="contains-task-list">
+<li class="task-list-item"><input type="checkbox" disabled/> <code>Experiments/YYYY-MM-DD-&lt;IdeaTitle>.md</code> 已创建，frontmatter status 为 <code>planned</code></li>
+<li class="task-list-item"><input type="checkbox" disabled/> Variables（自变量 / 因变量 / 控制变量）均非空</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Baseline 列举了至少 2 个对比方法</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Metrics 均为可量化指标（有具体数值定义）</li>
+<li class="task-list-item"><input type="checkbox" disabled/> Expected Outcome 包含假设成立和不成立两种情况</li>
+<li class="task-list-item"><input type="checkbox" disabled/> 源 Idea 文件已追加实验链接</li>
+<li class="task-list-item"><input type="checkbox" disabled/> 日志已追加到 <code>Workbench/logs/YYYY-MM-DD.md</code></li>
+</ul>
+<h2 id="guard">Guard<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#guard" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Metrics 必须可量化</strong>：任何无法直接计算数值的指标必须被拒绝或转化。若无法为某个 hypothesis 找到可量化的 metric，停止执行并告知 Supervisor。</li>
+<li><strong>不修改源 Idea hypothesis</strong>：<code>hypothesis</code> 字段属于 idea-generate / idea-evaluate 的职责范围，experiment-design 只读取，绝不修改。</li>
+<li><strong>status 校验为硬性前置条件</strong>：若 idea 的 status 不是 <code>developing</code> 或 <code>validated</code>，立即停止，不执行任何写入操作。告知 Supervisor 当前 status 及建议（如先执行 idea-evaluate）。</li>
+<li><strong>不伪造历史记忆</strong>：Step 2 的记忆检索若无结果，如实说明，不编造相关历史经验。</li>
+<li><strong>语言规范</strong>：中文正文 + 英文技术术语（模型名、数据集名、benchmark 名、metric 名保持英文，不翻译）。</li>
+<li><strong>copilot 模式</strong>：若以 copilot 模式调用，在写入文件前先输出完整实验方案草稿，等待 Supervisor 确认后再执行 Step 4-6。</li>
+</ul>
+<h2 id="examples">Examples<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#examples" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>示例：为 VLA 相关 idea 设计实验</strong></p>
+<p>假设 Idea 文件为 <code>Ideas/VLA-GoalConditionedRecovery.md</code>，其关键字段为：</p>
+<ul>
+<li><code>status: developing</code></li>
+<li><code>hypothesis</code>: “在 VLA 策略中引入 goal-conditioned recovery module，可以在 distribution shift 情境下显著减少 task failure”</li>
+<li><code>tags</code>: [VLA, robot-learning, recovery]</li>
+</ul>
+<p>执行过程：</p>
+<ol>
+<li>
+<p>Read <code>Ideas/VLA-GoalConditionedRecovery.md</code> — 确认 status=<code>developing</code>，提取 hypothesis 和 approach sketch（在 OpenVLA 基础上增加一个轻量 recovery head，输入 current state + goal image，输出 recovery action sequence）</p>
+</li>
+<li>
+<p>执行 memory-retrieve（scope: effective-methods + failed-directions）— 检索到一条 effective-methods 条目：“reward shaping 在 manipulation task 上比直接 BC 收敛更稳定”；检索到一条 failed-directions 条目：“直接 fine-tune 整个 VLA 做 recovery 导致 catastrophic forgetting”</p>
+</li>
+<li>
+<p>设计六模块方案：</p>
+<p><strong>Variables</strong></p>
+<ul>
+<li>自变量：是否附加 goal-conditioned recovery module（w/ recovery vs. w/o recovery）</li>
+<li>因变量：task success rate、recovery success rate（从 failure state 恢复后完成任务的比例）</li>
+<li>控制变量：base VLA 权重（OpenVLA-7B frozen）、训练数据集（Bridge v2）、随机种子（固定 3 个种子取均值）</li>
+</ul>
+<p><strong>Baseline</strong></p>
+<ul>
+<li><code>OpenVLA</code>（<code>[[Papers/2403-OpenVLA]]</code>）：无 recovery 机制的原始模型，直接对比</li>
+<li><code>SayCan + replanning</code>（<code>[[Papers/2204-SayCan]]</code>）：基于 LLM replanning 的 failure recovery，代表现有主流方案</li>
+</ul>
+<p><strong>Metrics</strong></p>
+<ul>
+<li>主指标：task success rate on out-of-distribution perturbation test set（扰动后成功率，%）</li>
+<li>辅助指标：recovery trigger precision（正确识别 failure state 的精度）、extra inference latency（ms/step）</li>
+</ul>
+<p><strong>Steps</strong></p>
+<ol>
+<li>在 OpenVLA 基础上添加轻量 recovery head（2 层 MLP），仅 head 参数可训练，base VLA frozen（规避历史失败方向：catastrophic forgetting）</li>
+<li>构建 recovery training set：从 Bridge v2 中提取 failure trajectory，标注 recovery action</li>
+<li>训练 recovery head，单卡 A100，训练 10 epoch，保存 checkpoint</li>
+<li>在 Bridge v2 OOD test split（加入随机扰动）上评估 task success rate</li>
+<li>与两个 baseline 在相同 test split 上对比</li>
+</ol>
+<p><strong>Expected Outcome</strong></p>
+<ul>
+<li>假设成立：w/ recovery 的 task success rate 比 OpenVLA baseline 在 OOD test set 上提升 ≥5%（绝对值），recovery trigger precision ≥ 80%</li>
+<li>假设不成立：若提升 &lt; 2% 或 recovery trigger precision &lt; 60%，说明轻量 head 表达能力不足；下一步应扩大 recovery module（考虑增加 cross-attention 层）或重新审视 failure detection 的 feature 设计</li>
+</ul>
+<p><strong>Risk &amp; Mitigation</strong></p>
+<ul>
+<li>风险 1：recovery training set 规模不足，head 过拟合（medium）→ 先做数据增强（random crop + color jitter），不足时考虑 synthetic failure generation</li>
+<li>风险 2：OOD test set 与 training distribution 差距过大，base VLA 本身失败率过高掩盖 recovery 效果（medium）→ 分层分析：分别报告 mild / severe OOD 扰动下的指标</li>
+<li>风险 3：recovery head 增加推理延迟超出实时控制要求（low）→ 提前 profile latency；若超标改用 distillation 压缩 head</li>
+</ul>
+</li>
+<li>
+<p>Read <code>Templates/Experiment.md</code> → Write <code>Experiments/2026-03-28-VLA-GoalConditionedRecovery.md</code>，填入上述方案，status=<code>planned</code></p>
+</li>
+<li>
+<p>Edit <code>Ideas/VLA-GoalConditionedRecovery.md</code> — 追加：</p>
+<figure data-rehype-pretty-code-figure><pre tabindex="0" data-language="markdown" data-theme="github-light github-dark"><code data-language="markdown" data-theme="github-light github-dark" style="display:grid;"><span data-line><span style="--shiki-light:#005CC5;--shiki-light-font-weight:bold;--shiki-dark:#79B8FF;--shiki-dark-font-weight:bold;">## Experiments</span></span>
+<span data-line><span style="--shiki-light:#E36209;--shiki-dark:#FFAB70;">-</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;"> [[</span><span style="--shiki-light:#032F62;--shiki-light-text-decoration:underline;--shiki-dark:#DBEDFF;--shiki-dark-text-decoration:underline;">Experiments/2026-03-28-VLA-GoalConditionedRecovery</span><span style="--shiki-light:#24292E;--shiki-dark:#E1E4E8;">]] — 验证 goal-conditioned recovery module 在 OOD 扰动下的 task success rate 提升</span></span></code></pre></figure>
+</li>
+<li>
+<p>Edit <code>Workbench/logs/2026-03-28.md</code> — 追加 log entry，primary-metric: task success rate on OOD test set，key-risk: recovery training set 规模不足导致过拟合</p>
+</li>
+</ol></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="qmmkjm" class="overflow"><li class="depth-0"><a href="#purpose" data-for="purpose">Purpose</a></li><li class="depth-0"><a href="#steps" data-for="steps">Steps</a></li><li class="depth-1"><a href="#step-1读取目标-idea-笔记验证-status" data-for="step-1读取目标-idea-笔记验证-status">Step 1：读取目标 Idea 笔记，验证 status</a></li><li class="depth-1"><a href="#step-2检索历史记忆" data-for="step-2检索历史记忆">Step 2：检索历史记忆</a></li><li class="depth-1"><a href="#step-3设计实验方案六部分" data-for="step-3设计实验方案六部分">Step 3：设计实验方案六部分</a></li><li class="depth-1"><a href="#step-4按模板创建实验文件" data-for="step-4按模板创建实验文件">Step 4：按模板创建实验文件</a></li><li class="depth-1"><a href="#step-5在-idea-笔记中追加实验链接" data-for="step-5在-idea-笔记中追加实验链接">Step 5：在 Idea 笔记中追加实验链接</a></li><li class="depth-1"><a href="#step-6追加日志" data-for="step-6追加日志">Step 6：追加日志</a></li><li class="depth-0"><a href="#verify" data-for="verify">Verify</a></li><li class="depth-0"><a href="#guard" data-for="guard">Guard</a></li><li class="depth-0"><a href="#examples" data-for="examples">Examples</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../../../postscript.js" type="module"></script></html>

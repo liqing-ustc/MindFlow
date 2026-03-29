@@ -1,0 +1,1315 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>AutoResearch 生态 Skill 设计深度分析</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="AutoResearch 生态 Skill 设计深度分析"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="AutoResearch 生态 Skill 设计深度分析"/><meta name="twitter:description" content="Overview 本文对 AutoResearch.md 中覆盖的 9 个开源项目 的 skill/能力单元设计进行深度拆解，从 定义格式、组织方式、执行协议、状态管理、质量守卫 五个维度横向对比，提炼出可复用的设计 pattern。 一、逐项目 Skill 设计深度分析 1. Karpathy autoresearch — 极简三文件协议 Skill 载体：不叫 “skill”，但 program.md 本质就是一个 skill 文件——自然语言指令，定义 agent 的行为边界。 三文件架构即协议： 文件角色可变性prepare.py数据准备 + 评估逻辑不可变（冻结评估标准）train.py模型 + 训练循环Agent 唯一可改文件program.md自然语言指令人类唯一编辑入口 核心设计 pattern： 沙盒隔离：评估代码（prepare.py）与实验代码（train.py）物理隔离，杜绝 agent 通过修改评估逻辑”作弊” 固定时间窗口：每次实验严格 5 分钟，不同架构在同一标尺下公平对比 单指标棘轮：val_bpb（bits per byte），词表无关，方向单一（越低越好） 协议极简性：整个 “skill” 就是一个 Markdown 文件 + 两个 Python 文件，~630 行总代码 状态管理：实验日志（results log），无 git-as-memory，无持久化记忆 Guard Rail： 文件系统级约束（只能改 train.py） 固定 5 分钟超时 评估代码冻结 设计哲学：最小可行协议——用文件系统的读写权限实现 agent 行为约束，零框架开销。 2."/><meta property="og:description" content="Overview 本文对 AutoResearch.md 中覆盖的 9 个开源项目 的 skill/能力单元设计进行深度拆解，从 定义格式、组织方式、执行协议、状态管理、质量守卫 五个维度横向对比，提炼出可复用的设计 pattern。 一、逐项目 Skill 设计深度分析 1. Karpathy autoresearch — 极简三文件协议 Skill 载体：不叫 “skill”，但 program.md 本质就是一个 skill 文件——自然语言指令，定义 agent 的行为边界。 三文件架构即协议： 文件角色可变性prepare.py数据准备 + 评估逻辑不可变（冻结评估标准）train.py模型 + 训练循环Agent 唯一可改文件program.md自然语言指令人类唯一编辑入口 核心设计 pattern： 沙盒隔离：评估代码（prepare.py）与实验代码（train.py）物理隔离，杜绝 agent 通过修改评估逻辑”作弊” 固定时间窗口：每次实验严格 5 分钟，不同架构在同一标尺下公平对比 单指标棘轮：val_bpb（bits per byte），词表无关，方向单一（越低越好） 协议极简性：整个 “skill” 就是一个 Markdown 文件 + 两个 Python 文件，~630 行总代码 状态管理：实验日志（results log），无 git-as-memory，无持久化记忆 Guard Rail： 文件系统级约束（只能改 train.py） 固定 5 分钟超时 评估代码冻结 设计哲学：最小可行协议——用文件系统的读写权限实现 agent 行为约束，零框架开销。 2."/><meta property="og:image:alt" content="Overview 本文对 AutoResearch.md 中覆盖的 9 个开源项目 的 skill/能力单元设计进行深度拆解，从 定义格式、组织方式、执行协议、状态管理、质量守卫 五个维度横向对比，提炼出可复用的设计 pattern。 一、逐项目 Skill 设计深度分析 1. Karpathy autoresearch — 极简三文件协议 Skill 载体：不叫 “skill”，但 program.md 本质就是一个 skill 文件——自然语言指令，定义 agent 的行为边界。 三文件架构即协议： 文件角色可变性prepare.py数据准备 + 评估逻辑不可变（冻结评估标准）train.py模型 + 训练循环Agent 唯一可改文件program.md自然语言指令人类唯一编辑入口 核心设计 pattern： 沙盒隔离：评估代码（prepare.py）与实验代码（train.py）物理隔离，杜绝 agent 通过修改评估逻辑”作弊” 固定时间窗口：每次实验严格 5 分钟，不同架构在同一标尺下公平对比 单指标棘轮：val_bpb（bits per byte），词表无关，方向单一（越低越好） 协议极简性：整个 “skill” 就是一个 Markdown 文件 + 两个 Python 文件，~630 行总代码 状态管理：实验日志（results log），无 git-as-memory，无持久化记忆 Guard Rail： 文件系统级约束（只能改 train.py） 固定 5 分钟超时 评估代码冻结 设计哲学：最小可行协议——用文件系统的读写权限实现 agent 行为约束，零框架开销。 2."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/AutoResearch-SkillDesign"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/AutoResearch-SkillDesign"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview 本文对 AutoResearch.md 中覆盖的 9 个开源项目 的 skill/能力单元设计进行深度拆解，从 定义格式、组织方式、执行协议、状态管理、质量守卫 五个维度横向对比，提炼出可复用的设计 pattern。 一、逐项目 Skill 设计深度分析 1. Karpathy autoresearch — 极简三文件协议 Skill 载体：不叫 “skill”，但 program.md 本质就是一个 skill 文件——自然语言指令，定义 agent 的行为边界。 三文件架构即协议： 文件角色可变性prepare.py数据准备 + 评估逻辑不可变（冻结评估标准）train.py模型 + 训练循环Agent 唯一可改文件program.md自然语言指令人类唯一编辑入口 核心设计 pattern： 沙盒隔离：评估代码（prepare.py）与实验代码（train.py）物理隔离，杜绝 agent 通过修改评估逻辑”作弊” 固定时间窗口：每次实验严格 5 分钟，不同架构在同一标尺下公平对比 单指标棘轮：val_bpb（bits per byte），词表无关，方向单一（越低越好） 协议极简性：整个 “skill” 就是一个 Markdown 文件 + 两个 Python 文件，~630 行总代码 状态管理：实验日志（results log），无 git-as-memory，无持久化记忆 Guard Rail： 文件系统级约束（只能改 train.py） 固定 5 分钟超时 评估代码冻结 设计哲学：最小可行协议——用文件系统的读写权限实现 agent 行为约束，零框架开销。 2."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/AutoResearch-SkillDesign"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="6sls59"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/spatial-memory" class="sidebar-tag-pill">#spatial-memory</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>AutoResearch-SkillDesign</a></div></nav><h1 class="article-title">AutoResearch 生态 Skill 设计深度分析</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-29T15:50:06.726Z">Mar 29, 2026</time><span>25 min read</span></p><ul class="tags"><li><a href="../tags/auto-research" class="internal tag-link">auto-research</a></li><li><a href="../tags/skill-design" class="internal tag-link">skill-design</a></li><li><a href="../tags/architecture" class="internal tag-link">architecture</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>本文对 AutoResearch.md 中覆盖的 <strong>9 个开源项目</strong> 的 skill/能力单元设计进行深度拆解，从 <strong>定义格式、组织方式、执行协议、状态管理、质量守卫</strong> 五个维度横向对比，提炼出可复用的设计 pattern。</p>
+<hr/>
+<h2 id="一逐项目-skill-设计深度分析">一、逐项目 Skill 设计深度分析<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#一逐项目-skill-设计深度分析" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="1-karpathy-autoresearch--极简三文件协议">1. Karpathy autoresearch — 极简三文件协议<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#1-karpathy-autoresearch--极简三文件协议" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Skill 载体</strong>：不叫 “skill”，但 <code>program.md</code> 本质就是一个 skill 文件——自然语言指令，定义 agent 的行为边界。</p>
+<p><strong>三文件架构即协议</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>文件</th><th>角色</th><th>可变性</th></tr></thead><tbody><tr><td><code>prepare.py</code></td><td>数据准备 + 评估逻辑</td><td><strong>不可变</strong>（冻结评估标准）</td></tr><tr><td><code>train.py</code></td><td>模型 + 训练循环</td><td><strong>Agent 唯一可改文件</strong></td></tr><tr><td><code>program.md</code></td><td>自然语言指令</td><td><strong>人类唯一编辑入口</strong></td></tr></tbody></table></div>
+<p><strong>核心设计 pattern</strong>：</p>
+<ul>
+<li><strong>沙盒隔离</strong>：评估代码（prepare.py）与实验代码（train.py）物理隔离，杜绝 agent 通过修改评估逻辑”作弊”</li>
+<li><strong>固定时间窗口</strong>：每次实验严格 5 分钟，不同架构在同一标尺下公平对比</li>
+<li><strong>单指标棘轮</strong>：val_bpb（bits per byte），词表无关，方向单一（越低越好）</li>
+<li><strong>协议极简性</strong>：整个 “skill” 就是一个 Markdown 文件 + 两个 Python 文件，~630 行总代码</li>
+</ul>
+<p><strong>状态管理</strong>：实验日志（results log），无 git-as-memory，无持久化记忆</p>
+<p><strong>Guard Rail</strong>：</p>
+<ul>
+<li>文件系统级约束（只能改 train.py）</li>
+<li>固定 5 分钟超时</li>
+<li>评估代码冻结</li>
+</ul>
+<p><strong>设计哲学</strong>：<strong>最小可行协议</strong>——用文件系统的读写权限实现 agent 行为约束，零框架开销。</p>
+<hr/>
+<h3 id="2-autoresearchclaw--23-阶段流水线协议">2. AutoResearchClaw — 23 阶段流水线协议<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#2-autoresearchclaw--23-阶段流水线协议" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Skill 载体</strong>：23 个 stage 即 23 个隐式 skill，每个 stage 有专用 prompt（定义在 <code>prompts.default.yaml</code>）。</p>
+<p><strong>架构层次</strong>：</p>
+<pre><code>config.arc.yaml          ← 全局配置（模型、预算、审批门）
+prompts.default.yaml     ← 23 stage-specific system prompts
+RESEARCHCLAW_AGENTS.md   ← Agent 编排逻辑
+RESEARCHCLAW_CLAUDE.md   ← Claude Code 集成入口
+~/.metaclaw/skills/      ← MetaClaw 学习型 skill（运行时生成）
+</code></pre>
+<p><strong>23 阶段 = 8 相位</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>相位</th><th>阶段</th><th>核心能力</th></tr></thead><tbody><tr><td>A: Scoping</td><td>1-2</td><td>问题树分解</td></tr><tr><td>B: Literature</td><td>3-6</td><td>多源检索 + 相关性筛选</td></tr><tr><td>C: Synthesis</td><td>7-8</td><td>聚类 + 假设生成（辩论）</td></tr><tr><td>D: Design</td><td>9-11</td><td>实验设计 + 硬件感知代码生成</td></tr><tr><td>E: Execution</td><td>12-13</td><td>沙盒执行 + NaN 检测 + 自修复</td></tr><tr><td>F: Decision</td><td>14-15</td><td>多 Agent 分析 → PROCEED/REFINE/PIVOT</td></tr><tr><td>G: Writing</td><td>16-19</td><td>大纲→草稿→评审→修订</td></tr><tr><td>H: Finalize</td><td>20-23</td><td>质量门 + 知识归档 + LaTeX 导出 + 引用校验</td></tr></tbody></table></div>
+<p><strong>Multi-Agent 辩论协议</strong>：</p>
+<ul>
+<li>假设生成、结果分析、同行评审三环节均用 structured multi-perspective debate</li>
+<li>不是自我博弈，而是多个 LLM 视角对抗</li>
+</ul>
+<p><strong>6 类知识库</strong>：decisions / experiments / findings / literature / questions / reviews，30 天时间衰减</p>
+<p><strong>MetaClaw 自学习 Skill</strong>：</p>
+<ul>
+<li>每次运行提取最多 3 个 skill（从失败中学习）</li>
+<li>存储格式：<code>Severity → Stage → Pattern → Fix → Time-Decay</code></li>
+<li>通过 <code>build_overlay()</code> 注入所有 23 个 stage 的 prompt</li>
+</ul>
+<p><strong>Gate 机制</strong>：Stage 5、9、20 为审批门，可人工/自动；Stage 15 自主决策 REFINE→13 或 PIVOT→8</p>
+<p><strong>质量守卫</strong>：</p>
+<ul>
+<li>NaN/Inf 快速失败 + 自修复循环（最多 10 次）</li>
+<li>4 层引用校验（arXiv ID → CrossRef DOI → Semantic Scholar 标题匹配 → LLM 相关性打分）</li>
+<li>Anti-fabrication：VerifiedRegistry 确保论文数据与实验一致</li>
+<li>AI-slop 检测 + 7 维 NeurIPS 标准评审</li>
+</ul>
+<p><strong>设计哲学</strong>：<strong>工业级流水线</strong>——将科研拆解为可审计的 23 个原子步骤，每步有独立 prompt、gate、知识库读写。</p>
+<hr/>
+<h3 id="3-evoscientist--双层架构--dual-memory--evoskills-生态">3. EvoScientist — 双层架构 + Dual Memory + EvoSkills 生态<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#3-evoscientist--双层架构--dual-memory--evoskills-生态" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>双层架构</strong>：论文与代码实现存在对应关系但粒度不同。</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>层次</th><th>架构</th><th>说明</th></tr></thead><tbody><tr><td>论文</td><td>3 Agent（RA/EA/EMA）</td><td>Researcher Agent（创意）+ Engineer Agent（实验）+ Evolution Manager Agent（蒸馏）</td></tr><tr><td>代码</td><td>6 Sub-agent（LangGraph）</td><td>Planner / Researcher / Coder / Debugger / Analyst / Writer，更细粒度分工</td></tr></tbody></table></div>
+<p><strong>Dual Memory 系统</strong>（核心创新）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>记忆模块</th><th>内容</th><th>消费者</th><th>更新者</th></tr></thead><tbody><tr><td><strong>Ideation Memory (M_I)</strong></td><td>可行研究方向 + 失败方向</td><td>Researcher Agent</td><td>EMA (IDE + IVE)</td></tr><tr><td><strong>Experimentation Memory (M_E)</strong></td><td>有效数据处理策略 + 模型训练策略 + 最佳代码</td><td>Engineer Agent</td><td>EMA (ESE)</td></tr></tbody></table></div>
+<p>关键设计：“what to research” 与 “how to implement” 是根本不同的知识类型，分开存储和检索。</p>
+<p><strong>记忆检索</strong>：mxbai-embed-large（1024 维）via Ollama 语义搜索，本质是轻量 RAG。</p>
+<p><strong>三大自进化机制</strong>（EMA 管理）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>机制</th><th>缩写</th><th>蒸馏内容</th><th>更新记忆</th></tr></thead><tbody><tr><td>Idea Direction Evolution</td><td>IDE</td><td>从 top-ranked ideas 提取可行方向</td><td>M_I</td></tr><tr><td>Idea Validation Evolution</td><td>IVE</td><td>从失败验证中提取 anti-patterns</td><td>M_I</td></tr><tr><td>Experiment Strategy Evolution</td><td>ESE</td><td>从成功实验提取可复用 patterns</td><td>M_E</td></tr></tbody></table></div>
+<p><strong>实测效果</strong>：执行成功率从 34.39%（无进化）→ 44.56%（有进化），相对提升约 30%。</p>
+<p><strong>EvoSkills 生态</strong>（独立仓库 github.com/EvoScientist/EvoSkills）：</p>
+<p>10 个可安装 skill，组织为流水线：<strong>ideation → experimentation → writing → memory</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Skill</th><th>功能</th></tr></thead><tbody><tr><td>idea-tournament</td><td>生成并排名竞争性研究创意；读取 M_I</td></tr><tr><td>proposal-extension</td><td>将获胜创意扩展为 5+1 节研究提案</td></tr><tr><td>pre-writing-planning</td><td>故事设计 + 实验规划 + 图表设计 + 时间线</td></tr><tr><td>experiment-pipeline</td><td>结构化执行，有 attempt 预算和 gate 条件：Initial(≤20) → Tuning(≤12) → Method(≤12) → Ablation(≤18)</td></tr><tr><td>evo-memory</td><td>学习层——维护 M_I 和 M_E，跨 cycle 积累知识</td></tr></tbody></table></div>
+<p><strong>自进化闭环</strong>：idea-tournament + experiment-pipeline + evo-memory 形成学习循环——evo-memory 从 cycle 结果中蒸馏策略，写回记忆库供下一 cycle 检索。</p>
+<p><strong>Skill 定义格式</strong>（skill-creator/SKILL.md 标准）：</p>
+<pre><code>skill-name/
+├── SKILL.md          ← 必须：YAML frontmatter + Markdown 指令
+├── scripts/          ← 可选：自动化脚本
+├── references/       ← 可选：参考文档
+└── assets/           ← 可选：资源文件
+</code></pre>
+<p><strong>渐进式披露（3 级）</strong>：</p>
+<ul>
+<li>Level 1 = Trigger（何时激活，~100 words，始终加载）</li>
+<li>Level 2 = Runbook（详细步骤，触发时加载，&lt;500 行理想）</li>
+<li>Level 3 = Reference Library（支撑材料，按需加载）</li>
+</ul>
+<p><strong>自由度控制</strong>：</p>
+<ul>
+<li>高自由度：文本指导（多种有效路径）</li>
+<li>中自由度：伪代码 + 可配参数</li>
+<li>低自由度：具体脚本（一致性关键时）</li>
+</ul>
+<p><strong>Description 设计原则</strong>：“a little pushy to combat undertriggering”——积极触发防止遗漏。</p>
+<p><strong>记忆中间件</strong>（<code>middleware/memory.py</code>）：</p>
+<ul>
+<li>持久化到 <code>MEMORY.md</code>（filesystem backend）</li>
+<li>4 类记忆：User Profile / Research Preferences / Experiment History / Learned Preferences</li>
+<li><strong>Injection</strong>：每次 LLM 调用前注入系统提示</li>
+<li><strong>Extraction</strong>：每 20 条对话自动提取结构化事实（Pydantic model 强类型校验）</li>
+<li>线程安全，跨会话持久</li>
+</ul>
+<p><strong>Agent 通信</strong>：file-based handoffs（非 message-passing），保真度高，可并行，可审计。</p>
+<p><strong>设计哲学</strong>：<strong>进化式科研</strong>——不只完成任务，而是在每个 cycle 中积累经验，逐步提升成功率。Dual Memory 是从「工具」到「科研伙伴」的关键跳跃。</p>
+<hr/>
+<h3 id="4-aris--markdown-as-protocol-先锋">4. ARIS — Markdown-as-Protocol 先锋<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#4-aris--markdown-as-protocol-先锋" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Skill 载体</strong>：纯 Markdown SKILL.md，agent-agnostic，任何 LLM 均可读取执行。</p>
+<p><strong>Skill 组织</strong>（31 Core + 12 Community）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>类别</th><th>代表 Skill</th></tr></thead><tbody><tr><td>核心工作流</td><td>idea-discovery, experiment-bridge, auto-review-loop, paper-writing, research-pipeline, rebuttal</td></tr><tr><td>文献 &amp; 创意</td><td>literature-survey, novelty-check, research-refine, experiment-plan</td></tr><tr><td>实验 &amp; 分析</td><td>experiment-bridge-gpu, training-check, result-to-claim, ablation-planner, monitor-experiment</td></tr><tr><td>论文 &amp; 展示</td><td>paper-slides, paper-poster, paper-illustration, grant-proposal, proof-writer</td></tr><tr><td>专项</td><td>semantic-scholar, comm-lit-review, dse-loop, formula-derivation, paper-review</td></tr></tbody></table></div>
+<p><strong>跨模型对抗协议</strong>（核心创新）：</p>
+<ul>
+<li><strong>Executor</strong>（快速流畅）：Claude Code 写代码 / 生成想法 / 起草论文</li>
+<li><strong>Reviewer</strong>（审慎严谨）：GPT-5.4 xhigh 批评 / 压力测试 / 评分（1-10）</li>
+<li>循环直到收敛，打破 self-play 盲区</li>
+</ul>
+<p><strong>触发机制</strong>：</p>
+<ul>
+<li>Slash 命令：<code>/idea-discovery &quot;topic&quot;</code>, <code>/research-pipeline &quot;topic&quot;</code></li>
+<li>参数透传：<code>— key: value</code> 内联覆盖</li>
+<li>组合链路：单 skill 独立运行 / 手动串联 / <code>/research-pipeline</code> 全自动</li>
+</ul>
+<p><strong>Guard 机制</strong>：</p>
+<ul>
+<li>Rebuttal 三门：No fabrication / No overpromise / Full coverage</li>
+<li>Anti-hallucination 引用：从 DBLP/CrossRef 获取真实 BibTeX</li>
+<li>GPU 部署前代码审查（GPT-5.4 xhigh review）</li>
+<li>Checkpoint 门控：<code>AUTO_PROCEED: true/false</code>, <code>human_checkpoint: true</code></li>
+</ul>
+<p><strong>多文献源</strong>：Zotero / Obsidian vault / Local PDF / arXiv / Semantic Scholar</p>
+<p><strong>跨 Agent 兼容</strong>：Claude Code / Codex CLI / OpenClaw / Cursor / Trae / Windsurf / Antigravity</p>
+<p><strong>Executor 变体</strong>：</p>
+<ul>
+<li><code>skills-codex/</code> → Codex 原生版</li>
+<li><code>skills-codex-claude-review/</code> → Codex 执行 + Claude 评审</li>
+<li><code>skills-codex-gemini-review/</code> → Codex 执行 + Gemini 评审</li>
+</ul>
+<p><strong>设计哲学</strong>：<strong>方法论优先</strong>——skill 是可组合的 Markdown 指令，整个栈基于纯文本，不绑定任何框架。</p>
+<hr/>
+<h3 id="5-dr-claw--gui-平台--skill-符号链接模式">5. Dr. Claw — GUI 平台 + Skill 符号链接模式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#5-dr-claw--gui-平台--skill-符号链接模式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Skill 载体</strong>：标准 SKILL.md，通过 symlink 挂载到项目的 <code>.claude/skills/</code> 目录。</p>
+<p><strong>Skill 库架构</strong>：</p>
+<ul>
+<li>100+ 研究 skill，跨 6 个研究阶段</li>
+<li>全局库 <code>dr-claw/skills/</code> → 项目级 symlink <code>.claude/skills/&lt;skill-id>/</code></li>
+<li>运行时自动发现，无需注册</li>
+</ul>
+<p><strong>6 阶段映射</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>阶段</th><th>Skill 类别</th><th>输出目录</th></tr></thead><tbody><tr><td>Survey</td><td>文献检索 skill</td><td><code>Survey/reports/</code></td></tr><tr><td>Ideation</td><td>创意生成 skill</td><td><code>Ideation/ideas/</code></td></tr><tr><td>Experiment</td><td>实验实现 skill</td><td><code>Experiment/core_code/</code></td></tr><tr><td>Analysis</td><td>分析统计 skill</td><td><code>Experiment/analysis/</code></td></tr><tr><td>Publication</td><td>论文撰写 skill</td><td><code>Publication/paper/</code></td></tr><tr><td>Promotion</td><td>展示传播 skill</td><td><code>Promotion/slides/</code></td></tr></tbody></table></div>
+<p><strong>调用方式</strong>：</p>
+<ul>
+<li>GUI：Skill Library Dashboard 浏览 → 选择 → 执行</li>
+<li>Chat：<code>Read .claude/skills/&lt;skill-id>/SKILL.md and follow it</code></li>
+<li>CLI：<code>drclaw --json chat reply --project &lt;id> -m &quot;message&quot;</code></li>
+</ul>
+<p><strong>多后端支持</strong>：Claude Code CLI / Gemini CLI / Codex CLI，用户在 Settings 中切换</p>
+<p><strong>Pipeline Planner</strong>：<code>inno-pipeline-planner</code> skill 允许对话式生成研究计划</p>
+<p><strong>远程执行</strong>：<code>openclaw_drclaw_turn.sh</code> 串行化执行防止 session-lock 冲突</p>
+<p><strong>设计哲学</strong>：<strong>GUI 降门槛 + Symlink 即插即用</strong>——skill 存为版本化目录，新项目自动继承全局 skill 库。</p>
+<hr/>
+<h3 id="6-orchestra-ai-research-skills--超大规模-skill-库">6. Orchestra AI-Research-SKILLs — 超大规模 Skill 库<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#6-orchestra-ai-research-skills--超大规模-skill-库" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Skill 载体</strong>：标准 SKILL.md，22 分类 87 个 skill。</p>
+<p><strong>分类体系</strong>（22 categories）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>编号</th><th>分类</th><th>Skill 数</th></tr></thead><tbody><tr><td>00</td><td>Autoresearch（编排层）</td><td>1</td></tr><tr><td>01-04</td><td>模型开发（架构/Tokenization/Fine-Tuning）</td><td>11</td></tr><tr><td>05-07</td><td>高级训练（可解释性/数据处理/Post-Training）</td><td>14</td></tr><tr><td>08-10</td><td>基础设施（分布式训练/优化/Infra）</td><td>15</td></tr><tr><td>11-12</td><td>部署（推理/评估）</td><td>7</td></tr><tr><td>13-16</td><td>AI 能力（多模态/Agent/RAG/Prompt Eng）</td><td>20</td></tr><tr><td>17-18</td><td>生产（MLOps/Observability）</td><td>5</td></tr><tr><td>19-21</td><td>新兴（Techniques/Paper Writing/Ideation）</td><td>10</td></tr></tbody></table></div>
+<p><strong>安装协议</strong>：</p>
+<ul>
+<li>CLI：<code>npx @orchestra-research/ai-research-skills</code>（交互式，自动检测已装 agent）</li>
+<li>Marketplace：<code>/plugin install fine-tuning@ai-research-skills</code></li>
+<li>安装到 <code>~/.orchestra/skills/</code>，agent symlink 自动生成</li>
+</ul>
+<p><strong>编排层</strong>：<code>00-autoresearch-skill/</code> 是中枢，双循环架构（inner optimization + outer synthesis），路由到领域 skill</p>
+<p><strong>Prompt Guard</strong>：Meta 86M 参数模型，99%+ TPR，&lt;2ms GPU，injection/jailbreak 检测</p>
+<p><strong>跨 Agent 兼容</strong>：Claude Code / OpenCode / Cursor / Codex / Gemini CLI / Qwen Code</p>
+<p><strong>设计哲学</strong>：<strong>大规模 skill 库 + NPM 分发</strong>——用包管理器思维做 skill 发现和安装，skill 数量 > 质量深度。</p>
+<hr/>
+<h3 id="7-research-claw--5-阶段任务流水线--定时自动化">7. Research-Claw — 5 阶段任务流水线 + 定时自动化<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#7-research-claw--5-阶段任务流水线--定时自动化" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Skill 载体</strong>：标准 SKILL.md（YAML frontmatter），自动发现无需注册。</p>
+<p><strong>Skill 目录结构</strong>：</p>
+<pre><code>config/.skills/{skill-name}/
+├── SKILL.md          ← 必须：YAML frontmatter 定义
+└── templates/        ← 可选：模板文件
+</code></pre>
+<p><strong>Sub-Agent 沙盒架构</strong>：</p>
+<ul>
+<li>Main Agent 编排 → Sub-Agent 在隔离 overlay 目录中执行 → 合并输出</li>
+<li>防止子任务意外覆盖主项目文件</li>
+</ul>
+<p><strong>5 阶段任务流水线</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>阶段</th><th>功能</th><th>命令</th></tr></thead><tbody><tr><td>UNDERSTAND</td><td>读取项目上下文</td><td>自动</td></tr><tr><td>PROPOSE</td><td>生成范围</td><td><code>task_propose</code></td></tr><tr><td>PLAN</td><td>构建任务 DAG</td><td><code>task_build</code></td></tr><tr><td>EXECUTE</td><td>并行批处理</td><td><code>task_execute</code></td></tr><tr><td>FINALIZE</td><td>合并提交</td><td><code>task_commit</code></td></tr></tbody></table></div>
+<p><strong>项目记忆</strong>：<code>project.yaml</code> 跨会话持久化 + 自动 context 摘要（token 限制内）</p>
+<p><strong>Overleaf 双向同步</strong>：<code>/sync pull</code> + <code>/sync push</code>，AI 编辑自动 commit 到 Git</p>
+<p><strong>定时自动化</strong>（APScheduler + cron）：</p>
+<ul>
+<li>Daily Scan：搜索新论文</li>
+<li>Direction Drift：检测研究方向偏移</li>
+<li>Deadline Watch：会议截止日期追踪</li>
+<li>Weekly Digest：周报汇编</li>
+<li>Profile Refresh：更新研究画像</li>
+</ul>
+<p><strong>多渠道通知</strong>：Telegram / 飞书 / 钉钉 / Email / Apprise</p>
+<p><strong>设计哲学</strong>：<strong>自托管科研助手</strong>——重点不在 skill 深度，而在生活方式集成（定时任务 + 通知 + 协作同步）。</p>
+<hr/>
+<h3 id="8-ai-scientist-v2--目标驱动阶段式-agent-管理">8. AI Scientist v2 — 目标驱动阶段式 Agent 管理<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#8-ai-scientist-v2--目标驱动阶段式-agent-管理" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Skill 载体</strong>：不使用 SKILL.md，而是<strong>代码级模块化</strong>——每个 Python 模块就是一个能力单元。</p>
+<p><strong>模块架构</strong>：</p>
+<pre><code>ai_scientist/
+├── perform_ideation_temp_free.py   ← 创意生成（Semantic Scholar 检索）
+├── perform_writeup.py              ← 论文撰写
+├── perform_plotting.py             ← 图表生成
+├── perform_llm_review.py           ← LLM 评审
+├── perform_vlm_review.py           ← VLM 视觉评审
+├── tools/
+│   ├── base_tool.py                ← 工具基类
+│   └── semantic_scholar.py         ← 文献搜索工具
+├── treesearch/
+│   ├── agent_manager.py            ← 阶段式 Agent 编排
+│   ├── parallel_agent.py           ← 并行 Agent 执行
+│   ├── journal.py                  ← 实验日志（节点树）
+│   ├── bfts_utils.py               ← Best-First Tree Search
+│   ├── interpreter.py              ← 代码解释器
+│   └── journal2report.py           ← 日志→报告转化
+└── fewshot_examples/               ← Few-shot 论文示例
+</code></pre>
+<p><strong>4 阶段 Agent 管理器</strong>（AgentManager）：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Stage</th><th>目标</th><th>最大迭代</th></tr></thead><tbody><tr><td>1</td><td>获得至少 1 个可运行实现</td><td>20</td></tr><tr><td>2</td><td>跨 ≥2 数据集收敛</td><td>12</td></tr><tr><td>3</td><td>实验计划执行</td><td>12</td></tr><tr><td>4</td><td>风险因子处理</td><td>18</td></tr></tbody></table></div>
+<p><strong>Progressive Agentic Tree Search</strong>（BFTS）：</p>
+<ul>
+<li><code>num_workers: 4</code> 并行探索路径</li>
+<li><code>max_debug_depth: 3</code> 调试递归深度</li>
+<li><code>debug_prob: 0.5</code> 调试触发概率</li>
+<li><code>num_drafts: 3</code> 每次生成多个候选方案</li>
+<li>Journal 追踪每个节点的指标、父子关系、分析反馈</li>
+</ul>
+<p><strong>LLM 驱动的阶段推进</strong>：</p>
+<ul>
+<li><code>_check_stage_completion()</code> 检查完成条件</li>
+<li><code>_evaluate_stage_progression()</code> LLM 判断是否推进</li>
+<li><code>_identify_issues()</code> 扫描持续错误模式</li>
+<li>每次转换记录 <code>StageTransition</code> 推理过程</li>
+</ul>
+<p><strong>多模型分工</strong>：</p>
+<ul>
+<li>代码生成：Claude 3.5 Sonnet（12,000 token）</li>
+<li>反馈分析：GPT-4o（8,192 token）</li>
+<li>报告合成：GPT-4o（temperature 1.0）</li>
+</ul>
+<p><strong>Checkpoint 持久化</strong>：pickle 序列化 journal + stage_history + config + workspace</p>
+<p><strong>创意生成协议</strong>：</p>
+<ul>
+<li>迭代精炼（5 轮 reflection）</li>
+<li>Semantic Scholar 文献验证（推荐但不强制）</li>
+<li>结构化输出（ACTION + ARGUMENTS regex 解析）</li>
+<li>跨运行复用（<code>reload_ideas</code> 参数）</li>
+</ul>
+<p><strong>设计哲学</strong>：<strong>判断驱动流水线</strong>——不是刚性状态机，而是 LLM 在每个决策点做推理判断；tree search 探索解空间而非线性推进。</p>
+<hr/>
+<h3 id="9-uditgoenka-autoresearch--8-铁律--9-命令-claude-code-skill">9. uditgoenka autoresearch — 8 铁律 + 9 命令 Claude Code Skill<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#9-uditgoenka-autoresearch--8-铁律--9-命令-claude-code-skill" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>Skill 载体</strong>：标准 SKILL.md + 10 个 reference 协议文档 + 9 个 command 定义。</p>
+<p><strong>文件结构</strong>：</p>
+<pre><code>claude-plugin/
+├── skills/autoresearch/
+│   ├── SKILL.md                        ← 主 skill 定义
+│   └── references/
+│       ├── autonomous-loop-protocol.md ← 8 阶段循环
+│       ├── core-principles.md          ← 7 通用原则
+│       ├── plan-workflow.md
+│       ├── security-workflow.md
+│       ├── ship-workflow.md
+│       ├── debug-workflow.md
+│       ├── fix-workflow.md
+│       ├── scenario-workflow.md
+│       ├── predict-workflow.md
+│       ├── learn-workflow.md
+│       └── results-logging.md          ← TSV 追踪
+└── commands/autoresearch/              ← 9 个命令注册
+</code></pre>
+<p><strong>8 条铁律协议</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>#</th><th>铁律</th><th>实现机制</th></tr></thead><tbody><tr><td>1</td><td>Loop until done</td><td>无界循环或 N 轮</td></tr><tr><td>2</td><td>Read before write</td><td>每轮先读全部上下文</td></tr><tr><td>3</td><td>One change per iteration</td><td>原子修改，故障可诊断</td></tr><tr><td>4</td><td>Mechanical verification only</td><td>只看指标，禁止主观判断</td></tr><tr><td>5</td><td>Auto rollback</td><td><code>git revert</code> 失败即回滚</td></tr><tr><td>6</td><td>Simplicity preferred</td><td>同效果更少代码 = 保留</td></tr><tr><td>7</td><td>Git as memory</td><td><code>experiment:</code> 前缀 commit</td></tr><tr><td>8</td><td>Think harder when stuck</td><td>重读上下文 + 尝试激进方案</td></tr></tbody></table></div>
+<p><strong>9 命令集</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>命令</th><th>对应协议文档</th><th>核心能力</th></tr></thead><tbody><tr><td><code>/autoresearch</code></td><td>autonomous-loop-protocol.md</td><td>主循环</td></tr><tr><td><code>/autoresearch:plan</code></td><td>plan-workflow.md</td><td>交互式 setup</td></tr><tr><td><code>/autoresearch:security</code></td><td>security-workflow.md</td><td>STRIDE/OWASP 审计</td></tr><tr><td><code>/autoresearch:ship</code></td><td>ship-workflow.md</td><td>8 阶段发布</td></tr><tr><td><code>/autoresearch:debug</code></td><td>debug-workflow.md</td><td>7 技法 bug 猎手</td></tr><tr><td><code>/autoresearch:fix</code></td><td>fix-workflow.md</td><td>迭代修复</td></tr><tr><td><code>/autoresearch:scenario</code></td><td>scenario-workflow.md</td><td>12 维 edge case</td></tr><tr><td><code>/autoresearch:predict</code></td><td>predict-workflow.md</td><td>5 角色辩论</td></tr><tr><td><code>/autoresearch:learn</code></td><td>learn-workflow.md</td><td>文档引擎</td></tr></tbody></table></div>
+<p><strong>Verify + Guard 双轨</strong>：</p>
+<ul>
+<li>Verify = “指标改善了吗？“（主目标）</li>
+<li>Guard = “其他东西没坏吧？“（回归防护）</li>
+<li>Guard 失败 → 最多 2 次返工</li>
+</ul>
+<p><strong>Crash Recovery</strong>：</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>故障类型</th><th>处理</th></tr></thead><tbody><tr><td>语法错误</td><td>即修不算轮次</td></tr><tr><td>运行时错误</td><td>最多 3 次重试</td></tr><tr><td>资源耗尽</td><td>回滚 + 降级变体</td></tr><tr><td>无限循环</td><td>超时自杀 + 回滚</td></tr><tr><td>外部依赖故障</td><td>跳过 + 记录</td></tr></tbody></table></div>
+<p><strong>Git-as-Memory</strong>：</p>
+<ul>
+<li><code>experiment:</code> 前缀 commit</li>
+<li>失败实验通过 <code>git revert</code> 保留（不删除）</li>
+<li>每轮读 <code>git log</code> + <code>git diff</code> 学习历史</li>
+<li>TSV 日志：iteration / commit hash / metric / delta / status / description</li>
+</ul>
+<p><strong>设计哲学</strong>：<strong>Karpathy Loop 的工程化泛化</strong>——从 ML 训练泛化到任意可量化任务，用 8 铁律 + Git 协议实现自主迭代。</p>
+<hr/>
+<h2 id="二skill-设计维度横向对比">二、Skill 设计维度横向对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#二skill-设计维度横向对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="21-skill-定义格式">2.1 Skill 定义格式<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#21-skill-定义格式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>格式</th><th>载体</th><th>Agent-Agnostic?</th></tr></thead><tbody><tr><td>Karpathy</td><td>自然语言 Markdown（program.md）</td><td>单文件</td><td>是</td></tr><tr><td>AutoResearchClaw</td><td>YAML prompt 配置 + MetaClaw SKILL.md</td><td>prompts.default.yaml</td><td>部分</td></tr><tr><td>EvoScientist</td><td>YAML frontmatter SKILL.md + 3 级渐进披露</td><td>目录结构（EvoSkills）</td><td>是</td></tr><tr><td>ARIS</td><td>纯 Markdown SKILL.md</td><td>目录结构</td><td><strong>最强</strong>（6+ agent 验证）</td></tr><tr><td>Dr. Claw</td><td>SKILL.md + symlink</td><td>目录结构</td><td>是</td></tr><tr><td>Orchestra</td><td>SKILL.md（编号分类）</td><td>目录结构</td><td>是（6+ agent）</td></tr><tr><td>Research-Claw</td><td>SKILL.md + YAML frontmatter</td><td>目录结构</td><td>部分</td></tr><tr><td>AI Scientist v2</td><td><strong>Python 模块</strong>（非 Markdown）</td><td>.py 文件</td><td>否（代码绑定）</td></tr><tr><td>uditgoenka</td><td>SKILL.md + 10 reference docs + commands/</td><td>目录结构</td><td>否（Claude Code 绑定）</td></tr></tbody></table></div>
+<h3 id="22-skill-发现与安装">2.2 Skill 发现与安装<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#22-skill-发现与安装" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>发现机制</th><th>安装方式</th></tr></thead><tbody><tr><td>Karpathy</td><td>手动指定 program.md</td><td>无需安装</td></tr><tr><td>AutoResearchClaw</td><td>23 阶段内置</td><td>pip install + config</td></tr><tr><td>EvoScientist</td><td><code>npx -y skills find</code> + skill_manager</td><td>skills.sh 安装</td></tr><tr><td>ARIS</td><td>Slash 命令触发</td><td>手动复制到 skills/</td></tr><tr><td>Dr. Claw</td><td>GUI Skill Library Dashboard</td><td>symlink 自动生成</td></tr><tr><td>Orchestra</td><td><code>npx @orchestra-research/ai-research-skills</code></td><td>NPM 交互式安装</td></tr><tr><td>Research-Claw</td><td>启动时自动发现</td><td>放入 config/.skills/ 即可</td></tr><tr><td>AI Scientist v2</td><td>无（硬编码模块）</td><td>pip install</td></tr><tr><td>uditgoenka</td><td><code>/plugin marketplace add</code></td><td>Claude Code plugin</td></tr></tbody></table></div>
+<h3 id="23-状态管理与记忆">2.3 状态管理与记忆<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#23-状态管理与记忆" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>记忆机制</th><th>跨会话</th><th>跨项目</th></tr></thead><tbody><tr><td>Karpathy</td><td>results log</td><td>否</td><td>否</td></tr><tr><td>AutoResearchClaw</td><td>6 类 KB + 30 天衰减 + MetaClaw skill</td><td>是</td><td>是（MetaClaw）</td></tr><tr><td>EvoScientist</td><td>Dual Memory（M_I + M_E）+ MEMORY.md middleware + mxbai-embed 语义检索</td><td><strong>是</strong>（middleware + 向量 DB）</td><td><strong>是</strong>（EvoSkills evo-memory 跨 cycle）</td></tr><tr><td>ARIS</td><td>无内建记忆</td><td>否</td><td>否</td></tr><tr><td>Dr. Claw</td><td>Session-scoped</td><td>部分</td><td>否</td></tr><tr><td>Orchestra</td><td>无内建记忆</td><td>否</td><td>否</td></tr><tr><td>Research-Claw</td><td>project.yaml + context 摘要</td><td>是</td><td>否</td></tr><tr><td>AI Scientist v2</td><td>Journal + pickle checkpoint</td><td>是（checkpoint）</td><td>否</td></tr><tr><td>uditgoenka</td><td>Git history + TSV</td><td>是（Git）</td><td>否</td></tr></tbody></table></div>
+<h3 id="24-质量守卫">2.4 质量守卫<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#24-质量守卫" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>Guard Rail 设计</th><th>强度</th></tr></thead><tbody><tr><td>Karpathy</td><td>文件权限 + 5min 超时 + 评估冻结</td><td>★★★★★（物理隔离）</td></tr><tr><td>AutoResearchClaw</td><td>NaN 检测 + 4 层引用校验 + 7 维评审 + AI-slop</td><td>★★★★★（多层校验）</td></tr><tr><td>EvoScientist</td><td>Pydantic schema + attempt 预算 gate + file-based 可审计</td><td>★★★☆</td></tr><tr><td>ARIS</td><td>三门（no fabrication/no overpromise/full coverage）+ DBLP 引用</td><td>★★★★</td></tr><tr><td>Dr. Claw</td><td>GUI 审批</td><td>★★</td></tr><tr><td>Orchestra</td><td>Prompt Guard（Meta 86M）</td><td>★★★</td></tr><tr><td>Research-Claw</td><td>Sub-agent 隔离目录</td><td>★★★</td></tr><tr><td>AI Scientist v2</td><td>阶段完成检查 + LLM 推进判断 + issue 扫描</td><td>★★★★</td></tr><tr><td>uditgoenka</td><td>Verify + Guard 双轨 + auto rollback + crash recovery</td><td>★★★★★</td></tr></tbody></table></div>
+<h3 id="25-组合性与可扩展性">2.5 组合性与可扩展性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#25-组合性与可扩展性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>项目</th><th>Skill 组合方式</th><th>可扩展性</th></tr></thead><tbody><tr><td>Karpathy</td><td>无（单一循环）</td><td>低（仅 ML 训练）</td></tr><tr><td>AutoResearchClaw</td><td>固定流水线（可 REFINE/PIVOT 跳转）</td><td>中（MetaClaw 学习）</td></tr><tr><td>EvoScientist</td><td>EvoSkills 流水线（ideation→exp→writing→memory）+ 自进化闭环</td><td>高（开放生态 + 自学习）</td></tr><tr><td>ARIS</td><td>Slash 命令串联 / pipeline 全自动</td><td><strong>最高</strong>（43 skill 自由组合）</td></tr><tr><td>Dr. Claw</td><td>6 阶段 × skill 矩阵</td><td>高（symlink 即用）</td></tr><tr><td>Orchestra</td><td>编排层路由到领域 skill</td><td>高（87 skill）</td></tr><tr><td>Research-Claw</td><td>5 阶段 DAG + cron 自动化</td><td>中</td></tr><tr><td>AI Scientist v2</td><td>4 阶段树搜索</td><td>低（代码级扩展）</td></tr><tr><td>uditgoenka</td><td>9 命令独立 + 可组合</td><td>中（泛化但无组合协议）</td></tr></tbody></table></div>
+<hr/>
+<h2 id="三5-大-skill-设计-pattern-提炼">三、5 大 Skill 设计 Pattern 提炼<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#三5-大-skill-设计-pattern-提炼" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="pattern-1-markdown-as-protocolaris--orchestra--evoscientist--dr-claw">Pattern 1: Markdown-as-Protocol（ARIS / Orchestra / EvoScientist / Dr. Claw）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pattern-1-markdown-as-protocolaris--orchestra--evoscientist--dr-claw" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心</strong>：Skill = YAML frontmatter + Markdown 指令，纯文本可移植</p>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>Agent-agnostic：同一 skill 可被 Claude / GPT / Gemini / Codex 执行</li>
+<li>版本控制友好（Git diff 可读）</li>
+<li>零框架开销，渐进式加载</li>
+</ul>
+<p><strong>标准结构</strong>：</p>
+<pre><code>skill-name/
+├── SKILL.md          ← 必须
+├── references/       ← 可选
+├── scripts/          ← 可选
+└── templates/        ← 可选
+</code></pre>
+<p><strong>关键设计决策</strong>：</p>
+<ul>
+<li>Description 要 “pushy”（防止 under-triggering）</li>
+<li>自由度按脆弱性分级（高→文本，低→脚本）</li>
+<li>渐进加载（metadata ~100 words always → body on trigger → resources on demand）</li>
+</ul>
+<h3 id="pattern-2-immutable-evaluation--mutable-sandboxkarpathy--uditgoenka">Pattern 2: Immutable Evaluation + Mutable Sandbox（Karpathy / uditgoenka）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pattern-2-immutable-evaluation--mutable-sandboxkarpathy--uditgoenka" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心</strong>：冻结评估标准，只允许 agent 改实验代码</p>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>杜绝 agent “作弊”（改评估逻辑让指标虚高）</li>
+<li>公平对比（同一标尺）</li>
+<li>可审计（每次变更只有 train.py diff）</li>
+</ul>
+<p><strong>泛化</strong>：uditgoenka 将此 pattern 从固定 val_bpb 泛化为用户定义的 Verify + Guard 双轨</p>
+<h3 id="pattern-3-multi-agent-adversarial-reviewaris--autoresearchclaw">Pattern 3: Multi-Agent Adversarial Review（ARIS / AutoResearchClaw）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pattern-3-multi-agent-adversarial-reviewaris--autoresearchclaw" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心</strong>：不同 LLM 扮演 executor 和 reviewer，对抗式协作</p>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>打破单模型 self-play 盲区</li>
+<li>两个模型比一个或多个的 ROI 最高</li>
+<li>迫使 executor 应对 reviewer 未预见的弱点</li>
+</ul>
+<p><strong>实现变体</strong>：</p>
+<ul>
+<li>ARIS：Claude 执行 + GPT-5.4 评审（或 Codex+Claude / Codex+Gemini）</li>
+<li>AutoResearchClaw：多视角结构化辩论（同模型多角色）</li>
+</ul>
+<h3 id="pattern-4-knowledge-base-with-time-decayautoresearchclaw--evoscientist">Pattern 4: Knowledge Base with Time Decay（AutoResearchClaw / EvoScientist）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pattern-4-knowledge-base-with-time-decayautoresearchclaw--evoscientist" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心</strong>：运行时积累知识，带时间衰减防止记忆污染</p>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>不从零开始——复用历史经验</li>
+<li>衰减机制避免过时知识误导</li>
+<li>分类存储（6 类 KB / 4 类 Memory）提高检索精度</li>
+</ul>
+<p><strong>实现变体</strong>：</p>
+<ul>
+<li>AutoResearchClaw：6 类 KB + 30 天衰减 + MetaClaw 从失败中学习 skill</li>
+<li>EvoScientist：Dual Memory（M_I 管”研究什么” / M_E 管”怎么实现”）+ mxbai-embed 语义检索 + EMA 三机制蒸馏（IDE/IVE/ESE）+ MEMORY.md middleware 每 20 条对话自动提取</li>
+</ul>
+<h3 id="pattern-5-goal-driven-stage-progressionai-scientist-v2--autoresearchclaw">Pattern 5: Goal-Driven Stage Progression（AI Scientist v2 / AutoResearchClaw）<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#pattern-5-goal-driven-stage-progressionai-scientist-v2--autoresearchclaw" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心</strong>：不是刚性状态机，而是 LLM 判断是否推进到下一阶段</p>
+<p><strong>优势</strong>：</p>
+<ul>
+<li>适应性强——可在某阶段多停留或快速跳过</li>
+<li>每次转换有推理记录，可审计</li>
+<li>自动检测并处理系统性问题</li>
+</ul>
+<p><strong>实现变体</strong>：</p>
+<ul>
+<li>AI Scientist v2：4 阶段 + BFTS 树搜索 + LLM 推进评估</li>
+<li>AutoResearchClaw：23 阶段 + 3 个 gate + PROCEED/REFINE/PIVOT 自主决策</li>
+</ul>
+<hr/>
+<h2 id="四对-mindflow-skill-系统的启示">四、对 MindFlow Skill 系统的启示<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#四对-mindflow-skill-系统的启示" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>基于以上分析，以下是可直接借鉴的设计决策：</p>
+<h3 id="已做对的">已做对的<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#已做对的" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Markdown-as-Protocol</strong>：MindFlow 的 SKILL.md 格式与生态共识一致</li>
+<li><strong>渐进式加载</strong>：先读 frontmatter 再读 body 的模式与 EvoScientist 标准吻合</li>
+<li><strong>Skill 目录结构</strong>：<code>skills/&lt;category>/&lt;name>/SKILL.md</code> 与主流结构一致</li>
+</ol>
+<h3 id="可借鉴的">可借鉴的<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可借鉴的" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Verify + Guard 双轨</strong>（from uditgoenka）：paper-digest 等 skill 可加入 Guard 检查（如”生成的笔记是否遗漏了论文的 key contribution”）</li>
+<li><strong>记忆自动提取</strong>（from EvoScientist）：Workbench/memory 可加入对话触发的自动蒸馏（每 N 轮提取结构化事实），而非只依赖手动 <code>/distill</code></li>
+<li><strong>跨模型评审</strong>（from ARIS）：paper-digest 生成后可用第二模型做 quality check</li>
+<li><strong>Description 要 “pushy”</strong>（from EvoScientist skill-creator）：SKILL.md 的 description 应积极触发，防止 under-triggering</li>
+<li><strong>MetaClaw 自学习 Skill</strong>（from AutoResearchClaw）：从执行失败中自动提取 pattern → fix → 注入未来执行</li>
+<li><strong>Dual Memory 分离</strong>（from EvoScientist）：将 “研究什么”（ideation memory）与 “怎么实现”（experimentation memory）分开存储和检索，可启发 MindFlow 将 Domain-Map（方向性知识）与 Workbench/memory（操作性知识）更明确地分离</li>
+<li><strong>Attempt 预算 + Gate 条件</strong>（from EvoScientist experiment-pipeline）：给 skill 的每个阶段设 attempt 上限（如初始实现 ≤20 次），防止无限循环</li>
+</ol>
+<h3 id="不适用的">不适用的<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#不适用的" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>NPM/Plugin 分发</strong>（Orchestra / uditgoenka）：MindFlow 是个人知识库，不需要包管理器</li>
+<li><strong>23 阶段流水线</strong>（AutoResearchClaw）：过重，MindFlow 偏轻量人机协同</li>
+<li><strong>BFTS 树搜索</strong>（AI Scientist v2）：适合高算力实验室，不适合个人 Researcher</li>
+</ol>
+<hr/>
+<h2 id="sources">Sources<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#sources" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li>各项目 GitHub repo README 及源码（2026-03-28 访问）</li>
+<li>分析基于 repo 公开代码和文档，非论文描述（部分项目实际代码与论文有差异，如 EvoScientist）</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="qmmkjm" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#一逐项目-skill-设计深度分析" data-for="一逐项目-skill-设计深度分析">一、逐项目 Skill 设计深度分析</a></li><li class="depth-1"><a href="#1-karpathy-autoresearch--极简三文件协议" data-for="1-karpathy-autoresearch--极简三文件协议">1. Karpathy autoresearch — 极简三文件协议</a></li><li class="depth-1"><a href="#2-autoresearchclaw--23-阶段流水线协议" data-for="2-autoresearchclaw--23-阶段流水线协议">2. AutoResearchClaw — 23 阶段流水线协议</a></li><li class="depth-1"><a href="#3-evoscientist--双层架构--dual-memory--evoskills-生态" data-for="3-evoscientist--双层架构--dual-memory--evoskills-生态">3. EvoScientist — 双层架构 + Dual Memory + EvoSkills 生态</a></li><li class="depth-1"><a href="#4-aris--markdown-as-protocol-先锋" data-for="4-aris--markdown-as-protocol-先锋">4. ARIS — Markdown-as-Protocol 先锋</a></li><li class="depth-1"><a href="#5-dr-claw--gui-平台--skill-符号链接模式" data-for="5-dr-claw--gui-平台--skill-符号链接模式">5. Dr. Claw — GUI 平台 + Skill 符号链接模式</a></li><li class="depth-1"><a href="#6-orchestra-ai-research-skills--超大规模-skill-库" data-for="6-orchestra-ai-research-skills--超大规模-skill-库">6. Orchestra AI-Research-SKILLs — 超大规模 Skill 库</a></li><li class="depth-1"><a href="#7-research-claw--5-阶段任务流水线--定时自动化" data-for="7-research-claw--5-阶段任务流水线--定时自动化">7. Research-Claw — 5 阶段任务流水线 + 定时自动化</a></li><li class="depth-1"><a href="#8-ai-scientist-v2--目标驱动阶段式-agent-管理" data-for="8-ai-scientist-v2--目标驱动阶段式-agent-管理">8. AI Scientist v2 — 目标驱动阶段式 Agent 管理</a></li><li class="depth-1"><a href="#9-uditgoenka-autoresearch--8-铁律--9-命令-claude-code-skill" data-for="9-uditgoenka-autoresearch--8-铁律--9-命令-claude-code-skill">9. uditgoenka autoresearch — 8 铁律 + 9 命令 Claude Code Skill</a></li><li class="depth-0"><a href="#二skill-设计维度横向对比" data-for="二skill-设计维度横向对比">二、Skill 设计维度横向对比</a></li><li class="depth-1"><a href="#21-skill-定义格式" data-for="21-skill-定义格式">2.1 Skill 定义格式</a></li><li class="depth-1"><a href="#22-skill-发现与安装" data-for="22-skill-发现与安装">2.2 Skill 发现与安装</a></li><li class="depth-1"><a href="#23-状态管理与记忆" data-for="23-状态管理与记忆">2.3 状态管理与记忆</a></li><li class="depth-1"><a href="#24-质量守卫" data-for="24-质量守卫">2.4 质量守卫</a></li><li class="depth-1"><a href="#25-组合性与可扩展性" data-for="25-组合性与可扩展性">2.5 组合性与可扩展性</a></li><li class="depth-0"><a href="#三5-大-skill-设计-pattern-提炼" data-for="三5-大-skill-设计-pattern-提炼">三、5 大 Skill 设计 Pattern 提炼</a></li><li class="depth-1"><a href="#pattern-1-markdown-as-protocolaris--orchestra--evoscientist--dr-claw" data-for="pattern-1-markdown-as-protocolaris--orchestra--evoscientist--dr-claw">Pattern 1: Markdown-as-Protocol（ARIS / Orchestra / EvoScientist / Dr. Claw）</a></li><li class="depth-1"><a href="#pattern-2-immutable-evaluation--mutable-sandboxkarpathy--uditgoenka" data-for="pattern-2-immutable-evaluation--mutable-sandboxkarpathy--uditgoenka">Pattern 2: Immutable Evaluation + Mutable Sandbox（Karpathy / uditgoenka）</a></li><li class="depth-1"><a href="#pattern-3-multi-agent-adversarial-reviewaris--autoresearchclaw" data-for="pattern-3-multi-agent-adversarial-reviewaris--autoresearchclaw">Pattern 3: Multi-Agent Adversarial Review（ARIS / AutoResearchClaw）</a></li><li class="depth-1"><a href="#pattern-4-knowledge-base-with-time-decayautoresearchclaw--evoscientist" data-for="pattern-4-knowledge-base-with-time-decayautoresearchclaw--evoscientist">Pattern 4: Knowledge Base with Time Decay（AutoResearchClaw / EvoScientist）</a></li><li class="depth-1"><a href="#pattern-5-goal-driven-stage-progressionai-scientist-v2--autoresearchclaw" data-for="pattern-5-goal-driven-stage-progressionai-scientist-v2--autoresearchclaw">Pattern 5: Goal-Driven Stage Progression（AI Scientist v2 / AutoResearchClaw）</a></li><li class="depth-0"><a href="#四对-mindflow-skill-系统的启示" data-for="四对-mindflow-skill-系统的启示">四、对 MindFlow Skill 系统的启示</a></li><li class="depth-1"><a href="#已做对的" data-for="已做对的">已做对的</a></li><li class="depth-1"><a href="#可借鉴的" data-for="可借鉴的">可借鉴的</a></li><li class="depth-1"><a href="#不适用的" data-for="不适用的">不适用的</a></li><li class="depth-0"><a href="#sources" data-for="sources">Sources</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
