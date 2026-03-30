@@ -1,13 +1,9 @@
 ---
 title: "World Action Model 文献调研"
 tags: [world-model, VLA, diffusion-policy, imitation-learning, RL, cross-embodiment]
-status: draft
 date_updated: 2026-03-30
-scope:
-  year_range: "2024-2026"
-  max_papers: 8
-  papers_found: 8
-  papers_digested: 8
+year_range: "2024-2026"
+papers_analyzed: 8
 ---
 
 ## Overview
@@ -105,16 +101,16 @@ World Action Model (WAM) 是 embodied AI 领域的新兴范式，核心思想是
 
 ## Paper Comparison
 
-| Paper | Year | 技术路线 | 核心方法 | 关键结果 | 局限性 |
+| Paper | Venue | 技术路线 | 核心方法 | 关键结果 | 局限性 |
 |:------|:-----|:---------|:---------|:---------|:-------|
-| [[2406-IRASim\|IRASim]] | 2024 | Action-conditioned video | DiT + frame-level action conditioning | Policy eval r=0.99; Push-T IoU 0.637→0.961 | 非实时生成；核心组件为已有技术组合 |
-| [[2501-Cosmos\|Cosmos]] | 2025 | World Foundation Model | Diffusion/AR WFM + video tokenizer | PSNR 35.85 (DAVIS); 2-12x faster tokenizer | 缺乏 robotics task 定量评估；10K H100 |
-| [[2501-RoboticWorldModel\|Robotic World Model]] | 2025 | State-space world model | Dual-autoregressive GRU + MBPO-PPO | ANYmal D zero-shot sim-to-real; 1ms inference | 仅 proprioceptive state；对比 model-free 优势微弱 |
-| [[2504-UWM\|UWM]] | 2025 | Joint video+action | Decoupled diffusion timesteps | Real robot +20% over DP; LIBERO 0.79 | 主要收益来自 pretraining 而非架构 |
-| [[2505-DreamGen\|DreamGen]] | 2025 | WM-driven policy | Video WM → IDM → co-train policy | 22 novel behaviors; cross-embodiment GR1/Franka/SO-100 | 1500 L40 GPU×54h; IDM 仍需 robot-specific 数据 |
-| [[2512-Motus\|Motus]] | 2025 | Joint latent action | MoT + optical flow latent action | RoboTwin 87.02%; +45% over π0.5 | 依赖 optical flow; 18K GPU hours 预训练 |
-| [[2602-WorldVLALoop\|World-VLA-Loop]] | 2026 | WM-driven policy (RL) | State-aware WM + co-evolving closed loop | LIBERO +12.7%; real robot +23.4% | 仅 short-horizon ~20s; 单任务实验 |
-| [[2602-DreamZero\|DreamZero]] | 2026 | Joint video+action (WAM) | 14B AR diffusion, joint video-action | Seen 62.2% (2.3x baseline); unseen 39.5% | 2×GB200 for 7Hz; 6.6s context window |
+| [[2406-IRASim\|IRASim]] | ICCV 2025 | Action-conditioned video | DiT + frame-level action conditioning | Policy eval r=0.99; Push-T IoU 0.637→0.961 | 非实时生成；核心组件为已有技术组合 |
+| [[2501-Cosmos\|Cosmos]] | arXiv | World Foundation Model | Diffusion/AR WFM + video tokenizer | PSNR 35.85 (DAVIS); 2-12x faster tokenizer | 缺乏 robotics task 定量评估；10K H100 |
+| [[2501-RoboticWorldModel\|Robotic World Model]] | arXiv | State-space world model | Dual-autoregressive GRU + MBPO-PPO | ANYmal D zero-shot sim-to-real; 1ms inference | 仅 proprioceptive state；对比 model-free 优势微弱 |
+| [[2504-UWM\|UWM]] | RSS 2025 | Joint video+action | Decoupled diffusion timesteps | Real robot +20% over DP; LIBERO 0.79 | 主要收益来自 pretraining 而非架构 |
+| [[2505-DreamGen\|DreamGen]] | CoRL 2025 | WM-driven policy | Video WM → IDM → co-train policy | 22 novel behaviors; cross-embodiment GR1/Franka/SO-100 | 1500 L40 GPU×54h; IDM 仍需 robot-specific 数据 |
+| [[2512-Motus\|Motus]] | arXiv | Joint latent action | MoT + optical flow latent action | RoboTwin 87.02%; +45% over π0.5 | 依赖 optical flow; 18K GPU hours 预训练 |
+| [[2602-WorldVLALoop\|World-VLA-Loop]] | arXiv | WM-driven policy (RL) | State-aware WM + co-evolving closed loop | LIBERO +12.7%; real robot +23.4% | 仅 short-horizon ~20s; 单任务实验 |
+| [[2602-DreamZero\|DreamZero]] | arXiv | Joint video+action (WAM) | 14B AR diffusion, joint video-action | Seen 62.2% (2.3x baseline); unseen 39.5% | 2×GB200 for 7Hz; 6.6s context window |
 
 ## Key Takeaways
 
@@ -145,16 +141,5 @@ World Action Model (WAM) 是 embodied AI 领域的新兴范式，核心思想是
 ## 调研日志
 
 - **调研日期**: 2026-03-30
-- **搜索策略**:
-  1. `"world action model" robot arxiv 2024 2025`
-  2. `action-conditioned world model robotics manipulation arxiv 2024 2025`
-  3. `world model video generation robot policy learning arxiv`
-  4. `world model survey robotics embodied AI 2025 2026 arxiv`
-  5. `"unified world model" action diffusion robot pretraining arxiv 2025`
-  6. `world model planning robot manipulation sim-to-real arxiv 2024 2025`
-  7. `DreamGen video world model robot policy generalization arxiv 2025`
-  8. `Motus unified latent action world model arxiv 2025`
-  9. `COSMOS world foundation model NVIDIA robot autonomous driving arxiv 2025`
-  10. `World-VLA-Loop closed-loop world model VLA policy arxiv 2026`
 - **论文统计**: vault 已有 0 篇 + 新 digest 8 篇 + 跳过 0 篇
 - **未能获取**: 无

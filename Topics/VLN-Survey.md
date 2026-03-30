@@ -1,15 +1,15 @@
 ---
-title: "Vision-Language Navigation 文献调研"
-tags: [VLN, navigation, VLM, spatial-memory, task-planning]
-status: draft
+title: Vision-Language Navigation Survey
+tags:
+  - VLN
+  - navigation
+  - VLM
+  - spatial-memory
+  - task-planning
 date_updated: 2026-03-27
-scope:
-  year_range: "2022-2026"
-  max_papers: 8
-  papers_found: 11
-  papers_digested: 8
+year_range: 2022-2026
+papers_analyzed: 8
 ---
-
 ## Overview
 
 Vision-and-Language Navigation (VLN) 是 embodied AI 的核心任务之一，要求 agent 根据自然语言指令在视觉环境中导航到目标位置。自 2018 年 R2R benchmark 提出以来，VLN 经历了从 discrete navigation graph 到 continuous environment、从 task-specific 架构到 foundation model backbone 的深刻演变。
@@ -99,16 +99,16 @@ Vision-and-Language Navigation (VLN) 是 embodied AI 的核心任务之一，要
 
 ## Paper Comparison
 
-| Paper | Year | 技术路线 | 核心方法 | 关键结果 | 局限性 |
+| Paper | Venue | 技术路线 | 核心方法 | 关键结果 | 局限性 |
 |:------|:-----|:---------|:---------|:---------|:-------|
-| [[2202-DUET]] | 2022 | Topological + Planning | Dual-scale graph transformer | R2R/REVERIE/SOON SOTA | 仅 discrete nav-graph |
-| [[2304-ETPNav]] | 2024 | Topological + Planning | Online topological map + hierarchical planning | R2R-CE/RxR-CE +10-20% | Task-specific，heuristic controller |
-| [[2305-NavGPT]] | 2024 | LLM-Based | GPT-4 zero-shot reasoning | R2R SR ~30%，显式推理链 | 无视觉 grounding，性能差距大 |
-| [[2402-NaVid]] | 2024 | VLM End-to-End | Video-based VLM (LLaMA-VID)，4 tokens/frame | R2R-CE SPL 35.9%，real 66% SR | 推理延迟 1.2-1.5s/action |
-| [[2412-NaVILA]] | 2025 | Navigation as VLA | VLM → mid-level language action → RL policy | R2R-CE 54% SR，real legged 88% SR | Mid-level 粒度需调优 |
-| [[2412-LHVLN]] | 2025 | Long-Horizon | NavGen 数据平台 + MGDM memory 模块 | 所有方法 SR=0%，NE 降至 1.23 | 当前方法无法解决 |
-| [[2507-MTU3D]] | 2025 | Unified Understanding | Online query repr + grounding-exploration 统一 | 4 benchmarks SOTA，real 零样本 | 无 VLM backbone，无 manipulation |
-| [[2512-EfficientVLN]] | 2025 | VLM End-to-End | Progressive memory + dynamic DAgger | R2R-CE 64.2% SR，282 GPU hrs | 仅 simulation 验证 |
+| [[2202-DUET]] | CVPR 2022 | Topological + Planning | Dual-scale graph transformer | R2R/REVERIE/SOON SOTA | 仅 discrete nav-graph |
+| [[2304-ETPNav]] | TPAMI 2024 | Topological + Planning | Online topological map + hierarchical planning | R2R-CE/RxR-CE +10-20% | Task-specific，heuristic controller |
+| [[2305-NavGPT]] | AAAI 2024 | LLM-Based | GPT-4 zero-shot reasoning | R2R SR ~30%，显式推理链 | 无视觉 grounding，性能差距大 |
+| [[2402-NaVid]] | RSS 2024 | VLM End-to-End | Video-based VLM (LLaMA-VID)，4 tokens/frame | R2R-CE SPL 35.9%，real 66% SR | 推理延迟 1.2-1.5s/action |
+| [[2412-NaVILA]] | RSS 2025 | Navigation as VLA | VLM → mid-level language action → RL policy | R2R-CE 54% SR，real legged 88% SR | Mid-level 粒度需调优 |
+| [[2412-LHVLN]] | CVPR 2025 | Long-Horizon | NavGen 数据平台 + MGDM memory 模块 | 所有方法 SR=0%，NE 降至 1.23 | 当前方法无法解决 |
+| [[2507-MTU3D]] | ICCV 2025 | Unified Understanding | Online query repr + grounding-exploration 统一 | 4 benchmarks SOTA，real 零样本 | 无 VLM backbone，无 manipulation |
+| [[2512-EfficientVLN]] | NAACL 2025 | VLM End-to-End | Progressive memory + dynamic DAgger | R2R-CE 64.2% SR，282 GPU hrs | 仅 simulation 验证 |
 
 ## Key Takeaways
 
@@ -142,12 +142,5 @@ Efficient-VLN 将训练开销降至 282 GPU hours，但 VLN 模型的 scaling la
 ## 调研日志
 
 - **调研日期**: 2026-03-27
-- **搜索策略**:
-  1. `"vision-and-language navigation" arxiv 2024 2025 2026`
-  2. `LLM VLM vision language navigation embodied agent arxiv 2024 2025`
-  3. `vision language navigation survey 2024 2025`
-  4. `R2R RxR REVERIE VLN-CE benchmark new method 2024 2025 arxiv state-of-the-art`
-  5. `zero-shot VLN foundation model VLM navigation 2024 2025 arxiv`
-  6. `NaVid video VLM vision language navigation arxiv 2024`
 - **论文统计**: vault 已有 5 篇 + 新 digest 3 篇 + 跳过 0 篇
 - **未能获取**: 无
