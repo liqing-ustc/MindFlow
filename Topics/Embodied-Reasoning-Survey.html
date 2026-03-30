@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Embodied Reasoning Survey</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Embodied Reasoning Survey"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Embodied Reasoning Survey"/><meta name="twitter:description" content="Overview Embodied Reasoning 指 AI agent 在物理世界（或其仿真）中，基于感知输入进行推理并输出可执行动作的能力。它是连接 foundation model 的通用智能与具身控制的核心桥梁——不仅要 “看懂” 场景，还要 “想明白” 该怎么操作、怎么导航。 这一领域在 2023-2026 年间经历了爆发式增长。2023 ..."/><meta property="og:description" content="Overview Embodied Reasoning 指 AI agent 在物理世界（或其仿真）中，基于感知输入进行推理并输出可执行动作的能力。它是连接 foundation model 的通用智能与具身控制的核心桥梁——不仅要 “看懂” 场景，还要 “想明白” 该怎么操作、怎么导航。 这一领域在 2023-2026 年间经历了爆发式增长。2023 ..."/><meta property="og:image:alt" content="Overview Embodied Reasoning 指 AI agent 在物理世界（或其仿真）中，基于感知输入进行推理并输出可执行动作的能力。它是连接 foundation model 的通用智能与具身控制的核心桥梁——不仅要 “看懂” 场景，还要 “想明白” 该怎么操作、怎么导航。 这一领域在 2023-2026 年间经历了爆发式增长。2023 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/Embodied-Reasoning-Survey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/Embodied-Reasoning-Survey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview Embodied Reasoning 指 AI agent 在物理世界（或其仿真）中，基于感知输入进行推理并输出可执行动作的能力。它是连接 foundation model 的通用智能与具身控制的核心桥梁——不仅要 “看懂” 场景，还要 “想明白” 该怎么操作、怎么导航。 这一领域在 2023-2026 年间经历了爆发式增长。2023 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/Embodied-Reasoning-Survey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="1qoh2f"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/flow-matching" class="sidebar-tag-pill">#flow-matching</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>Embodied-Reasoning-Survey</a></div></nav><h1 class="article-title">Embodied Reasoning Survey</h1><p show-comma="true" class="content-meta"><time datetime="2026-03-30T07:37:51.837Z">Mar 30, 2026</time><span>14 min read</span></p><ul class="tags"><li><a href="../tags/survey" class="internal tag-link">survey</a></li><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li><li><a href="../tags/VLA" class="internal tag-link">VLA</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/spatial-reasoning" class="internal tag-link">spatial-reasoning</a></li><li><a href="../tags/RL" class="internal tag-link">RL</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p><strong>Embodied Reasoning</strong> 指 AI agent 在物理世界（或其仿真）中，基于感知输入进行推理并输出可执行动作的能力。它是连接 foundation model 的通用智能与具身控制的核心桥梁——不仅要 “看懂” 场景，还要 “想明白” 该怎么操作、怎么导航。</p>
+<p>这一领域在 2023-2026 年间经历了爆发式增长。2023 年 RT-2 首次证明 VLM 的 web knowledge 可迁移为 robot action，开启了 VLA (Vision-Language-Action) 范式。2024 年，ECoT 和 SpatialVLM 分别从 chain-of-thought 和 spatial data 两个维度奠定了 embodied reasoning 的方法论基础。2025 年是 <strong>RL for Embodied Reasoning 元年</strong>：Robot-R1、Embodied-R、Embodied-R1 等工作将 DeepSeek-R1 的 GRPO 算法引入具身推理，证明 RL 系统性地优于 SFT。同年，Gemini Robotics 提出了业界首个 Embodied Reasoning QA (ERQA) benchmark，FoMER 和 EmbodiedBench 进一步完善了评测体系。</p>
+<p>进入 2026 年，领域呈现出 <strong>reasoning-action 深度融合</strong> 的趋势：DM0 提出 Embodied-Native 预训练范式，Thinker 构建了 4.8M 级 robotics-specific 数据集，VLASER 系统性地揭示了 in-domain reasoning data 的关键作用。在导航侧，GTA、SpatialNav、PROSPECT 则从 explicit world representation、scene graph、spatial-semantic fusion 等角度推进 embodied spatial reasoning。</p>
+<p>总体趋势可概括为三个 shift：(1) <strong>from implicit to explicit reasoning</strong> — 从端到端黑盒到可解释的推理链；(2) <strong>from SFT to RL</strong> — 从监督模仿到强化学习驱动的自主推理；(3) <strong>from general to in-domain</strong> — 从通用 VLM 能力到 embodied-specific 的数据和训练策略。</p>
+<h2 id="技术路线">技术路线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#技术路线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="路线-1chain-of-thought-embodied-reasoning">路线 1：Chain-of-Thought Embodied Reasoning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-1chain-of-thought-embodied-reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：在 action prediction 之前插入结构化推理链（plan → subtask → spatial grounding → action），让模型 “先想后做”。</p>
+<p><strong>代表论文</strong>：</p>
+<ul>
+<li><strong><a href="../Papers/2407-ECoT" class="internal alias" data-slug="Papers/2407-ECoT">ECoT</a></strong> (2024)：开创性工作。在 OpenVLA 中插入 6 步 embodied CoT（task plan → subtask → movement description → gripper position → target bbox → reasoning summary），用 Gemini+SAM 自动生成训练数据。7B 模型超越 RT-2-X (55B)，空间关系任务 +45%。</li>
+<li><strong><a href="../Papers/2512-Lumo1" class="internal alias" data-slug="Papers/2512-Lumo1">Lumo-1</a></strong> (2025)：将 reasoning trace 结构化为 bbox → keypoint → trajectory，并加入 GRPO RL 精炼。在 Astribot S1 双臂平台验证，超越 pi-0 baseline。</li>
+<li><strong><a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a></strong> (2026)：提出 Spatial Scaffolding（subtask → bbox → trajectory → action）作为 coarse-to-fine 推理链，同时用 gradient decoupling 保护 VLM reasoning 不被 action training 侵蚀。</li>
+</ul>
+<p><strong>优势</strong>：可解释性强，支持人工干预和纠错（ECoT 人工纠正 +48%），推理结构可泛化到新任务。</p>
+<p><strong>劣势</strong>：固定推理步骤不够灵活，额外推理延迟（Lumo-1 full reasoning mode 延迟较高），依赖复杂的数据生成 pipeline。</p>
+<h3 id="路线-2rl-based-embodied-reasoning-grpo-范式">路线 2：RL-based Embodied Reasoning (GRPO 范式)<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-2rl-based-embodied-reasoning-grpo-范式" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：用 reinforcement learning（特别是 GRPO）训练 VLM 进行具身推理，让模型从 outcome feedback 中学习 reasoning，而非仅从人类标注中模仿。</p>
+<p><strong>代表论文</strong>：</p>
+<ul>
+<li><strong><a href="../Papers/2506-RobotR1" class="internal alias" data-slug="Papers/2506-RobotR1">Robot-R1</a></strong> (NeurIPS 2025)：将 next-state prediction 重构为 MCQ，降低 RL 探索复杂度。7B 模型超越 GPT-4o，SFT 0% vs RL 11.68%。</li>
+<li><strong><a href="../Papers/2504-EmbodiedR" class="internal alias" data-slug="Papers/2504-EmbodiedR">Embodied-R</a></strong> (2025)：解耦 perception (72B VLM) 和 reasoning (3B LM)，提出 logical consistency reward（用 reference model 验证推理链一致性，无需视觉输入）。3B 超越 OpenAI-o1 和 Gemini-2.5-Pro。仅需 5,000 训练样本。</li>
+<li><strong><a href="../Papers/2508-EmbodiedR1" class="internal alias" data-slug="Papers/2508-EmbodiedR1">Embodied-R1</a></strong> (2025)：用 “pointing”（2D 坐标）作为 embodiment-agnostic 中间表示，两阶段 GRPO 训练。3B 模型超越 7B-13B baselines。</li>
+<li><strong><a href="../Papers/2512-ETPR1" class="internal alias" data-slug="Papers/2512-ETPR1">ETP-R1</a></strong> (2025)：首次将 GRPO 应用于 graph-based VLN-CE，在 R2R-CE 达到 65% SR。</li>
+</ul>
+<p><strong>核心发现</strong>：RL 系统性优于 SFT。Robot-R1 (SFT 0% vs RL 11.68%)、Embodied-R1 (65.50% vs 41.25%)、Embodied-R (OOD 泛化更强) 一致验证了这一结论。</p>
+<p><strong>优势</strong>：小模型可以击败大模型（3B > o1, 7B > GPT-4o），数据效率高（Embodied-R 仅需 5K 样本），泛化能力更强。</p>
+<p><strong>劣势</strong>：绝对成功率仍然较低（Robot-R1 仅 11.68%），多数仅在仿真验证，MCQ 离散化可能丢失精细空间信息。</p>
+<h3 id="路线-3data-centric-embodied-reasoning">路线 3：Data-Centric Embodied Reasoning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-3data-centric-embodied-reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：通过大规模、高质量的 embodied-specific 数据驱动 reasoning 能力提升，而非单纯依赖模型架构或训练算法创新。</p>
+<p><strong>代表论文</strong>：</p>
+<ul>
+<li><strong><a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a></strong> (CVPR 2024)：自动化 3D spatial VQA 数据生成 pipeline，从 10M 真实图像生成 20 亿空间 VQA 样本。首个 internet-scale metric-space 空间推理数据集。</li>
+<li><strong><a href="../Papers/2601-Thinker" class="internal alias" data-slug="Papers/2601-Thinker">Thinker</a></strong> (IROS 2025)：构建 4.8M 实例的 robotics-specific 数据集，覆盖 ego-view reasoning、visual grounding、spatial understanding、CoT planning。10B 模型超越 32B baselines。</li>
+<li><strong><a href="../Papers/2510-VLASER" class="internal alias" data-slug="Papers/2510-VLASER">VLASER</a></strong> (2025)：系统性研究哪些 VLM embodied reasoning 能力可迁移到 VLA 控制。<strong>关键发现：OOD reasoning data 几乎无法迁移到 VLA performance，in-domain reasoning data 才是关键驱动力</strong>。</li>
+</ul>
+<p><strong>优势</strong>：可 scale，data pipeline 可复用，实证基础扎实。</p>
+<p><strong>劣势</strong>：in-domain 数据生成依赖目标环境仿真标注（新环境成本不清），SpatialVLM 定量精度仍有限（37.2% within 0.5x-2x）。</p>
+<h3 id="路线-4explicit-spatial-representation-for-reasoning">路线 4：Explicit Spatial Representation for Reasoning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线-4explicit-spatial-representation-for-reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：为 MLLM/VLM 提供显式的空间表征（scene graph、TSDF map、3D query），将空间推理从模型内部的隐式学习转化为基于结构化表征的显式推理。</p>
+<p><strong>代表论文</strong>：</p>
+<ul>
+<li><strong><a href="../Papers/2602-GTA" class="internal alias" data-slug="Papers/2602-GTA">GTA</a></strong> (2026)：构建 interactive metric world representation（TSDF + topological graph），用 counterfactual reasoning 和 ray-casting 确保动作物理合理性。SPL +16.4。</li>
+<li><strong><a href="../Papers/2601-SpatialNav" class="internal alias" data-slug="Papers/2601-SpatialNav">SpatialNav</a></strong> (2026)：层级 Spatial Scene Graph (floor → room → object) + agent-centric spatial map。Zero-shot VLN 达到 64.0% SR，接近 supervised SOTA。</li>
+<li><strong><a href="../Papers/2603-PROSPECT" class="internal alias" data-slug="Papers/2603-PROSPECT">PROSPECT</a></strong> (2026)：CUT3R (3D spatial) + SigLIP (2D semantic) 通过 cross-attention 融合，latent predictive representation 实现 “预判式推理”。长程任务 (100+ steps) SR +4.14%。</li>
+<li><strong><a href="../Papers/2507-MTU3D" class="internal alias" data-slug="Papers/2507-MTU3D">MTU3D</a></strong> (2025)：统一 3D visual grounding 和 active exploration 为同一决策框架，在 4 个导航 benchmark 达到 SOTA。</li>
+</ul>
+<p><strong>优势</strong>：空间推理精度高，可泛化到新环境（SpatialNav zero-shot 接近 supervised），physically grounded。</p>
+<p><strong>劣势</strong>：依赖外部感知模块（depth estimation、3D reconstruction），实时性受限，场景表征构建成本高。</p>
+<h2 id="发展时间线">发展时间线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#发展时间线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">时间</th><th style="text-align:left;">里程碑</th><th style="text-align:left;">论文</th></tr></thead><tbody><tr><td style="text-align:left;">2023.07</td><td style="text-align:left;">VLA 范式开创：VLM → robot action</td><td style="text-align:left;"><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a></td></tr><tr><td style="text-align:left;">2024.01</td><td style="text-align:left;">Internet-scale spatial reasoning data</td><td style="text-align:left;"><a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a></td></tr><tr><td style="text-align:left;">2024.07</td><td style="text-align:left;">Embodied CoT 范式提出</td><td style="text-align:left;"><a href="../Papers/2407-ECoT" class="internal alias" data-slug="Papers/2407-ECoT">ECoT</a></td></tr><tr><td style="text-align:left;">2025.02</td><td style="text-align:left;">综合 embodied agent benchmark</td><td style="text-align:left;"><a href="../Papers/2502-EmbodiedBench" class="internal alias" data-slug="Papers/2502-EmbodiedBench">EmbodiedBench</a></td></tr><tr><td style="text-align:left;">2025.03</td><td style="text-align:left;">Gemini Robotics 提出 ERQA benchmark</td><td style="text-align:left;"><a href="../Papers/2503-GeminiRobotics" class="internal alias" data-slug="Papers/2503-GeminiRobotics">Gemini Robotics</a></td></tr><tr><td style="text-align:left;">2025.04</td><td style="text-align:left;">Perception-reasoning 解耦 + logical consistency reward</td><td style="text-align:left;"><a href="../Papers/2504-EmbodiedR" class="internal alias" data-slug="Papers/2504-EmbodiedR">Embodied-R</a></td></tr><tr><td style="text-align:left;">2025.06</td><td style="text-align:left;">GRPO for embodied reasoning (NeurIPS)</td><td style="text-align:left;"><a href="../Papers/2506-RobotR1" class="internal alias" data-slug="Papers/2506-RobotR1">Robot-R1</a></td></tr><tr><td style="text-align:left;">2025.07</td><td style="text-align:left;">统一 grounding-exploration 决策框架</td><td style="text-align:left;"><a href="../Papers/2507-MTU3D" class="internal alias" data-slug="Papers/2507-MTU3D">MTU3D</a></td></tr><tr><td style="text-align:left;">2025.08</td><td style="text-align:left;">Pointing as embodiment-agnostic reasoning</td><td style="text-align:left;"><a href="../Papers/2508-EmbodiedR1" class="internal alias" data-slug="Papers/2508-EmbodiedR1">Embodied-R1</a></td></tr><tr><td style="text-align:left;">2025.09</td><td style="text-align:left;">Step-by-step reasoning 质量评估</td><td style="text-align:left;"><a href="../Papers/2509-FoMER" class="internal alias" data-slug="Papers/2509-FoMER">FoMER</a></td></tr><tr><td style="text-align:left;">2025.10</td><td style="text-align:left;">In-domain reasoning data 关键性验证</td><td style="text-align:left;"><a href="../Papers/2510-VLASER" class="internal alias" data-slug="Papers/2510-VLASER">VLASER</a></td></tr><tr><td style="text-align:left;">2025.12</td><td style="text-align:left;">GRPO for VLN + 结构化推理 VLA</td><td style="text-align:left;"><a href="../Papers/2512-ETPR1" class="internal alias" data-slug="Papers/2512-ETPR1">ETP-R1</a>, <a href="../Papers/2512-Lumo1" class="internal alias" data-slug="Papers/2512-Lumo1">Lumo-1</a></td></tr><tr><td style="text-align:left;">2026.01</td><td style="text-align:left;">10B embodied VLM + hierarchical scene graph VLN</td><td style="text-align:left;"><a href="../Papers/2601-Thinker" class="internal alias" data-slug="Papers/2601-Thinker">Thinker</a>, <a href="../Papers/2601-SpatialNav" class="internal alias" data-slug="Papers/2601-SpatialNav">SpatialNav</a></td></tr><tr><td style="text-align:left;">2026.02</td><td style="text-align:left;">Embodied-Native VLA + explicit world representation VLN</td><td style="text-align:left;"><a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a>, <a href="../Papers/2602-GTA" class="internal alias" data-slug="Papers/2602-GTA">GTA</a></td></tr><tr><td style="text-align:left;">2026.03</td><td style="text-align:left;">Streaming spatial-semantic VLN</td><td style="text-align:left;"><a href="../Papers/2603-PROSPECT" class="internal alias" data-slug="Papers/2603-PROSPECT">PROSPECT</a></td></tr></tbody></table></div>
+<h2 id="paper-comparison">Paper Comparison<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#paper-comparison" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Paper</th><th style="text-align:left;">Venue</th><th style="text-align:left;">技术路线</th><th style="text-align:left;">核心方法</th><th style="text-align:left;">关键结果</th><th style="text-align:left;">局限性</th></tr></thead><tbody><tr><td style="text-align:left;"><a href="../Papers/2307-RT2" class="internal alias" data-slug="Papers/2307-RT2">RT-2</a></td><td style="text-align:left;">arXiv 2023</td><td style="text-align:left;">CoT reasoning</td><td style="text-align:left;">VLM → action tokens, emergent reasoning</td><td style="text-align:left;">首次 web knowledge → robot control</td><td style="text-align:left;">端到端黑盒，无显式推理</td></tr><tr><td style="text-align:left;"><a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a></td><td style="text-align:left;">CVPR 2024</td><td style="text-align:left;">Data-centric</td><td style="text-align:left;">2B spatial VQA from 10M images</td><td style="text-align:left;">首个 internet-scale 空间推理数据集</td><td style="text-align:left;">定量精度有限 (37.2%)</td></tr><tr><td style="text-align:left;"><a href="../Papers/2407-ECoT" class="internal alias" data-slug="Papers/2407-ECoT">ECoT</a></td><td style="text-align:left;">arXiv 2024</td><td style="text-align:left;">CoT reasoning</td><td style="text-align:left;">6-step embodied CoT + auto data gen</td><td style="text-align:left;">7B > RT-2-X (55B), 空间任务 +45%</td><td style="text-align:left;">固定推理结构，额外延迟</td></tr><tr><td style="text-align:left;"><a href="../Papers/2502-EmbodiedBench" class="internal alias" data-slug="Papers/2502-EmbodiedBench">EmbodiedBench</a></td><td style="text-align:left;">ICML 2025</td><td style="text-align:left;">Benchmark</td><td style="text-align:left;">4 环境, 1128 任务, 24 MLLMs</td><td style="text-align:left;">GPT-4o 仅 28.9%, manipulation 15.7%</td><td style="text-align:left;">仿真 only, 天花板低</td></tr><tr><td style="text-align:left;"><a href="../Papers/2503-GeminiRobotics" class="internal alias" data-slug="Papers/2503-GeminiRobotics">Gemini Robotics</a></td><td style="text-align:left;">arXiv 2025</td><td style="text-align:left;">CoT + Benchmark</td><td style="text-align:left;">Gemini 2.0 VLA + ERQA benchmark</td><td style="text-align:left;">首个 embodied reasoning 专用评测</td><td style="text-align:left;">闭源, 无法复现</td></tr><tr><td style="text-align:left;"><a href="../Papers/2504-EmbodiedR" class="internal alias" data-slug="Papers/2504-EmbodiedR">Embodied-R</a></td><td style="text-align:left;">arXiv 2025</td><td style="text-align:left;">RL (GRPO)</td><td style="text-align:left;">72B 感知 + 3B 推理, logical consistency reward</td><td style="text-align:left;">3B > o1 (51.1% vs 37.2%), 仅需 5K 数据</td><td style="text-align:left;">72B 推理开销, 文本表征损失空间细节</td></tr><tr><td style="text-align:left;"><a href="../Papers/2506-RobotR1" class="internal alias" data-slug="Papers/2506-RobotR1">Robot-R1</a></td><td style="text-align:left;">NeurIPS 2025</td><td style="text-align:left;">RL (GRPO)</td><td style="text-align:left;">Next-state prediction as MCQ + GRPO</td><td style="text-align:left;">7B > GPT-4o, SFT 0% vs RL 11.68%</td><td style="text-align:left;">仅 tabletop sim, 绝对成功率低</td></tr><tr><td style="text-align:left;"><a href="../Papers/2507-MTU3D" class="internal alias" data-slug="Papers/2507-MTU3D">MTU3D</a></td><td style="text-align:left;">arXiv 2025</td><td style="text-align:left;">Spatial repr.</td><td style="text-align:left;">统一 grounding-exploration 决策</td><td style="text-align:left;">4 个导航 benchmark SOTA</td><td style="text-align:left;">仅导航任务</td></tr><tr><td style="text-align:left;"><a href="../Papers/2508-EmbodiedR1" class="internal alias" data-slug="Papers/2508-EmbodiedR1">Embodied-R1</a></td><td style="text-align:left;">arXiv 2025</td><td style="text-align:left;">RL (GRPO)</td><td style="text-align:left;">Pointing + 两阶段 GRPO</td><td style="text-align:left;">3B > 7B-13B, 87.5% real success</td><td style="text-align:left;">依赖 depth, 轨迹采样粗糙</td></tr><tr><td style="text-align:left;"><a href="../Papers/2509-FoMER" class="internal alias" data-slug="Papers/2509-FoMER">FoMER</a></td><td style="text-align:left;">arXiv 2025</td><td style="text-align:left;">Benchmark</td><td style="text-align:left;">10-dim reasoning quality evaluation</td><td style="text-align:left;">最佳 o4-mini 76.3%, 人类 84.5%</td><td style="text-align:left;">小规模 (1112), 仅 single-step</td></tr><tr><td style="text-align:left;"><a href="../Papers/2510-VLASER" class="internal alias" data-slug="Papers/2510-VLASER">VLASER</a></td><td style="text-align:left;">arXiv 2025</td><td style="text-align:left;">Data-centric</td><td style="text-align:left;">VLASER-6M data engine + domain analysis</td><td style="text-align:left;">OOD reasoning 不迁移, in-domain 是关键</td><td style="text-align:left;">仿真 only, 新环境成本不清</td></tr><tr><td style="text-align:left;"><a href="../Papers/2512-ETPR1" class="internal alias" data-slug="Papers/2512-ETPR1">ETP-R1</a></td><td style="text-align:left;">arXiv 2025</td><td style="text-align:left;">RL (GRPO)</td><td style="text-align:left;">GRPO for graph-based VLN-CE</td><td style="text-align:left;">R2R-CE 65% SR</td><td style="text-align:left;">推理提升有限</td></tr><tr><td style="text-align:left;"><a href="../Papers/2512-Lumo1" class="internal alias" data-slug="Papers/2512-Lumo1">Lumo-1</a></td><td style="text-align:left;">arXiv 2025</td><td style="text-align:left;">CoT + RL</td><td style="text-align:left;">Structured trace + GRPO</td><td style="text-align:left;">超越 pi-0, real dual-arm 验证</td><td style="text-align:left;">闭源, 高延迟, 128 H100</td></tr><tr><td style="text-align:left;"><a href="../Papers/2601-Thinker" class="internal alias" data-slug="Papers/2601-Thinker">Thinker</a></td><td style="text-align:left;">IROS 2025</td><td style="text-align:left;">Data-centric</td><td style="text-align:left;">4.8M robotics dataset, 10B VLM</td><td style="text-align:left;">7B/10B > RoboBrain2-32B</td><td style="text-align:left;">仅 4 页短文, 无 real robot</td></tr><tr><td style="text-align:left;"><a href="../Papers/2601-SpatialNav" class="internal alias" data-slug="Papers/2601-SpatialNav">SpatialNav</a></td><td style="text-align:left;">arXiv 2026</td><td style="text-align:left;">Spatial repr.</td><td style="text-align:left;">Hierarchical scene graph + zero-shot VLN</td><td style="text-align:left;">64.0% SR, 接近 supervised SOTA</td><td style="text-align:left;">依赖 pre-exploration</td></tr><tr><td style="text-align:left;"><a href="../Papers/2602-DM0" class="internal alias" data-slug="Papers/2602-DM0">DM0</a></td><td style="text-align:left;">arXiv 2026</td><td style="text-align:left;">CoT + Data-centric</td><td style="text-align:left;">Spatial Scaffolding + Embodied-Native 预训练</td><td style="text-align:left;">Gradient decoupling 保护推理能力</td><td style="text-align:left;">2B params, 训练成本高</td></tr><tr><td style="text-align:left;"><a href="../Papers/2602-GTA" class="internal alias" data-slug="Papers/2602-GTA">GTA</a></td><td style="text-align:left;">arXiv 2026</td><td style="text-align:left;">Spatial repr.</td><td style="text-align:left;">TSDF + topo graph + counterfactual reasoning</td><td style="text-align:left;">SPL +16.4</td><td style="text-align:left;">依赖 3D reconstruction</td></tr><tr><td style="text-align:left;"><a href="../Papers/2603-PROSPECT" class="internal alias" data-slug="Papers/2603-PROSPECT">PROSPECT</a></td><td style="text-align:left;">arXiv 2026</td><td style="text-align:left;">Spatial repr.</td><td style="text-align:left;">CUT3R + SigLIP fusion, latent prediction</td><td style="text-align:left;">长程任务 +4.14% SR</td><td style="text-align:left;">部分组件不开源</td></tr></tbody></table></div>
+<h2 id="datasets--benchmarks">Datasets &amp; Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#datasets--benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Dataset/Benchmark</th><th style="text-align:left;">规模</th><th style="text-align:left;">评估维度</th><th style="text-align:left;">特点</th></tr></thead><tbody><tr><td style="text-align:left;"><strong>ERQA</strong> (Gemini Robotics)</td><td style="text-align:left;">400 questions, 7 categories</td><td style="text-align:left;">Spatial, trajectory, action, state, multi-view, task reasoning</td><td style="text-align:left;">首个 embodied reasoning 专用 benchmark</td></tr><tr><td style="text-align:left;"><strong>EmbodiedBench</strong></td><td style="text-align:left;">1,128 tasks, 4 environments</td><td style="text-align:left;">High-level planning → low-level manipulation, 6 capability subsets</td><td style="text-align:left;">最全面的 MLLM embodied agent 评测</td></tr><tr><td style="text-align:left;"><strong>FoMER</strong></td><td style="text-align:left;">1,112 samples, 10 task categories</td><td style="text-align:left;">10-dim reasoning quality (不仅看结果对错)</td><td style="text-align:left;">首次分离 perceptual grounding 与 action reasoning 评估</td></tr><tr><td style="text-align:left;"><strong>Robot-R1 Bench</strong></td><td style="text-align:left;">MCQ format, RLBench 基础</td><td style="text-align:left;">Spatial understanding, state prediction, movement prediction</td><td style="text-align:left;">为 RL-based reasoning 设计的评测</td></tr><tr><td style="text-align:left;"><strong>SpatialVLM Data</strong></td><td style="text-align:left;">2B VQA from 10M images</td><td style="text-align:left;">Metric-space 3D spatial reasoning</td><td style="text-align:left;">Internet-scale 自动生成，可做 RL dense reward</td></tr><tr><td style="text-align:left;"><strong>VLASER-6M</strong></td><td style="text-align:left;">6M samples, 4 reasoning types</td><td style="text-align:left;">Grounding, spatial, planning, in-domain QA</td><td style="text-align:left;">系统性验证不同 reasoning data 对 VLA 的迁移效果</td></tr><tr><td style="text-align:left;"><strong>Thinker Dataset</strong></td><td style="text-align:left;">4.8M instances</td><td style="text-align:left;">Ego-view reasoning, grounding, spatial, CoT planning</td><td style="text-align:left;">Robotics-specific, 但未开源</td></tr><tr><td style="text-align:left;"><strong>SIMPLEREnv</strong></td><td style="text-align:left;">WidowX/Google Robot 仿真</td><td style="text-align:left;">Manipulation success rate</td><td style="text-align:left;">ECoT、Embodied-R1 等论文的标准评测平台</td></tr></tbody></table></div>
+<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>RL > SFT for embodied reasoning</strong>：多篇论文一致验证 GRPO-based RL 系统性优于 SFT。这不是偶然——RL 让模型从 outcome 中学习推理策略，而非仅模仿人类标注。GRPO 已成为该领域的 de facto standard RL 算法。</p>
+</li>
+<li>
+<p><strong>小模型 + 好训练 > 大模型 + 弱训练</strong>：Embodied-R (3B > o1)、Robot-R1 (7B > GPT-4o)、ECoT (7B > RT-2-X 55B)、Thinker (10B > RoboBrain2-32B) 反复证明：对于 embodied reasoning，targeted training 比 model scale 更重要。</p>
+</li>
+<li>
+<p><strong>In-domain data 是关键</strong>：VLASER 的核心发现——OOD embodied reasoning data 几乎无法迁移到 VLA performance——对数据策略有深刻启示。Embodied reasoning 的 domain gap 比 NLP 大得多。</p>
+</li>
+<li>
+<p><strong>Explicit spatial representation 大幅提升 navigation reasoning</strong>：GTA (+16.4 SPL)、SpatialNav (zero-shot 64% SR ≈ supervised SOTA)、PROSPECT (+4.14% long-horizon SR) 一致证明：给 MLLM 提供结构化空间信息远优于让它从原始像素 “猜” 空间关系。</p>
+</li>
+<li>
+<p><strong>Benchmark 覆盖仍有显著缺口</strong>：当前 benchmark 偏重 tabletop manipulation 和简单 navigation。复杂多步推理、tool use、deformable object manipulation、human-robot interaction 等场景的评测基本缺失。FoMER 揭示的 “猜对答案但推理错误” 问题更警示我们：仅看 final accuracy 是不够的。</p>
+</li>
+</ol>
+<h2 id="open-problems">Open Problems<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#open-problems" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>Real-world transfer gap</strong>：10 篇新论文中仅 3 篇 (ECoT, Embodied-R1, Lumo-1) 有 real robot 实验。RL-based reasoning 在仿真中的优势能否迁移到真实世界仍是 open question。</p>
+</li>
+<li>
+<p><strong>Reasoning 延迟 vs 实时控制</strong>：Embodied CoT 引入额外推理步骤，与 real-time control 需求矛盾。DM0 的 Spatial Scaffolding 和 Embodied-R 的 key-frame extraction 尝试缓解，但 fast thinking vs slow thinking 的 trade-off 尚无系统性解决方案。</p>
+</li>
+<li>
+<p><strong>Long-horizon multi-step reasoning</strong>：FoMER 仅评估 single-step reasoning，EmbodiedBench 最佳模型仅 28.9%。真正的 embodied intelligence 需要跨数十步甚至数百步的 error-robust 推理链，当前方法远未达到。</p>
+</li>
+<li>
+<p><strong>Reasoning quality 评估</strong>：FoMER 发现 Cosmos-R1 “猜对率” 高但推理质量低。如何评估 reasoning 的过程质量（而非仅看结果）是一个被严重低估的问题。</p>
+</li>
+<li>
+<p><strong>跨 embodiment 泛化</strong>：不同机器人形态（单臂/双臂/移动/人形）需要不同的空间推理能力。Embodied-R1 的 pointing 和 DM0 的 cross-embodiment 是初步尝试，但系统性的跨形态推理迁移仍未解决。</p>
+</li>
+<li>
+<p><strong>Reasoning 与 world model 的结合</strong>：当前 embodied reasoning 大多基于 reactive perception（看到什么推理什么）。将 predictive world model（预测行动后果）与 reasoning 结合，实现 mental simulation，是通向更高级具身智能的关键方向。</p>
+</li>
+<li>
+<p><strong>Safety-aware reasoning</strong>：在人类共存环境中，reasoning 不仅要 “正确”，还要 “安全”。FoMER 揭示的 “reasoning 错误但结果碰巧正确” 问题在安全攸关场景中尤为危险。</p>
+</li>
+</ol>
+<h2 id="调研日志">调研日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#调研日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>调研日期</strong>: 2026-03-30</li>
+<li><strong>论文统计</strong>: vault 已有 8 篇 + 新 digest 10 篇 = 共 18 篇分析</li>
+<li><strong>未能获取</strong>: 无（所有候选论文均成功 digest）</li>
+<li><strong>搜索策略</strong>: 10 条 WebSearch query，覆盖核心主题、RL 方法、CoT 方法、benchmark、应用场景</li>
+<li><strong>新增 digest</strong>: <a href="../Papers/2407-ECoT" class="internal alias" data-slug="Papers/2407-ECoT">ECoT</a>, <a href="../Papers/2508-EmbodiedR1" class="internal alias" data-slug="Papers/2508-EmbodiedR1">Embodied-R1</a>, <a href="../Papers/2512-Lumo1" class="internal alias" data-slug="Papers/2512-Lumo1">Lumo-1</a>, <a href="../Papers/2601-Thinker" class="internal alias" data-slug="Papers/2601-Thinker">Thinker</a>, <a href="../Papers/2509-FoMER" class="internal alias" data-slug="Papers/2509-FoMER">FoMER</a>, <a href="../Papers/2506-RobotR1" class="internal alias" data-slug="Papers/2506-RobotR1">Robot-R1</a>, <a href="../Papers/2504-EmbodiedR" class="internal alias" data-slug="Papers/2504-EmbodiedR">Embodied-R</a>, <a href="../Papers/2401-SpatialVLM" class="internal alias" data-slug="Papers/2401-SpatialVLM">SpatialVLM</a>, <a href="../Papers/2510-VLASER" class="internal alias" data-slug="Papers/2510-VLASER">VLASER</a>, <a href="../Papers/2502-EmbodiedBench" class="internal alias" data-slug="Papers/2502-EmbodiedBench">EmbodiedBench</a></li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="sxws8h" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#技术路线" data-for="技术路线">技术路线</a></li><li class="depth-1"><a href="#路线-1chain-of-thought-embodied-reasoning" data-for="路线-1chain-of-thought-embodied-reasoning">路线 1：Chain-of-Thought Embodied Reasoning</a></li><li class="depth-1"><a href="#路线-2rl-based-embodied-reasoning-grpo-范式" data-for="路线-2rl-based-embodied-reasoning-grpo-范式">路线 2：RL-based Embodied Reasoning (GRPO 范式)</a></li><li class="depth-1"><a href="#路线-3data-centric-embodied-reasoning" data-for="路线-3data-centric-embodied-reasoning">路线 3：Data-Centric Embodied Reasoning</a></li><li class="depth-1"><a href="#路线-4explicit-spatial-representation-for-reasoning" data-for="路线-4explicit-spatial-representation-for-reasoning">路线 4：Explicit Spatial Representation for Reasoning</a></li><li class="depth-0"><a href="#发展时间线" data-for="发展时间线">发展时间线</a></li><li class="depth-0"><a href="#paper-comparison" data-for="paper-comparison">Paper Comparison</a></li><li class="depth-0"><a href="#datasets--benchmarks" data-for="datasets--benchmarks">Datasets &amp; Benchmarks</a></li><li class="depth-0"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-0"><a href="#open-problems" data-for="open-problems">Open Problems</a></li><li class="depth-0"><a href="#调研日志" data-for="调研日志">调研日志</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
