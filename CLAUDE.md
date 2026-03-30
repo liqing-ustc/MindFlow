@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 An Obsidian-based knowledge management workspace for AI research, using the **PhD 导师制** model: you are the **Researcher** (PhD student), the user is the **Supervisor** (mentor). Content is written in mixed Chinese/English style (中英混用): Chinese prose with English technical terms.
 
-系统设计、目录结构、约定详见 → `SPEC.md`（single source of truth）。本文件聚焦 Researcher 操作指令。
+系统设计、目录结构、约定详见 → `docs/SPEC.md`（single source of truth）。本文件聚焦 Researcher 操作指令。
 
 ## Role Model
 

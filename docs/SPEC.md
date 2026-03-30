@@ -104,7 +104,7 @@ MindFlow/
 │
 ├── examples/            # 示例文件
 │
-├── SPEC.md              # ★ 本文件
+├── docs/SPEC.md         # ★ 本文件
 ├── CLAUDE.md            # Researcher 操作指令
 └── .obsidian/           # Obsidian 配置
 ```
@@ -186,7 +186,7 @@ Skill 是 MindFlow 的自动化核心——定义在 `skills/<category>/<name>/S
 | | `memory-retrieve` | L0 | 从记忆库检索相关经验 | ✅ |
 | `6-orchestration` | `autoresearch` | L2 | 核心研究循环（读状态→判断→执行→积累） | ✅ |
 
-详细设计 → `docs/specs/2026-03-28-skill-system-design.md`
+详细设计 → `docs/superpowers/specs/2026-03-28-skill-system-design.md`
 
 ### 4.4 Memory System
 

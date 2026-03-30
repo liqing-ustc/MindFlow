@@ -39,7 +39,7 @@
 **Files:**
 - Modify: `skills/1-literature/paper-digest/SKILL.md`
 
-**Spec reference:** `docs/specs/2026-03-28-skill-system-design.md` §3.1
+**Spec reference:** `docs/superpowers/specs/2026-03-28-skill-system-design.md` §3.1
 
 - [ ] **Step 1: Read the current file**
 
