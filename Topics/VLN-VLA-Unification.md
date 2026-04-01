@@ -7,7 +7,6 @@ tags:
   - navigation
   - SLAM
   - scene-understanding
-status: complete
 date_updated: 2026-03-24
 ---
 ## Overview
