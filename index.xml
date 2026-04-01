@@ -10,61 +10,61 @@
     <link>https://liqing.io/mindflow/skills/6-orchestration/autoresearch/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/6-orchestration/autoresearch/SKILL</guid>
     <description>MindFlow 的核心研究循环。当 Supervisor 说"自己干活吧""开始研究"， 或系统需要自主推进研究时启动。 持续运行：读取当前状态 → 判断最高价值行动 → 调用卫星 skill → 记录 → 循环 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:29 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/5-evolution/memory-retrieve/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/5-evolution/memory-retrieve/SKILL</guid>
     <description>被其他 skill 内部调用，从 Workbench/memory/ 中检索与当前任务相关的历史经验。 当 idea-generate 需要查失败方向、experiment-design 需要查有效方法、 或任何 skill 需要历史上下文时调用 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:29 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/5-evolution/memory-distill/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/5-evolution/memory-distill/SKILL</guid>
     <description>当积累了多天工作日志、或 Supervisor 说"整理记忆""蒸馏"时，从日志中提取 pattern 和 insight 到记忆库。也可被 autoresearch 在合适时机自动调用 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:29 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/5-evolution/agenda-evolve/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/5-evolution/agenda-evolve/SKILL</guid>
     <description>当积累了新的 validated insight、实验结果改变了方向判断、 或 Supervisor 说"更新研究方向""复盘 agenda"时， 根据记忆和发现演化研究议程 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:29 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/4-writing/writing-refine/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/4-writing/writing-refine/SKILL</guid>
     <description>当 Supervisor 说"打磨一下""改改这段""逻辑不通顺"， 或 autoresearch 在写作阶段自检时， 从结构/清晰度/论据三个维度打磨已有文稿 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:29 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/4-writing/draft-section/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/4-writing/draft-section/SKILL</guid>
     <description>当 Supervisor 说"写一下 introduction""起草 related work"， 或 autoresearch 判断某 direction 已积累足够素材需要成文时， 起草论文或报告的指定章节 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:29 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/3-experiment/result-analysis/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/3-experiment/result-analysis/SKILL</guid>
     <description>当 Supervisor 说"分析一下实验结果"， 或实验 status 变为 completed 后 autoresearch 自动调用， 分析实验数据并判断假设是否成立 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:29 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/3-experiment/experiment-track/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/3-experiment/experiment-track/SKILL</guid>
     <description>当 Supervisor 说"记录一下实验结果""实验跑完了"， 或 Researcher 完成一轮实验需要记录时， 在 Experiment 笔记中追加 Run Entry 并更新状态 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:29 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/3-experiment/experiment-design/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/3-experiment/experiment-design/SKILL</guid>
     <description>当 Supervisor 说"设计个实验""怎么验证这个 idea"， 或 autoresearch 判断某个 developing/validated idea 需要实验验证时， 为 idea 设计完整实验方案 .</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:28 GMT</pubDate>
   </item><item>
     <title>SKILL</title>
     <link>https://liqing.io/mindflow/skills/2-ideation/idea-generate/SKILL</link>
     <guid>https://liqing.io/mindflow/skills/2-ideation/idea-generate/SKILL</guid>
     <description>Generate and rank research ideas given a broad direction. Use when user says "找idea", "brainstorm ideas", "generate research ideas", or "what can we work on".</description>
-    <pubDate>Wed, 01 Apr 2026 07:15:32 GMT</pubDate>
+    <pubDate>Wed, 01 Apr 2026 07:16:28 GMT</pubDate>
   </item>
     </channel>
   </rss>
