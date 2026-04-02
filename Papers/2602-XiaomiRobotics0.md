@@ -78,6 +78,24 @@ Mixture-of-Transformers 设计，总参数 4.7B：
 - 异步执行方案与 action chunk 长度和推理延迟的关系（Δtc ≥ Δtinf）限制了灵活性
 - 未探索 action representation 的优化空间（如 spatial/geometric tokenization）
 
+## Action Space
+**7-DoF 连续动作空间**，每步 action vector 为 7 维：
+
+| 维度 | 含义 | 备注 |
+|:--|:--|:--|
+| 0-2 | End-effector delta position (x, y, z) | 3D 平移 |
+| 3-5 | End-effector delta rotation | LIBERO: axis-angle；SimplerEnv: euler (roll, pitch, yaw)，执行时转 axis-angle |
+| 6 | Gripper command | CALVIN 中二值化为 {-1, 1} |
+
+**Action chunk size**（每次推理生成的未来步数）：
+- LIBERO / CALVIN: T = 10
+- SimplerEnv: T = 4
+- 真机实验: T = 30（30Hz 控制，对应 1 秒）
+
+**State representation**: 7 维 proprioceptive state（EEF pos 3 + rotation 3 + gripper 1），padding 至 32 维输入 DiT。
+
+**生成方式**：DiT 通过 flow-matching 生成连续 action chunk，输出 shape 为 `(B, T, D+1)`，其中额外一维为概率/置信度，取前 7 维作为动作。
+
 ## Mind Map
 ```mermaid
 mindmap
