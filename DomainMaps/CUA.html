@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Computer-Use Agents</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Computer-Use Agents"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Computer-Use Agents"/><meta name="twitter:description" content="Overview 让 AI agent 在数字设备（桌面、手机、浏览器）上根据自然语言指令自主完成复杂任务。核心问题：如何将 VLM 的视觉理解能力转化为精确的 GUI 操作？研究意义在于实现通用的数字自动化——任何人类能用电脑完成的任务，agent 都能代劳。 发展现状：2024–2025 年经历爆发式增长。OSWorld ..."/><meta property="og:description" content="Overview 让 AI agent 在数字设备（桌面、手机、浏览器）上根据自然语言指令自主完成复杂任务。核心问题：如何将 VLM 的视觉理解能力转化为精确的 GUI 操作？研究意义在于实现通用的数字自动化——任何人类能用电脑完成的任务，agent 都能代劳。 发展现状：2024–2025 年经历爆发式增长。OSWorld ..."/><meta property="og:image:alt" content="Overview 让 AI agent 在数字设备（桌面、手机、浏览器）上根据自然语言指令自主完成复杂任务。核心问题：如何将 VLM 的视觉理解能力转化为精确的 GUI 操作？研究意义在于实现通用的数字自动化——任何人类能用电脑完成的任务，agent 都能代劳。 发展现状：2024–2025 年经历爆发式增长。OSWorld ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/DomainMaps/CUA"/><meta property="twitter:url" content="https://liqing.io/mindflow/DomainMaps/CUA"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview 让 AI agent 在数字设备（桌面、手机、浏览器）上根据自然语言指令自主完成复杂任务。核心问题：如何将 VLM 的视觉理解能力转化为精确的 GUI 操作？研究意义在于实现通用的数字自动化——任何人类能用电脑完成的任务，agent 都能代劳。 发展现状：2024–2025 年经历爆发式增长。OSWorld ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="DomainMaps/CUA"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="fxu4bf"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../DomainMaps/">_index</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>CUA</a></div></nav><h1 class="article-title">Computer-Use Agents</h1><p show-comma="true" class="content-meta"><time datetime="2026-04-02T03:15:14.990Z">Apr 02, 2026</time><span>10 min read</span></p></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>让 AI agent 在数字设备（桌面、手机、浏览器）上根据自然语言指令自主完成复杂任务。核心问题：如何将 VLM 的视觉理解能力转化为精确的 GUI 操作？研究意义在于实现通用的数字自动化——任何人类能用电脑完成的任务，agent 都能代劳。</p>
+<p><strong>发展现状</strong>：2024–2025 年经历爆发式增长。OSWorld SOTA 从 12.24%（2024.04）飙升至 72.6%（2025.10，超人类 72.36%）。技术路线从 framework-based（prompt + 工具链包裹商用模型）转向 native agent（端到端 VLM + RL 训练）。产业界深度参与：Anthropic Computer Use、OpenAI Operator/CUA、ByteDance UI-TARS、Google Mariner。RL 已成为训练的 de facto 范式，data synthesis pipeline 正在解决数据瓶颈（成本降至 $0.55/trajectory）。但 safety/reversibility、跨应用 workflow、专业 icon grounding 仍是核心未解问题。</p>
+<p><strong>与 VLA/Embodied AI 的桥梁</strong>：CUA 和 VLA 共享核心技术栈（VLM backbone + action prediction + RL training），CUA 的 grounding/planning/error recovery 方法可能迁移到物理世界。Entropulse、data flywheel、reflective CoT 等训练范式具有跨域价值。</p>
+<h2 id="core-concepts">Core Concepts<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#core-concepts" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>GUI Grounding</strong>: 将自然语言指令映射到屏幕像素坐标的能力，是 agent 执行操作的前提。分为 text grounding（文字元素）和 icon grounding（图标/控件）</li>
+<li><strong>Native Agent</strong>: 端到端训练的 VLM，仅以截图为输入直接输出动作，无需 prompt engineering 或外部工具链。代表：UI-TARS、ComputerRL</li>
+<li><strong>Agent Framework</strong>: 模块化组合方案，将规划、grounding、执行分给不同模型/工具。代表：Agent S2/S3</li>
+<li><strong>Set-of-Mark (SoM)</strong>: 在截图上叠加数字标签标注可交互区域，帮助 VLM 定位元素</li>
+<li><strong>Behavior Narrative</strong>: 将多模态 agent 轨迹压缩为结构化文本摘要，用于 test-time 轨迹评估和选择</li>
+<li><strong>Execution-based Evaluation</strong>: 不检查 agent 操作步骤，只验证任务完成后的系统状态，允许不同路径达到同一目标</li>
+<li><strong>Data Flywheel</strong>: 模型生成的轨迹按质量分流（低质量→pretrain，高质量→SFT，可验证→RL），形成自增强循环</li>
+<li><strong>Entropulse</strong>: RL/SFT 交替训练策略，解决 RL 训练中的 entropy collapse 问题</li>
+<li><strong>API-GUI Paradigm</strong>: Agent 同时掌握 GUI 操作和程序化 API 调用，兼顾通用性和效率</li>
+<li><strong>Reflective CoT</strong>: 三层结构化推理（观察→反思→动作），包含 error detection 和 recovery</li>
+</ul>
+<h2 id="established-knowledge">Established Knowledge<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#established-knowledge" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>GUI grounding 是 visual agent 的核心能力瓶颈</strong>：SeeClick 首次明确这一发现，ScreenSpot-Pro 进一步揭示专业软件 icon grounding 仅 4%。Grounding 能力与下游 agent 任务性能呈强正相关。但瓶颈正在被快速攻克——GroundNext-3B 在 agentic 任务上已超越 72B 模型。</p>
+<ul>
+<li>来源：<a href="../Papers/2401-SeeClick" class="internal alias" data-slug="Papers/2401-SeeClick">SeeClick</a>、<a href="../Papers/2504-ScreenSpotPro" class="internal alias" data-slug="Papers/2504-ScreenSpotPro">ScreenSpot-Pro</a>、<a href="../Papers/2511-GroundCUA" class="internal alias" data-slug="Papers/2511-GroundCUA">GroundCUA</a></li>
+</ul>
+</li>
+<li>
+<p><strong>方法创新 > 模型规模</strong>：ComputerRL 9B 超越 o3，GroundNext-3B 超越 72B agentic agent，ShowUI 2B 接近 7B 模型（256K 数据），OS-Atlas 7B 超越 GPT-4o。数据质量、训练策略和架构设计的杠杆效应远大于 scaling。</p>
+<ul>
+<li>来源：<a href="../Papers/2508-ComputerRL" class="internal alias" data-slug="Papers/2508-ComputerRL">ComputerRL</a>、<a href="../Papers/2511-GroundCUA" class="internal alias" data-slug="Papers/2511-GroundCUA">GroundCUA</a>、<a href="../Papers/2411-ShowUI" class="internal alias" data-slug="Papers/2411-ShowUI">ShowUI</a>、<a href="../Papers/2410-OSAtlas" class="internal alias" data-slug="Papers/2410-OSAtlas">OS-Atlas</a></li>
+</ul>
+</li>
+<li>
+<p><strong>RL 训练一致提升 GUI agent 性能</strong>：UI-TARS-2 (PPO)、ComputerRL (step-level GRPO + Entropulse)、DART-GUI (解耦异步 PPO)、GroundCUA (RLOO) 均验证 RL 在不同框架中带来一致提升。核心难点是 entropy collapse 和 multi-turn credit assignment。</p>
+<ul>
+<li>来源：<a href="../Papers/2509-UITARS2" class="internal alias" data-slug="Papers/2509-UITARS2">UI-TARS-2</a>、<a href="../Papers/2508-ComputerRL" class="internal alias" data-slug="Papers/2508-ComputerRL">ComputerRL</a>、<a href="../Papers/2509-DARTGUI" class="internal alias" data-slug="Papers/2509-DARTGUI">DART-GUI</a>、<a href="../Papers/2511-GroundCUA" class="internal alias" data-slug="Papers/2511-GroundCUA">GroundCUA</a></li>
+</ul>
+</li>
+<li>
+<p><strong>数据质量 > 数据规模</strong>：GroundCUA 用 700K 高质量样本胜过 9M 自动采集数据；OpenCUA 的 reflective CoT 比无反思版本提升 32%。数据的结构化程度和标注密度比规模更重要。</p>
+<ul>
+<li>来源：<a href="../Papers/2511-GroundCUA" class="internal alias" data-slug="Papers/2511-GroundCUA">GroundCUA</a>、<a href="../Papers/2508-OpenCUA" class="internal alias" data-slug="Papers/2508-OpenCUA">OpenCUA</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Training-time 和 Test-time scaling 正交互补</strong>：RL training scaling（UI-TARS-2、ComputerRL）和 test-time compute scaling（Agent S3 BJudge）可独立提升性能，组合后 OSWorld 达 72.6% 超人类。</p>
+<ul>
+<li>来源：<a href="../Papers/2510-ScalingAgents" class="internal alias" data-slug="Papers/2510-ScalingAgents">Agent S3</a>、<a href="../Papers/2509-UITARS2" class="internal alias" data-slug="Papers/2509-UITARS2">UI-TARS-2</a>、<a href="../Papers/2508-ComputerRL" class="internal alias" data-slug="Papers/2508-ComputerRL">ComputerRL</a></li>
+</ul>
+</li>
+<li>
+<p><strong>Execution-based evaluation 是正确范式</strong>：WebArena 首创、OSWorld 确立的 functional correctness 评测，优于 action matching，已被全领域采纳。</p>
+<ul>
+<li>来源：<a href="../Papers/2307-WebArena" class="internal alias" data-slug="Papers/2307-WebArena">WebArena</a>、<a href="../Papers/2404-OSWorld" class="internal alias" data-slug="Papers/2404-OSWorld">OSWorld</a></li>
+</ul>
+</li>
+<li>
+<p><strong>感知 pipeline 质量是被低估的性能因素</strong>：WindowsAgentArena 发现 SoM 标注质量造成 15-57% 性能波动；OmniParser 证明 local semantics（icon 功能描述）提升 23.3%。感知质量对最终性能的影响可能大于 reasoning 能力。</p>
+<ul>
+<li>来源：<a href="../Papers/2409-WindowsAgentArena" class="internal alias" data-slug="Papers/2409-WindowsAgentArena">WindowsAgentArena</a>、<a href="../Papers/2408-OmniParser" class="internal alias" data-slug="Papers/2408-OmniParser">OmniParser</a></li>
+</ul>
+</li>
+<li>
+<p><strong>GUI agent RL 的瓶颈在系统效率而非算法</strong>：DART-GUI 通过工程优化将环境利用率从 12.2% 提升至 67.7%（5.5×），训练吞吐 1.9×，7B 模型即超越 Claude-4-Sonnet。系统效率的杠杆可能大于算法改进。</p>
+<ul>
+<li>来源：<a href="../Papers/2509-DARTGUI" class="internal alias" data-slug="Papers/2509-DARTGUI">DART-GUI</a></li>
+</ul>
+</li>
+</ol>
+<h2 id="active-debates">Active Debates<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#active-debates" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>Native Agent vs Compositional Framework，哪个路线更优？</strong>
+Native agent（UI-TARS-2 47.5%、ComputerRL 48.9%）在单次执行上更强；compositional framework（Agent S3 72.6%）通过 test-time scaling 超人类。但 Agent S3 依赖 GPT-5+Opus 4.5 做 judge，Native agent 成本更低。最优方案可能是 RL-trained native agent + test-time scaling。</p>
+<ul>
+<li>支持 Native: <a href="../Papers/2501-UITARS" class="internal alias" data-slug="Papers/2501-UITARS">UI-TARS</a>、<a href="../Papers/2508-ComputerRL" class="internal alias" data-slug="Papers/2508-ComputerRL">ComputerRL</a></li>
+<li>支持 Compositional: <a href="../Papers/2510-ScalingAgents" class="internal alias" data-slug="Papers/2510-ScalingAgents">Agent S3</a>、<a href="../Papers/2504-AgentS2" class="internal alias" data-slug="Papers/2504-AgentS2">Agent S2</a></li>
+<li><strong>status</strong>: unresolved — 两者正交可组合</li>
+</ul>
+</li>
+<li>
+<p><strong>纯视觉 vs 结构化信息（HTML/DOM/a11y tree），哪种观察模式更优？</strong>
+纯视觉（screenshot-only）更通用、跨平台，CogAgent 首次在 Mind2Web 上超越 HTML 方法。但 Agent S2 的 structural grounding expert 在 spreadsheet 场景仍有优势。OS Agents Survey 指出趋势从 textual 向 visual 迁移，但 dual approach 可能最优。</p>
+<ul>
+<li>支持纯视觉: <a href="../Papers/2312-CogAgent" class="internal alias" data-slug="Papers/2312-CogAgent">CogAgent</a>、<a href="../Papers/2501-UITARS" class="internal alias" data-slug="Papers/2501-UITARS">UI-TARS</a></li>
+<li>支持混合: <a href="../Papers/2504-AgentS2" class="internal alias" data-slug="Papers/2504-AgentS2">Agent S2</a>、<a href="../Papers/2508-OSAgentsSurvey" class="internal alias" data-slug="Papers/2508-OSAgentsSurvey">OS Agents Survey</a></li>
+<li><strong>status</strong>: leaning-visual — 趋势明确但特定场景仍需结构化信息</li>
+</ul>
+</li>
+<li>
+<p><strong>Hierarchical planning vs Flat planning？</strong>
+Agent S2 用 Manager-Worker 层级 + proactive planning 获得一致提升。但 Agent S3 发现 flat planning 替代 hierarchical 可减少 52.3% LLM 调用和 62.4% 延迟，且性能更好。可能层级规划在中等复杂度有效，超长 horizon 反而引入噪声。</p>
+<ul>
+<li>支持 Hierarchical: <a href="../Papers/2504-AgentS2" class="internal alias" data-slug="Papers/2504-AgentS2">Agent S2</a></li>
+<li>支持 Flat: <a href="../Papers/2510-ScalingAgents" class="internal alias" data-slug="Papers/2510-ScalingAgents">Agent S3</a></li>
+<li><strong>status</strong>: leaning-flat — 但需更多 benchmark 验证</li>
+</ul>
+</li>
+<li>
+<p><strong>人工标注 vs 自动合成数据，哪种更 cost-effective？</strong>
+OpenCUA 人工标注 22.6K trajectories → 45.0%；AgentTrek 自动合成 10.4K → 性能提升但未达同等水平。GroundCUA 证明高质量人工标注（700K）胜过 9M 自动数据。但 TongUI 143K 自动合成在 ScreenSpot 达 83.4%。Cost-quality trade-off 取决于目标任务的复杂度。</p>
+<ul>
+<li>支持人工: <a href="../Papers/2508-OpenCUA" class="internal alias" data-slug="Papers/2508-OpenCUA">OpenCUA</a>、<a href="../Papers/2511-GroundCUA" class="internal alias" data-slug="Papers/2511-GroundCUA">GroundCUA</a></li>
+<li>支持自动: <a href="../Papers/2412-AgentTrek" class="internal alias" data-slug="Papers/2412-AgentTrek">AgentTrek</a>、<a href="../Papers/2504-TongUI" class="internal alias" data-slug="Papers/2504-TongUI">TongUI</a>、<a href="../Papers/2412-OSGenesis" class="internal alias" data-slug="Papers/2412-OSGenesis">OS-Genesis</a></li>
+<li><strong>status</strong>: unresolved — 取决于任务复杂度和目标</li>
+</ul>
+</li>
+</ol>
+<h2 id="open-questions">Open Questions<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#open-questions" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Safety &amp; Reversibility</strong>：如何在 agent 自主操作环境时防止不可逆损害？需要 undo 机制、sandbox isolation、action 确认的系统级方案。几乎所有论文都未充分讨论 — related: <a href="../Topics/ComputerUseAgents-Survey" class="internal" data-slug="Topics/ComputerUseAgents-Survey">ComputerUseAgents-Survey</a></li>
+<li><strong>跨应用 Workflow</strong>：Agent S2 在 Workflow 类任务仅 18.21%，需要跨应用状态追踪和长程 context 维护，可能需要 explicit memory / world model — related: <a href="../Papers/2504-AgentS2" class="internal alias" data-slug="Papers/2504-AgentS2">Agent S2</a></li>
+<li><strong>专业 Icon Grounding</strong>：ScreenSpot-Pro 揭示 icon 识别仅 4%，需要 domain-specific 预训练数据或检索增强 — related: <a href="../Papers/2504-ScreenSpotPro" class="internal alias" data-slug="Papers/2504-ScreenSpotPro">ScreenSpot-Pro</a></li>
+<li><strong>CUA→Embodied 迁移</strong>：Entropulse、data flywheel、reflective CoT 是否适用于 VLA 训练？GUI grounding 技术能否迁移到 embodied scene grounding？ — related: <a href="../DomainMaps/VLA" class="internal alias" data-slug="DomainMaps/VLA">VLA</a></li>
+<li><strong>Training-time vs Test-time Scaling 的 Pareto Frontier</strong>：两种 scaling 路径的最优组合？ — related: <a href="../Papers/2510-ScalingAgents" class="internal alias" data-slug="Papers/2510-ScalingAgents">Agent S3</a></li>
+<li><strong>Agent 自主终止判断</strong>：WebArena 发现 54.9% 可行任务被错误判为不可能，agent 缺乏 self-monitoring 能力 — related: <a href="../Papers/2307-WebArena" class="internal alias" data-slug="Papers/2307-WebArena">WebArena</a></li>
+</ul>
+<h2 id="known-dead-ends">Known Dead Ends<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#known-dead-ends" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>纯 prompt engineering + 商用模型</strong>：依赖手工设计的 prompt 和 workflow，泛化性差、无法自我改进。UI-TARS 系统性证明 native agent 全面优于 framework-based 方案 — why: 被 native agent 路线全面超越，OSWorld 从 ~12% 提升到 48%+</li>
+<li><strong>Action matching 评测</strong>：仅比较 agent 执行路径与参考路径的相似度，无法处理多路径达到同一目标的情况 — why: WebArena/OSWorld 的 execution-based evaluation 已成为共识标准</li>
+<li><strong>低分辨率输入（&lt;1080p）</strong>：ScreenSpot-Pro 证明高分辨率对专业场景至关重要，低分辨率截图丢失大量细粒度 UI 信息 — why: 专业软件中目标元素相对尺寸极小，低分辨率无法定位</li>
+<li><strong>Token merging for GUI</strong>：ShowUI 发现 token merging（42.3%）远差于 token selection（70.4%），因为 GUI grounding 强依赖 positional encoding，merging 破坏了位置信息 — why: GUI 元素定位本质上是空间任务，位置信息不可压缩</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="4w7agh" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#core-concepts" data-for="core-concepts">Core Concepts</a></li><li class="depth-0"><a href="#established-knowledge" data-for="established-knowledge">Established Knowledge</a></li><li class="depth-0"><a href="#active-debates" data-for="active-debates">Active Debates</a></li><li class="depth-0"><a href="#open-questions" data-for="open-questions">Open Questions</a></li><li class="depth-0"><a href="#known-dead-ends" data-for="known-dead-ends">Known Dead Ends</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>

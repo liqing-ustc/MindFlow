@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Computer-Use Agents 领域调研</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Computer-Use Agents 领域调研"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Computer-Use Agents 领域调研"/><meta name="twitter:description" content="Overview Computer-use Agent（也称 GUI Agent、OS Agent）是一类能够在数字设备（桌面、手机、浏览器）上，根据自然语言指令自主完成复杂任务的 AI 系统。该领域在 2024-2025 年经历了爆发式增长，从早期的 prompt engineering + 商用模型组合，迅速演进为端到端训练的 ..."/><meta property="og:description" content="Overview Computer-use Agent（也称 GUI Agent、OS Agent）是一类能够在数字设备（桌面、手机、浏览器）上，根据自然语言指令自主完成复杂任务的 AI 系统。该领域在 2024-2025 年经历了爆发式增长，从早期的 prompt engineering + 商用模型组合，迅速演进为端到端训练的 ..."/><meta property="og:image:alt" content="Overview Computer-use Agent（也称 GUI Agent、OS Agent）是一类能够在数字设备（桌面、手机、浏览器）上，根据自然语言指令自主完成复杂任务的 AI 系统。该领域在 2024-2025 年经历了爆发式增长，从早期的 prompt engineering + 商用模型组合，迅速演进为端到端训练的 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Topics/ComputerUseAgents-Survey"/><meta property="twitter:url" content="https://liqing.io/mindflow/Topics/ComputerUseAgents-Survey"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="Overview Computer-use Agent（也称 GUI Agent、OS Agent）是一类能够在数字设备（桌面、手机、浏览器）上，根据自然语言指令自主完成复杂任务的 AI 系统。该领域在 2024-2025 年经历了爆发式增长，从早期的 prompt engineering + 商用模型组合，迅速演进为端到端训练的 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Topics/ComputerUseAgents-Survey"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="fxu4bf"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/VLN" class="sidebar-tag-pill">#VLN</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Topics/">Topics</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>ComputerUseAgents-Survey</a></div></nav><h1 class="article-title">Computer-Use Agents 领域调研</h1><p show-comma="true" class="content-meta"><time datetime="2026-04-02T03:15:16.603Z">Apr 02, 2026</time><span>16 min read</span></p><ul class="tags"><li><a href="../tags/web-agent" class="internal tag-link">web-agent</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/RL" class="internal tag-link">RL</a></li><li><a href="../tags/task-planning" class="internal tag-link">task-planning</a></li></ul></div></div><article class="popover-hint"><h2 id="overview">Overview<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#overview" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Computer-use Agent（也称 GUI Agent、OS Agent）是一类能够在数字设备（桌面、手机、浏览器）上，根据自然语言指令自主完成复杂任务的 AI 系统。该领域在 2024-2025 年经历了爆发式增长，从早期的 prompt engineering + 商用模型组合，迅速演进为端到端训练的 native agent 路线。</p>
+<p><strong>核心问题</strong>：如何让 AI agent 像人类一样观察屏幕、理解界面、规划操作序列并精确执行？这涉及三个核心能力：<strong>GUI Grounding</strong>（将语言指令映射到屏幕坐标）、<strong>Planning</strong>（将复杂任务分解为可执行步骤）、<strong>Error Recovery</strong>（识别并从错误中恢复）。</p>
+<p><strong>研究现状</strong>：</p>
+<ul>
+<li>领域活跃度极高，已有 3 篇系统综述（<a href="../Papers/2501-ACUSurvey" class="internal alias" data-slug="Papers/2501-ACUSurvey">ACU Survey</a>、<a href="../Papers/2411-GUIAgentSurvey" class="internal alias" data-slug="Papers/2411-GUIAgentSurvey">GUI Agent Survey</a>、<a href="../Papers/2508-OSAgentsSurvey" class="internal alias" data-slug="Papers/2508-OSAgentsSurvey">OS Agents Survey</a>），后者被 ACL 2025 接收为 Oral</li>
+<li>OSWorld benchmark 上的 SOTA 从 2024 年初的 12.24% 飙升至 2025 年底的 72.6%（超人类水平 72.36%），一年半内提升了约 6 倍</li>
+<li>产业界深度参与：Anthropic Claude Computer Use、OpenAI Operator/CUA、ByteDance UI-TARS、Google Project Mariner、Apple Intelligence 均已布局</li>
+<li>技术路线从 framework-based（依赖 prompt + 工具链）转向 native agent（端到端训练），RL 成为核心训练范式</li>
+</ul>
+<h2 id="技术路线">技术路线<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#技术路线" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="路线一end-to-end-native-agent-models">路线一：End-to-End Native Agent Models<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线一end-to-end-native-agent-models" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：将 GUI 理解、规划和执行统一到一个端到端训练的 VLM 中，仅以截图为输入，直接输出动作。</p>
+<p><strong>代表工作</strong>：</p>
+<ul>
+<li><a href="../Papers/2501-UITARS" class="internal alias" data-slug="Papers/2501-UITARS">UI-TARS</a>（ByteDance, 2025.01）：基于 Qwen-2-VL，通过感知增强（5 项训练任务）、统一 action space、System-2 reasoning（6 种思维模式）和 DPO reflection tuning，在 10+ benchmark 上首次 SOTA</li>
+<li><a href="../Papers/2509-UITARS2" class="internal alias" data-slug="Papers/2509-UITARS2">UI-TARS-2</a>（ByteDance, 2025.09）：引入 data flywheel + multi-turn RL（PPO 变体含 Decoupled GAE），OSWorld 达 47.5%，扩展到游戏和 SWE 场景</li>
+<li><a href="../Papers/2508-ComputerRL" class="internal alias" data-slug="Papers/2508-ComputerRL">ComputerRL</a>（Tsinghua/Z.AI, 2025.08）：提出 API-GUI 统一范式和 Entropulse（RL/SFT 交替解决 entropy collapse），9B 模型在 OSWorld 达 48.9% 超越 o3</li>
+</ul>
+<p><strong>早期先驱</strong>：</p>
+<ul>
+<li><a href="../Papers/2312-CogAgent" class="internal alias" data-slug="Papers/2312-CogAgent">CogAgent</a>（Tsinghua/Zhipu, 2023.12, CVPR 2024 Highlight）：18B VLM，首创 dual-resolution cross-attention（224+1120）解决高分辨率 GUI 理解，首个纯视觉方法在 Mind2Web 上超越 HTML-based LLM</li>
+<li><a href="../Papers/2508-OpenCUA" class="internal alias" data-slug="Papers/2508-OpenCUA">OpenCUA</a>（HKU/XLANG Lab, 2025.08, NeurIPS 2025 Spotlight）：完整开源 pipeline（AgentNet 标注工具 + 22.6K trajectories 数据集 + reflective long CoT 训练），OpenCUA-72B 在 OSWorld-Verified 达 45.0% 开源 SOTA</li>
+</ul>
+<p><strong>RL 训练基础设施</strong>：</p>
+<ul>
+<li><a href="../Papers/2509-DARTGUI" class="internal alias" data-slug="Papers/2509-DARTGUI">DART-GUI</a>（2025.09）：解耦异步 RL 框架，四模块非阻塞架构（环境集群/rollout 服务/数据管理器/训练器）+ 自适应数据策略（experience pool、dynamic rollout、high-entropy step selection、truncated IS），环境利用率从 12.2%→67.7%（5.5×），7B 模型 OSWorld 42.13% 超越 Claude-4-Sonnet</li>
+</ul>
+<p><strong>优势</strong>：知识可跨平台迁移、无需手工 prompt、可持续自我改进
+<strong>局限</strong>：训练资源需求巨大（数千 VM），推理延迟高，safety 未充分讨论</p>
+<h3 id="路线二compositional-framework-based-agents">路线二：Compositional Framework-based Agents<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线二compositional-framework-based-agents" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：将 agent 分解为多个功能模块（规划器、执行器、grounding 专家），用不同模型/工具承担不同子任务。</p>
+<p><strong>代表工作</strong>：</p>
+<ul>
+<li><a href="../Papers/2504-AgentS2" class="internal alias" data-slug="Papers/2504-AgentS2">Agent S2</a>（Simular, 2025.04）：Manager-Worker 层级 + Mixture of Grounding（视觉/文本/结构化 3 个专家），proactive planning 持续重规划，OSWorld 34.5%</li>
+<li><a href="../Papers/2510-ScalingAgents" class="internal alias" data-slug="Papers/2510-ScalingAgents"> Agent S3</a>（Simular, 2025.10, ICML）：提出 Behavior Judge 框架，multi-rollout wide scaling + 结构化轨迹评估，OSWorld <strong>72.6% 超人类水平</strong>。核心创新是 behavior narrative——将多模态轨迹压缩为可比较的结构化文本</li>
+</ul>
+<p><strong>优势</strong>：模块化设计灵活、可插拔不同 grounding 专家、test-time scaling 潜力大
+<strong>局限</strong>：依赖强力商用模型（GPT-5、Opus 4.5），多 rollout 假设独立初始状态在真实环境难以满足</p>
+<h3 id="路线三gui-grounding-专用模型">路线三：GUI Grounding 专用模型<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线三gui-grounding-专用模型" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：专注于 GUI grounding 这个核心瓶颈——给定截图和语言指令，精确定位目标 UI 元素。</p>
+<p><strong>代表工作</strong>：</p>
+<ul>
+<li><a href="../Papers/2401-SeeClick" class="internal alias" data-slug="Papers/2401-SeeClick">SeeClick</a>（Nanjing U, 2024.01, ACL 2024）：首次明确 grounding 是 visual agent 核心瓶颈，通过 continual pre-training 构建 grounding 模型，创建 ScreenSpot benchmark</li>
+<li><a href="../Papers/2511-GroundCUA" class="internal alias" data-slug="Papers/2511-GroundCUA">GroundCUA</a>（Mila/ServiceNow, 2025.11）：构建高质量 dense annotation 数据集（56K 截图，64 元素/截图），GroundNext-7B 在 ScreenSpot-Pro 达 52.9%，3B 模型在 agentic 任务超 72B 模型</li>
+<li><a href="../Papers/2504-ScreenSpotPro" class="internal alias" data-slug="Papers/2504-ScreenSpotPro">ScreenSpot-Pro</a>（NUS, 2025.04）：专业高分辨率 GUI grounding benchmark，揭示 icon 识别仅 4% 准确率的严峻挑战</li>
+</ul>
+<p><strong>Foundation Models &amp; 感知工具</strong>：</p>
+<ul>
+<li><a href="../Papers/2410-OSAtlas" class="internal alias" data-slug="Papers/2410-OSAtlas">OS-Atlas</a>（Shanghai AI Lab, 2024.10）：构建最大开源跨平台 GUI grounding 语料库（13.58M 元素，2.24M 截图），7B 模型在多个 zero-shot benchmark 超越 GPT-4o</li>
+<li><a href="../Papers/2411-ShowUI" class="internal alias" data-slug="Papers/2411-ShowUI">ShowUI</a>（NUS/Microsoft, 2024.11, CVPR 2025）：轻量 2B 模型，核心创新 UI-guided token selection（connected graph 减 33% token），仅 256K 数据达 75.1% zero-shot grounding</li>
+<li><a href="../Papers/2408-OmniParser" class="internal alias" data-slug="Papers/2408-OmniParser">OmniParser</a>（Microsoft, 2024.08）：模块化屏幕解析工具（YOLOv8 检测 + BLIP-v2 icon 描述 + OCR + Set-of-Marks），作为 plug-in 增强任意 VLM 的 GUI agent 能力，ScreenSpot 73.0%</li>
+</ul>
+<p><strong>关键发现</strong>：</p>
+<ul>
+<li>Grounding 能力与下游 agent 任务性能强正相关（SeeClick）</li>
+<li>数据质量 > 数据规模：700K 高质量样本胜过 9M 自动采集数据（GroundCUA）</li>
+<li>Icon/非文字 UI 元素的 grounding 是核心未解难题（ScreenSpot-Pro）</li>
+<li>Token 效率关键：token selection 优于 token merging（ShowUI），positional encoding 对 grounding 至关重要</li>
+<li>模块化 vs 端到端仍是 open question：OmniParser（外部检测）vs SeeClick（端到端训练）各有优劣</li>
+</ul>
+<h3 id="路线四数据合成与标注">路线四：数据合成与标注<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#路线四数据合成与标注" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p><strong>核心思路</strong>：高质量训练数据是 agent 性能的关键瓶颈，通过自动化方法大规模生成 agent trajectories。</p>
+<p><strong>代表工作</strong>：</p>
+<ul>
+<li><a href="../Papers/2412-AgentTrek" class="internal alias" data-slug="Papers/2412-AgentTrek">AgentTrek</a>（XLANG Lab/HKU, 2024.12）：从互联网教程文本自动生成 web agent trajectories，三阶段 pipeline（教程采集→任务规范→VLM 执行+验证），成本仅 $0.55/trajectory，生成 10,398 条高质量轨迹</li>
+<li><a href="../Papers/2412-OSGenesis" class="internal alias" data-slug="Papers/2412-OSGenesis">OS-Genesis</a>（ACL 2025）：<strong>逆向任务合成</strong>——先让 agent 自由探索环境，再从交互轨迹逆向生成任务描述，解决传统 “先定义任务→再执行” 范式中的 task-environment mismatch 问题</li>
+<li><a href="../Papers/2504-TongUI" class="internal alias" data-slug="Papers/2504-TongUI">TongUI</a>（Shanghai AI Lab, 2025.04, AAAI 2026）：从互联网多模态教程（视频+文章）自动构建 GUI-Net 数据集（143K trajectories，5 OS，200+ apps），四阶段 pipeline（爬取→解析→匹配→标注），ScreenSpot 83.4%</li>
+<li><a href="../Papers/2508-OpenCUA" class="internal alias" data-slug="Papers/2508-OpenCUA">OpenCUA</a> 的 AgentNet：人工标注 22.6K trajectories，配合 reflective CoT augmentation pipeline</li>
+</ul>
+<p><strong>关键趋势</strong>：</p>
+<ul>
+<li>从人工标注 → 半自动 → 全自动，成本从 ~<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">10/</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.02778em;">r</span><span class="mord mathnormal" style="margin-right:0.05724em;">aj</span><span class="mord mathnormal">ec</span><span class="mord mathnormal">t</span><span class="mord mathnormal" style="margin-right:0.03588em;">ory</span><span class="mord cjk_fallback">降至</span></span></span></span>0.55/trajectory</li>
+<li>三种互补范式：tutorial-guided replay（AgentTrek）、逆向任务合成（OS-Genesis）、多模态教程爬取（TongUI）</li>
+<li>Data flywheel（UI-TARS-2）将数据合成集成到训练循环中，实现自增强</li>
+<li>TongUI 的经验表明数据集可能比模型更有价值——143K trajectories 可复用于训练任何 GUI agent 架构</li>
+</ul>
+<h3 id="技术路线间的关系">技术路线间的关系<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#技术路线间的关系" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>三条路线<strong>互补而非互斥</strong>：</p>
+<ul>
+<li>Grounding 模型可作为 compositional agent 的专家模块（Agent S2 使用 UI-TARS 作为 visual grounding expert）</li>
+<li>RL training scaling（路线一）与 test-time scaling（路线二）正交且可组合</li>
+<li>Native agent 的 grounding 能力受益于路线三的数据和 benchmark（GroundCUA 的 dense annotation 可用于 native agent 训练）</li>
+</ul>
+<h2 id="datasets--benchmarks">Datasets &amp; Benchmarks<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#datasets--benchmarks" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Benchmark</th><th style="text-align:left;">平台</th><th style="text-align:left;">规模</th><th style="text-align:left;">评估方式</th><th style="text-align:left;">SOTA</th><th style="text-align:left;">特点</th></tr></thead><tbody><tr><td style="text-align:left;">OSWorld</td><td style="text-align:left;">Ubuntu/Win/macOS</td><td style="text-align:left;">369 tasks</td><td style="text-align:left;">Execution-based</td><td style="text-align:left;">72.6% (Agent S3+BJudge) / Human 72.36%</td><td style="text-align:left;">真实 OS 环境，标准评测</td></tr><tr><td style="text-align:left;">OSWorld-Verified</td><td style="text-align:left;">Ubuntu</td><td style="text-align:left;">369 tasks</td><td style="text-align:left;">Verified execution</td><td style="text-align:left;">~76% (OSAgent)</td><td style="text-align:left;">OSWorld 增强版</td></tr><tr><td style="text-align:left;">AndroidWorld</td><td style="text-align:left;">Android</td><td style="text-align:left;">—</td><td style="text-align:left;">Task completion</td><td style="text-align:left;">73.3% (UI-TARS-2)</td><td style="text-align:left;">移动端标准 benchmark</td></tr><tr><td style="text-align:left;">WebArena</td><td style="text-align:left;">Web</td><td style="text-align:left;">812 tasks</td><td style="text-align:left;">Functional correctness</td><td style="text-align:left;">14.41% GPT-4 / Human 78.24%</td><td style="text-align:left;">4 个自托管网站，ICLR 2024</td></tr><tr><td style="text-align:left;">ScreenSpot</td><td style="text-align:left;">Multi-platform</td><td style="text-align:left;">1,200+ instructions</td><td style="text-align:left;">Grounding accuracy</td><td style="text-align:left;">53.4% (SeeClick)</td><td style="text-align:left;">首个跨平台 grounding benchmark</td></tr><tr><td style="text-align:left;">ScreenSpot-Pro</td><td style="text-align:left;">Desktop</td><td style="text-align:left;">1,581 samples</td><td style="text-align:left;">Grounding accuracy</td><td style="text-align:left;">52.9% (GroundNext-7B)</td><td style="text-align:left;">专业高分辨率场景</td></tr><tr><td style="text-align:left;">WindowsAgentArena</td><td style="text-align:left;">Windows</td><td style="text-align:left;">154 tasks</td><td style="text-align:left;">Task completion</td><td style="text-align:left;">56.6% (Agent S3) / Human 74.5%</td><td style="text-align:left;">Microsoft, 云端并行评测</td></tr><tr><td style="text-align:left;">OfficeWorld</td><td style="text-align:left;">Desktop</td><td style="text-align:left;">120 tasks</td><td style="text-align:left;">Execution-based</td><td style="text-align:left;">43.3% (ComputerRL)</td><td style="text-align:left;">Office 软件操作</td></tr></tbody></table></div>
+<h2 id="key-takeaways">Key Takeaways<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#key-takeaways" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>GUI Grounding 是核心瓶颈，但正在被快速攻克</strong>：从 SeeClick 首次明确这一瓶颈，到 GroundNext-3B 在 agentic 任务上超越 72B 模型，grounding 正从”制约因素”转为”可解问题”。但专业软件中的 icon 识别（4% 准确率）仍是巨大挑战。</p>
+</li>
+<li>
+<p><strong>RL 已成为 GUI agent 训练的 de facto 范式</strong>：UI-TARS-2 的 data flywheel + PPO、ComputerRL 的 Entropulse + step-level GRPO、GroundCUA 的 RLOO、DART-GUI 的解耦异步训练——RL 在各种框架中均带来一致提升。核心难点是 multi-turn sparse reward 下的 credit assignment 和 entropy collapse。DART-GUI 揭示了一个被低估的 insight：<strong>GUI agent RL 的瓶颈在系统效率而非算法</strong>——5.5× 环境利用率提升可能比算法改进更关键。</p>
+</li>
+<li>
+<p><strong>方法创新 > 模型规模</strong>：ComputerRL 9B 超越 o3，GroundNext-3B 超越 72B agentic agent，SmolVLA 的故事在 GUI agent 领域同样成立。数据质量、训练策略和架构设计的杠杆效应远大于 scaling。</p>
+</li>
+<li>
+<p><strong>Training-time scaling 与 Test-time scaling 正交互补</strong>：UI-TARS-2/ComputerRL 代表训练时 RL scaling，Agent S3/BJudge 代表推理时 compute scaling。两者可组合——用 RL 训练的强模型作为 base，再用 test-time scaling 进一步提升可靠性。</p>
+</li>
+<li>
+<p><strong>从 GUI-only 到 API-GUI 统一是效率突破口</strong>：ComputerRL 的 API-GUI 范式和 UI-TARS-2 的 GUI-SDK 扩展都表明，单纯模拟人类 GUI 操作效率低下，让 agent 同时掌握程序化 API 调用是提升效率的关键（步数减少 3x）。</p>
+</li>
+<li>
+<p><strong>数据合成正在解决 data bottleneck</strong>：从 CogAgent 时代依赖人工标注，到 AgentTrek（$0.55/trajectory 自动合成）、OS-Genesis（逆向任务合成）和 UI-TARS-2 的 data flywheel，数据获取成本急剧下降。OpenCUA 的 reflective CoT augmentation 证明 CoT 质量比 trajectory 数量更重要（+32%）。</p>
+</li>
+<li>
+<p><strong>轻量模型可行性已验证</strong>：ShowUI 2B 接近 7B 模型（256K 数据），OS-Atlas 7B 超越 GPT-4o，ComputerRL 9B 超越 o3。Token 效率（ShowUI 的 UI-guided selection）和训练策略（Entropulse）是关键杠杆，不必追求大模型。</p>
+</li>
+<li>
+<p><strong>感知 pipeline 质量是被低估的因素</strong>：WindowsAgentArena 发现 SoM annotation 质量造成 15-57% 性能波动，OmniParser 证明 local semantics 提升 23.3%。比起 reasoning 能力，感知质量对最终性能的影响可能更大。</p>
+</li>
+</ol>
+<h2 id="open-problems">Open Problems<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#open-problems" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ol>
+<li>
+<p><strong>Safety &amp; Reversibility</strong>：Agent 自主操作桌面环境存在不可逆风险（删文件、发邮件、执行代码）。几乎所有论文都未充分讨论 safety 机制，这是部署的最大障碍。需要 undo 机制、action 确认、sandbox isolation 等系统级方案。</p>
+</li>
+<li>
+<p><strong>跨应用 Workflow</strong>：Agent S2 在 Workflow 类任务上仅 18.21%，说明需要跨应用状态追踪和长程 context 维护的任务仍是根本性挑战。这可能需要 explicit memory / world model 支持。</p>
+</li>
+<li>
+<p><strong>专业领域 Icon 与非文字元素 Grounding</strong>：ScreenSpot-Pro 揭示专业软件 icon 识别仅 4%，当前 VLM 对 domain-specific visual elements 的理解严重不足。可能需要专门的 icon 预训练数据或检索增强方法。</p>
+</li>
+<li>
+<p><strong>多语言 GUI 理解</strong>：ScreenSpot-Pro-CN 显示中文指令下性能显著下降，多语言 GUI grounding 是被忽视的方向。</p>
+</li>
+<li>
+<p><strong>评估标准化与真实性</strong>：OSWorld 已成为事实标准，但 369 个任务可能不足以覆盖长尾场景。多 rollout 方法假设独立初始状态，在真实环境中不成立。需要更大规模、更多样化、支持状态隔离的 benchmark。</p>
+</li>
+<li>
+<p><strong>Compute 效率与部署</strong>：当前 SOTA 方法需要数千 VM 训练（UI-TARS-2）或多次 rollout + GPT-5 评估（Agent S3），成本极高。如何在保持性能的同时降低部署成本是产业化的关键。</p>
+</li>
+<li>
+<p><strong>Training-time vs Test-time Scaling 的 Pareto Frontier</strong>：两种 scaling 路径的最优组合尚未被系统探索。何时投入更多训练 compute、何时投入更多推理 compute？</p>
+</li>
+<li>
+<p><strong>从 Computer-use 到 Embodied Agent 的迁移</strong>：Computer-use agent 的 grounding、planning、error recovery 能力是否可以迁移到物理世界的 embodied agent？UI-TARS 的 System-2 reasoning 和 ComputerRL 的 Entropulse 是否适用于 VLA 训练？<strong>这是连接 computer-use agent 与我们核心研究方向（VLA/Embodied AI）的关键桥梁</strong>（建议加入 DomainMaps）。</p>
+</li>
+</ol>
+<h2 id="paper-comparison">Paper Comparison<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#paper-comparison" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th style="text-align:left;">Paper</th><th style="text-align:left;">Venue</th><th style="text-align:left;">技术路线</th><th style="text-align:left;">核心方法</th><th style="text-align:left;">关键结果</th><th style="text-align:left;">局限性</th></tr></thead><tbody><tr><td style="text-align:left;"><a href="../Papers/2312-CogAgent" class="internal alias" data-slug="Papers/2312-CogAgent">CogAgent</a></td><td style="text-align:left;">CVPR 2024</td><td style="text-align:left;">Native Model</td><td style="text-align:left;">Dual-resolution cross-attention (224+1120)</td><td style="text-align:left;">Mind2Web 58.2% (首个视觉>HTML)</td><td style="text-align:left;">18B 推理成本高</td></tr><tr><td style="text-align:left;"><a href="../Papers/2401-SeeClick" class="internal alias" data-slug="Papers/2401-SeeClick">SeeClick</a></td><td style="text-align:left;">ACL 2024</td><td style="text-align:left;">Grounding</td><td style="text-align:left;">Continual pre-training + ScreenSpot</td><td style="text-align:left;">ScreenSpot 53.4%</td><td style="text-align:left;">Action space 过简</td></tr><tr><td style="text-align:left;"><a href="../Papers/2404-OSWorld" class="internal alias" data-slug="Papers/2404-OSWorld">OSWorld</a></td><td style="text-align:left;">NeurIPS 2024</td><td style="text-align:left;">Benchmark</td><td style="text-align:left;">真实 OS + execution-based eval</td><td style="text-align:left;">Human 72.36% vs Model 12.24%</td><td style="text-align:left;">369 tasks 规模有限</td></tr><tr><td style="text-align:left;"><a href="../Papers/2307-WebArena" class="internal alias" data-slug="Papers/2307-WebArena">WebArena</a></td><td style="text-align:left;">ICLR 2024</td><td style="text-align:left;">Benchmark</td><td style="text-align:left;">4 个自托管网站 + functional eval</td><td style="text-align:left;">GPT-4 14.41% vs Human 78.24%</td><td style="text-align:left;">仅 web 场景</td></tr><tr><td style="text-align:left;"><a href="../Papers/2408-OmniParser" class="internal alias" data-slug="Papers/2408-OmniParser">OmniParser</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Perception Tool</td><td style="text-align:left;">YOLOv8 + BLIP-v2 + SoM</td><td style="text-align:left;">ScreenSpot 73.0%</td><td style="text-align:left;">依赖外部 VLM</td></tr><tr><td style="text-align:left;"><a href="../Papers/2409-WindowsAgentArena" class="internal alias" data-slug="Papers/2409-WindowsAgentArena">WindowsAgentArena</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Benchmark</td><td style="text-align:left;">Windows VM + 154 tasks</td><td style="text-align:left;">Navi 19.5% vs Human 74.5%</td><td style="text-align:left;">仅 Windows</td></tr><tr><td style="text-align:left;"><a href="../Papers/2410-OSAtlas" class="internal alias" data-slug="Papers/2410-OSAtlas">OS-Atlas</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Foundation Model</td><td style="text-align:left;">13.58M grounding corpus</td><td style="text-align:left;">7B 超 GPT-4o zero-shot</td><td style="text-align:left;">桌面泛化弱</td></tr><tr><td style="text-align:left;"><a href="../Papers/2411-ShowUI" class="internal alias" data-slug="Papers/2411-ShowUI">ShowUI</a></td><td style="text-align:left;">CVPR 2025</td><td style="text-align:left;">Lightweight Model</td><td style="text-align:left;">UI-guided token selection, 2B</td><td style="text-align:left;">75.1% zero-shot, 256K 数据</td><td style="text-align:left;">高分辨率受限</td></tr><tr><td style="text-align:left;"><a href="../Papers/2411-GUIAgentSurvey" class="internal alias" data-slug="Papers/2411-GUIAgentSurvey">GUI Agent Survey</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Survey</td><td style="text-align:left;">8 RQ, 500+ papers</td><td style="text-align:left;">全景知识地图</td><td style="text-align:left;">批判分析偏浅</td></tr><tr><td style="text-align:left;"><a href="../Papers/2412-AgentTrek" class="internal alias" data-slug="Papers/2412-AgentTrek">AgentTrek</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Data Synthesis</td><td style="text-align:left;">Tutorial→trajectory, $0.55/traj</td><td style="text-align:left;">10.4K trajectories, +230%</td><td style="text-align:left;">仅 web</td></tr><tr><td style="text-align:left;"><a href="../Papers/2412-OSGenesis" class="internal alias" data-slug="Papers/2412-OSGenesis">OS-Genesis</a></td><td style="text-align:left;">ACL 2025</td><td style="text-align:left;">Data Synthesis</td><td style="text-align:left;">逆向任务合成</td><td style="text-align:left;">AndroidWorld 17.41%</td><td style="text-align:left;">任务覆盖窄</td></tr><tr><td style="text-align:left;"><a href="../Papers/2501-ACUSurvey" class="internal alias" data-slug="Papers/2501-ACUSurvey">ACU Survey</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Survey</td><td style="text-align:left;">3 维 taxonomy, 87 agents</td><td style="text-align:left;">6 大研究缺口</td><td style="text-align:left;">缺定量对比</td></tr><tr><td style="text-align:left;"><a href="../Papers/2501-UITARS" class="internal alias" data-slug="Papers/2501-UITARS">UI-TARS</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Native Agent</td><td style="text-align:left;">Perception+System-2+Reflection</td><td style="text-align:left;">OSWorld 24.6, 10+ SOTA</td><td style="text-align:left;">72B 延迟高</td></tr><tr><td style="text-align:left;"><a href="../Papers/2504-AgentS2" class="internal alias" data-slug="Papers/2504-AgentS2">Agent S2</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Compositional</td><td style="text-align:left;">Manager-Worker + MoG</td><td style="text-align:left;">OSWorld 34.5%</td><td style="text-align:left;">Workflow 仅 18%</td></tr><tr><td style="text-align:left;"><a href="../Papers/2504-ScreenSpotPro" class="internal alias" data-slug="Papers/2504-ScreenSpotPro">ScreenSpot-Pro</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Benchmark</td><td style="text-align:left;">专业高分辨率 grounding</td><td style="text-align:left;">Icon 仅 4% 准确率</td><td style="text-align:left;">规模偏小</td></tr><tr><td style="text-align:left;"><a href="../Papers/2508-ComputerRL" class="internal alias" data-slug="Papers/2508-ComputerRL">ComputerRL</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">RL Training</td><td style="text-align:left;">API-GUI + Entropulse</td><td style="text-align:left;">OSWorld 48.9% (9B>o3)</td><td style="text-align:left;">Rule-based reward</td></tr><tr><td style="text-align:left;"><a href="../Papers/2508-OpenCUA" class="internal alias" data-slug="Papers/2508-OpenCUA">OpenCUA</a></td><td style="text-align:left;">NeurIPS 2025</td><td style="text-align:left;">Open Framework</td><td style="text-align:left;">AgentNet + Reflective CoT</td><td style="text-align:left;">OSWorld-V 45.0% 开源 SOTA</td><td style="text-align:left;">与闭源差距 16%</td></tr><tr><td style="text-align:left;"><a href="../Papers/2508-OSAgentsSurvey" class="internal alias" data-slug="Papers/2508-OSAgentsSurvey">OS Agents Survey</a></td><td style="text-align:left;">ACL 2025</td><td style="text-align:left;">Survey</td><td style="text-align:left;">3 层框架, 33 benchmarks</td><td style="text-align:left;">最全 OS agent 综述</td><td style="text-align:left;">时效受限</td></tr><tr><td style="text-align:left;"><a href="../Papers/2509-UITARS2" class="internal alias" data-slug="Papers/2509-UITARS2">UI-TARS-2</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">RL Training</td><td style="text-align:left;">Data flywheel + PPO 变体</td><td style="text-align:left;">OSWorld 47.5%</td><td style="text-align:left;">VLM verifier 噪声</td></tr><tr><td style="text-align:left;"><a href="../Papers/2510-ScalingAgents" class="internal alias" data-slug="Papers/2510-ScalingAgents">Agent S3</a></td><td style="text-align:left;">ICML</td><td style="text-align:left;">Test-time Scaling</td><td style="text-align:left;">BJudge + wide scaling</td><td style="text-align:left;">OSWorld 72.6% 超人类</td><td style="text-align:left;">多 rollout 假设</td></tr><tr><td style="text-align:left;"><a href="../Papers/2504-TongUI" class="internal alias" data-slug="Papers/2504-TongUI">TongUI</a></td><td style="text-align:left;">AAAI 2026</td><td style="text-align:left;">Data Synthesis</td><td style="text-align:left;">多模态教程→trajectory, 143K</td><td style="text-align:left;">ScreenSpot 83.4%</td><td style="text-align:left;">Teacher 蒸馏上限</td></tr><tr><td style="text-align:left;"><a href="../Papers/2509-DARTGUI" class="internal alias" data-slug="Papers/2509-DARTGUI">DART-GUI</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">RL Infrastructure</td><td style="text-align:left;">解耦异步 RL, 5.5× 环境利用率</td><td style="text-align:left;">OSWorld 42.13% (7B>Claude)</td><td style="text-align:left;">仅 OSWorld 评测</td></tr><tr><td style="text-align:left;"><a href="../Papers/2511-GroundCUA" class="internal alias" data-slug="Papers/2511-GroundCUA">GroundCUA</a></td><td style="text-align:left;">arXiv</td><td style="text-align:left;">Grounding Data</td><td style="text-align:left;">Dense annotation, 56K screenshots</td><td style="text-align:left;">3B > 72B agentic</td><td style="text-align:left;">标注成本高</td></tr></tbody></table></div>
+<h2 id="调研日志">调研日志<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#调研日志" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<ul>
+<li><strong>Round 1</strong>: 2026-04-02, 搜索 9 次，digest 12 篇（成功 12）</li>
+<li><strong>Round 2</strong>: 2026-04-02, 搜索 4 次，digest 9 篇（成功 9），补充先驱模型、感知工具、数据合成和 benchmark</li>
+<li><strong>Round 3</strong>: 2026-04-02, digest 2 篇：TongUI（数据合成）、DART-GUI（RL 训练基础设施）</li>
+<li><strong>论文总计</strong>: 23 篇</li>
+<li><strong>未能获取</strong>: 无</li>
+</ul></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="4w7agh" class="overflow"><li class="depth-0"><a href="#overview" data-for="overview">Overview</a></li><li class="depth-0"><a href="#技术路线" data-for="技术路线">技术路线</a></li><li class="depth-1"><a href="#路线一end-to-end-native-agent-models" data-for="路线一end-to-end-native-agent-models">路线一：End-to-End Native Agent Models</a></li><li class="depth-1"><a href="#路线二compositional-framework-based-agents" data-for="路线二compositional-framework-based-agents">路线二：Compositional Framework-based Agents</a></li><li class="depth-1"><a href="#路线三gui-grounding-专用模型" data-for="路线三gui-grounding-专用模型">路线三：GUI Grounding 专用模型</a></li><li class="depth-1"><a href="#路线四数据合成与标注" data-for="路线四数据合成与标注">路线四：数据合成与标注</a></li><li class="depth-1"><a href="#技术路线间的关系" data-for="技术路线间的关系">技术路线间的关系</a></li><li class="depth-0"><a href="#datasets--benchmarks" data-for="datasets--benchmarks">Datasets &amp; Benchmarks</a></li><li class="depth-0"><a href="#key-takeaways" data-for="key-takeaways">Key Takeaways</a></li><li class="depth-0"><a href="#open-problems" data-for="open-problems">Open Problems</a></li><li class="depth-0"><a href="#paper-comparison" data-for="paper-comparison">Paper Comparison</a></li><li class="depth-0"><a href="#调研日志" data-for="调研日志">调研日志</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
