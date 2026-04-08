@@ -8,6 +8,10 @@
 # Claude Code
 .claude/
 
+# Daily papers transient data
+Workbench/daily/.candidates.json
+Workbench/daily/.history.json
+
 # Quartz build output
 website/node_modules/
 dist/
