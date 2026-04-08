@@ -1,0 +1,20 @@
+{
+  "keywords": [
+    "VLM", "vision language model", "vision-language model",
+    "VLA", "vision language action", "vision-language-action",
+    "GUI agent", "computer use", "computer-use",
+    "web agent", "browser agent", "LLM agent", "AI agent",
+    "embodied ai", "embodied intelligence",
+    "spatial intelligence", "spatial reasoning",
+    "world model", "world action model",
+    "diffusion policy", "imitation learning",
+    "scene understanding", "visual grounding",
+    "robot", "manipulation", "grasping", "locomotion",
+    "navigation", "planning", "affordance",
+    "sim-to-real", "sim2real",
+    "video understanding", "video reasoning"
+  ],
+  "arxiv_categories": ["cs.CV", "cs.AI", "cs.LG", "cs.RO", "cs.CL"],
+  "min_score": 2,
+  "top_n": 30
+}
