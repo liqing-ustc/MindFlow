@@ -125,6 +125,10 @@ If you find this useful, please give it a star! It helps others discover this pr
 
 **Author**: [Qing Li](https://liqing.io/)
 
+## Acknowledgements
+
+- The `daily-papers` skill is adapted from [huangkiki/dailypaper-skills](https://github.com/huangkiki/dailypaper-skills).
+
 ## License
 
 Feel free to use this as a template for your own research workspace.
