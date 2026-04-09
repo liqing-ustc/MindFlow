@@ -24,6 +24,7 @@ from urllib.request import Request, urlopen
 # ── 加载配置 ──────────────────────────────────────────────────────────────
 
 CONFIG_PATH = Path(__file__).resolve().parent / "config.json"
+DEFAULT_HISTORY_PATH = Path(__file__).resolve().parent / ".history.json"
 
 def load_config() -> dict:
     with open(CONFIG_PATH, "r", encoding="utf-8") as f:
@@ -131,10 +132,11 @@ def fetch_hf_papers(start_date, end_date) -> list[dict]:
                         papers[aid] = paper
         d += timedelta(days=1)
 
-    # HF Trending：一次抓取
+    # HF Trending：一次抓取，过滤 30 天前的旧论文
     endpoint = "https://huggingface.co/api/daily_papers?sort=trending&limit=50"
     print(f"  Fetching hf-trending...", file=sys.stderr)
     raw = fetch_url(endpoint)
+    trending_cutoff = (datetime.now().date() - timedelta(days=30)).isoformat()
     if raw:
         try:
             items = json.loads(raw)
@@ -144,6 +146,8 @@ def fetch_hf_papers(start_date, end_date) -> list[dict]:
             result = _parse_hf_item(item, "hf-trending")
             if result:
                 aid, paper = result
+                if paper["date"] and paper["date"] < trending_cutoff:
+                    continue
                 if aid not in papers or paper["score"] > papers[aid]["score"]:
                     papers[aid] = paper
 
@@ -227,19 +231,56 @@ def fetch_arxiv_papers(start_date, end_date, days: int = 1) -> list[dict]:
     return papers
 
 
-# ── 合并去重 ──────────────────────────────────────────────────────────────
+# ── 历史去重 ──────────────────────────────────────────────────────────────
 
 def extract_arxiv_id(url: str) -> str:
     m = re.search(r"(\d{4}\.\d{4,5})", url)
     return m.group(1) if m else ""
 
 
+def load_history(path: Path = DEFAULT_HISTORY_PATH) -> list[dict]:
+    """加载历史推荐记录。格式: [{"id": "2504.12345", "date": "2026-04-08"}, ...]"""
+    if path.exists():
+        try:
+            return json.loads(path.read_text(encoding="utf-8"))
+        except (json.JSONDecodeError, IOError):
+            pass
+    return []
+
+
+def save_history(papers: list[dict], target_date, path: Path = DEFAULT_HISTORY_PATH) -> None:
+    """追加本次推荐的论文到历史，保留最近 30 天。"""
+    history = load_history(path)
+    existing_ids = {h["id"] for h in history}
+
+    for p in papers:
+        aid = extract_arxiv_id(p["url"])
+        if aid and aid not in existing_ids:
+            history.append({"id": aid, "date": str(target_date), "title": p.get("title", "")})
+            existing_ids.add(aid)
+
+    # 清理 30 天前的记录
+    cutoff = str((datetime.now().date() - timedelta(days=30)))
+    history = [h for h in history if h.get("date", "") >= cutoff]
+
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(json.dumps(history, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"  History updated: {len(history)} entries → {path}", file=sys.stderr)
+
+
+
+# ── 合并去重 ──────────────────────────────────────────────────────────────
+
 def merge_and_rank(
     hf_papers: list[dict],
     arxiv_papers: list[dict],
+    target_date,
     days: int = 1,
     top_n: int = TOP_N,
+    history_path: Path = DEFAULT_HISTORY_PATH,
 ) -> list[dict]:
+    is_weekend = target_date.weekday() >= 5
+
     # 按 arXiv ID 合并，保留高分
     by_id: dict[str, dict] = {}
     for p in hf_papers + arxiv_papers:
@@ -251,8 +292,43 @@ def merge_and_rank(
 
     print(f"  Merged: {len(by_id)} unique papers", file=sys.stderr)
 
+    # 多天模式：跳过历史去重（用户明确要看多天内容）
+    if days > 1:
+        print(f"  Multi-day mode (days={days}): skipping history dedup", file=sys.stderr)
+        candidates = [p for p in by_id.values() if p["score"] >= MIN_SCORE]
+        candidates.sort(key=lambda x: x["score"], reverse=True)
+        top = candidates[:top_n]
+        print(f"  Final: {len(top)} papers (top_n={top_n})", file=sys.stderr)
+        return top
+
+    # 单天模式：历史去重
+    history = load_history(history_path)
+    history_ids: dict[str, str] = {}  # id → earliest date
+    for h in history:
+        hid, hdate = h.get("id", ""), h.get("date", "")
+        if hid and hdate:
+            if hid not in history_ids or hdate < history_ids[hid]:
+                history_ids[hid] = hdate
+
+    # 跨天去重
+    deduped: dict[str, dict] = {}
+    removed = 0
+    for aid, p in by_id.items():
+        if aid in history_ids:
+            # 周末：允许高 upvote 的 trending 论文重新推荐
+            if is_weekend and p.get("source") == "hf-trending" and (p.get("hf_upvotes") or 0) >= 5:
+                p["is_re_recommend"] = True
+                p["last_recommend_date"] = history_ids[aid]
+                deduped[aid] = p
+            else:
+                removed += 1
+        else:
+            deduped[aid] = p
+
+    print(f"  After history dedup: {len(deduped)} (removed {removed})", file=sys.stderr)
+
     # 过滤 + 排序
-    candidates = [p for p in by_id.values() if p["score"] >= MIN_SCORE]
+    candidates = [p for p in deduped.values() if p["score"] >= MIN_SCORE]
     candidates.sort(key=lambda x: x["score"], reverse=True)
     top = candidates[:top_n]
     print(f"  Final: {len(top)} papers", file=sys.stderr)
@@ -284,9 +360,18 @@ def main():
         file=sys.stderr,
     )
 
+    # history 路径：与 output 同目录，或默认位置
+    if args.output:
+        history_path = Path(args.output).parent / ".history.json"
+    else:
+        history_path = DEFAULT_HISTORY_PATH
+
     hf_papers = fetch_hf_papers(start_date, target_date)
     arxiv_papers = fetch_arxiv_papers(start_date, target_date, days)
-    top = merge_and_rank(hf_papers, arxiv_papers, days=days, top_n=top_n)
+    top = merge_and_rank(hf_papers, arxiv_papers, target_date, days=days, top_n=top_n, history_path=history_path)
+
+    # 更新历史
+    save_history(top, target_date, history_path)
 
     output = json.dumps(top, ensure_ascii=False, indent=2) + "\n"
     if args.output:

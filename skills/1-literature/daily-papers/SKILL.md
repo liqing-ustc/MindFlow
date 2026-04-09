@@ -41,6 +41,8 @@ python3 skills/1-literature/daily-papers/fetch_and_score.py \
 
 **检查输出**：确认文件存在且包含有效 JSON 数组。如果为空数组，检查 stderr 诊断问题（可能是周末 arXiv 无更新、网络问题等），告知用户原因后停止。
 
+**历史去重**：脚本在 output 同目录维护 `.history.json`，单天模式自动过滤已推荐过的论文（30 天窗口），多天模式跳过去重。每次运行后自动更新历史。
+
 ### Step 2：快速分流
 
 读取 `Workbench/daily/.candidates.json`，做**轻量级分类**，不写详细点评。
@@ -64,9 +66,7 @@ python3 skills/1-literature/daily-papers/fetch_and_score.py \
 
 必须通过 Task agent 调用 /paper-digest skill 生成论文笔记。不要因为"怕 context overflow"或"论文太多"就自己写个 70 行的骨架糊弄过去。paper-digest 在独立的 Task agent 中运行，不会占用主 agent 的 context。
 
-**范围控制**：
-- **单日模式**（days=1）：对必读和值得看的论文全部生成笔记
-- **多日模式**（days>1）：仅对必读论文生成笔记
+**范围控制**：仅对“必读”论文生成笔记，"值得看"和"可跳过"的不生成笔记
 
 **跳过条件**（满足任一即跳过）：
 - 用 Glob 扫描 `Papers/` 目录，**已有笔记的论文跳过**
@@ -80,7 +80,7 @@ python3 skills/1-literature/daily-papers/fetch_and_score.py \
 
 **仅对本次新增论文生成点评**。已有推荐文件中的点评直接复用，不重新生成。
 
-读取本次新生成的笔记文件，基于笔记中的完整信息生成推荐点评。
+读取需点评论文的笔记文件，基于笔记中的完整信息生成推荐点评。
 
 **分流校准**：基于笔记内容，可以调整 Step 2 的分流结果（升级或降级 tier）。分流表以 Step 4 的最终判断为准。
 
@@ -113,18 +113,11 @@ tags: [daily-papers, tag1, tag2, ...]
 - **Authors**:
 - **Institutes**: (如没有，则跳过)
 - **Source**: [link](url)  📰 HF Daily ⬆️ N / 🔥 HF Trending ⬆️ N / 📄 arXiv
-- **Method**: 基于笔记内容，3-5 句话讲清楚方法的核心机制，包含关键技术细节。
-- **锐评**: 基于笔记中的具体数字和分析，给出有深度的判断。方法有没有硬伤？claim 和证据匹配吗？跟已有工作的本质区别在哪？哪些数字亮眼、哪些数字暴露问题？
-- **📒 论文笔记**: [[Papers/YYMM-ShortTitle]] 
+- **Method**: 用3-5 句话讲清楚方法的核心机制和主要结果，要通俗易懂，避免不必要的专业术语。
+- **锐评**: 这篇到底行不行？方法有没有硬伤？claim 和证据匹配吗？跟已有工作的本质区别在哪？哪些数字亮眼、哪些数字暴露问题？
+- **📒 论文笔记**: [[笔记文件名]] （如有笔记）
 
 ...（按推荐等级排序，每篇论文一个 ### 段落）
-
-### N. 可跳过的论文短标题（无笔记的论文）
-- **Title**:
-- **Authors**:
-- **Source**: [link](url)
-- **Method**: 基于摘要，2-3 句话概述。
-- **锐评**: 基于摘要的简评，说明为什么可跳过。
 
 ## 已排除论文
 
@@ -137,8 +130,7 @@ tags: [daily-papers, tag1, tag2, ...]
 
 - **点评人设**: 你是一个毒舌但眼光极准的 AI 论文审稿人，说话像一个见多识广、对灌水零容忍的 senior researcher。
 - **语气要求**：毒舌、尖锐、精炼、有态度。不和稀泥，不说"总体还行"。明确判断好/坏
-- **基于笔记**：有笔记的论文，所有评价必须有笔记中的具体数据支撑。
-- **基于摘要**：无笔记的论文（可跳过类），评价基于摘要。不确定的信息标注"摘要未提及"
+- **点评依据**：有笔记的论文，评价必须基于笔记内容。无笔记的论文，评价基于摘要。
 - **内容具体**：夸要具体：哪个数字强、哪个设计有新意，一句话点到。骂要更具体：哪个假设不成立、哪个实验缺了、哪个 claim 站不住脚
 - **来源格式**：
   - `hf-daily` → `📰 HF Daily ⬆️ {hf_upvotes}`
@@ -175,7 +167,7 @@ tags: [daily-papers, tag1, tag2, ...]
 告知用户：
 - 抓取了多少篇候选论文
 - 推荐了多少篇（必读 / 值得看 / 可跳过 各多少）
-- 已为 N 篇论文生成笔记（必读 X / 值得看 Y）
+- 已为 N 篇必读论文生成笔记
 
 ## Guard
 
@@ -186,7 +178,7 @@ tags: [daily-papers, tag1, tag2, ...]
 - [ ] `Workbench/daily/.candidates.json` 存在且非空
 - [ ] `Workbench/daily/YYYY-MM-DD.md` 已创建
 - [ ] 分流表中的 `[[#heading|display]]` 链接与论文点评的 `###` 标题完全匹配
-- [ ] 必读（单日模式含值得看）论文已通过 paper-digest 生成笔记
+- [ ] 必读论文已通过 paper-digest 生成笔记
 - [ ] 有笔记的论文点评基于笔记内容
 - [ ] 日志已追加到 `Workbench/logs/YYYY-MM-DD.md`
 
@@ -201,7 +193,7 @@ tags: [daily-papers, tag1, tag2, ...]
 执行过程：
 1. 运行 `fetch_and_score.py --days 1`
 2. 读取 JSON，扫描 `Papers/` 匹配已有笔记，快速分流（tier + 一句话理由）
-3. 并行启动 Task agents 为必读 + 值得看论文生成笔记
+3. 并行启动 Task agents 为必读论文生成笔记
 4. 读取所有笔记，基于深度阅读生成点评，一次成型保存到 `Workbench/daily/2026-04-07.md`
 5. 追加日志
 
