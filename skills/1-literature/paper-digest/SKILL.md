@@ -28,7 +28,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 ### Step 2：笔记生成
 
-**模板**: 遵循 `references/paper-note-template.md`，不可自行简化。
+**模板**: 遵循本 skill 内的 `references/paper-note-template.md`（与 SKILL.md 同目录），不可自行简化。
 
 #### 核心质量规则
 1. **主要图表和公式数量下限（硬性）**：
@@ -43,7 +43,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 6. **图片外链优先**: arXiv HTML / 项目主页 / GitHub，找不到再本地下载
 7. **Blog 适配**: 若 source 为 blog 而非论文，删除或简化 `Experiments` 段（`Datasets` / `Implementation Details` 通常不适用；`Results` 改为 "Key Points"），`可复现性评估` 整段删除。`关联笔记` 里无内容的子类也直接删除。
 
-> 公式/图片/表格的详细质量规范见 `references/quality-standards.md`
+> 公式/图片/表格的详细质量规范见本 skill 内的 `references/quality-standards.md`（与 SKILL.md 同目录）
 
 ### Step 3：笔记文件保存
 
@@ -55,7 +55,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
 
 **去重检查**：用 Glob 扫描 `Papers/` 目录，检查是否已存在同名或同主题笔记（搜索标题关键词）。若发现重复，停止并告知 Human，不创建新文件。
 
-**Tag 选择**：阅读 `references/tag-taxonomy.md`，按照规范选择 tag。
+**Tag 选择**：阅读 vault 根目录下的 `references/tag-taxonomy.md`（即 `{vault_root}/references/tag-taxonomy.md`，**不是**本 skill 内的 `references/`），按照规范选择 tag。
 
 **写入文件**：用 Write 将笔记保存到 `Papers/{笔记文件名}.md`。
 
