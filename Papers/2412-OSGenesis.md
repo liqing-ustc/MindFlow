@@ -7,7 +7,7 @@ venue: ACL 2025
 tags: [web-agent, imitation-learning, VLM, instruction-following]
 url: https://arxiv.org/abs/2412.19723
 code: https://qiushisun.github.io/OS-Genesis-Home/
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

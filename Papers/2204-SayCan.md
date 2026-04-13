@@ -55,7 +55,7 @@ tags:
   - scene-understanding
 url: https://arxiv.org/abs/2204.01691
 code:
-rating: 5
+rating: 3
 date_added: 2026-03-24
 ---
 ## Summary

@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [VLA, manipulation, task-planning]
 url: "https://arxiv.org/abs/2601.02295"
 code: ""
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

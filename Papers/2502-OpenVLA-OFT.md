@@ -7,7 +7,7 @@ venue: RSS 2025
 tags: [VLA, imitation-learning, manipulation]
 url: https://arxiv.org/abs/2502.19645
 code: https://github.com/moojink/openvla-oft
-rating: 5
+rating: 3
 date_added: "2026-03-27"
 ---
 ## Summary

@@ -7,7 +7,7 @@ venue: "NeurIPS 2024"
 tags: [world-model]
 url: "https://arxiv.org/abs/2405.17398"
 code: "https://github.com/OpenDriveLab/Vista"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

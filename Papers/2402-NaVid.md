@@ -7,7 +7,7 @@ venue: RSS 2024
 tags: [VLN, VLM, navigation]
 url: https://arxiv.org/abs/2402.15852
 code: "https://pku-epic.github.io/NaVid/"
-rating: 4
+rating: 2
 date_added: "2026-03-27"
 ---
 ## Summary

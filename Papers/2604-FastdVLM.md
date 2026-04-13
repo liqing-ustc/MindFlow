@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLM]
 url: https://arxiv.org/abs/2604.06832
 code:
-rating: 3
+rating: 1
 date_added: "2026-04-09"
 ---
 ## Summary

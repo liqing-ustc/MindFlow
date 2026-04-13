@@ -7,7 +7,7 @@ venue: arXiv
 tags: [web-agent, VLM, imitation-learning]
 url: https://arxiv.org/abs/2511.07332
 code: https://groundcua.github.io
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

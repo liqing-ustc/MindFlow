@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [world-model, VLA, RL]
 url: "https://arxiv.org/abs/2602.06508"
 code: "https://github.com/showlab/World-VLA-Loop"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [world-model, RL, legged]
 url: "https://arxiv.org/abs/2501.10100"
 code: ""
-rating: 3
+rating: 1
 date_added: "2026-03-30"
 ---
 ## Summary

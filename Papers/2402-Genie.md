@@ -7,7 +7,7 @@ venue: "ICML 2024"
 tags: [world-model, RL]
 url: "https://arxiv.org/abs/2402.15391"
 code: ""
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

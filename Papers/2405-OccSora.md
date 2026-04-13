@@ -7,7 +7,7 @@ venue: "ICLR 2025"
 tags: [world-model, 3D-representation]
 url: "https://arxiv.org/abs/2405.20337"
 code: "https://github.com/wzzheng/OccSora"
-rating: 3
+rating: 1
 date_added: "2026-03-30"
 ---
 ## Summary

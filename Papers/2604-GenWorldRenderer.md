@@ -7,7 +7,7 @@ venue: arXiv
 tags: [world-model, 3D-representation]
 url: https://arxiv.org/abs/2604.02329
 code: https://github.com/ShandaAI/AlayaRenderer
-rating: 3
+rating: 1
 date_added: "2026-04-08"
 ---
 ## Summary

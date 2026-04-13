@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [world-model]
 url: "https://arxiv.org/abs/2501.03575"
 code: "https://github.com/nvidia-cosmos/cosmos-predict1"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

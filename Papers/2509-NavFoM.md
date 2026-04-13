@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLN, navigation, cross-embodiment]
 url: https://arxiv.org/abs/2509.12129
 code:
-rating: 4
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

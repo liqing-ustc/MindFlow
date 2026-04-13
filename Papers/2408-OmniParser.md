@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [web-agent, VLM, scene-understanding]
 url: https://arxiv.org/abs/2408.00203
 code: https://github.com/microsoft/OmniParser
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

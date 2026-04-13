@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [VLN, semantic-map, navigation]
 url: "https://arxiv.org/abs/2502.13451"
 code:
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

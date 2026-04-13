@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLA, flow-matching, manipulation]
 url: https://arxiv.org/abs/2602.12684
 code: https://github.com/XiaomiRobotics/Xiaomi-Robotics-0
-rating: 4
+rating: 2
 date_added: "2026-03-31"
 ---
 ## Summary

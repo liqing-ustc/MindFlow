@@ -7,7 +7,7 @@ venue: "ICLR 2025"
 tags: [world-model, RL]
 url: "https://arxiv.org/abs/2408.14837"
 code: "https://gamengen.github.io/"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

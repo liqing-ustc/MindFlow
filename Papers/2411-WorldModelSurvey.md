@@ -7,7 +7,7 @@ venue: "ACM CSUR 2025"
 tags: [world-model, RL]
 url: "https://arxiv.org/abs/2411.14499"
 code: "https://github.com/tsinghua-fib-lab/World-Model"
-rating: 5
+rating: 3
 date_added: "2026-03-30"
 ---
 ## Summary

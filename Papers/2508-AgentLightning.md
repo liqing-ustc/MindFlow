@@ -7,7 +7,7 @@ venue: arXiv
 tags: [RL]
 url: https://arxiv.org/abs/2508.03680
 code: https://github.com/microsoft/agent-lightning
-rating: 3
+rating: 1
 date_added: "2026-04-08"
 ---
 ## Summary

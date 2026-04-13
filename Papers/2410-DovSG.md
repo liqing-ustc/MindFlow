@@ -7,7 +7,7 @@ venue: RA-L 2025
 tags: [mobile-manipulation, scene-understanding, semantic-map, 3D-representation, task-planning, instruction-following]
 url: https://arxiv.org/abs/2410.11989
 code: 
-rating: 3
+rating: 1
 date_added: "2026-04-02"
 ---
 ## Summary

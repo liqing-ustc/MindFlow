@@ -7,7 +7,7 @@ venue: arXiv
 tags: [spatial-reasoning, VLM, RL]
 url: "https://arxiv.org/abs/2504.12680"
 code: "https://github.com/EmbodiedCity/Embodied-R.code"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

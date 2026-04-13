@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLA, flow-matching]
 url: https://arxiv.org/abs/2604.05656
 code:
-rating: 4
+rating: 2
 date_added: "2026-04-08"
 ---
 ## Summary

@@ -7,7 +7,7 @@ venue: "NeurIPS 2025"
 tags: [VLM, RL, spatial-reasoning, manipulation, VLA]
 url: "https://arxiv.org/abs/2506.00070"
 code: ""
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

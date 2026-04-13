@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [VLN, navigation, instruction-following]
 url: "https://arxiv.org/abs/2601.03707"
 code: "https://github.com/nopride03/AirNav"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

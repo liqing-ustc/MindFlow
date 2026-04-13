@@ -7,7 +7,7 @@ venue: arXiv
 tags: [web-agent, task-planning, VLM, instruction-following]
 url: https://arxiv.org/abs/2501.16150
 code:
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

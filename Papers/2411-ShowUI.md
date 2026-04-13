@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [web-agent, VLM, instruction-following]
 url: https://arxiv.org/abs/2411.17465
 code: https://github.com/showlab/ShowUI
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

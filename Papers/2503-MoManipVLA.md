@@ -7,7 +7,7 @@ venue: CVPR 2025
 tags: [VLA, mobile-manipulation, manipulation, cross-embodiment, instruction-following]
 url: https://arxiv.org/abs/2503.13446
 code: https://gary3410.github.io/momanipVLA/
-rating: 3
+rating: 1
 date_added: "2026-04-02"
 ---
 ## Summary

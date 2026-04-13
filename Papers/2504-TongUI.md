@@ -7,7 +7,7 @@ venue: AAAI 2026
 tags: [web-agent, VLM, imitation-learning]
 url: https://arxiv.org/abs/2504.12679
 code: https://github.com/TongUI-agent/TongUI-agent
-rating: 4
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

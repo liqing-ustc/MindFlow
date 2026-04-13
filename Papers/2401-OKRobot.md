@@ -7,7 +7,7 @@ venue: RSS 2024
 tags: [mobile-manipulation, navigation, scene-understanding]
 url: https://arxiv.org/abs/2401.12202
 code: https://github.com/ok-robot/ok-robot
-rating: 4
+rating: 2
 date_added: "2026-03-24"
 ---
 ## Summary

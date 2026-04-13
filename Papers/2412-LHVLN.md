@@ -7,7 +7,7 @@ venue: CVPR 2025
 tags: [VLN, navigation, task-planning, spatial-memory]
 url: https://arxiv.org/abs/2412.09082
 code:
-rating: 3
+rating: 1
 date_added: "2026-03-27"
 ---
 ## Summary

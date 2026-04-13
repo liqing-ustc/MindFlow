@@ -7,7 +7,7 @@ venue: ACL 2025 (Oral)
 tags: [web-agent, VLM, task-planning]
 url: https://arxiv.org/abs/2508.04482
 code: https://os-agent-survey.github.io/
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

@@ -7,7 +7,7 @@ venue: arXiv
 tags: [web-agent, RL, VLM, instruction-following]
 url: https://arxiv.org/abs/2508.14040
 code: https://github.com/thudm/ComputerRL
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

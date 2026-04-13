@@ -7,7 +7,7 @@ venue: arXiv
 tags: [web-agent, VLM]
 url: https://arxiv.org/abs/2504.07981
 code: https://gui-agent.github.io/grounding-leaderboard/
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

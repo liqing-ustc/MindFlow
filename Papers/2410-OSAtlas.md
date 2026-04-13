@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [web-agent, VLM, cross-embodiment, instruction-following]
 url: https://arxiv.org/abs/2410.23218
 code: https://osatlas.github.io/
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

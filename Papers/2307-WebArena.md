@@ -7,7 +7,7 @@ venue: ICLR 2024
 tags: [web-agent, VLM, instruction-following, task-planning]
 url: https://arxiv.org/abs/2307.13854
 code: https://webarena.dev/
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

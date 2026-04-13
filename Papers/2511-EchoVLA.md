@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLA, mobile-manipulation, spatial-memory, instruction-following]
 url: https://arxiv.org/abs/2511.18112
 code: ""
-rating: "3"
+rating: 1
 date_added: "2026-04-02"
 ---
 ## Summary

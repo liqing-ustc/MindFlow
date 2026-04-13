@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLA, VLM, manipulation, flow-matching, scene-understanding, spatial-memory, task-planning, imitation-learning]
 url: "https://arxiv.org/abs/2510.11027"
 code: "https://github.com/OpenGVLab/Vlaser/"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

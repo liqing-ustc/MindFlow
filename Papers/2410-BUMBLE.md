@@ -7,7 +7,7 @@ venue: arXiv
 tags: [mobile-manipulation, VLM, task-planning, navigation, spatial-memory, instruction-following]
 url: https://arxiv.org/abs/2410.06237
 code: https://robin-lab.cs.utexas.edu/BUMBLE/
-rating: 3
+rating: 1
 date_added: "2026-04-02"
 ---
 ## Summary

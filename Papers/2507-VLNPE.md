@@ -7,7 +7,7 @@ venue: "ICCV 2025"
 tags: [VLN, navigation, cross-embodiment]
 url: "https://arxiv.org/abs/2507.13019"
 code: "https://crystalsixone.github.io/vln_pe.github.io/"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

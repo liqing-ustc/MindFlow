@@ -7,7 +7,7 @@ venue: arXiv
 tags: [web-agent, VLM, instruction-following, imitation-learning, RL]
 url: https://arxiv.org/abs/2501.12326
 code: https://github.com/bytedance/UI-TARS
-rating: "5"
+rating: 3
 date_added: "2026-04-02"
 ---
 ## Summary

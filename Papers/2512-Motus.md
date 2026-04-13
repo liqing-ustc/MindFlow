@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [world-model, VLA, cross-embodiment]
 url: "https://arxiv.org/abs/2512.13030"
 code: ""
-rating: 5
+rating: 3
 date_added: "2026-03-30"
 ---
 ## Summary

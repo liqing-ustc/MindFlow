@@ -25,7 +25,7 @@ tags:
   - manipulation
 url: "https://arxiv.org/abs/2509.15293"
 code: "https://mbzuai-oryx.github.io/FoMER-Bench/"
-rating: 3
+rating: 1
 date_added: "2026-03-30"
 ---
 ## Summary

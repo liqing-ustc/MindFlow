@@ -7,7 +7,7 @@ venue: ICML 2025
 tags: [VLM, navigation, manipulation, task-planning, scene-understanding, instruction-following]
 url: "https://arxiv.org/abs/2502.09560"
 code: "https://github.com/EmbodiedBench/EmbodiedBench"
-rating: 3
+rating: 1
 date_added: "2026-03-30"
 ---
 ## Summary

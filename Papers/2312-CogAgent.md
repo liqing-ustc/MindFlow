@@ -7,7 +7,7 @@ venue: "CVPR 2024 (Highlight)"
 tags: [web-agent, VLM, instruction-following]
 url: https://arxiv.org/abs/2312.08914
 code: https://github.com/THUDM/CogAgent
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

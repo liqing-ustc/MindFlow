@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [task-planning, mobile-manipulation, VLM, semantic-map]
 url: "https://arxiv.org/abs/2602.08537"
 code:
-rating: 3
+rating: 1
 date_added: "2026-04-02"
 ---
 ## Summary

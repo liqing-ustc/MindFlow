@@ -7,7 +7,7 @@ venue: ICML
 tags: [web-agent, VLM, instruction-following]
 url: https://arxiv.org/abs/2510.02250
 code:
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

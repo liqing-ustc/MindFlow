@@ -7,7 +7,7 @@ venue: Autonomous Robots
 tags: [mobile-manipulation, task-planning, instruction-following]
 url: https://arxiv.org/abs/2305.05658
 code: https://tidybot.cs.princeton.edu
-rating: 3
+rating: 1
 date_added: "2026-04-02"
 ---
 ## Summary

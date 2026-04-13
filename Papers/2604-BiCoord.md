@@ -7,7 +7,7 @@ venue: arXiv
 tags: [manipulation, imitation-learning, task-planning]
 url: https://arxiv.org/abs/2604.05831v1
 code: https://github.com/buaa-colalab/BiCoord-Bench
-rating: 3
+rating: 1
 date_added: "2026-04-08"
 ---
 ## Summary

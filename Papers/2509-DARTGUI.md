@@ -7,7 +7,7 @@ venue: arXiv
 tags: [RL, web-agent]
 url: https://arxiv.org/abs/2509.23866
 code: https://github.com/Computer-use-agents/dart-gui
-rating: 4
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

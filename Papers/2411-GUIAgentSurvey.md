@@ -7,7 +7,7 @@ venue: arXiv
 tags: [web-agent, VLM, task-planning]
 url: https://arxiv.org/abs/2411.18279
 code: https://github.com/vyokky/LLM-Brained-GUI-Agents-Survey
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

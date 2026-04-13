@@ -7,7 +7,7 @@ venue: arXiv
 tags: [web-agent, VLM, task-planning]
 url: https://arxiv.org/abs/2504.00906
 code: https://github.com/simular-ai/Agent-S
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

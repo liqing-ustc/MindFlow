@@ -7,7 +7,7 @@ venue: arXiv
 tags: [3D-representation, scene-understanding, VLM]
 url: https://arxiv.org/abs/2603.07660
 code:
-rating: 3
+rating: 1
 date_added: "2026-04-03"
 ---
 ## Summary

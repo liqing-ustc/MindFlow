@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [VLN, scene-understanding, 3D-representation]
 url: "https://arxiv.org/abs/2502.00931"
 code:
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

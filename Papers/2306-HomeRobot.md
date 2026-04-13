@@ -7,7 +7,7 @@ venue: NeurIPS 2023 Competition Track
 tags: [mobile-manipulation, scene-understanding, navigation]
 url: https://arxiv.org/abs/2306.11565
 code: https://github.com/facebookresearch/home-robot
-rating: 3
+rating: 1
 date_added: "2026-04-02"
 ---
 ## Summary

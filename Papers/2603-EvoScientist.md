@@ -20,7 +20,7 @@ tags:
   - auto-research
 url: https://arxiv.org/abs/2603.08127
 code:
-rating: 2
+rating: 1
 date_added: 2026-03-26
 ---
 ## Summary

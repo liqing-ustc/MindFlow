@@ -7,7 +7,7 @@ venue: "CoRL 2025"
 tags: [world-model, VLA, imitation-learning, cross-embodiment]
 url: "https://arxiv.org/abs/2505.12705"
 code: "https://github.com/NVIDIA/GR00T-Dreams"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

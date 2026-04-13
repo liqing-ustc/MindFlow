@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLA, manipulation, instruction-following, cross-embodiment, scene-understanding]
 url: https://arxiv.org/abs/2503.20020
 code:
-rating: 5
+rating: 3
 date_added: "2026-03-30"
 ---
 ## Summary

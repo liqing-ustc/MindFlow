@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLA, RL, manipulation]
 url: http://arxiv.org/abs/2604.05595v1
 code:
-rating: 3
+rating: 1
 date_added: "2026-04-08"
 ---
 ## Summary

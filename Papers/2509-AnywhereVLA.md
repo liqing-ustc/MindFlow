@@ -20,7 +20,7 @@ tags:
   - scene-understanding
 url: https://arxiv.org/abs/2509.21006
 code: ""
-rating: 2
+rating: 1
 date_added: "2026-04-02"
 ---
 

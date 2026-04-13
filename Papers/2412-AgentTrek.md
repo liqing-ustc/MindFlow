@@ -7,7 +7,7 @@ venue: "ICLR 2025 Spotlight"
 tags: [web-agent, VLM, imitation-learning, auto-research]
 url: https://arxiv.org/abs/2412.09605
 code: https://github.com/xlang-ai/AgentTrek
-rating: "4"
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

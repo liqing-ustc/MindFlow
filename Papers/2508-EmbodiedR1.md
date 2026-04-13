@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLM, RL, manipulation, cross-embodiment, scene-understanding, VLA]
 url: "https://arxiv.org/abs/2508.13998"
 code: "https://github.com/pickxiguapi/Embodied-R1"
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

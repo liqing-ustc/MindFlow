@@ -7,7 +7,7 @@ venue: "arXiv"
 tags: [VLN, 3D-representation, semantic-map]
 url: "https://arxiv.org/abs/2603.03739"
 code:
-rating: 4
+rating: 2
 date_added: "2026-03-30"
 ---
 ## Summary

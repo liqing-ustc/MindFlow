@@ -7,7 +7,7 @@ venue: arXiv
 tags: [VLA, mobile-manipulation, scene-understanding, imitation-learning, flow-matching, spatial-memory, manipulation]
 url: https://arxiv.org/abs/2603.22760
 code:
-rating: 4
+rating: 2
 date_added: "2026-04-02"
 ---
 ## Summary

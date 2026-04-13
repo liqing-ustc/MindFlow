@@ -7,7 +7,7 @@ venue: "NeurIPS 2025 Spotlight"
 tags: [computer-use, gui-agent, VLM, imitation-learning]
 url: https://arxiv.org/abs/2508.09123
 code: https://opencua.xlang.ai
-rating: "5"
+rating: 3
 date_added: "2026-04-02"
 ---
 ## Summary

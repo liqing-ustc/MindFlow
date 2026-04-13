@@ -7,7 +7,7 @@ venue: "ICRA 2026"
 tags: [VLN, navigation, scene-understanding]
 url: "https://arxiv.org/abs/2507.05240"
 code: "https://streamvln.github.io/"
-rating: 5
+rating: 3
 date_added: "2026-03-30"
 ---
 ## Summary
