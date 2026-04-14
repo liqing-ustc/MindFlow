@@ -71,7 +71,7 @@ allowed-tools: Read, Write, Edit, Glob, Grep, WebSearch, WebFetch
    WebSearch "<paper title>" project page
    WebSearch "<paper title>" github
    ```
-   只看前几条结果，挑候选 URL 进 officiality check；找不到就直接记 "none found"，不强求。
+   只看前几条结果，挑候选 URL 进 officiality check；找不到就略过，不强求。
 3. **Officiality check**：任何候选 URL 进入 fetch 之前，综合判断它是否来源于官方——有无任何证据把它和论文作者 / 机构绑定（org 名、域名、arxiv 里的反向链接、README / 页面文案、作者名 subdomain 等都算）。
 
 ##### Step 2.1.c：fetch 次源（仅通过 officiality 的候选）
@@ -149,7 +149,6 @@ videos:
 - **URL 重建**：HTML 源里图片 / 视频 / asset 很多时候是**相对路径**（arxiv HTML 里 `<img src="x1.png">` 配 `<base href="/html/{id}v1/">`；项目页里 `src="assets/images/clip.mp4">`）。抽取时写入 `figures[].url` / `videos[].url` 的必须是 **Obsidian 能直接打开的绝对 URL**（如 `https://arxiv.org/html/2504.16054v1/x1.png`、`https://xiaomi-robotics-0.github.io/assets/images/clip.mp4`），即把 origin + base path 拼回去。原相对路径不能直接写进笔记——Obsidian 解析不了。
 - 对 PDF：图通常无外链 URL，先标记 `url: null` + caption；后续 compose 阶段决定要不要本地下载。
 - **`source_sections`** 按源文档的章节顺序记录大纲（paper 用 `\section{}` / `\subsection{}` 或 `<h2>` / `<h3>`；blog 用 `<h2>` / `<h3>` / 明显的段落标题）。层级和粒度根据源结构判断。**排除非核心章节**：Related Work、Conclusions、Acknowledgments、Contributions / Author List、References / Bibliography、Appendix——这些章节不进 `source_sections[]`，也不承载 figures / equations / tables / videos。每个 `figure` / `equation` / `table` / `video` 必须挂 `section_id` 指向它在源里所属的章节——这决定了 Step 3 compose 时它出现在笔记的哪一段。
-- **次源抽取分工**：
   - **Website**（若可用）：抽取 figures + videos。
   - **GitHub README**（若可用）：(1) **scope** ——  有无 training 代码？只有 inference？两者都有？都没有 → `unclear`。(2) **released_models** —— README 里明确的 checkpoint / weight 列表。
 
@@ -174,8 +173,8 @@ videos:
 #### 结构模型：固定 shell + 源结构 body
 
 **固定 shell**（每篇笔记不变）：
-- **Top**: frontmatter → `## Summary` + Key Takeaways → 可选 teaser → `## Sources`
-- **Outro**: `## 论文点评`（Strengths / Weaknesses / 可信评估）→ `## 关联工作` → `## 速查卡片` → `## Notes`
+- **Top**: frontmatter → `## Summary`
+- **Outro**: `## 论文点评`→ `## 关联工作` → `## 速查卡片` → `## Notes`
 
 **Body**（镜像源结构）：
 - 逐个展开 `source_sections[]`：用每个 section 的 `heading`（源标题原文）作为笔记 body 的标题。层级（`##` / `###`）根据源结构和阅读顺畅度判断，不强制
@@ -327,7 +326,7 @@ Glob DomainMaps/*<TermCamelCase>*.md   # 若目录存在
 - [ ] 笔记中所有 URL / 数字 / 公式 / 表格 **均来自 Step 2 extraction 草稿**，无新增
 - [ ] **Body 章节结构来自 `source_sections`**（标题用每个 section 的 `heading` 原文；层级根据源结构判断）
 - [ ] 每个 figure / equation / table / video 嵌在 `section_id` 对应的 section，**就近放置**
-- [ ] Teaser 媒体（若存在）嵌在 `## Summary` + Key Takeaways 与 `## Sources` 之间
+- [ ] Teaser 媒体（若存在）嵌在 `## Summary` 段内
 - [ ] 未嵌入 OG image / social card / banner 等装饰性图片
 
 ### Step 4 (Wikilink 注入) 自检 

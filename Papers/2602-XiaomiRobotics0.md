@@ -25,11 +25,7 @@ date_added: 2026-04-14
 **Video 1.** Overview teaser — Xiaomi-Robotics-0 real-robot rollouts highlight reel
 <video src="https://robotics.xiaomi.com/robot-model/xiaomi-robotics-0.mp4" controls muted playsinline width="720"></video>
 
----
-## Sources
-- **URL**: https://arxiv.org/abs/2602.12684
-- **Project page**: https://xiaomi-robotics-0.github.io
-- **Code**: https://github.com/XiaomiRobotics/Xiaomi-Robotics-0
+**Sources**: [arxiv](https://arxiv.org/abs/2602.12684) | [website](https://xiaomi-robotics-0.github.io) | [github](https://github.com/XiaomiRobotics/Xiaomi-Robotics-0)
 
 ---
 ## Introduction
