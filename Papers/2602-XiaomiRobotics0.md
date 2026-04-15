@@ -5,9 +5,9 @@ institutes: [Xiaomi]
 date_publish: 2026-02
 venue: arXiv preprint
 tags: [VLA, manipulation, flow-matching]
-url: https://arxiv.org/abs/2602.12684
+arxiv: https://arxiv.org/abs/2602.12684
 website: https://xiaomi-robotics-0.github.io
-code: https://github.com/XiaomiRobotics/Xiaomi-Robotics-0
+github: https://github.com/XiaomiRobotics/Xiaomi-Robotics-0
 rating: 2
 date_added: 2026-04-14
 ---
