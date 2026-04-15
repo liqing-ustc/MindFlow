@@ -19,7 +19,7 @@ date_added:          # 填写今天的日期 YYYY-MM-DD
 2. **{Takeaway 2}**: 简要说明
 3. ...
 
-**Teaser. {caption}** 
+**Teaser. {描述}** 
 %% 若源有独立 teaser 图/视频（ Abstract / Intro 里的 overview / concept / motivation 示意），在这里直接嵌入；若论文唯一的 high-level 视觉就是架构图，跳过不写，不留 placeholder %%
 
 **Sources**: [arxiv](arxiv_url) | [website](website_url) | [github](github_url)
@@ -38,7 +38,7 @@ Body 区使用源文档的 section 结构。原则：
 %% 以下只是"可用构件"的展示，**不是**必须按序出现的章节。实际章节数量、顺序、标题、层级都由 `source_sections[]` 决定。每种构件（图 / 公式 / 表 / 视频）在自己的 section_id 对应的 section 里就近嵌入，不需要集中。%%
 
 <!-- 可用构件 1：嵌入图 -->
-**Figure #. {caption}**
+**Figure #. {描述}**
 ![](https://.../figure.png)
 
 <!-- 可用构件 2：嵌入公式 -->
@@ -52,7 +52,7 @@ $$
 **含义**：
 
 <!-- 可用构件 3：嵌入数字表（仅当 extraction 草稿存在正式数字表时写；禁止从 bar/line chart 目测编造） -->
-**Table #. {caption}**
+**Table #. {描述}**
 
 | Col1 | Col2 |
 | ---- | ---- |
@@ -61,7 +61,7 @@ $$
 **Insights**: {关键发现和解释}
 
 <!-- 可用构件 4：嵌入视频（外链 mp4 用 <video>，YouTube 用 ![](watch?v=...)，详见 obsidian-syntax.md §3）-->
-**Video #. {caption}**
+**Video #. {描述}**
 <video src="https://.../clip.mp4" controls muted playsinline width="720"></video>
 
 ---
