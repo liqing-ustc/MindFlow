@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en"><head><title>Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning</title><meta charset="utf-8"/><link rel="preconnect" href="https://fonts.googleapis.com"/><link rel="preconnect" href="https://fonts.gstatic.com"/><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source Sans Pro:ital,wght@0,400;0,600;1,400;1,600&amp;family=Schibsted Grotesk:wght@400;700&amp;family=IBM Plex Mono:wght@400;600&amp;display=swap"/><link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin="anonymous"/><meta name="viewport" content="width=device-width, initial-scale=1.0"/><meta name="og:site_name" content="MindFlow"/><meta property="og:title" content="Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning"/><meta property="og:type" content="website"/><meta name="twitter:card" content="summary_large_image"/><meta name="twitter:title" content="Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning"/><meta name="twitter:description" content="速查卡片 Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning 核心: 面向 Physical AI 的推理 VLM，通过 physical common sense 和 embodied reasoning 两类能力定义 + 专用 SFT/RL 训练，让多模态 LLM 具备物理世界理解与具身决策能力 ..."/><meta property="og:description" content="速查卡片 Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning 核心: 面向 Physical AI 的推理 VLM，通过 physical common sense 和 embodied reasoning 两类能力定义 + 专用 SFT/RL 训练，让多模态 LLM 具备物理世界理解与具身决策能力 ..."/><meta property="og:image:alt" content="速查卡片 Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning 核心: 面向 Physical AI 的推理 VLM，通过 physical common sense 和 embodied reasoning 两类能力定义 + 专用 SFT/RL 训练，让多模态 LLM 具备物理世界理解与具身决策能力 ..."/><meta property="og:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:url" content="https://liqing.io/mindflow/static/og-image.png"/><meta name="twitter:image" content="https://liqing.io/mindflow/static/og-image.png"/><meta property="og:image:type" content="image/.png"/><meta property="twitter:domain" content="liqing.io/mindflow"/><meta property="og:url" content="https://liqing.io/mindflow/Papers/2503-CosmosReason1"/><meta property="twitter:url" content="https://liqing.io/mindflow/Papers/2503-CosmosReason1"/><link rel="icon" href="../static/icon.png"/><meta name="description" content="速查卡片 Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning 核心: 面向 Physical AI 的推理 VLM，通过 physical common sense 和 embodied reasoning 两类能力定义 + 专用 SFT/RL 训练，让多模态 LLM 具备物理世界理解与具身决策能力 ..."/><meta name="generator" content="Quartz"/><link href="../index.css" rel="stylesheet" type="text/css" spa-preserve/><style>.expand-button {
+  position: absolute;
+  display: flex;
+  float: right;
+  padding: 0.4rem;
+  margin: 0.3rem;
+  right: 0;
+  color: var(--gray);
+  border-color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid;
+  border-radius: 5px;
+  opacity: 0;
+  transition: 0.2s;
+}
+.expand-button > svg {
+  fill: var(--light);
+  filter: contrast(0.3);
+}
+.expand-button:hover {
+  cursor: pointer;
+  border-color: var(--secondary);
+}
+.expand-button:focus {
+  outline: 0;
+}
+
+pre:hover > .expand-button {
+  opacity: 1;
+  transition: 0.2s;
+}
+
+#mermaid-container {
+  position: fixed;
+  contain: layout;
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: none;
+  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.5);
+}
+#mermaid-container.active {
+  display: inline-block;
+}
+#mermaid-container > #mermaid-space {
+  border: 1px solid var(--lightgray);
+  background-color: var(--light);
+  border-radius: 5px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: 80vh;
+  width: 80vw;
+  overflow: hidden;
+}
+#mermaid-container > #mermaid-space > .mermaid-content {
+  padding: 2rem;
+  position: relative;
+  transform-origin: 0 0;
+  transition: transform 0.1s ease;
+  overflow: visible;
+  min-height: 200px;
+  min-width: 200px;
+}
+#mermaid-container > #mermaid-space > .mermaid-content pre {
+  margin: 0;
+  border: none;
+}
+#mermaid-container > #mermaid-space > .mermaid-content svg {
+  max-width: none;
+  height: auto;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  gap: 8px;
+  padding: 8px;
+  background: var(--light);
+  border: 1px solid var(--lightgray);
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 2;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border: 1px solid var(--lightgray);
+  background: var(--light);
+  color: var(--dark);
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  font-family: var(--bodyFont);
+  transition: all 0.2s ease;
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:hover {
+  background: var(--lightgray);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:active {
+  transform: translateY(1px);
+}
+#mermaid-container > #mermaid-space > .mermaid-controls .mermaid-control-button:nth-child(2) {
+  width: auto;
+  padding: 0 12px;
+  font-size: 14px;
+}
+/*# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VSb290IjoiL2hvbWUvcnVubmVyL3dvcmsvbWluZGZsb3cvbWluZGZsb3cvd2Vic2l0ZS9xdWFydHovY29tcG9uZW50cy9zdHlsZXMiLCJzb3VyY2VzIjpbIm1lcm1haWQuaW5saW5lLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7O0FBR0Y7RUFDRTtFQUNBOztBQUdGO0VBQ0U7OztBQUtGO0VBQ0U7RUFDQTs7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7O0FBR0Y7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTs7QUFHRjtFQUNFO0VBQ0E7O0FBSUo7RUFDRTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBOztBQUVBO0VBQ0U7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTtFQUNBO0VBQ0E7RUFDQTs7QUFFQTtFQUNFOztBQUdGO0VBQ0U7O0FBSUY7RUFDRTtFQUNBO0VBQ0EiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhwYW5kLWJ1dHRvbiB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgZGlzcGxheTogZmxleDtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBwYWRkaW5nOiAwLjRyZW07XG4gIG1hcmdpbjogMC4zcmVtO1xuICByaWdodDogMDsgLy8gTk9URTogcmlnaHQgd2lsbCBiZSBzZXQgaW4gbWVybWFpZC5pbmxpbmUudHNcbiAgY29sb3I6IHZhcigtLWdyYXkpO1xuICBib3JkZXItY29sb3I6IHZhcigtLWRhcmspO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1saWdodCk7XG4gIGJvcmRlcjogMXB4IHNvbGlkO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIG9wYWNpdHk6IDA7XG4gIHRyYW5zaXRpb246IDAuMnM7XG5cbiAgJiA+IHN2ZyB7XG4gICAgZmlsbDogdmFyKC0tbGlnaHQpO1xuICAgIGZpbHRlcjogY29udHJhc3QoMC4zKTtcbiAgfVxuXG4gICY6aG92ZXIge1xuICAgIGN1cnNvcjogcG9pbnRlcjtcbiAgICBib3JkZXItY29sb3I6IHZhcigtLXNlY29uZGFyeSk7XG4gIH1cblxuICAmOmZvY3VzIHtcbiAgICBvdXRsaW5lOiAwO1xuICB9XG59XG5cbnByZSB7XG4gICY6aG92ZXIgPiAuZXhwYW5kLWJ1dHRvbiB7XG4gICAgb3BhY2l0eTogMTtcbiAgICB0cmFuc2l0aW9uOiAwLjJzO1xuICB9XG59XG5cbiNtZXJtYWlkLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgY29udGFpbjogbGF5b3V0O1xuICB6LWluZGV4OiA5OTk7XG4gIGxlZnQ6IDA7XG4gIHRvcDogMDtcbiAgd2lkdGg6IDEwMHZ3O1xuICBoZWlnaHQ6IDEwMHZoO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBkaXNwbGF5OiBub25lO1xuICBiYWNrZHJvcC1maWx0ZXI6IGJsdXIoNHB4KTtcbiAgYmFja2dyb3VuZDogcmdiYSgwLCAwLCAwLCAwLjUpO1xuXG4gICYuYWN0aXZlIHtcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XG4gIH1cblxuICAmID4gI21lcm1haWQtc3BhY2Uge1xuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0tbGlnaHQpO1xuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcbiAgICBwb3NpdGlvbjogZml4ZWQ7XG4gICAgdG9wOiA1MCU7XG4gICAgbGVmdDogNTAlO1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xuICAgIGhlaWdodDogODB2aDtcbiAgICB3aWR0aDogODB2dztcbiAgICBvdmVyZmxvdzogaGlkZGVuO1xuXG4gICAgJiA+IC5tZXJtYWlkLWNvbnRlbnQge1xuICAgICAgcGFkZGluZzogMnJlbTtcbiAgICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgICAgIHRyYW5zZm9ybS1vcmlnaW46IDAgMDtcbiAgICAgIHRyYW5zaXRpb246IHRyYW5zZm9ybSAwLjFzIGVhc2U7XG4gICAgICBvdmVyZmxvdzogdmlzaWJsZTtcbiAgICAgIG1pbi1oZWlnaHQ6IDIwMHB4O1xuICAgICAgbWluLXdpZHRoOiAyMDBweDtcblxuICAgICAgcHJlIHtcbiAgICAgICAgbWFyZ2luOiAwO1xuICAgICAgICBib3JkZXI6IG5vbmU7XG4gICAgICB9XG5cbiAgICAgIHN2ZyB7XG4gICAgICAgIG1heC13aWR0aDogbm9uZTtcbiAgICAgICAgaGVpZ2h0OiBhdXRvO1xuICAgICAgfVxuICAgIH1cblxuICAgICYgPiAubWVybWFpZC1jb250cm9scyB7XG4gICAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgICBib3R0b206IDIwcHg7XG4gICAgICByaWdodDogMjBweDtcbiAgICAgIGRpc3BsYXk6IGZsZXg7XG4gICAgICBnYXA6IDhweDtcbiAgICAgIHBhZGRpbmc6IDhweDtcbiAgICAgIGJhY2tncm91bmQ6IHZhcigtLWxpZ2h0KTtcbiAgICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWxpZ2h0Z3JheSk7XG4gICAgICBib3JkZXItcmFkaXVzOiA2cHg7XG4gICAgICBib3gtc2hhZG93OiAwIDJweCA0cHggcmdiYSgwLCAwLCAwLCAwLjEpO1xuICAgICAgei1pbmRleDogMjtcblxuICAgICAgLm1lcm1haWQtY29udHJvbC1idXR0b24ge1xuICAgICAgICBkaXNwbGF5OiBmbGV4O1xuICAgICAgICBhbGlnbi1pdGVtczogY2VudGVyO1xuICAgICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcbiAgICAgICAgd2lkdGg6IDMycHg7XG4gICAgICAgIGhlaWdodDogMzJweDtcbiAgICAgICAgcGFkZGluZzogMDtcbiAgICAgICAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHQpO1xuICAgICAgICBjb2xvcjogdmFyKC0tZGFyayk7XG4gICAgICAgIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgICAgICAgY3Vyc29yOiBwb2ludGVyO1xuICAgICAgICBmb250LXNpemU6IDE2cHg7XG4gICAgICAgIGZvbnQtZmFtaWx5OiB2YXIoLS1ib2R5Rm9udCk7XG4gICAgICAgIHRyYW5zaXRpb246IGFsbCAwLjJzIGVhc2U7XG5cbiAgICAgICAgJjpob3ZlciB7XG4gICAgICAgICAgYmFja2dyb3VuZDogdmFyKC0tbGlnaHRncmF5KTtcbiAgICAgICAgfVxuXG4gICAgICAgICY6YWN0aXZlIHtcbiAgICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMXB4KTtcbiAgICAgICAgfVxuXG4gICAgICAgIC8vIFN0eWxlIHRoZSByZXNldCBidXR0b24gZGlmZmVyZW50bHlcbiAgICAgICAgJjpudGgtY2hpbGQoMikge1xuICAgICAgICAgIHdpZHRoOiBhdXRvO1xuICAgICAgICAgIHBhZGRpbmc6IDAgMTJweDtcbiAgICAgICAgICBmb250LXNpemU6IDE0cHg7XG4gICAgICAgIH1cbiAgICAgIH1cbiAgICB9XG4gIH1cbn1cbiJdfQ== */</style><link href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" rel="stylesheet" type="text/css" spa-preserve/><script src="../prescript.js" type="application/javascript" spa-preserve></script><script type="application/javascript" spa-preserve>const fetchData = fetch("../static/contentIndex.json").then(data => data.json())</script><link rel="alternate" type="application/rss+xml" title="RSS Feed" href="https://liqing.io/mindflow/index.xml"/></head><body data-slug="Papers/2503-CosmosReason1"><div id="quartz-root" class="page"><div id="quartz-body"><div class="left sidebar"><h2 class="page-title"><a href="..">MindFlow</a></h2><div class="spacer mobile-only"></div><div style="display: flex; flex-direction: row; flex-wrap: nowrap; gap: 1rem;"><div style="flex-grow: 1; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><div class="search"><button class="search-button"><p>Search</p><svg role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.9 19.7"><title>Search</title><g class="search-path" fill="none"><path stroke-linecap="square" d="M18.5 18.3l-5.4-5.4"></path><circle cx="8" cy="8" r="7"></circle></g></svg></button><div class="search-container"><div class="search-space"><input autocomplete="off" class="search-bar" name="search" type="text" aria-label="Search for something" placeholder="Search for something"/><div class="search-layout" data-preview="true"></div></div></div></div></div><div style="flex-grow: 0; flex-shrink: 1; flex-basis: auto; order: 0; align-self: center; justify-self: center;"><button class="darkmode"><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="dayIcon" x="0px" y="0px" viewBox="0 0 35 35" style="enable-background:new 0 0 35 35" xml:space="preserve" aria-label="Dark mode"><title>Dark mode</title><path d="M6,17.5C6,16.672,5.328,16,4.5,16h-3C0.672,16,0,16.672,0,17.5    S0.672,19,1.5,19h3C5.328,19,6,18.328,6,17.5z M7.5,26c-0.414,0-0.789,0.168-1.061,0.439l-2,2C4.168,28.711,4,29.086,4,29.5    C4,30.328,4.671,31,5.5,31c0.414,0,0.789-0.168,1.06-0.44l2-2C8.832,28.289,9,27.914,9,27.5C9,26.672,8.329,26,7.5,26z M17.5,6    C18.329,6,19,5.328,19,4.5v-3C19,0.672,18.329,0,17.5,0S16,0.672,16,1.5v3C16,5.328,16.671,6,17.5,6z M27.5,9    c0.414,0,0.789-0.168,1.06-0.439l2-2C30.832,6.289,31,5.914,31,5.5C31,4.672,30.329,4,29.5,4c-0.414,0-0.789,0.168-1.061,0.44    l-2,2C26.168,6.711,26,7.086,26,7.5C26,8.328,26.671,9,27.5,9z M6.439,8.561C6.711,8.832,7.086,9,7.5,9C8.328,9,9,8.328,9,7.5    c0-0.414-0.168-0.789-0.439-1.061l-2-2C6.289,4.168,5.914,4,5.5,4C4.672,4,4,4.672,4,5.5c0,0.414,0.168,0.789,0.439,1.06    L6.439,8.561z M33.5,16h-3c-0.828,0-1.5,0.672-1.5,1.5s0.672,1.5,1.5,1.5h3c0.828,0,1.5-0.672,1.5-1.5S34.328,16,33.5,16z     M28.561,26.439C28.289,26.168,27.914,26,27.5,26c-0.828,0-1.5,0.672-1.5,1.5c0,0.414,0.168,0.789,0.439,1.06l2,2    C28.711,30.832,29.086,31,29.5,31c0.828,0,1.5-0.672,1.5-1.5c0-0.414-0.168-0.789-0.439-1.061L28.561,26.439z M17.5,29    c-0.829,0-1.5,0.672-1.5,1.5v3c0,0.828,0.671,1.5,1.5,1.5s1.5-0.672,1.5-1.5v-3C19,29.672,18.329,29,17.5,29z M17.5,7    C11.71,7,7,11.71,7,17.5S11.71,28,17.5,28S28,23.29,28,17.5S23.29,7,17.5,7z M17.5,25c-4.136,0-7.5-3.364-7.5-7.5    c0-4.136,3.364-7.5,7.5-7.5c4.136,0,7.5,3.364,7.5,7.5C25,21.636,21.636,25,17.5,25z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" class="nightIcon" x="0px" y="0px" viewBox="0 0 100 100" style="enable-background:new 0 0 100 100" xml:space="preserve" aria-label="Light mode"><title>Light mode</title><path d="M96.76,66.458c-0.853-0.852-2.15-1.064-3.23-0.534c-6.063,2.991-12.858,4.571-19.655,4.571  C62.022,70.495,50.88,65.88,42.5,57.5C29.043,44.043,25.658,23.536,34.076,6.47c0.532-1.08,0.318-2.379-0.534-3.23  c-0.851-0.852-2.15-1.064-3.23-0.534c-4.918,2.427-9.375,5.619-13.246,9.491c-9.447,9.447-14.65,22.008-14.65,35.369  c0,13.36,5.203,25.921,14.65,35.368s22.008,14.65,35.368,14.65c13.361,0,25.921-5.203,35.369-14.65  c3.872-3.871,7.064-8.328,9.491-13.246C97.826,68.608,97.611,67.309,96.76,66.458z"></path></svg></button></div></div><div class="explorer" data-behavior="link" data-collapsed="collapsed" data-savestate="false" data-data-fns="{&quot;order&quot;:[&quot;filter&quot;,&quot;map&quot;,&quot;sort&quot;],&quot;sortFn&quot;:&quot;(a,b)=>{let order=[\&quot;Papers\&quot;,\&quot;Topics\&quot;,\&quot;Ideas\&quot;,\&quot;Meetings\&quot;,\&quot;Resources\&quot;],aIdx=order.indexOf(a.displayName),bIdx=order.indexOf(b.displayName);return aIdx!==-1&amp;&amp;bIdx!==-1?aIdx-bIdx:aIdx!==-1?-1:bIdx!==-1?1:a.displayName.localeCompare(b.displayName)}&quot;,&quot;filterFn&quot;:&quot;node=>node.slugSegment!==\&quot;tags\&quot;&quot;,&quot;mapFn&quot;:&quot;node=>{node.isFolder||(node.displayName=node.slugSegment)}&quot;}"><button type="button" class="explorer-toggle mobile-explorer hide-until-loaded" data-mobile="true" aria-controls="explorer-content"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide-menu"><line x1="4" x2="20" y1="12" y2="12"></line><line x1="4" x2="20" y1="6" y2="6"></line><line x1="4" x2="20" y1="18" y2="18"></line></svg></button><button type="button" class="title-button explorer-toggle desktop-explorer" data-mobile="false" aria-expanded="true"><h2>Explorer</h2><svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="explorer-content" aria-expanded="false"><ul class="explorer-ul overflow" id="es8dxe"><li class="overflow-end"></li></ul></div><template id="template-file"><li><a href="#"></a></li></template><template id="template-folder"><li><div class="folder-container"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="5 8 14 8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="folder-icon"><polyline points="6 9 12 15 18 9"></polyline></svg><div><button class="folder-button"><span class="folder-title"></span></button></div></div><div class="folder-outer"><ul class="content"></ul></div></li></template></div><div class="sidebar-tags"><span class="sidebar-tags-title">Popular Tags</span><div class="sidebar-tag-cloud"><a href="/mindflow/tags/VLA" class="sidebar-tag-pill">#VLA</a><a href="/mindflow/tags/VLM" class="sidebar-tag-pill">#VLM</a><a href="/mindflow/tags/manipulation" class="sidebar-tag-pill">#manipulation</a><a href="/mindflow/tags/task-planning" class="sidebar-tag-pill">#task-planning</a><a href="/mindflow/tags/RL" class="sidebar-tag-pill">#RL</a><a href="/mindflow/tags/web-agent" class="sidebar-tag-pill">#web-agent</a><a href="/mindflow/tags/navigation" class="sidebar-tag-pill">#navigation</a><a href="/mindflow/tags/scene-understanding" class="sidebar-tag-pill">#scene-understanding</a><a href="/mindflow/tags/instruction-following" class="sidebar-tag-pill">#instruction-following</a><a href="/mindflow/tags/cross-embodiment" class="sidebar-tag-pill">#cross-embodiment</a></div></div></div><div class="center"><div class="page-header"><div class="popover-hint"><nav class="breadcrumb-container" aria-label="breadcrumbs"><div class="breadcrumb-element"><a href="../">Home</a><p> ❯ </p></div><div class="breadcrumb-element"><a href="../Papers/">Papers</a><p> ❯ </p></div><div class="breadcrumb-element"><a href>2503-CosmosReason1</a></div></nav><h1 class="article-title">Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning</h1><div class="paper-meta"><span class="paper-venue">arXiv</span><span class="paper-authors"><span class="meta-sep">·</span>NVIDIA</span></div><p show-comma="true" class="content-meta"><time datetime="2025-03-01T00:00:00.000Z">Mar 01, 2025</time><span>12 min read</span></p><ul class="tags"><li><a href="../tags/embodied-reasoning" class="internal tag-link">embodied-reasoning</a></li><li><a href="../tags/VLM" class="internal tag-link">VLM</a></li><li><a href="../tags/spatial-reasoning" class="internal tag-link">spatial-reasoning</a></li></ul></div></div><article class="popover-hint"><h2 id="速查卡片">速查卡片<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#速查卡片" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<blockquote class="callout abstract" data-callout="abstract">
+<div class="callout-title">
+                  <div class="callout-icon"></div>
+                  <div class="callout-title-inner"><p>Cosmos-Reason1: From Physical Common Sense To Embodied Reasoning </p></div>
+                  
+                </div>
+<div class="callout-content">
+<ul>
+<li><strong>核心</strong>: 面向 Physical AI 的推理 VLM，通过 physical common sense 和 embodied reasoning 两类能力定义 + 专用 SFT/RL 训练，让多模态 LLM 具备物理世界理解与具身决策能力</li>
+<li><strong>方法</strong>: 定义 physical common sense（Space/Time/Physics 三类 16 子类）和 embodied reasoning（4 能力 × 5 agent 类型）两套 ontology；基于 Qwen2.5-VL-7B 和 Nemotron-H-56B 做 Physical AI SFT + GRPO RL，用 MCQ 形式的 rule-based verifiable reward</li>
+<li><strong>结果</strong>: SFT 阶段 embodied reasoning 提升 10%+，RL 阶段在 intuitive physics（arrow of time, spatial puzzle, object permanence）上从近随机提升至 81.5%</li>
+<li><strong>Sources</strong>: <a href="https://arxiv.org/abs/2503.15558" class="external">arxiv<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://research.nvidia.com/labs/cosmos-lab/cosmos-reason1/" class="external">website<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a> | <a href="https://github.com/nvidia-cosmos/cosmos-reason1" class="external">github<svg aria-hidden="true" class="external-icon" style="max-width:0.8em;max-height:0.8em;" viewBox="0 0 512 512"><path d="M320 0H288V64h32 82.7L201.4 265.4 178.7 288 224 333.3l22.6-22.6L448 109.3V192v32h64V192 32 0H480 320zM32 32H0V64 480v32H32 456h32V480 352 320H424v32 96H64V96h96 32V32H160 32z"></path></svg></a></li>
+</ul>
+</div>
+</blockquote>
+<hr/>
+<h2 id="summary">Summary<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#summary" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Cosmos-Reason1 为 Physical AI 定义了结构化的能力 ontology，并通过 SFT + RL 两阶段训练让 VLM 获得物理常识推理和具身决策能力。</p>
+<p><strong>Key Takeaways:</strong></p>
+<ol>
+<li><strong>Ontology-driven 能力定义</strong>: 提出 physical common sense（3 大类 16 子类）和 embodied reasoning（4 能力 × 5 agent 类型）两套 ontology，为 Physical AI 评估建立了结构化框架</li>
+<li><strong>Rule-based verifiable reward for Physical AI RL</strong>: 将 embodied reasoning 问题转化为 MCQ 格式，实现 rule-based 可验证奖励，绕过了 Physical AI 领域 reward design 的难题</li>
+<li><strong>Intuitive physics 能力显著提升</strong>: 在 arrow of time、spatial puzzle、object permanence 等任务上，现有 VLM 几乎随机猜测，而 Cosmos-Reason1 通过 SFT+RL 将平均准确率从 42% 提升至 81.5%</li>
+</ol>
+<p><strong>Teaser. Cosmos-Reason1 overview</strong>
+<img src="https://research.nvidia.com/labs/cosmos-lab/cosmos-reason1/assets/teaser.svg" alt/></p>
+<p><iframe class="external-embed youtube" allow="fullscreen" frameborder="0" width="600px" src="https://www.youtube.com/embed/Eu25r-yisPc"></iframe></p>
+<hr/>
+<h2 id="introduction">Introduction<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#introduction" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Physical AI 系统需要感知、理解并推理物理世界。当前 LLM 虽然在 coding 和 math 上推理能力强大，但在物理世界 grounding 方面存在关键局限——虽然通过海量文本可能获得了物理知识，但难以将知识与真实世界交互和动态联系起来。</p>
+<p>Cosmos-Reason1 的核心思路：</p>
+<ul>
+<li>定义 Physical AI 所需的基础能力（physical common sense + embodied reasoning）</li>
+<li>提出两套 ontology 作为共享框架和评测标准</li>
+<li>构建两个模型：Cosmos-Reason1-7B（基于 Qwen2.5-VL）和 Cosmos-Reason1-56B（基于 Nemotron-H）</li>
+<li>两阶段训练：Physical AI SFT → Physical AI RL</li>
+<li>探索用 MCQ 构建 rule-based verifiable reward 训练 Physical AI 推理</li>
+</ul>
+<p><strong>Figure 1. Cosmos-Reason1 整体流程</strong>
+<img src="https://arxiv.org/html/2503.15558v3/x1.png" alt/></p>
+<hr/>
+<h2 id="physical-ai-reasoning">Physical AI Reasoning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#physical-ai-reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>Physical AI 推理包含两大能力：physical common sense reasoning 和 embodied reasoning。前者是 embodiment-agnostic 的环境理解，后者是面向具身决策的推理。两者都融合 System 1（快速直觉）和 System 2（慢速深思）的双系统思维。</p>
+<h3 id="common-sense-reasoning">Common Sense Reasoning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#common-sense-reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>提出三层 ontology：</p>
+<ul>
+<li><strong>Space</strong>: 物体间关系、空间合理性、affordance、环境理解（4 子类）</li>
+<li><strong>Time</strong>: 动作理解、事件顺序、因果关系、相机运动、规划（5 子类）</li>
+<li><strong>Fundamental Physics</strong>: 物体属性、状态变化、object permanence、力学、电磁学、热力学、反物理（7 子类）</li>
+</ul>
+<p><strong>Figure 2. Physical common sense ontology 饼图</strong>
+<img src="https://arxiv.org/html/2503.15558v3/x2.png" alt/></p>
+<h3 id="embodied-reasoning">Embodied Reasoning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#embodied-reasoning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>提出二维 ontology，覆盖 4 种能力 × 5 种 agent 类型：</p>
+<ul>
+<li><strong>能力维度</strong>: Process Complex Sensory Inputs / Predict Action Effects / Respect Physical Constraints / Learn from Interactions</li>
+<li><strong>Agent 维度</strong>: 人类、动物、机械臂、人形机器人、自动驾驶</li>
+</ul>
+<p>本文聚焦前三种能力（Learn from Interactions 留作 future work），具体化为三个任务：</p>
+<ol>
+<li><strong>Task-completion verification</strong>: 判断任务是否完成</li>
+<li><strong>Action affordance</strong>: 评估某个 action 是否可行</li>
+<li><strong>Next plausible action prediction</strong>: 预测下一步最合理的 action</li>
+</ol>
+<hr/>
+<h2 id="cosmos-reason1">Cosmos-Reason1<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#cosmos-reason1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="multimodal-architecture">Multimodal Architecture<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#multimodal-architecture" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>采用 decoder-only 架构（类似 LLaVA / NVLM-D）：Vision Encoder → 2-layer MLP Projector（含 downsampling）→ LLM Backbone。</p>
+<ul>
+<li><strong>Cosmos-Reason1-7B</strong>: 基于 Qwen2.5-VL，ViT-676M encoder，动态分辨率输入，dense Transformer backbone（28 层）</li>
+<li><strong>Cosmos-Reason1-56B</strong>: InternViT-300M-V2.5 encoder + Nemotron-H hybrid Mamba-MLP-Transformer backbone（118 层），448×448 输入，最多 32 帧视频，PixelShuffle 2×2 下采样</li>
+</ul>
+<p><strong>Figure 3. 多模态 LLM 架构</strong>
+<img src="https://arxiv.org/html/2503.15558v3/x3.png" alt/></p>
+<h3 id="hybrid-mamba-mlp-transformer-backbone">Hybrid Mamba-MLP-Transformer Backbone<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#hybrid-mamba-mlp-transformer-backbone" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>56B 模型使用 hybrid Mamba-MLP-Transformer 架构。Mamba 提供线性时间序列建模，少量 Transformer 层补充长上下文建模能力。</p>
+<p><strong>Figure 4. Hybrid Mamba-MLP-Transformer backbone 架构</strong>
+<img src="https://arxiv.org/html/2503.15558v3/x4.png" alt/></p>
+<p>训练并行策略：7B 用 TP=4，56B 用 TP=8 + PP=2。</p>
+<hr/>
+<h2 id="reinforcement-learning">Reinforcement Learning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#reinforcement-learning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="algorithm">Algorithm<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#algorithm" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>采用 GRPO 算法（无需训练单独的 critic model）。优势函数通过在同一 prompt 的 response group 内归一化 reward 计算：</p>
+<p><strong>Equation 1. GRPO Advantage</strong></p>
+<span class="katex-display"><span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:2.363em;vertical-align:-0.936em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.427em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord text"><span class="mord">std</span></span><span class="mopen">(</span><span class="mord mathcal" style="margin-right:0.0593em;">G</span><span class="mclose">)</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathnormal mtight">i</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222em;"></span><span class="mord text"><span class="mord">mean</span></span><span class="mopen">(</span><span class="mord mathcal" style="margin-right:0.0593em;">G</span><span class="mclose">)</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.936em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span></span></span></span></span>
+<p><strong>符号说明</strong>: <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathnormal" style="margin-right:0.00773em;">R</span><span class="mopen">(</span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span> 为 response <span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.5806em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3117em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">i</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span> 的 reward，<span class="katex"><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.7805em;vertical-align:-0.0972em;"></span><span class="mord mathcal" style="margin-right:0.0593em;">G</span><span class="mspace" style="margin-right:0.2778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3011em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="minner">…</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.1667em;"></span><span class="mord"><span class="mord mathnormal">o</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.3283em;"><span style="top:-2.55em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathnormal mtight">G</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">}</span></span></span></span> 为同一 prompt 生成的 response 组。</p>
+<h3 id="training-framework">Training Framework<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#training-framework" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>提出全异步 RL 训练框架，包含三个核心部分：</p>
+<ol>
+<li><strong>Dispatcher</strong>: 调度训练数据、管理框架状态</li>
+<li><strong>Actor Rollout</strong>: 从 prompt 生成 response，计算 reward 和 advantage</li>
+<li><strong>Policy Training</strong>: 执行 GRPO，支持 5D 并行（DP, PP, CP, FSDP, TP）</li>
+</ol>
+<p>关键优势：</p>
+<ul>
+<li>异构部署策略（policy training 和 actor rollout 分离），相比 colocated 框架效率提升约 <strong>160%</strong></li>
+<li>节点故障时可快速重配继续训练，无需重启</li>
+<li>Dispatcher 冗余机制支持动态扩缩容</li>
+</ul>
+<p><strong>Figure 5. RL 训练框架架构</strong>
+<img src="https://arxiv.org/html/2503.15558v3/x5.png" alt/></p>
+<hr/>
+<h2 id="data">Data<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#data" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="physical-ai-supervised-fine-tuning">Physical AI Supervised Fine-Tuning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#physical-ai-supervised-fine-tuning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>总计约 <strong>4M</strong> 标注的 video-text pairs。SFT 数据分三大类：</p>
+<p><strong>Physical Common Sense VQA</strong>: 通过 5 阶段 pipeline 构建——视频策展 → 详细 captioning → QA pair 生成 → DeepSeek-R1 提取 reasoning trace → 清洗重写。包括 99K free-form understanding + 59.4K reasoning SFT，以及 1.2M MCQ understanding + 605K MCQ reasoning。</p>
+<p><strong>Embodied Reasoning</strong>: 聚焦 task-completion verification、action affordance、next plausible action prediction 三个属性。数据来源包括：</p>
+<ul>
+<li><strong>BridgeData V2</strong>: 129.2K clips，robot manipulation</li>
+<li><strong>RoboVQA</strong>: 218.5K clips，robot + human demonstrations</li>
+<li><strong>AgiBot</strong>: 19.4K clips，humanoid robot manipulation</li>
+<li><strong>HoloAssist</strong>: 136.3K clips，egocentric human manipulation</li>
+<li><strong>AV</strong>: 12.4K clips，autonomous driving（人工标注 caption）</li>
+</ul>
+<p><strong>Figure 7. Embodied reasoning SFT 数据策展 pipeline（以 AgiBot 为例）</strong>
+<img src="https://arxiv.org/html/2503.15558v3/x6.png" alt/></p>
+<p><strong>Intuitive Physics</strong>: 自监督构造的 SFT 数据</p>
+<ul>
+<li><strong>Spatial Puzzles</strong>: 3K 视频 → 11K samples，将图片切为 2×2 patches 后打乱，模型推理正确空间位置</li>
+<li><strong>Arrow of Time (AoT)</strong>: 30K 视频 + 反转版本，判断视频播放方向</li>
+<li><strong>Object Permanence</strong>: 10K clips（Libero 机器人仿真），判断物体是否违反 object permanence 消失</li>
+</ul>
+<h3 id="physical-ai-reinforcement-learning">Physical AI Reinforcement Learning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#physical-ai-reinforcement-learning" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>RL 训练数据共 <strong>30,304</strong> 个 MCQ samples。Intuitive Physics 类数据天然适合 MCQ 格式且易于规模化；Common Sense 和 Embodied Reasoning 类数据通过人工转换为 MCQ，需要 human-in-the-loop 验证质量。</p>
+<hr/>
+<h2 id="benchmark">Benchmark<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#benchmark" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<p>共构建 <strong>1,214</strong> 个评测问题（604 common sense + 610 embodied reasoning），全部为 MCQ 格式。</p>
+<p><strong>Physical Common Sense</strong>: 从 5,737 个候选问题中人工挑选 604 个（来自 426 个视频），覆盖 Space（13.25%）、Time（49.33%）、Fundamental Physics（37.4%）。</p>
+<p><strong>Figure 8. Common sense benchmark 问题类别分布</strong>
+<img src="https://arxiv.org/html/2503.15558v3/x7.png" alt/></p>
+<p><strong>Embodied Reasoning</strong>: 6 个子 benchmark（BridgeData V2、RoboVQA、RoboFail、AgiBot、HoloAssist、AV），各 100 个问题。特别设计了 RoboFail 作为更困难的评测（需要高度观察力和 physical constraint 推理）。</p>
+<hr/>
+<h2 id="experiments">Experiments<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#experiments" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="physical-ai-supervised-fine-tuning-1">Physical AI Supervised Fine-Tuning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#physical-ai-supervised-fine-tuning-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>训练设置：7B 训练 12.5K iterations（lr 1e-5 → 1e-6 cosine），56B 训练 50K iterations（30K@1e-5 + 20K@1e-6），batch size 7B=256 / 56B=32。</p>
+<p><strong>Table 7. Physical common sense benchmark 结果</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Methods</th><th>Space</th><th>Time</th><th>Other Physics</th><th>Avg.</th></tr></thead><tbody><tr><td>Gemini 2.0 Flash</td><td>53.8</td><td>50.0</td><td>46.9</td><td>50.2</td></tr><tr><td>GPT-4o</td><td>61.3</td><td>54.7</td><td>50.9</td><td>55.6</td></tr><tr><td>OpenAI o1</td><td>63.8</td><td>58.1</td><td>58.0</td><td>59.9</td></tr><tr><td>Qwen2.5-VL-7B</td><td>48.8</td><td>56.4</td><td>37.2</td><td>47.4</td></tr><tr><td>Nemotron-H-56B</td><td>61.3</td><td>68.1</td><td>45.1</td><td>58.2</td></tr><tr><td>Cosmos-Reason1-7B</td><td>54.2</td><td>58.7</td><td>50.0</td><td>54.3 (+6.9)</td></tr><tr><td>Cosmos-Reason1-56B</td><td>61.3</td><td>65.5</td><td>53.9</td><td>60.2 (+2.0)</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: 56B 略胜 OpenAI o1（60.2 vs 59.9），SFT 对 7B 模型提升最显著（+6.9）。</p>
+<p><strong>Table 8. Embodied reasoning benchmark 结果</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Models</th><th>BridgeData V2</th><th>RoboVQA</th><th>Agibot</th><th>HoloAssist</th><th>AV</th><th>RoboFail</th><th>Avg.</th></tr></thead><tbody><tr><td>Gemini 2.0 Flash</td><td>25.0</td><td>78.2</td><td>29.0</td><td>44.0</td><td>37.0</td><td>67.0</td><td>46.7</td></tr><tr><td>GPT-4o</td><td>42.0</td><td>71.8</td><td>32.0</td><td>65.0</td><td>46.0</td><td>63.0</td><td>53.3</td></tr><tr><td>OpenAI o1</td><td>42.0</td><td>80.0</td><td>44.0</td><td>63.0</td><td>37.0</td><td>61.0</td><td>54.5</td></tr><tr><td>Qwen2.5-VL-7B</td><td>38.0</td><td>82.5</td><td>40.4</td><td>50.0</td><td>36.0</td><td>57.6</td><td>50.8</td></tr><tr><td>Nemotron-H-56B</td><td>37.0</td><td>77.2</td><td>37.0</td><td>65.0</td><td>41.0</td><td>64.0</td><td>53.5</td></tr><tr><td>Cosmos-Reason1-7B</td><td>58.8</td><td>83.8</td><td>49.4</td><td>63.0</td><td>55.6</td><td>60.0</td><td>61.8 (+11.0)</td></tr><tr><td>Cosmos-Reason1-56B</td><td>65.0</td><td>80.0</td><td>47.6</td><td>57.8</td><td>65.8</td><td>66.2</td><td>63.7 (+10.2)</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: SFT 带来 10%+ 的 embodied reasoning 提升。两个模型均大幅超过所有 baseline，表明 domain-specific SFT 的有效性。</p>
+<h3 id="physical-ai-reinforcement-learning-1">Physical AI Reinforcement Learning<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#physical-ai-reinforcement-learning-1" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<p>RL 设置：batch size 128，每 prompt 采样 9 个 output，max length 6144 tokens，lr 4e-6，KL penalty 0.005，训练 500 iterations。</p>
+<p><strong>Table 9. SFT + RL 对比</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Models</th><th>Common Sense</th><th>BridgeData V2</th><th>RoboVQA</th><th>Agibot</th><th>HoloAssist</th><th>AV</th><th>RoboFail</th><th>Avg.</th></tr></thead><tbody><tr><td>Cosmos-Reason1-7B</td><td>54.3</td><td>58.8</td><td>83.8</td><td>49.4</td><td>63.0</td><td>55.6</td><td>60.0</td><td>60.7</td></tr><tr><td>+ Physical AI RL</td><td>56.2</td><td>73.5</td><td>86.8</td><td>54.2</td><td>60.0</td><td>67.0</td><td>62.0</td><td>65.7 (+5.0)</td></tr></tbody></table></div>
+<p><strong>Table 10. Intuitive physics benchmark 结果</strong></p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="table-container"><table><thead><tr><th>Models</th><th>Arrow of Time</th><th>Spatial Puzzle</th><th>Object Permanence</th><th>Avg.</th></tr></thead><tbody><tr><td>Random Guess</td><td>50.0</td><td>25.0</td><td>50.0</td><td>41.7</td></tr><tr><td>Gemini 2.0 Flash</td><td>50.0</td><td>31.0</td><td>48.0</td><td>43.0</td></tr><tr><td>GPT-4o</td><td>50.0</td><td>77.0</td><td>48.0</td><td>58.3</td></tr><tr><td>OpenAI o1</td><td>51.0</td><td>64.0</td><td>49.0</td><td>54.7</td></tr><tr><td>Qwen2.5-VL-7B</td><td>50.2</td><td>27.2</td><td>48.8</td><td>42.1</td></tr><tr><td>Cosmos-Reason1-7B</td><td>56.0</td><td>85.4</td><td>82.0</td><td>74.5 (+32.4)</td></tr><tr><td>+ Physical AI RL</td><td>64.5</td><td>94.0</td><td>86.0</td><td>81.5 (+7.0)</td></tr></tbody></table></div>
+<p><strong>Insights</strong>: 最striking的结果——现有 SOTA VLM（GPT-4o, o1, Gemini）在 arrow of time 和 object permanence 上几乎等于随机猜测。Cosmos-Reason1 通过专门的 intuitive physics 数据显著提升，RL 进一步强化。RoboFail 表现停滞，作者归因于训练数据覆盖不足（需要 highly observant perception 和 complex affordance reasoning）。</p>
+<hr/>
+<h2 id="论文点评">论文点评<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#论文点评" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="strengths">Strengths<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#strengths" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Problem formulation 清晰且有价值</strong>: Physical AI 能力的 ontology 定义（特别是 physical common sense 的 16 子类）为领域提供了结构化的评测和训练框架，避免了 ad-hoc benchmark 的问题</li>
+<li><strong>Intuitive physics 发现有信息量</strong>: 揭示现有 SOTA VLM 在 arrow of time、object permanence 上接近随机猜测，说明现有 benchmark 未能真正评估物理世界理解</li>
+<li><strong>Rule-based verifiable reward 的 Physical AI 适配</strong>: 将 DeepSeek-R1 式的 MCQ reward 机制迁移到 embodied reasoning 领域，提供了一条可行的 RL post-training 路径</li>
+<li><strong>异步 RL 训练框架</strong>: 160% 效率提升和容错设计是工程上的实质贡献</li>
+<li><strong>开源</strong>: 7B 模型权重 + 代码 + 训练 recipe 开放，降低复现门槛</li>
+</ol>
+<h3 id="weaknesses">Weaknesses<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#weaknesses" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ol>
+<li><strong>Benchmark 自建自评</strong>: 训练数据和评测 benchmark 均由同一团队构建，存在 evaluation bias 风险——ontology 定义的 capability 和 benchmark 的 question 分布可能天然偏向自己的训练数据分布</li>
+<li><strong>RL reward 的局限</strong>: MCQ 格式的 rule-based reward 限制了 RL 训练的规模化和泛化——common sense 和 embodied reasoning 的 MCQ 数据量仅几千条，需要 human-in-the-loop，难以 scale</li>
+<li><strong>56B 模型缺少 RL 结果</strong>: RL 实验仅在 7B 上进行，56B 模型的 RL 收益未知</li>
+<li><strong>Embodied reasoning 停留在语言层</strong>: 模型输出 natural language 的决策，未直接生成 action token，与 VLA end-to-end 范式有 gap。“next action prediction” 的准确率（BridgeData V2 最高 73.5%）离实际部署还有距离</li>
+<li><strong>RoboFail 表现暴露泛化瓶颈</strong>: 作者坦承 RoboFail 上 SFT 和 RL 均无显著提升，说明模型在 OOD 的 hard cases 上泛化能力有限</li>
+</ol>
+<h3 id="可信评估">可信评估<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#可信评估" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<h4 id="artifact-可获取性">Artifact 可获取性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#artifact-可获取性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li><strong>代码</strong>: inference + post-training（含 SFT 和 RL recipe）</li>
+<li><strong>模型权重</strong>: Cosmos-Reason1-7B（HuggingFace），56B 未公开</li>
+<li><strong>训练细节</strong>: 超参 + 数据配比 + 训练步数完整披露</li>
+<li><strong>数据集</strong>: SFT 数据基于公开数据集（BridgeData V2, RoboVQA, AgiBot, HoloAssist）+ 私有 AV 数据；RL 数据未直接开源但 recipe 公开</li>
+</ul>
+<h4 id="claim-可验证性">Claim 可验证性<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#claim-可验证性" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h4>
+<ul>
+<li>✅ Physical AI SFT 提升 10%+: 有完整 benchmark 数字和 ablation</li>
+<li>✅ 现有 VLM 在 intuitive physics 接近随机: 提供了 GPT-4o / o1 / Gemini 的评测数据</li>
+<li>⚠️ “160% RL 训练效率提升”: 仅声明，未给出具体 wall-clock 对比数据</li>
+<li>⚠️ Cosmos-Reason1-56B “略优于 OpenAI o1”: 差距极小（60.2 vs 59.9），且 benchmark 自建，统计显著性存疑</li>
+</ul>
+<hr/>
+<h2 id="关联工作">关联工作<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#关联工作" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2>
+<h3 id="基于">基于<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#基于" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>Qwen2.5-VL: 7B 模型的 backbone VLM</li>
+<li>Nemotron-H: 56B 模型的 hybrid Mamba-MLP-Transformer backbone</li>
+<li>DeepSeek-R1: reasoning trace 蒸馏来源 + GRPO 算法来源</li>
+<li>InternViT-300M-V2.5: 56B 模型的 vision encoder</li>
+</ul>
+<h3 id="对比">对比<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#对比" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>GPT-4o, OpenAI o1, Gemini 2.0 Flash: 通用 VLM baseline</li>
+<li>Qwen2.5-VL-7B: 7B backbone 的 before/after 对比</li>
+<li>Nemotron-H-56B: 56B backbone 的 before/after 对比</li>
+</ul>
+<h3 id="方法相关">方法相关<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#方法相关" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h3>
+<ul>
+<li>GRPO: RL 算法（group-relative advantage，无 critic model）</li>
+<li>LLaVA / NVLM-D: decoder-only 多模态架构</li>
+<li>BridgeData V2 / RoboVQA / AgiBot / HoloAssist: embodied reasoning 训练数据来源</li>
+<li>Libero: object permanence 仿真数据来源</li>
+</ul>
+<hr/>
+<h2 id="notes">Notes<a role="anchor" aria-hidden="true" tabindex="-1" data-no-popover="true" href="#notes" class="internal"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg></a></h2></article><hr/><div class="page-footer"><div class="giscus" data-repo="liqing-ustc/MindFlow" data-repo-id="R_kgDORucr2w" data-category="Comments" data-category-id="DIC_kwDORucr284C5LSt" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-input-position="bottom" data-light-theme="light" data-dark-theme="dark" data-theme-url="https://liqing.io/mindflow/static/giscus"></div></div></div><div class="right sidebar"><div class="toc desktop-only"><button type="button" class="toc-header" aria-controls="toc-content" aria-expanded="true"><h3>Table of Contents</h3><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="fold"><polyline points="6 9 12 15 18 9"></polyline></svg></button><div class="toc-content"><ul id="m5qp0u" class="overflow"><li class="depth-0"><a href="#速查卡片" data-for="速查卡片">速查卡片</a></li><li class="depth-0"><a href="#summary" data-for="summary">Summary</a></li><li class="depth-0"><a href="#introduction" data-for="introduction">Introduction</a></li><li class="depth-0"><a href="#physical-ai-reasoning" data-for="physical-ai-reasoning">Physical AI Reasoning</a></li><li class="depth-1"><a href="#common-sense-reasoning" data-for="common-sense-reasoning">Common Sense Reasoning</a></li><li class="depth-1"><a href="#embodied-reasoning" data-for="embodied-reasoning">Embodied Reasoning</a></li><li class="depth-0"><a href="#cosmos-reason1" data-for="cosmos-reason1">Cosmos-Reason1</a></li><li class="depth-1"><a href="#multimodal-architecture" data-for="multimodal-architecture">Multimodal Architecture</a></li><li class="depth-1"><a href="#hybrid-mamba-mlp-transformer-backbone" data-for="hybrid-mamba-mlp-transformer-backbone">Hybrid Mamba-MLP-Transformer Backbone</a></li><li class="depth-0"><a href="#reinforcement-learning" data-for="reinforcement-learning">Reinforcement Learning</a></li><li class="depth-1"><a href="#algorithm" data-for="algorithm">Algorithm</a></li><li class="depth-1"><a href="#training-framework" data-for="training-framework">Training Framework</a></li><li class="depth-0"><a href="#data" data-for="data">Data</a></li><li class="depth-1"><a href="#physical-ai-supervised-fine-tuning" data-for="physical-ai-supervised-fine-tuning">Physical AI Supervised Fine-Tuning</a></li><li class="depth-1"><a href="#physical-ai-reinforcement-learning" data-for="physical-ai-reinforcement-learning">Physical AI Reinforcement Learning</a></li><li class="depth-0"><a href="#benchmark" data-for="benchmark">Benchmark</a></li><li class="depth-0"><a href="#experiments" data-for="experiments">Experiments</a></li><li class="depth-1"><a href="#physical-ai-supervised-fine-tuning-1" data-for="physical-ai-supervised-fine-tuning-1">Physical AI Supervised Fine-Tuning</a></li><li class="depth-1"><a href="#physical-ai-reinforcement-learning-1" data-for="physical-ai-reinforcement-learning-1">Physical AI Reinforcement Learning</a></li><li class="depth-0"><a href="#论文点评" data-for="论文点评">论文点评</a></li><li class="depth-1"><a href="#strengths" data-for="strengths">Strengths</a></li><li class="depth-1"><a href="#weaknesses" data-for="weaknesses">Weaknesses</a></li><li class="depth-1"><a href="#可信评估" data-for="可信评估">可信评估</a></li><li class="depth-0"><a href="#关联工作" data-for="关联工作">关联工作</a></li><li class="depth-1"><a href="#基于" data-for="基于">基于</a></li><li class="depth-1"><a href="#对比" data-for="对比">对比</a></li><li class="depth-1"><a href="#方法相关" data-for="方法相关">方法相关</a></li><li class="depth-0"><a href="#notes" data-for="notes">Notes</a></li><li class="overflow-end"></li></ul></div></div></div><footer class><p>Created with <a href="https://quartz.jzhao.xyz/">Quartz v4.4.1</a> © 2026</p><ul><li><a href="https://github.com/liqing-ustc/MindFlow">GitHub</a></li></ul></footer></div></div></body><script type="application/javascript">function o(){let t=this.parentElement;t.classList.toggle("is-collapsed");let e=t.classList.contains("is-collapsed")?this.scrollHeight:t.scrollHeight;t.style.maxHeight=e+"px";let c=t,l=t.parentElement;for(;l;){if(!l.classList.contains("callout"))return;let i=l.classList.contains("is-collapsed")?l.scrollHeight:l.scrollHeight+c.scrollHeight;l.style.maxHeight=i+"px",c=l,l=l.parentElement}}function n(){let t=document.getElementsByClassName("callout is-collapsible");for(let s of t){let e=s.firstElementChild;if(!e)continue;e.addEventListener("click",o),window.addCleanup(()=>e.removeEventListener("click",o));let l=s.classList.contains("is-collapsed")?e.scrollHeight:s.scrollHeight;s.style.maxHeight=l+"px"}}document.addEventListener("nav",n);
+</script><script type="module">function f(i,e){if(!i)return;function r(o){o.target===this&&(o.preventDefault(),o.stopPropagation(),e())}function t(o){o.key.startsWith("Esc")&&(o.preventDefault(),e())}i?.addEventListener("click",r),window.addCleanup(()=>i?.removeEventListener("click",r)),document.addEventListener("keydown",t),window.addCleanup(()=>document.removeEventListener("keydown",t))}function y(i){for(;i.firstChild;)i.removeChild(i.firstChild)}var h=class{constructor(e,r){this.container=e;this.content=r;this.setupEventListeners(),this.setupNavigationControls(),this.resetTransform()}isDragging=!1;startPan={x:0,y:0};currentPan={x:0,y:0};scale=1;MIN_SCALE=.5;MAX_SCALE=3;cleanups=[];setupEventListeners(){let e=this.onMouseDown.bind(this),r=this.onMouseMove.bind(this),t=this.onMouseUp.bind(this),o=this.resetTransform.bind(this);this.container.addEventListener("mousedown",e),document.addEventListener("mousemove",r),document.addEventListener("mouseup",t),window.addEventListener("resize",o),this.cleanups.push(()=>this.container.removeEventListener("mousedown",e),()=>document.removeEventListener("mousemove",r),()=>document.removeEventListener("mouseup",t),()=>window.removeEventListener("resize",o))}cleanup(){for(let e of this.cleanups)e()}setupNavigationControls(){let e=document.createElement("div");e.className="mermaid-controls";let r=this.createButton("+",()=>this.zoom(.1)),t=this.createButton("-",()=>this.zoom(-.1)),o=this.createButton("Reset",()=>this.resetTransform());e.appendChild(t),e.appendChild(o),e.appendChild(r),this.container.appendChild(e)}createButton(e,r){let t=document.createElement("button");return t.textContent=e,t.className="mermaid-control-button",t.addEventListener("click",r),window.addCleanup(()=>t.removeEventListener("click",r)),t}onMouseDown(e){e.button===0&&(this.isDragging=!0,this.startPan={x:e.clientX-this.currentPan.x,y:e.clientY-this.currentPan.y},this.container.style.cursor="grabbing")}onMouseMove(e){this.isDragging&&(e.preventDefault(),this.currentPan={x:e.clientX-this.startPan.x,y:e.clientY-this.startPan.y},this.updateTransform())}onMouseUp(){this.isDragging=!1,this.container.style.cursor="grab"}zoom(e){let r=Math.min(Math.max(this.scale+e,this.MIN_SCALE),this.MAX_SCALE),t=this.content.getBoundingClientRect(),o=t.width/2,n=t.height/2,c=r-this.scale;this.currentPan.x-=o*c,this.currentPan.y-=n*c,this.scale=r,this.updateTransform()}updateTransform(){this.content.style.transform=`translate(${this.currentPan.x}px, ${this.currentPan.y}px) scale(${this.scale})`}resetTransform(){this.scale=1;let e=this.content.querySelector("svg");this.currentPan={x:e.getBoundingClientRect().width/2,y:e.getBoundingClientRect().height/2},this.updateTransform()}},C=["--secondary","--tertiary","--gray","--light","--lightgray","--highlight","--dark","--darkgray","--codeFont"],E;document.addEventListener("nav",async()=>{let e=document.querySelector(".center").querySelectorAll("code.mermaid");if(e.length===0)return;E||=await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.4.0/mermaid.esm.min.mjs");let r=E.default,t=new WeakMap;for(let n of e)t.set(n,n.innerText);async function o(){for(let s of e){s.removeAttribute("data-processed");let a=t.get(s);a&&(s.innerHTML=a)}let n=C.reduce((s,a)=>(s[a]=window.getComputedStyle(document.documentElement).getPropertyValue(a),s),{}),c=document.documentElement.getAttribute("saved-theme")==="dark";r.initialize({startOnLoad:!1,securityLevel:"loose",theme:c?"dark":"base",themeVariables:{fontFamily:n["--codeFont"],primaryColor:n["--light"],primaryTextColor:n["--darkgray"],primaryBorderColor:n["--tertiary"],lineColor:n["--darkgray"],secondaryColor:n["--secondary"],tertiaryColor:n["--tertiary"],clusterBkg:n["--light"],edgeLabelBackground:n["--highlight"]}}),await r.run({nodes:e})}await o(),document.addEventListener("themechange",o),window.addCleanup(()=>document.removeEventListener("themechange",o));for(let n=0;n<e.length;n++){let v=function(){let g=l.querySelector("#mermaid-space"),m=l.querySelector(".mermaid-content");if(!m)return;y(m);let w=c.querySelector("svg").cloneNode(!0);m.appendChild(w),l.classList.add("active"),g.style.cursor="grab",u=new h(g,m)},M=function(){l.classList.remove("active"),u?.cleanup(),u=null},c=e[n],s=c.parentElement,a=s.querySelector(".clipboard-button"),d=s.querySelector(".expand-button"),p=window.getComputedStyle(a),L=a.offsetWidth+parseFloat(p.marginLeft||"0")+parseFloat(p.marginRight||"0");d.style.right=`calc(${L}px + 0.3rem)`,s.prepend(d);let l=s.querySelector("#mermaid-container");if(!l)return;let u=null;d.addEventListener("click",v),f(l,M),window.addCleanup(()=>{u?.cleanup(),d.removeEventListener("click",v)})}});
+</script><script src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/copy-tex.min.js" type="application/javascript"></script><script src="../postscript.js" type="module"></script></html>
