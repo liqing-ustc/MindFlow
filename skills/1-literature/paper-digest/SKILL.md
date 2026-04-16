@@ -193,7 +193,6 @@ videos:
 - **装饰性图片**：OG image / social card / banner / favicon 一律不嵌入。
 - **模板注释**：模板里的 `%% ... %%` 提示必须全部替换或整块删除，禁止外泄到正文。
 - **媒体语法**：YouTube / 外链 mp4 / 外链图 / 本地图 / 公式的写法全部按 `obsidian-syntax.md`。
-- **不写 wikilink**：所有技术术语和相关工作（`π0`、`Flow Matching`、`OpenVLA`等）都保持**纯文本**。
 
 #### 文件名 + Tag + Write
 
