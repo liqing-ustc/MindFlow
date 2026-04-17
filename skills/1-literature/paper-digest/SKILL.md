@@ -312,7 +312,9 @@ Glob DomainMaps/*<TermCamelCase>*.md   # 若目录存在
    - **input**: <source 的原始内容>
    - **output**: [[Papers/{笔记文件名}]]
    - **observation**: <一句话描述论文核心贡献>
-   - **dead_links**: [term1, term2, ...]  # Step 4 未命中的 term，vault curation TODO
+   - **extracted**: figures=<N>, tables=<N>, equations=<N>, videos=<N>  # Step 2 extraction 草稿里各类元素的条目数
+   - **embedded**: figures=<N>, tables=<N>, equations=<N>, videos=<N>, wikilinks=<N>  # Step 3/4 完成后最终笔记里实际出现的各类元素条目数（wikilinks 为 Step 4 注入的 [[...]] 总数）
+   - **dead_links**: term1, term2, ...  # Step 4 未命中的 term，vault curation TODO
    - **issues**: <执行过程中遇到的问题，如源获取失败、defuddle 解析错误、论文无 arxiv HTML 版本等；无问题则写 "none">
    - **status**: success
    ```
@@ -347,5 +349,7 @@ Glob DomainMaps/*<TermCamelCase>*.md   # 若目录存在
 
 ### Step 5 (Log) 自检
 - [ ] 日志已追加到 `Workbench/logs/YYYY-MM-DD.md`
+- [ ] Log entry 包含 `extracted` 统计（figures / tables / equations / videos 各自条目数，与 Step 2 extraction 草稿一致）
+- [ ] Log entry 包含 `embedded` 统计（最终笔记里实际出现的 figures / tables / equations / videos / wikilinks 条目数）
 - [ ] Log entry 包含 `dead_links` 列表
 - [ ] Log entry 包含 `issues` 字段（记录执行过程中遇到的问题，无问题则为 "none"）
